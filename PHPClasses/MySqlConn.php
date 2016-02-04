@@ -2,7 +2,10 @@
 
     // Create connection
     class SQLConnection{
-      public function connect($servername, $username, $password){
+      $servername = "localhost";
+      $username = "username";
+      $password = "password";
+      public function connect(){
         $conn = new mysqli($servername, $username, $password);
       }
       
