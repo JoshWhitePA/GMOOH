@@ -1,4 +1,5 @@
 <?php
+	#hi class
 	require_once("chkDisp.class.php");
 	$chk = new Chksheet();
  ?>
