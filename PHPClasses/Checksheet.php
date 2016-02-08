@@ -1,33 +1,31 @@
 <?php
-	#bye
-	require_once("db.class.php");
 	require_once("chkDisp.class.php");
+	require_once 'meekrodb.2.3.class.php';
+	
+	DB::$user = 'jwhit159';
+	DB::$password = 'W@ckyRace5';
+	DB::$dbName = 'jwhit159_bookstore';
+	
  	$chk = new Chksheet();
-	
-	$db = new Database();
-	$db -> connect();
-	
+		
 	$Dept = array();
 	$ClassNo = array();
 	$LowRange = array();
 	$HighRange = array();
-	$retrived = true;
-
+	$retrived = false;
+	
 	$select = "select Dept, ClassNo, LowRange, HighRange 
 				from PID p
 				INNER JOIN Restrictions r
 				ON p.CompID = r.CompID";
-	$db -> query($select);
-	if ($db->numRows() > 0) {
-		while($db->nextRecord()) {
-			array_push($Dept,$db->Record["Dept"]);
-			array_push($ClassNo, $db->Record["ClassNo"]);
-			array_push($LowRange,$db->Record["LowRange"]);
-			array_push($HighRange,$db->Record["HighRange"]);
-		}
-	} else {
-		$retrived = false;
-		echo "0 results";
+	
+	$results = DB::query($select);
+	foreach ($results as $row) {
+  		 	array_push($Dept,$row["Dept"]);
+			array_push($ClassNo, $row["ClassNo"]);
+			array_push($LowRange,$row["LowRange"]);
+			array_push($HighRange,$row["HighRange"]);
+			$retrived = true;
 	}
  	 
  ?>

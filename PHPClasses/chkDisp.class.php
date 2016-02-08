@@ -1,7 +1,6 @@
 <?php
 class Chksheet
   {
-
     public function displayRow($classID, $classDesc, $classGrade){
       echo '<tr><td>'. $classID .'</td><td>' . $classDesc . '</td><td>' . $classGrade . '</td></tr>';
     }
