@@ -5,13 +5,19 @@
    		}
    		
 		function validateUser($email, $password){
-			$results = DB::query("SELECT Password FROM User where Email = %s",$email);
+			$results = DB::query("SELECT Password,Email,ID FROM User where Email = %s",$email);
+			
 			foreach ($results as $row) {
 				$hashPass = $row['Password'];
+				$Email = $row['Email'];
+				$ID = $row['ID'];
 			}
 			if(is_null($hashPass)){
 				return false;
 			}
+			$_SESSION['Email'] = $Email;
+			$_SESSION['ID'] = $ID;
+
 			return verifyPassword($password, $hashPass);
 		}
 		
