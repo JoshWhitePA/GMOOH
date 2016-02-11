@@ -841,6 +841,11 @@ class WhereClause {
   // backwards compatability
   // we now return full WhereClause object here and evaluate it in preparseQueryParams
   function text() { return $this; }
+
+//Josh Defined Functions
+ 
+//End of db Class //========================================================================================================D
+
 }
 
 class DBTransaction {

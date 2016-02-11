@@ -3,11 +3,15 @@ class Chksheet {
   	
   	function __construct() {
   		require_once 'meekrodb.2.3.class.php';
-       	DB::$user = 'jwhit159';
+		DB::$user = 'jwhit159';
 		DB::$password = '';
 		DB::$dbName = 'jwhit159_bookstore';
    }
-   		#call where you want class reqs to display in gen ed page
+   
+    public function displayRow($classID, $classDesc, $classGrade){
+      echo '<tr><td>'. $classID .'</td><td>' . $classDesc . '</td><td>' . $classGrade . '</td></tr>';
+    }
+	
       function displaySingleRecs($SecID,$PosID){
 		$select = "select Dept, ClassNo, LowRange, HighRange 
 					from PID p

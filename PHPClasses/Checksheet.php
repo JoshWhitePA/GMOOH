@@ -1,7 +1,11 @@
 <?php
-	#hi class
 	require_once("chkDisp.class.php");
+	require_once("logic.class.php");
 	$chk = new Chksheet();
+	$logic = new Logic();
+	
+	
+
  ?>
  
 <!DOCTYPE html>
