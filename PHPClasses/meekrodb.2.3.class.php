@@ -19,9 +19,9 @@
 
 class DB {
   // initial connection
-  public static $dbName = '';
-  public static $user = '';
-  public static $password = '';
+  public static $dbName = 'jwhit159_bookstore';
+  public static $user = 'jwhit159';
+  public static $password = 'W@ckyRace5';
   public static $host = 'localhost';
   public static $port = null;
   public static $encoding = 'latin1';
@@ -841,6 +841,11 @@ class WhereClause {
   // backwards compatability
   // we now return full WhereClause object here and evaluate it in preparseQueryParams
   function text() { return $this; }
+
+//Josh Defined Functions
+ 
+//End of db Class //========================================================================================================D
+
 }
 
 class DBTransaction {
