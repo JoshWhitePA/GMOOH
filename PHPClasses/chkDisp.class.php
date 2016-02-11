@@ -4,8 +4,7 @@ class Chksheet {
 	
   	function __construct() {
   		require_once 'meekrodb.2.3.class.php';
-  		session_start();
-  		
+  		session_start();	
    }
    
     public function displayRow($classID, $classDesc, $classGrade){
