@@ -13,7 +13,7 @@ Created for CSC 355WI 020
    </HEAD>
 <BODY>
 	
-	<div class="center">
+	<div class="center"> <!-- Doesn't work for some reason. Didn't have time to fix, doesn't cause errors. -->
 	<!-- Really basic how-ya-doin form below. -->
 	<form action="login_check.php" method="post" > 
 	<fieldset>
