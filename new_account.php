@@ -10,12 +10,27 @@ Created for CSC 355WI 020
    <HEAD>
       <TITLE>Create an Account</TITLE>
 	  <link rel="stylesheet" type="text/css" href="gmooh_style.css" />
+	  <script type="text/javascript">
+			function checkPassword(){
+				var pass1 = document.getElementById("password").value;
+				var pass2 = document.getElementById("confirmPassword").value;
+				document.write(pass1);
+				document.write(pass2);
+
+				if(pass1 == pass2){
+					return true;
+				}else{
+					window.alert("Passwords do not match!");
+					return false;
+				}
+			}
+	  </script>
    </HEAD>
 <BODY>
 
 	<div class="center"> <!-- Doesn't work for some reason. Didn't have time to fix, doesn't cause errors. -->
 	<!-- Another how-ya-doin form. -->
-	<form action="account_created.php" method="post" > 
+	<form action="account_created.php" onsubmit="event.preventDefault(); return checkPassword();" method="post" > 
 	<fieldset>
 		<p>Name: <br /> <input type="text" name="studentName" id="studentName" required="required" /> </p>
 		<p>Student ID: <br /> <input type="text" name="studentID" id="studentID" required="required" /> </p>
