@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 	<title>Create An Account</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohStyle.css"/>
 		  <script type="text/javascript">
