@@ -1,4 +1,5 @@
 <?php
+	#Session is started on login page since it is where we call validate user.
 	class Logic {
 		function __construct() {
   			require_once 'meekrodb.2.3.class.php';

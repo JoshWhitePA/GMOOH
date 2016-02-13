@@ -21,7 +21,7 @@ class DB {
   // initial connection
   public static $dbName = 'jwhit159_bookstore';
   public static $user = 'jwhit159';
-  public static $password = '';
+  public static $password = 'W@ckyRace5';
   public static $host = 'localhost';
   public static $port = null;
   public static $encoding = 'latin1';
