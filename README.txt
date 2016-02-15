@@ -1,5 +1,5 @@
 README.txt 
 
-TESTING
+Stay tuned with updates found on http://csc355ku.blogspot.com/
 
-this is a change
+
