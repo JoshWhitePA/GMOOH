@@ -41,6 +41,20 @@
 			}
 		}
 		
+		function changePassword($oldPassword, $newPassword1, $newPassword2){
+			// newPassword1 is first, newPassword2 is verifying new password
+			// This function will allow the user to change their password
+			// prerequisites - user is logged on and knows their password
+			// First - Verify oldPassword is correct
+			// Second - Verify password1&2 match
+			// Third - Verify that new password is not the old password
+			// Final - Update user's password in DB
+			
+			//old code - $q = "UPDATE Users SET pass=SHA1('$') WHERE userId=$uid LIMIT 1";
+			
+			
+		}
+		
 		function generateHashWithSalt($Password) {
 			//example: $hashedPassword = $logic -> generateHashWithSalt("L33t");
 			
