@@ -1,0 +1,17 @@
+	
+insert into Class (Prefix,ClassNo,CourseDescr,Credits,Optional,SuffixWI,SuffixCP,SuffixVL,SuffixQL,SuffixCM,SuffixCD,SuffixCT) 
+	values ('CSC', 355, 'SOFTWARE ENGINEERING II', 3, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE );
+	
+insert into ProgramChecksheet (ProgramID) values('CSC:SD');
+	
+INSERT INTO Checksheet (ClassID,CheckSheetID) values((SELECT ClassID FROM Class where Prefix = 'CSC' and ClassNo = '355'),1);
+
+
+
+select * 
+from
+ProgramChecksheet p
+        inner join Checksheet ch 
+        	on p.CheckSheetID = ch.CheckSheetID
+        inner join Class c
+        	on ch.ClassID = c.ClassID;
