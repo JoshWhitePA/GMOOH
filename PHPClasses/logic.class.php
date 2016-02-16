@@ -52,7 +52,6 @@
 			
 			//old code - $q = "UPDATE Users SET pass=SHA1('$') WHERE userId=$uid LIMIT 1";
 			
-			
 		}
 		
 		function generateHashWithSalt($Password) {
