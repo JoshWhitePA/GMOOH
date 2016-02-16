@@ -24,6 +24,7 @@
                 var oldPass = document.getElementById("oldPassword").value;
 				var newPass1 = document.getElementById("newPassword").value;
  				var newPass2 = document.getElementById("confirmNewPassword").value;
+				
 				if (newPass1 != newPass2)
 				{
 					  alert("Passwords do not match!");
