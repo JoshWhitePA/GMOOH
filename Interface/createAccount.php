@@ -39,11 +39,11 @@
 					<table align = "center">
 						<tr>
 							<th align = "right">First Name &nbsp;</th>
-							<td><input type="text" required/></td>
+							<td><input type="text" title="Please Enter Your First Name" pattern="[A-Za-z]{1,}" required/></td>
 						</tr>
 						<tr>
 							<th align = "right">Last Name &nbsp;</th>
-							<td><input type="text" required/></td>
+							<td><input type="text" title="Please Enter Your Last Name" pattern="[A-Za-z]{1,}" required/></td>
 						</tr>
 						<tr>
 							<th align = "right">Email &nbsp;</th>
@@ -51,15 +51,15 @@
 						</tr>
 						<tr>
 							<th align = "right">Student Id &nbsp;</th>
-							<td><input type="text" required/></td>
+							<td><input id ="studentID" title="9 Digit Student ID Only" pattern="[0-9]{9}" required/></td>
 						</tr>
 						<tr>
 							<th align = "right">Password &nbsp;</th>
-							<td><input id="password" type="password" required/></td>
+							<td><input id="password" type="password" title="Please Enter an 8 or More Character Password" pattern="[A-Za-z0-9]{8,}" required/></td>
 						</tr>
 						<tr>
 							<th align = "right">Confirm Password &nbsp;</th>
-							<td><input id="confirmPassword" type="password" required/></td>
+							<td><input id="confirmPassword" type="password" title="Please Enter an 8 or More Character Password" pattern="[A-Za-z0-9]{8,}" required/></td>
 						</tr>
 						<tr height = "10px"></tr>
 						<tr>
