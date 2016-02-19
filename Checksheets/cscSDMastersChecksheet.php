@@ -41,7 +41,7 @@
 <!----- #MS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
 		<div class = "header">MS in Computer Science: Software Development (30 sh)</div>
 		<div class = "newSection"/>
-		<div class = "section3">
+		<div class = "mastersSDSection">
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "1">
@@ -64,7 +64,7 @@
 		</div>
 		
 <!----- Second Half -->
-		<div class = "section3">
+		<div class = "mastersSDSection">
 			<table>
 		<!----- 500 level courses -->
 				<tr>	
