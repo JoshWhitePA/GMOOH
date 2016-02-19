@@ -71,6 +71,20 @@ div.section3IT {
     padding: 5px;
 }
 
+div.mastersSDSection {
+    height: 400px;
+    width: 650px;
+	float: left;
+    padding: 5px;
+}
+
+div.mastersITSection {
+    height: 450px;
+    width: 650px;
+	float: left;
+    padding: 5px;
+}
+
 div.newSection {
 	clear: both;
 }
