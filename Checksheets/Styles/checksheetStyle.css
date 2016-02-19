@@ -64,6 +64,13 @@ div.section3 {
     padding: 5px; 
 }
 
+div.section3IT {
+    height: 850px;
+    width: 650px;
+	float: left;
+    padding: 5px;
+}
+
 div.newSection {
 	clear: both;
 }
