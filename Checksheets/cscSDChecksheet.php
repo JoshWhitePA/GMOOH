@@ -314,9 +314,7 @@
 		
 		<!-- Create horizontal break in page -->
 		<div class = "newSection">
-			<br/>
 			<hr/>
-			<br/>
 		</div>
 		
 <!----- IV. COLLEGE DISTRIBUTION TABLE -->
