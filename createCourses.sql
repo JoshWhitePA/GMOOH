@@ -1,8 +1,8 @@
 /*
 creates COURSE table for GMOOH database
 Joe Kindon
-2/12/16
-Version 1
+2/21/16
+Version 2
  */
  prompt creating table COURSE;
  create table COURSE(
@@ -10,14 +10,14 @@ Version 1
 	CourseID varchar2(10) not null,
 	CourseDescr varchar2(40) not null,
 	Credits number not null,
-	optional varchar2(4),
-	SuffixWI varchar2(4),
-	SuffixCP varchar2(4),
-	SuffixVL varchar2(4),
-	SuffixQL varchar2(4),
-	SuffixCM varchar2(4),
-	SuffixCD varchar2(4),
-	SuffixCT varchar2(4),
+	optional binary(1),
+	SuffixWI binary(1),
+	SuffixCP binary(1),
+	SuffixVL binary(1),
+	SuffixQL binary(1),
+	SuffixCM binary(1),
+	SuffixCD binary(1),
+	SuffixCT binary(1),
 /*Keys*/	
 	primary key (CourseID),
 	constraint Name_CK unique (Name)
