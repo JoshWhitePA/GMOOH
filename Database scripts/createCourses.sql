@@ -19,8 +19,7 @@ Version 2
 	SuffixCD binary(1),
 	SuffixCT binary(1),
 /*Keys*/	
-	primary key (CourseID),
-	constraint Name_CK unique (Name)
+	constraint CL_PK primary key (CourseID)
  ); 
  
  /*
