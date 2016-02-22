@@ -1,0 +1,106 @@
+<Checksheet>
+	<Section>
+		<SectionHeader>
+			1. Required Courses: 33 sh
+		</SectionHeader>
+		<Class>
+			<ClassTitle>
+				CSC 125: Discrete Math for CS I
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 130: IT Fundamentals
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 135: Comp Sci I
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 136: Comp Sci II
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 242: Web Programming
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 253: IT Systems
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 311: Computer Networks
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 341: Information Security
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 356: Introduction to Database Sys
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 354: Software Engineering
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+		<Class>
+			<ClassTitle>
+				CSC 385: Seminar in CSC
+			</ClassTitle>
+			<GR></GR>
+			<SH>
+			3
+			</SH>
+		</Class>
+	</Section>
+</Checksheet>
