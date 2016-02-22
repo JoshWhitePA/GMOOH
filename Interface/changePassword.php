@@ -48,15 +48,15 @@
 					<table align = "center">
 						<tr>
 							<th align = "right">Old Password &nbsp;</th>
-							<td><input id="oldPassword" type = "password" required/></td>
+							<td><input id="oldPassword" type = "password" title="Please Enter Your Old Password" pattern="[A-Za-z0-9]{8,}" required/></td>
 						</tr>
 						<tr>
 							<th align = "right">New Password &nbsp;</th>
-							<td><input id="newPassword" type = "password" required/></td>
+							<td><input id="newPassword" type = "password" title="Please Enter A New Valid Password" pattern="[A-Za-z0-9]{8,}" required/></td>
 						</tr>
 						<tr>
 							<th align = "right">Confirm New Password &nbsp;</th>
-							<td><input id="confirmNewPassword" type="password" required/></td>
+							<td><input id="confirmNewPassword" type="password" title="Please Confirm Your New Password" pattern="[A-Za-z0-9]{8,}" required/></td>
 						</tr>
 						<tr height = "10px"></tr>
 						<tr>
