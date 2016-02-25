@@ -7,10 +7,17 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-
+				<link rel = "stylesheet" type = "text/css" href = "Styles.css"/>
 			</head>
 			<body>
-					<table border="1">
+
+		<div class = "header">BS Computer Science: Information Technology (60 SH)</div>
+		<div class = "sectionTopLeft">Program Number: ULASCSCIT</div>
+		<div class = "sectionTopMiddle">Version Number: 2118</div>
+		<div class = "sectionTopRight">Effective Date: 08/29/2011</div>
+		<div class = "newSection"/>
+		<div class = "section3IT">
+			<table border="1">
 						<xsl:for-each select="/Checksheet/Section">
 							<tr><td colspan="3"><xsl:value-of select="SectionHeader"/></td></tr>
 							<xsl:for-each select="/Checksheet/Section/Class">
@@ -22,6 +29,10 @@
 							</xsl:for-each>
 						</xsl:for-each>
 					</table>
+		</div>
+		
+		
+					
 			</body>
 		</html>
 	</xsl:template>

@@ -5,7 +5,7 @@ $xml->load('cdcatalog.xml');
 
 // Load XSL file
 $xsl = new DOMDocument;
-$xsl->load('cdcatalog.xsl');
+$xsl->load('Checksheet.xsl');
 
 // Configure the transformer
 $proc = new XSLTProcessor;
