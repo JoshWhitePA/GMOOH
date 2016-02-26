@@ -5,6 +5,7 @@ Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(30) NOT NULL,
 Major VARCHAR(30),
+HashVal VARCHAR2(700), /*requested by business logic */
 PRIMARY KEY (StudentId));
 
 INSERT INTO STUDENT values('11223344','jsmit112@live.kutztown.edu','js1234','John','Smith','CS: IT');
