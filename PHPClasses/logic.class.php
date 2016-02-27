@@ -21,7 +21,13 @@
 			$hashPass = $row['Password'];
 			$mail = $row['Email'];
 			$ID = $row['StudentId'];
-			
+			if($mail == null){
+				$mysqli_result = DB::queryRaw("SELECT Password,Email,FacultyId FROM FACULTY WHERE Email= %s", $email);
+				$row = $mysqli_result->fetch_assoc();
+				$hashPass = $row['Password'];
+				$mail = $row['Email'];
+				$ID = $row['FacultyId'];
+			}
 			if(is_null($hashPass)){
 				return false;
 			}

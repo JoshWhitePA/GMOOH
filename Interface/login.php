@@ -3,12 +3,9 @@
 	session_start();	
 	$email = $_POST["email"];
 	$password = $_POST["password"];
-	print $email;
-	print "<br> " . $password . "</br>";
 	$logic = new Logic();
 	$loggedIn = NULL;
 	if(!is_null($password) && !is_null($email) && $_SESSION["loggedIn"] == false){
-		print "in if";
 		$loggedIn = $logic -> validateUser($email, $password);
 		$_SESSION["loggedIn"] = $loggedIn;
 	}
