@@ -10,7 +10,6 @@
 		$_SESSION["loggedIn"] = $loggedIn;
 	}
 	if($_SESSION["loggedIn"]){
-		$_SESSION["loggedIn"] = false;
 		header('location: ./changePassword.php');
 	}
 
