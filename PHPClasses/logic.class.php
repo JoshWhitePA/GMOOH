@@ -5,21 +5,29 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
    		
-		function validateUser($email, $password){
-			$results = DB::query("SELECT Password,Email,ID FROM User where Email = %s",$email);
+#		public function setDBPass($Password){
+#			$newPass = $this -> generateHashWithSalt($Password);
+#			
+#			DB::update('STUDENT', array(
+#		  'Password' => $newPass
+#		  ), "1 = %i", '1');
+#			 return $newPass;
+#		}
+		
+		public function validateUser($email, $password){
+			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
+			$row = $mysqli_result->fetch_assoc();
 			
-			foreach ($results as $row) {
-				$hashPass = $row['Password'];
-				$Email = $row['Email'];
-				$ID = $row['ID'];
-			}
+			$hashPass = $row['Password'];
+			$mail = $row['Email'];
+			$ID = $row['StudentId'];
+			
 			if(is_null($hashPass)){
 				return false;
 			}
-			$_SESSION['Email'] = $Email;
+			$_SESSION["Email"] = $mail;
 			$_SESSION['ID'] = $ID;
-
-			return verifyPassword($password, $hashPass);
+			return $this -> verifyPassword($password, $hashPass);;
 		}
 		
 		function createUser($email, $password, $ID, $Name){
@@ -54,7 +62,7 @@
 			
 		}
 		
-		function generateHashWithSalt($Password) {
+		public function generateHashWithSalt($Password) {
 			//example: $hashedPassword = $logic -> generateHashWithSalt("L33t");
 			
 			$Salt = uniqid(mt_rand(), true); // Could use the second parameter to give it more entropy.

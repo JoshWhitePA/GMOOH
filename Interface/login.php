@@ -1,11 +1,20 @@
 <?php
 	require_once("../PHPClasses/logic.class.php");
 	session_start();	
-	$email = $_POST["password"];
-	$password = $_POST["email"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+	print $email;
+	print "<br> " . $password . "</br>";
 	$logic = new Logic();
-	if(!is_null($password) && !is_null($email)){
+	$loggedIn = NULL;
+	if(!is_null($password) && !is_null($email) && $_SESSION["loggedIn"] == false){
+		print "in if";
 		$loggedIn = $logic -> validateUser($email, $password);
+		$_SESSION["loggedIn"] = $loggedIn;
+	}
+	if($_SESSION["loggedIn"]){
+		$_SESSION["loggedIn"] = false;
+		header('location: ./changePassword.php');
 	}
 
 ?>
@@ -17,6 +26,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohStyle.css"/>
 	</head>
 	<body>
+	
 		<div class = "one">	
 			<form action="login.php" method="post" >
 				<table>
@@ -26,11 +36,11 @@
 						</td>
 						<td rowspan = "10" width = "50px"></td>
 						<th>Email &nbsp;</th>
-						<td><input type="email" required/></td>
+						<td><input type="email" name="email" id="email" required/></td>
 					</tr>
 					<tr>
 						<th>Password &nbsp;</th>
-						<td><input type="password" required/></td>
+						<td><input type="password" name="password" id="password" required/></td>
 					</tr>
 					<tr height = "10px"></tr>
 					<tr>
