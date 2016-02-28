@@ -40,7 +40,6 @@ div.sectionTop {
 }
 
 div.section {
-	min-height: 500px;
 	min-height: 400px;
     width: 48%;
 	float: left;
