@@ -349,8 +349,8 @@
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
 				<tr>
 					<th>&nbsp; 1. Natural Science with Lab:
-						<b class = "smaller">AST, BIO, CHM, ENV, GEL, PHY, or 
-							<br/>&emsp;MAR; or GEG
+						<b class = "smaller">AST, BIO, CHM, ENV, GEL, PHY, 
+							<br/>&emsp;or MAR; or GEG
 							(see notes at right)
 						</b>
 					</th>
