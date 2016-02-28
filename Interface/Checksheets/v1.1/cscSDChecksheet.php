@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title> BS Computer Science: SD Checksheet</title>
+	<title>BS Computer Science: SD Checksheet</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
 	</head>
 	<body>

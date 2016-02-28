@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Computer Science: IT Master's Checksheet</title>
+	<title>MS Computer Science: IT Checksheet</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
 	</head>
 	<body>
