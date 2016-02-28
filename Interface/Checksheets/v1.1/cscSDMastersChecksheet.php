@@ -2,7 +2,7 @@
 *	File: 			cscSDMChecksheet.php
 *	Created:	  	02/18/2016
 *	Version:		1.1 (02/28/2016)
-*	Author:			Christian Carreras, Christopher Steckhouse
+*	Authors:			Christian Carreras, Christopher Steckhouse
 *	Organization:	Kutztown University CSC 355 Spring
 *	Purpose:		This php file creates a skeleton course checksheet
 *					as visually close as possible to an official checksheet.
