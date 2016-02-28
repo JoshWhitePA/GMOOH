@@ -1,13 +1,13 @@
 <!--
-*	File: 			cscSDChecksheetTest.php
-*	Created:		02/13/2016
-*	Author:			Christian Carreras
+*	File: 		cscSDChecksheetTest.php
+*	Created:	02/13/2016
+*	Version:	1.1 (02/27/2016)
+*	Author:		Christian Carreras
 *	Organization:	Kutztown University CSC 355 Spring
-*	Purpose:		This php file creates a skeleton course checksheet
-*					as visually close as possible to an official checksheet.
-*					**THIS FILE IS FOR TESTING PURPOSES ONLY**
-*					This file will be used by the database and business logic
-*					teams to test inserting classes into a checksheet.
+*	Purpose:	This php file creates a skeleton course checksheet
+*			as visually close as possible to an official checksheet.
+*			**THIS FILE IS FOR READ ONLY PURPOSES**
+*			This file will be used only to view/print a checksheet.
 -->
 <?php
 ?>
