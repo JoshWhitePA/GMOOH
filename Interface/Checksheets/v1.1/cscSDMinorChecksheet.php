@@ -120,11 +120,11 @@
 		</div>
 		<div class = "buffer">&nbsp;</div>
 		<div class = "newSection"></div>
-		<div class = "noteBuffer"></div>
+		<div class = "noteBuffer">&nbsp;</div>
 		<div class = "notes3">
 			*If you are considering a MS in Computer Science (Software Development) you should take CSC 235<br/>
 			** If you are considering a MS in Computer Science (Software Development) you should take CSC 310
 		</div>
-		<div class = "noteBuffer"></div>
+		<div class = "noteBuffer">&nbsp;</div>
 	</body>
 </html>
