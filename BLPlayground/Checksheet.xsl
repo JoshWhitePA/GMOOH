@@ -19,7 +19,9 @@
 		<div class = "section3IT">
 			<table border="1">
 						<xsl:for-each select="/Checksheet/Section">
-							<tr><td colspan="3"><xsl:value-of select="SectionHeader"/></td></tr>
+							<tr><td><strong><xsl:value-of select="SectionHeader"/></strong></td>
+                            <td><strong>Gr</strong></td>
+                            <td><strong>SH</strong></td></tr>
 							<xsl:for-each select="/Checksheet/Section/Class">
 								<tr>
 									 <td><xsl:value-of select="ClassTitle"/></td>

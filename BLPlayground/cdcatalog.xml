@@ -1,106 +1,307 @@
 <Checksheet>
-	<Section>
-		<SectionHeader>
-			1. Required Courses: 33 sh
-		</SectionHeader>
-		<Class>
-			<ClassTitle>
-				CSC 125: Discrete Math for CS I
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 130: IT Fundamentals
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 135: Comp Sci I
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 136: Comp Sci II
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 242: Web Programming
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 253: IT Systems
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 311: Computer Networks
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 341: Information Security
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 356: Introduction to Database Sys
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 354: Software Engineering
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-		<Class>
-			<ClassTitle>
-				CSC 385: Seminar in CSC
-			</ClassTitle>
-			<GR></GR>
-			<SH>
-			3
-			</SH>
-		</Class>
-	</Section>
+  <Section>
+    <SectionHeader>
+      <b>1. Required Courses: 33 sh</b>
+      </SectionHeader>
+    <Class>
+      <ClassTitle>
+	CSC 125: Discrete Math for CS I
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 130: IT Fundamentals
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 135: Comp Sci I
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 136: Comp Sci II
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 242: Web Programming
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 253: IT Systems
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 311: Computer Networks
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 341: Information Security
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 356: Introduction to Database Sys
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 354: Software Engineering
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    <Class>
+      <ClassTitle>
+	CSC 385: Seminar in CSC
+	</ClassTitle>
+      <GR></GR>
+      <SH>
+	3
+	</SH>
+      </Class>
+    </Section>
+    
+    <Section>
+        <SectionHeader>
+            <b>2. Elective Courses: 15-24 sh</b>
+	    </SectionHeader>
+        <Class>
+	  <ClassTitle>
+                CSC 237: Data Structures
+            </ClassTitle>
+	  <GR></GR>
+	  <SH>
+	    3
+	    </SH>
+	  </Class>
+        <Class>
+	  <ClassTitle>
+                CSC 241: Adv Visual Basic
+            </ClassTitle>
+	  <GR></GR>
+	  <SH>
+	    3
+	    </SH>
+	  </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 243: Java Programming
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 342: Web Technologies
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 343: Operating Systems
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 351: Digital Forensics
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 352: UNIX: Sys Prog/Adm
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 411: Advanced Networking
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 421: Web-Based Soft Design &amp; Dev
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 445: Intro to Intelligent Robotics
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 447: Artificial Intelligence I
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 456: Database Mgm Sys I
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+         <Class>
+	   <ClassTitle>
+                CSC 464: Human Computer Interaction
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        <Class>
+	   <ClassTitle>
+                CSC 480: Special Topics
+            </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        
+    </Section>
+    <Section>
+        <SectionHeader>
+            <b>3. Elective Courses: 0-9 sh</b>
+	    </SectionHeader>
+         <Class>
+	   <ClassTitle>
+           CSC 225: Discrete Math for CS II
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        <Class>
+	   <ClassTitle>
+           CSC 235: Comp. Org &amp; Assem. Lang
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        <Class>
+	   <ClassTitle>
+           CSC 310: Proc Oriented Prog Lang
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        <Class>
+	   <ClassTitle>
+           CSC 320: Intro to Game Programming
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        <Class>
+	   <ClassTitle>
+           CSC 325: Intro to CS Theory
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+        <Class>
+	   <ClassTitle>
+           CSC 402: Data Structures II
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+          <Class>
+	   <ClassTitle>
+           CSC 425: Compiler Design I
+        </ClassTitle>
+	   <GR></GR>
+	   <SH>
+	     3
+	     </SH>
+	   </Class>
+    </Section>
 </Checksheet>
