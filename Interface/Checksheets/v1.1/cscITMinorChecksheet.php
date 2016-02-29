@@ -120,10 +120,10 @@
 		</div>
 		<div class = "buffer">&nbsp;</div>
 		<div class = "newSection"></div>
-		<div class = "noteBuffer"></div>
+		<div class = "noteBuffer">&nbsp;</div>
 		<div class = "notes3">
 			**If you are considering an MS in Information Technology, you should take one of the following: CSC311, CSC341, or CSC352
 		</div>
-		<div class = "noteBuffer"></div>
+		<div class = "noteBuffer">&nbsp;</div>
 	</body>
 </html>
