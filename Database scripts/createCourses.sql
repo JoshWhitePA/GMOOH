@@ -1,14 +1,16 @@
 /*
 creates COURSE table for GMOOH database
 Joe Kindon
-2/21/16
-Version 2
+3/2/16
+Version 3
  */
  prompt creating table COURSE;
  create table COURSE(
  /*Attributes*/
-	CourseID varchar2(10) not null,
-	CourseDescr varchar2(40) not null,
+	CoursePrefix varchar(3) not null,
+	CourseNum varchar(3) not null,
+	CourseID varchar(6) not null,
+	CourseDescr varchar(1024) not null,
 	Credits number not null,
 	optional binary(1),
 	SuffixWI binary(1),
