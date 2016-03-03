@@ -1,0 +1,14 @@
+div.a {
+	width: 655px;
+	height: 500px;
+	padding: 10px;
+	border: solid;
+	border-width: 1px;
+	overflow-x: hidden;
+	overflow-y:scroll;
+	float: left;
+}
+
+div.newSection {
+	clear: both;
+}
