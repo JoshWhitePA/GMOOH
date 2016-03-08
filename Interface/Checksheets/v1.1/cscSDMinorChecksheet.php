@@ -15,7 +15,7 @@
 <html>
 	<head>
 	<title>Computer Science: SD Minor Checksheet</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
 	</head>
 	<body>
 <!-- HEADER -->

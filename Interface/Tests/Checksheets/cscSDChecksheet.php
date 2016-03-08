@@ -24,7 +24,7 @@
 			});
 		</script>
 	</head>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleMin.css"/>
 	<body>
 <!----- HEADER -->
 		<div class = "sectionTop">

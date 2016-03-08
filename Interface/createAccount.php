@@ -16,7 +16,7 @@
 	<head>
 	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 	<title>Create An Account</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohLoginStyle.css"/>
 		  <script type="text/javascript">
 
 		    function formSubmit(){

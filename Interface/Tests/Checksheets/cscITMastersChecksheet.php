@@ -16,7 +16,7 @@
 	<head>
 	<title> Computer Science: IT Master's Checksheet</title>
 	</head>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleMin.css"/>
 	<body>
 <!----- HEADER -->
 		<div class = "sectionTop">
