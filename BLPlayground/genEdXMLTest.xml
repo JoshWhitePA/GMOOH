@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Checksheet>
+   <Section>
+      <SectionNo>1</SectionNo>
+      <SectionDesc>I. UNIVERSITY CORE (12 credits)</SectionDesc>
+      
+      <ReqInst>
+         <PosDesc>A.Oral Communication:</PosDesc>
+         <Dept>COM</Dept>
+         <ClassNums>10 or above</ClassNums>
+      </ReqInst>
+      
+      <ReqInst>
+         <PosDesc>B.Written Communication:</PosDesc>
+         <Dept>ENG</Dept>
+         <ClassNums>23 - 25</ClassNums>
+      </ReqInst>
+   </Section>
+   
+   <Section>
+      <SectionNo>2</SectionNo>
+      <SectionDesc>II. UNIVERSITY DISTRIBUTION (15 credits)</SectionDesc>
+      <ReqInst>
+         <PosDesc>A.Natural Sciences:</PosDesc>
+         <Dept>MAT</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>AST</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>BIO</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>CHM</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>ENV</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>GEL</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>MAR</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>NSE</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>B.Social Sciences:</PosDesc>
+         <Dept>PHY</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>ANT</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>CRJ</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>ECO</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>HIS</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>INT</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>MCS</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>PSY</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>POL</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>SOC</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>SSE</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>C.Humanities:</PosDesc>
+         <Dept>SWK</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>ARC</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>ARH</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>ART</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>CDE</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>CDH</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>CFT</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>DAN</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>FAR</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>FAS</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>MUP</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>MUS</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+      <ReqInst>
+         <PosDesc>D.Arts:</PosDesc>
+         <Dept>THE</Dept>
+         <ClassNums>any</ClassNums>
+      </ReqInst>
+   </Section>
+</Checksheet>

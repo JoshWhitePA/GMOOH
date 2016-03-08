@@ -7,34 +7,21 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<link rel = "stylesheet" type = "text/css" href = "Styles.css"/>
+
 			</head>
 			<body>
-
-		<div class = "header">BS Computer Science: Information Technology (60 SH)</div>
-		<div class = "sectionTopLeft">Program Number: ULASCSCIT</div>
-		<div class = "sectionTopMiddle">Version Number: 2118</div>
-		<div class = "sectionTopRight">Effective Date: 08/29/2011</div>
-		<div class = "newSection"/>
-		<div class = "section3IT">
-			<table border="1">
+					<table border="1">
 						<xsl:for-each select="/Checksheet/Section">
-							<tr><td><strong><xsl:value-of select="SectionHeader"/></strong></td>
-                            <td><strong>Gr</strong></td>
-                            <td><strong>SH</strong></td></tr>
-							<xsl:for-each select="/Checksheet/Section/Class">
+							<tr><td colspan="3"><xsl:value-of select="/Checksheet/Section/SectionDesc"/></td></tr>
+							<xsl:for-each select="ReqInst">
 								<tr>
-									 <td><xsl:value-of select="ClassTitle"/></td>
-									 <td class="center"><xsl:value-of select="GR"/></td>
-									 <td class="center"><xsl:value-of select="SH"/></td>
+									 <td><xsl:value-of select="PosDesc"/></td>
+									 <td class="center"><xsl:value-of select="Dept"/></td>
+									 <td class="center"><xsl:value-of select="ClassNums"/></td>
 								</tr>
 							</xsl:for-each>
 						</xsl:for-each>
 					</table>
-		</div>
-		
-		
-					
 			</body>
 		</html>
 	</xsl:template>
