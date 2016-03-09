@@ -15,7 +15,7 @@
 	<head>
 	<title> BS Computer Science: IT Minor Checksheet</title>
 	</head>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p0.css"/>
 	<body>
 <!----- HEADER -->
 	<div class = "header">Compter Science Minor in Information Technology</div>

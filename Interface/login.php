@@ -19,7 +19,7 @@
 	<head>
 	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 	<title>Log In To GMOOH</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohLoginStyle.css"/>
 	</head>
 	<body>
 	

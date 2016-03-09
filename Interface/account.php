@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Change Your Password</title>
+		<title>Your Account</title>
 		<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohMasterStyle.css"/>	
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>

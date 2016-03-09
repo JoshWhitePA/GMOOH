@@ -79,5 +79,9 @@
 			$HashedPassword = crypt($Password, $CryptSalt);
 			return $HashedPassword;
 		}
+        
+        public function createGenEdXML(){
+            
+        }
 	}
 ?>

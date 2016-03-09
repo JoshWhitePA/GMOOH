@@ -1,17 +1,21 @@
 <?php
 // Load XML file
-$xml = new DOMDocument;
-$xml->load('cdcatalog.xml');
+include("../PHPClasses/buildXML.class.php");
+$xmlB = new XMLBuilder();
+$genXML = $xmlB -> buildGenEd();
+//echo $genXML;
+$x2 = file_get_contents("genEdXMLTest.xml");
+$xml_doc = new DOMDocument();
+$xml_doc->loadXML($genXML);
 
-// Load XSL file
-$xsl = new DOMDocument;
-$xsl->load('Checksheet.xsl');
+// XSL
+$xsl_doc = new DOMDocument();
+$xsl_doc->load("Checksheet.xsl");
 
-// Configure the transformer
-$proc = new XSLTProcessor;
+// Proc
+$proc = new XSLTProcessor();
+$proc->importStylesheet($xsl_doc);
+$newdom = $proc->transformToDoc($xml_doc);
 
-// Attach the xsl rules
-$proc->importStyleSheet($xsl);
-
-echo $proc->transformToXML($xml);
+print $newdom->saveXML();
 ?>

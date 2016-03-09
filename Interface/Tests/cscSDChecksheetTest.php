@@ -5,7 +5,7 @@
 	<head>
 	<title>CSC SD Checksheet</title>
 	</head>
-	<link rel = "stylesheet" type = "text/css" href = "checksheetStyle.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "checksheetStyleAlpha.css"/>
 	<body>
 		<table>
 			<caption>CSC Software Development</caption>

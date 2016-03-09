@@ -1,24 +1,24 @@
 <!--
 *	File: 			cscITMChecksheet.php
-*	Created:		02/18/2016
-*	Author:			Christian Carreras, Christopher Steckhouse
+*	Created:	  	02/18/2016
+*	Version:		1.1 (02/28/2016)
+*	Authors:			Christian Carreras, Christopher Steckhouse
 *	Organization:	Kutztown University CSC 355 Spring
 *	Purpose:		This php file creates a skeleton course checksheet
 *					as visually close as possible to an official checksheet.
-*					**THIS FILE IS FOR TESTING PURPOSES ONLY**
-*					This file will be used by the database and business logic
-*					teams to test inserting classes into a checksheet.
+*					**THIS FILE IS FOR READ ONLY PURPOSES**
+*					This file will be used only to view/print a checksheet.
 -->
 <?php
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Computer Science: IT Master's Checksheet</title>
+	<title>MS Computer Science: IT Checksheet</title>
+	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
 	</head>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyle.css"/>
 	<body>
-<!----- HEADER -->
+<!-- HEADER -->
 		<div class = "sectionTop">
 			<br/><br/>
 			STUDENT:
@@ -34,14 +34,15 @@
 			<br/><br/>
 			______________________________
 		</div>
-		<div class = "newSection"/>
-		<div class = "headerBox">Department of Computer Science & Information Technology
+		<div class = "newSection"></div>
+		<div class = "headerBox">DEPARTMENT OF COMPUTER SCIENCE & INFORMATION TECHNOLOGY
 		</div>
 		
-<!----- #MS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
+<!-- #MS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
 		<div class = "header">MS in Computer Science: Information Technology (30 sh)</div>
-		<div class = "newSection"/>
-		<div class = "mastersITSection">
+		<div class = "newSection"></div>
+		<div class = "buffer">&nbsp;</div>
+		<div class = "section">
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "1">
@@ -49,12 +50,12 @@
 						<td class = "tableGrade">Gr</td>
 						<td class = "tableGrade">SH</td>
 				</tr>
-		<!----- CSC SDM CORE COURSES SECTION -->
+		<!-- CSC SDM CORE COURSES SECTION -->
 				
 				<?php
-					for($i = 0; $i < 11; $i++)
+					for($i = 0; $i < 8; $i++)
 						echo"<tr>	
-								<td>&nbsp;&nbsp;&nbsp; </td>
+								<td>&emsp;&emsp;</td>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
@@ -68,46 +69,44 @@
 				</tr>
 				<!-- Since there can only be ONE thesis (or, if multiple, only one can count!), no need to have multiple columns -->
 				<tr>
-					<td>&nbsp;&nbsp;&nbsp; </td>
+					<td>&emsp;&emsp;</td>
 					<td  class = 'tableGrade'></td>
 					<td  class = 'tableGrade'></td>
 				</tr>
 			</table>
 		</div>
-		
-<!----- Second half -->
-		<div class = "mastersITSection">
+<!-- Second half -->
+		<div class = "section">
 			<table>
-		<!----- ELECTIVE COURSES SECTION -->
+		<!-- ELECTIVE COURSES SECTION -->
 				<tr>	
 					<th class = "tableHeader" colspan = "1">
 						Elective Courses (0-6 sh)
 					</th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
-				</tr>
-				
+				</tr>				
 				<?php
-					for($i = 0; $i < 3; $i++)
+					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
-								<td>&nbsp;&nbsp;&nbsp; </td>
+								<td>&emsp;&emsp;</td>
 								<td class = 'tableGrade'></td>
 								<td class = 'tableGrade'></td>
 							</tr>";
 				?>
 			</table>
 		<!-- Program code, version number, possibly additional stuff. Should be able to grab this from the database. -->
-			<br/>
 			<table>
+				<tr><th class = "tableSpace"></th></tr>
 				<tr>
 					<th><b>Program Code: GLASCSCIT</b></th>
 				</tr>
 				<tr>
 					<th><b>Version Number: 2138</b></th>
-				</tr>
-				
+				</tr>			
 			</table>
 		</div>
+		<div class = "buffer">&nbsp;</div>
 	</body>
 </html>
 			
