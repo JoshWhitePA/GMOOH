@@ -60,7 +60,7 @@ class XMLBuilder {
             }elseif($row['ClassNo'] == null && $row['LowRange'] != null && $row['HighRange'] != null){#if there is a lowRange and a highRange but not a regular number, :ex MAT 10 - 200
                 $xmlString .= $row['LowRange'] . " - " . $row['HighRange'] . "</ClassNums>";    
             }elseif($row['ClassNo'] == null && $row['LowRange'] == null && $row['HighRange'] == null){#they are all null, means any class with that prefix is good. ex: Any AST course
-                $xmlString .= "any</ClassNums>";     
+                $xmlString .= "Any</ClassNums>";     
             }
             
 
@@ -73,7 +73,7 @@ class XMLBuilder {
         #close the last section because there will be a unclosed tag after the loop ends
         $xmlString .= "</Pos></Section></Checksheet>";
 
-         echo $xmlString ;
+         return $xmlString ;
     }
     
 }
