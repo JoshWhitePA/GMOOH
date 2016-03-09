@@ -3,6 +3,12 @@ class XMLBuilder {
     function __construct() {
   			require_once 'meekrodb.2.3.class.php';
    		}
+    
+    public function buildMajor(){
+        
+        
+    }
+    
     public function buildGenEd(){
        // list of strings and list of integers placeholders
         $xmlString = "<?xml version='1.0' encoding='UTF-8'?><Checksheet>";
@@ -32,8 +38,6 @@ class XMLBuilder {
                 $pos = 0;#reset pos because we strarted a new section
             }
             
-            
-            
             if($pos == 0){
                 $pos = $row['PosID'];
                 $xmlString .= "<Pos>";
@@ -62,12 +66,7 @@ class XMLBuilder {
             }elseif($row['ClassNo'] == null && $row['LowRange'] == null && $row['HighRange'] == null){#they are all null, means any class with that prefix is good. ex: Any AST course
                 $xmlString .= "Any</ClassNums>";     
             }
-            
-
             $xmlString .= "</ReqInst>";
-            
-            
-
         }
         
         #close the last section because there will be a unclosed tag after the loop ends
