@@ -180,3 +180,27 @@ div.verticalAlign {
 	width: inherit;
 	position: absolute;
 }
+
+
+fieldset.changepass{
+	border:3px;
+	border-style:solid; 
+	border-color:#800020; 
+}
+
+span.box { /* Box for containing data. */
+  margin: 2%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.8;
+  text-align: right;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  color: #000000;
+}
+
+div.boxed{ /* Box container for page. */
+	border:3px; 
+	border-style:solid; 
+	border-color:#800020; 
+	padding: 1em;
+}
