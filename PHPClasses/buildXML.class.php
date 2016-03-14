@@ -4,17 +4,12 @@ class XMLBuilder {
   			require_once 'meekrodb.2.3.class.php';
    		}
     
-    
-    
-    
-    
-        
     public function buildFullSheet($InpProgramID){
         $xmlString  = "<?xml version='1.0' encoding='UTF-8'?>";
-        //$xmlString .= "<GMOOH>";
+        $xmlString .= "<GMOOH>";
         $xmlString .= $this -> buildGenEd();
-       // $xmlString .= $this -> buildMajor($InpProgramID);
-        //$xmlString .= "</GMOOH>";
+        $xmlString .= $this -> buildMajor($InpProgramID);
+        $xmlString .= "</GMOOH>";
         return $xmlString;
     }
     
@@ -36,12 +31,13 @@ class XMLBuilder {
         $xmlString .= "<ProgramAbriv>" . $programRes['ProgramAbriv'] . "</ProgramAbriv>";
         $xmlString .= "<ProgramNotes>" . $programRes['ProgramNotes'] . "</ProgramNotes>";
         
-        $columnQ = DB::query("Select PrgColumnDesc,PrgColumn 
+        $columnQ = DB::query("Select PrgColumnDesc,PrgColumn,PrgColumn 
                                 from ProgramColumn 
                                 where PrgCompID = %i",$compID);
          foreach ($columnQ as $row1) {
              $xmlString .= "<Column>";
              $xmlString .= "<ColumnDesc>" . $row1['PrgColumnDesc'] . "</ColumnDesc>";
+             $xmlString .= "<ColumnNo>" . $row1['PrgColumn'] . "</ColumnNo>";
              
              //Things about to get cray, hold on to yer butts
              $sectionQ = DB::query("Select PrgSection,PrgSectionDesc
@@ -63,6 +59,7 @@ class XMLBuilder {
                      $xmlString .= "<ClassDept>". "$tracker" . "</ClassDept>";
                      $xmlString .= "<ClassNo>". "$tracker" . "</ClassNo>";  
                      $xmlString .= "<ClassDesc>". "$tracker" . "</ClassDesc>"; 
+                     $xmlString .="<ClassGrade></ClassGrade>";
                      $xmlString .= "</Class>";
 
                  }
@@ -134,6 +131,8 @@ class XMLBuilder {
             }elseif($row['ClassNo'] == null && $row['LowRange'] == null && $row['HighRange'] == null){#they are all null, means any class with that prefix is good. ex: Any AST course
                 $xmlString .= "Any</ClassNums>";     
             }
+            $xmlString .="<ClassGrade></ClassGrade>";
+
             $xmlString .= "</ReqInst>";
         }
         

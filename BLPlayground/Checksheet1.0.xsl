@@ -37,10 +37,10 @@
             <div class = "buffer"><xsl:text> </xsl:text></div>
 		<div class = "section">
 <!-- Begin xsl               -->
-                <xsl:for-each select="GMOOH/Checksheet/Section">
-					<table style="margin-left: 15px;
-                                margin-right: 80px;
-                                padding-right: 10px;">
+                <xsl:for-each select="/Checksheet/Section">
+					<table style="    margin-left: 15px;
+    margin-right: 80px;
+    padding-right: 10px;">
 						
 							<tr>
                                 <th colspan="1" class = "tableCaption"><xsl:value-of select="SectionDesc"/></th>
@@ -79,9 +79,14 @@
                                                   <xsl:text>&#xA0;</xsl:text>
                                                 </b>
                                             </xsl:otherwise>
+                                            
                                         </xsl:choose>
+                                        
+                                        
                                     </xsl:for-each>
                                     </th>
+                                    
+                                        
 								</tr>
                                 <tr><th><xsl:text>Course:&#xA0;</xsl:text></th><td><xsl:text>3</xsl:text></td><td></td><td></td></tr>
 							</xsl:for-each>
@@ -173,122 +178,6 @@
 							<th class = 'tableGrade'>CT</th>
 						</tr>			</table>
                 </div>
-                			
-
-                <xsl:for-each select="GMOOH/Checksheet/Program">
-                    
-                    <div class = "newSection"></div><br/><hr/>
-                    <div class = "header"><xsl:value-of select="ProgramTitle"/></div>
-		<div class = "newSection"></div>
-		<div class = "buffer"><xsl:text>&#xA0;</xsl:text></div>
-		
-				<xsl:for-each select="Column">
-                    
-                    <xsl:choose>
-                        
-                        <xsl:when test="ColumnNo = 1">
-                            <div class = "section">
-                        <table>
-                            <tr>
-                                       <th class = "tableHeader" colspan = "3">
-                                          <xsl:value-of select="ColumnDesc"/>
-                                       </th>
-                                  </tr>
-                            <xsl:for-each select="Section">
-                                  <tr>
-                                        <th><xsl:value-of select="SectionDesc"/></th>
-                                        <td class = "tableGrade">Gr</td>
-                                        <td class = "tableGrade">SH</td>
-                                    </tr>
-                                    <xsl:for-each select="Class">    
-                                        <tr>	
-                                        <td>
-                                                
-                                                <xsl:value-of select="ClassDept"/><xsl:text>&#xA0;</xsl:text>
-                                                <xsl:value-of select="ClassNo"/><xsl:text>:&#xA0;</xsl:text>
-                                                <xsl:value-of select="ClassDesc"/>
-                                            <input type="hidden" name="ClassID" >
-                                                    <xsl:attribute name="name">
-                                                        <xsl:text>ClassID</xsl:text>
-                                                        <xsl:value-of select="position()" />
-                                                    </xsl:attribute>
-                                            </input>
-                                        </td>
-                                        <td  class = 'tableGrade'></td>
-                                        <td  class = 'tableGrade'></td>
-                                    </tr>       
-                                </xsl:for-each>     
-                                     
-                           </xsl:for-each> 
-                            </table>
-                            </div>	
-                        </xsl:when>
-     
-                        <xsl:otherwise>
-                             <div class = "section">
-                        <table>
-                            <tr>
-                                       <th class = "tableHeader" colspan = "3">
-                                          <xsl:value-of select="ColumnDesc"/>
-                                       </th>
-                                  </tr>
-                            <xsl:for-each select="Section">
-                                  <tr>
-                                        <th><xsl:value-of select="SectionDesc"/></th>
-                                        <td class = "tableGrade">Gr</td>
-                                        <td class = "tableGrade">SH</td>
-                                    </tr>
-                                    <xsl:for-each select="Class">    
-                                        <tr>	
-                                        <td>
-                                                
-                                                <xsl:value-of select="ClassDept"/><xsl:text>&#xA0;</xsl:text>
-                                                <xsl:value-of select="ClassNo"/><xsl:text>:&#xA0;</xsl:text>
-                                                <xsl:value-of select="ClassDesc"/>
-                                            <input type="hidden" name="ClassID" >
-                                                    <xsl:attribute name="name">
-                                                        <xsl:text>ClassID</xsl:text>
-                                                        <xsl:value-of select="position()" />
-                                                    </xsl:attribute>
-                                            </input>
-                                        </td>
-                                        <td  class = 'tableGrade'></td>
-                                        <td  class = 'tableGrade'></td>
-                                    </tr>       
-                                </xsl:for-each>     
-                                     
-                           </xsl:for-each> 
-                            <tr>
-                                <td><xsl:text>&#xA0;</xsl:text></td>
-                            <td></td><td></td>
-                        </tr>
-                        <tr>
-                        
-                            <td class="bsNotes" >Notes on the 
-                                <script>
-                                    str = "<xsl:value-of select="../ProgramAbriv" />";
-                str = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-                                    document.write(str);
-                                </script>
-                                  Program
-                                 </td>
-                            <td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <xsl:value-of select="../ProgramNotes" />
-                            </td>
-                            <td></td><td></td>
-                        </tr>
-                            </table>
-                            </div>	
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    
-                </xsl:for-each> 
-			
-		
-                </xsl:for-each>    
 			</body>
 		</html>
 	</xsl:template>
