@@ -55,15 +55,33 @@
 			}
 		}
 		
-		function changePassword($oldPassword, $newPassword1, $newPassword2){
-			// newPassword1 is first, newPassword2 is verifying new password
-			// This function will allow the user to change their password
+		// This function will allow the user to change their password
+		function changePassword($oldPassword, $newPassword){
 			// prerequisites - user is logged on and knows their password
-			// First - Verify oldPassword is correct
-			// Second - Verify password1&2 match
-			// Third - Verify that new password is not the old password
-			// Final - Update user's password in DB
+			// New Password match done on client side
+			// New Password does not match old password done on client side
 			
+			
+			//*********** HELP  ********
+			// Check old password. Are there session variables? $_SESSION[]? 
+			// First - Verify oldPassword is correct
+			
+
+			
+			
+			// First - Verify oldPassword is correct
+			if( crypt($oldPassword, $hashedPassword) == $hashedPassword){
+				
+			// Final - Update user's password in DB
+				DB::update(('STUDENT') 
+					set ('Password'=$hasshedPassword) 
+					where ('StudentId'=$_SESSION['StudentId'])LIMIT 1);
+				return true;
+			}else{
+				return false;
+				}
+			}
+						
 			//old code - $q = "UPDATE Users SET pass=SHA1('$') WHERE userId=$uid LIMIT 1";
 			
 		}
