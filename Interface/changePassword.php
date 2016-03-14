@@ -17,7 +17,36 @@
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html");
+				$("#master").load("MasterPages/masterPage.html", function() {
+					$("#mainSection")
+						.append("<div id = 'two' style = 'top: 0; bottom: 0; left: 0; right: 0; margin: auto; height: 90%; position: relative'>"
+							+ "<form action='changePassword.php' onsubmit='event.preventDefault(); return formSubmit();' method='post' id='UserForm'>"
+							+ "<table style = 'left: 25%; top: 45%; position: absolute'>"
+							+ "<tr>"
+							+ "<th>Old Password &nbsp;</th>"
+							+ "<td><input id='oldPassword' type='password' title='Please enter your current password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "</tr>"
+							+ "<tr>"
+							+ "<th>New Password &nbsp;</th>"
+							+ "<td><input id='newPassword' type='password' title='Please enter a new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "</tr>"
+							+ "<tr>"
+							+ "<th>Confirm New Password &nbsp;</th>"
+							+ "<td><input id='confirmPassword' type='password' title='Please confirm your new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "</tr>"
+							+ "<tr height = '10px'></tr>"
+							+ "<tr>"
+							+ "<th colspan = '2' align = 'center'>"
+							+ "<button class = 'button1' type='submit' value='Submit'>Submit</button>"
+							+ "<button class = 'button1' type='reset' value='Reset'>Clear</button>"
+							+ "</th>"
+							+ "</tr>"
+							+ "<tr height = '10px'></tr>"
+							+ "<tr>"
+							+ "<th colspan ='2' align = 'center'>"
+							+ "<input type = 'button' class = 'button1' onclick = 'location.href='account.php'' value = 'Cancel'/>"
+							+ "</th></tr></table></form></div>");
+						});
 			});
 			
 			// client side verifying done here
@@ -41,40 +70,6 @@
 						 
 		</script>
 	</head>
-	<body id"master">
-		<div id = "two">
-			<form action="changePassword.php" onsubmit="event.preventDefault(); return formSubmit();" method="post" id="UserForm">
-				<p>Just a prototype to get working.</p>
-				<table>
-					<tr>
-						<th>Old Password &nbsp;</th>
-						<td><input id="oldPassword" type="password" title="Please enter your current password" pattern="[A-Za-z0-9]{8,}" required/></td>
-					</tr>
-					<tr>
-						<th>New Password &nbsp;</th>
-						<td><input id="newPassword" type="password" title="Please enter a new password" pattern="[A-Za-z0-9]{8,}" required/></td>
-					</tr>
-					<tr>
-						<th>Confirm New Password &nbsp;</th>
-						<td><input id="confirmPassword" type="password" title="Please confirm your new password" pattern="[A-Za-z0-9]{8,}" required/></td>
-					</tr>
-					<tr height = "10px"></tr>
-					<tr>
-						<th colspan = "2" align = "center">
-							<button class = "button1" type="submit" value="Submit">Submit</button>
-							<button class = "button1" type="reset" value="Reset">Clear</button>
-						</th>
-						</tr>
-					<tr height = "10px"></tr>
-					<tr>
-						<th colspan = "2" align = "center">
-							<input type = "button" class = "button1" 
-								onclick = "location.href='account.php'" 
-								value = "Cancel"/>
-						</th>
-					</tr>
-				</table>
-			</form>
-		</div>	
+	<body id = "master">
 	</body>
 </html>
