@@ -125,12 +125,12 @@ div.mainSection {
     right: 0;
     margin: auto;
 	height: 90%;
-    width: 90%;
-	min-width: 1200px;
+    width: 50%;
+	padding: 10px;
 	text-align: center;
 	position: absolute;
 	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-y: hidden;
 	background-color: #f9f9f9;
 	opacity: 0.8;
 	border: solid;
@@ -138,6 +138,102 @@ div.mainSection {
 	border-color: #dddddd;
 	border-radius: 5px;
 }
+
+div.innerSection {
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+	height: 85%;
+    width: 90%;
+	text-align: center;
+	position: absolute;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #f9f9f9;
+	opacity: 0.8;
+}
+
+div.leftSection {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	height: 90%;
+    width: 18%;
+	padding: 10px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	background-color: #f9f9f9;
+	opacity: 0.8;
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	visibility: hidden;
+}
+
+div.leftInnerSection {
+	left: 7.5%;
+	right: 0;
+	margin: auto;
+	width: 85%;
+	height: 43%;
+	float: left;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+	background-color: #f9f9f9;
+	opacity: 0.8;
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+}	
+
+div.rightSection {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 90%;
+    width: 18%;
+	padding: 10px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	background-color: #f9f9f9;
+	opacity: 0.8;
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	visibility: hidden;
+}
+
+div.rightInnerSection {
+	left: 7.5%;
+	right: 0;
+	margin: auto;
+	width: 85%;
+	height: 43%;
+	float: left;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+	background-color: #f9f9f9;
+	opacity: 0.8;
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+}	
 
 div.newSection {
 	clear: both;
@@ -151,7 +247,7 @@ img.logo {
 	left: 100px;
 }
 
-div.header {
+div.mainHeader {
 	width: 100%;
 	height: 11%;
 	min-width: 1366px;
