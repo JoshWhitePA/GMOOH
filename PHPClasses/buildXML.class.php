@@ -4,14 +4,82 @@ class XMLBuilder {
   			require_once 'meekrodb.2.3.class.php';
    		}
     
-    public function buildMajor(){
+    
+    
+    
+    
         
+    public function buildFullSheet($InpProgramID){
+        $xmlString  = "<?xml version='1.0' encoding='UTF-8'?>";
+        //$xmlString .= "<GMOOH>";
+        $xmlString .= $this -> buildGenEd();
+       // $xmlString .= $this -> buildMajor($InpProgramID);
+        //$xmlString .= "</GMOOH>";
+        return $xmlString;
+    }
+    
+    
+    public function buildMajor($InpProgramID){
+        //DB::debugMode();
+        $xmlString .= "<Checksheet><Program>";
+        $compID = 0;//used in second query
+        $tracker = 0;//Placeholder varriable, lets me know if it is itterating in the loops
+        $programRes = DB::queryFirstRow("Select PrgCompID, ProgramTitle,ProgramNo,ProgramVersion,ProgramAbriv,ProgramNotes 
+                                        from Program p, ProgramComp pc 
+                                        where p.ProgramID = %i 
+                                        and p.ProgramID = pc.ProgramID",$InpProgramID);
+        //Gets the info about the program and retrieves the compID
+        $compID = $programRes['PrgCompID'];
+        $xmlString .= "<ProgramTitle>" . $programRes['ProgramTitle'] . "</ProgramTitle>";
+        $xmlString .= "<ProgramNo>" . $programRes['ProgramNo'] . "</ProgramNo>";            
+        $xmlString .= "<ProgramVersion>" . $programRes['ProgramVersion'] . "</ProgramVersion>";
+        $xmlString .= "<ProgramAbriv>" . $programRes['ProgramAbriv'] . "</ProgramAbriv>";
+        $xmlString .= "<ProgramNotes>" . $programRes['ProgramNotes'] . "</ProgramNotes>";
+        
+        $columnQ = DB::query("Select PrgColumnDesc,PrgColumn 
+                                from ProgramColumn 
+                                where PrgCompID = %i",$compID);
+         foreach ($columnQ as $row1) {
+             $xmlString .= "<Column>";
+             $xmlString .= "<ColumnDesc>" . $row1['PrgColumnDesc'] . "</ColumnDesc>";
+             
+             //Things about to get cray, hold on to yer butts
+             $sectionQ = DB::query("Select PrgSection,PrgSectionDesc
+                                    from ProgramSection 
+                                    where PrgCompID = %i
+                                    and PrgColumn = %i",$compID,$row1['PrgColumn']);
+             foreach ($sectionQ as $row2) {
+                 $xmlString .= "<Section>";
+                 $xmlString .= "<SectionDesc>" . $row2['PrgSectionDesc'] . "</SectionDesc>";
+                 $classQ = DB::query("Select ClassID 
+                                        from ProgramChecksheet pch
+                                        where PrgCompID = %i 
+                                        and PrgColumn = %i
+                                        and PrgSection = %i",$compID,$row1['PrgColumn'],$row2['PrgSectionDesc']);
+                 foreach ($classQ as $row3) {
+                     $tracker += 1;
+                     $xmlString .= "<Class>";
+                     $xmlString .= "<ClassID>" . $row3['ClassID'] . "</ClassID>";
+                     $xmlString .= "<ClassDept>". "$tracker" . "</ClassDept>";
+                     $xmlString .= "<ClassNo>". "$tracker" . "</ClassNo>";  
+                     $xmlString .= "<ClassDesc>". "$tracker" . "</ClassDesc>"; 
+                     $xmlString .= "</Class>";
+
+                 }
+                $xmlString .= "</Section>";
+             }
+            $xmlString .= "</Column>";
+         }
+            
+        $xmlString .= "</Program></Checksheet>";
+        
+        return $xmlString;
         
     }
     
     public function buildGenEd(){
        // list of strings and list of integers placeholders
-        $xmlString = "<?xml version='1.0' encoding='UTF-8'?><Checksheet>";
+        $xmlString .= "<Checksheet>";
         $section = 0;
         $pos = 0;
         $results = DB::query("select ch.SecID,ch.PosID,SectionDesc,PosDesc, Dept,ClassNo,LowRange,HighRange 

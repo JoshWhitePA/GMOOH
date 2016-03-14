@@ -2,9 +2,10 @@
 // Load XML file
 include("../PHPClasses/buildXML.class.php");
 $xmlB = new XMLBuilder();
-$genXML = $xmlB -> buildGenEd();
+
+$genXML = $xmlB -> buildFullSheet(1);
 //echo $genXML;
-$x2 = file_get_contents("genEdXMLTest.xml");
+
 $xml_doc = new DOMDocument();
 $xml_doc->loadXML($genXML);
 
