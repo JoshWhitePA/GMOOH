@@ -70,17 +70,17 @@
 			
 			
 			// First - Verify oldPassword is correct
-			if( crypt($oldPassword, $hashedPassword) == $hashedPassword){
-				
-			// Final - Update user's password in DB
-				DB::update(('STUDENT') 
-					set ('Password'=$hasshedPassword) 
-					where ('StudentId'=$_SESSION['StudentId'])LIMIT 1);
-				return true;
-			}else{
-				return false;
-				}
-			}
+//			if( crypt($oldPassword, $hashedPassword) == $hashedPassword){
+//				
+//			//Final - Update user's password in DB
+//				DB::update(('STUDENT') 
+//					set ('Password'=$hasshedPassword) 
+//					where ('StudentId'=$_SESSION['StudentId'])LIMIT 1);
+//				return true;
+//			}else{
+//				return false;
+//				}
+//			}
 						
 			//old code - $q = "UPDATE Users SET pass=SHA1('$') WHERE userId=$uid LIMIT 1";
 			

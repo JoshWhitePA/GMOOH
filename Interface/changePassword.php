@@ -5,11 +5,9 @@
 	$oldPassword = $_POST["oldPassword"];
 	$newPassword = $_POST["newPassword"];
 	$confirmPassword = $_POST["confirmPassword"];
-	
-	//not sure if the second statement is correct
-	if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword)){
-		$logic -> changePassword($password, $newPassword);
-	} 
+	//if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword)){
+	//	$loggedIin = $logic -> changePassword($password, $newPassword);
+	//} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,13 +20,11 @@
 				$("#master").load("MasterPages/masterPage.html");
 			});
 			
-			// client side verifying
+			// client side verifying done here
 		    function formSubmit(){
 				var pass = document.getElementById("oldPassword").value;
 				var pass1 = document.getElementById("newPassword").value;
  				var pass2 = document.getElementById("confirmPassword").value;
- 				
- 				//if new passwords don't match
 				if (pass1 != pass2){
 					  alert("Passwords do not match!");
 					  return false;
