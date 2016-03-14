@@ -22,6 +22,7 @@
 				$("#master").load("MasterPages/masterPage.html");
 			});
 			
+			// client side verifying
 		    function formSubmit(){
 				var pass = document.getElementById("oldPassword").value;
 				var pass1 = document.getElementById("newPassword").value;
@@ -44,8 +45,8 @@
 						 
 		</script>
 	</head>
-	<body id"main">
-		<div id = "mainSection">
+	<body id"master">
+		<div id = "two">
 			<form action="changePassword.php" onsubmit="event.preventDefault(); return formSubmit();" method="post" id="UserForm">
 				<p>Just a prototype to get working.</p>
 				<table>
