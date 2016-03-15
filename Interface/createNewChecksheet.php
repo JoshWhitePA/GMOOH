@@ -7,32 +7,38 @@
 		<script>
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
-					//I think it would be better if this only appeared when a section
-					//in the checksheet is selected
-					//$("#left").css("visibility", "visible");
+					$("#left").css("visibility", "visible");
 					$("#right").css("visibility", "visible");
 					$("#mainSection")
-						.append("<select name = 'currentChecksheet'>"
-							+ "<option value = 'sd' selected = 'selected'>CSC SD</option>"
-							+ "<option value = 'Msd'>CSC SD Master</option>"
-							+ "<option value = 'msd'>CSC SD Minor</option>"
-							+ "<option value = 'it'>CSC IT</option>"
-							+ "<option value = 'Mit'>CSC IT Master</option>"
-							+ "<option value = 'mit'>CSC IT Minor</option>"
+						.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
+							+ "title = 'Select a major or minor to start editing a checksheet'>"
+							+ "<option value = 'it'>CSC IT - Computer Science: Information Technology</option>"
+							+ "<option value = 'Mit'>CSC IT(M) - Computer Science: Information Technology Masters</option>"
+							+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
+							+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
+							+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
+							+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"								
 							+ "</select>"
 							+ "<div id = 'innerSection' class = 'innerSection'></div>");
 					$("#left")
-						.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection' style = 'color: green'>Prerequesites Met</div>"
+						.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'>Courses For A Specific Section</div>"
 							+ "<div class = 'newSection'><br/></div>"
-							+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' style = 'color: red'>Prerequesites Not Met</div>");
+							+ "<div id = 'leftInnerSection2' class = 'leftInnerSection'>"
+							+ "<select name = 'courseDropdown' class = 'courseSelect'"
+							+ "title = 'Find courses related to a specific major from the dropdown menu'>"
+							+ "<option>***Select A Term***</option>"
+							+ "</select>Course Sequence Goes Here</div>");
 					$("#right")
 						.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection'>"
-							+ "<div style = 'background-color: white; border-style: none none solid none; border-width: 2px; border-color: #dddddd; padding: 0; width: 100%; height: 25px; right: 0; left: 0; margin: auto'>"
-							+ "<input type = 'text' placeholder = 'Search For Courses...' style = 'border: none; width: 82%; height: 15px; float: left; padding: 5px' title = 'Search for a course by using keywords such as course name or number'/>"
-							+ "<input type = 'image' src = 'Images/searchIcon.png' style = 'background-color: #dddddd; width: 11%; height: 25px; float: right'/></div>"
+							+ "<div class = 'searchBox'>"
+							+ "<input type = 'text' placeholder = 'Search For A Course...' class = 'searchTextBox'"
+							+ "title = 'Search for a course by using keywords such as course name or number'/>"
+							+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
 							+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection'>"
-							+ "<select name = 'courseDropdown' style = 'width: 100%; border-style: none none solid none; border-width: 2px; border-color: #dddddd' title = 'Find courses related to a specific major from the dropdown menu'>"
-							+ "<option>***Choose By Major***</option>"
+							+ "<select name = 'courseDropdown' class = 'courseSelect'"
+							+ "title = 'Find courses related to a specific major from the dropdown menu'>"
+							+ "<option>***Select A Major***</option>"
+							
 							//Temporary, should be filled by database at a later time
 							+ "<option>ACC - Accounting</option>"
 							+ "<option>ANT - Anthropology</option>"
@@ -103,35 +109,35 @@
 							+ "</select>"
 							+ "</div>");
 						
-					$("select").change(function() {
-						if($("select option:selected").val() == "sd") 
-						{
-							$("#innerSection").load("Checksheets/v1.1/cscSDChecksheet.php");
-							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-						}
-						else if($("select option:selected").val() == "Msd") 
-						{
-							$("#innerSection").load("Checksheets/v1.1/cscSDMasterChecksheet.php");
-							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-						}
-						else if($("select option:selected").val() == "msd") 
-						{
-							$("#innerSection").load("Checksheets/v1.1/cscSDMinorChecksheet.php");
-							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-						}
-						else if($("select option:selected").val() == "it") 
+					$("#currentChecksheet").change(function() {
+						if($("#currentChecksheet option:selected").val() == "it") 
 						{
 							$("#innerSection").load("Checksheets/v1.1/cscITChecksheet.php");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
-						else if($("select option:selected").val() == "Mit") 
+						else if($("#currentChecksheet option:selected").val() == "Mit") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscITMasterChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/cscITMastersChecksheet.php");
+							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+						}
+						else if($("#currentChecksheet option:selected").val() == "itm") 
+						{
+							$("#innerSection").load("Checksheets/v1.1/cscITMinorChecksheet.php");
+							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+						}
+						else if($("#currentChecksheet option:selected").val() == "sd") 
+						{
+							$("#innerSection").load("Checksheets/v1.1/cscSDChecksheet.php");
+							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+						}
+						else if($("#currentChecksheet option:selected").val() == "Msd") 
+						{
+							$("#innerSection").load("Checksheets/v1.1/cscSDMastersChecksheet.php");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 						else 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscITMinorChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/cscSDMinorChecksheet.php");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 					}) .change();
