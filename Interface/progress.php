@@ -6,7 +6,10 @@
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html");
+				$("#master").load("MasterPages/masterPage.html", function() {
+					$("#left").css("visibility", "visible");
+					$("#right").css("visibility", "visible");
+				});
 			});
 		</script>
 	</head>
