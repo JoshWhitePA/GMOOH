@@ -8,7 +8,7 @@ html {
 	height: 100%;
 	background-image: url("../Images/softColorBackground.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% 50%;
+	background-size: 100% 100%;
 	background-position: top;
 	background-attachment: initial;
 }
@@ -280,7 +280,7 @@ div.footer {
 	height: 4%;
 	min-width: 966px;
 	text-align: center;
-	background-color: #f0f0f0;
+	background-color: none;
 	border-style: solid none none none;
 	border-weight: 2px;
 	border-color: white;
