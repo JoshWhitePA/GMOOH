@@ -32,7 +32,7 @@
 				<?php
 					for($i = 0; $i < 5; $i++)
 						echo"<tr>
-								<th id = 'CSC:IT Minor Required' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'CSC:IT Minor Required' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td class = 'tableGrade'><b></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>"
@@ -44,7 +44,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<td class = 'tableGrade'><b></b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"
@@ -56,7 +56,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<td class = 'tableGrade'><b></b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"

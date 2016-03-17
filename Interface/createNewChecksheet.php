@@ -5,8 +5,10 @@
 		<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohMasterStyle.css"/>	
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
+			var checksheet = "";
+			var lastSection;
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load("MasterPages/masterPage.html", function() {				
 					$("#left").css("visibility", "visible");
 					$("#right").css("visibility", "visible");
 					$("#mainSection")
@@ -21,9 +23,11 @@
 							+ "</select>"
 							+ "<div id = 'innerSection' class = 'innerSection'></div>"
 							+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
-							+ "title = 'Print the checksheet currently being edited'/>"
+							+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 							+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
-							+ "title = 'Save the checksheet currently being edited'/>");
+							+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
+							+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
+							+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
 					$("#left")
 						.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'>"
 							+ "<div id = 'sectionTitle' class = 'titleBox'><label class = 'sectionLabel'></label></div><span></span></div>"
@@ -120,21 +124,24 @@
 							$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 							$("#sectionTitle label").text("");
 							$("#leftInnerSection span").replaceWith("<span></span>");
-							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+							$("#innerSection").animate({ scrollTop: 0 }, "fast");
+							currentChecksheet = $("#currentChecksheet option:selected").val();
 						}
 						else if($("#currentChecksheet option:selected").val() == "Mit") 
 						{
 							$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
 							$("#sectionTitle label").text("");
 							$("#leftInnerSection span").replaceWith("<span></span>");
-							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+							$("#innerSection").animate({ scrollTop: 0 }, "fast");
+							currentChecksheet = $("#currentChecksheet option:selected").val();
 						}
 						else if($("#currentChecksheet option:selected").val() == "itm") 
 						{
 							$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
 							$("#sectionTitle label").text("");
 							$("#leftInnerSection span").replaceWith("<span></span>");
-							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+							$("#innerSection").animate({ scrollTop: 0 }, "fast");
+							currentChecksheet = $("#currentChecksheet option:selected").val();
 						}
 						else if($("#currentChecksheet option:selected").val() == "sd") 
 						{
@@ -142,6 +149,7 @@
 							$("#sectionTitle label").text("");
 							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+							currentChecksheet = $("#currentChecksheet option:selected").val();
 						}
 						else if($("#currentChecksheet option:selected").val() == "Msd") 
 						{
@@ -149,6 +157,7 @@
 							$("#sectionTitle label").text("");
 							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+							currentChecksheet = $("#currentChecksheet option:selected").val();
 						}
 						else 
 						{
@@ -156,15 +165,55 @@
 							$("#sectionTitle label").text("");
 							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+							currentChecksheet = $("#currentChecksheet option:selected").val();
 						}
 					}) .change();
 				});
 			});
 			
-			function findCourses(id) {
-				$("#sectionTitle label").text(id);
+			function findCourses(item) {
+				$("#sectionTitle label").text($(item).attr("id"));
 				$("#leftInnerSection span")
 					.replaceWith("<span><button class = 'courseBox'>Course Name Here</button></span>");
+				if(!lastSection)
+					lastSection = item;
+				else
+				{
+					$(lastSection).css("border-color", "black");
+					$(lastSection).css("border-width", "1px");
+					lastSection = item;
+				}
+				$(item).css("border-color", "cyan");
+				$(item).css("border-width", "3px");
+				pulse(item);
+			}
+			function clearAlert() {
+				if(confirm("Are you sure you want to clear your checksheet?"))
+					alert("Checksheet cleared");
+				else
+					alert("Checksheet not cleared");
+			}
+			
+			function printChecksheet() {
+				if(currentChecksheet == "it")
+					window.location.assign("Checksheets/v1.1/cscITChecksheet.php");
+				else if(currentChecksheet == "Mit")
+					window.location.assign("Checksheets/v1.1/cscITMastersChecksheet.php");
+				else if(currentChecksheet == "itm")
+					window.location.assign("Checksheets/v1.1/cscITMinorChecksheet.php");
+				else if(currentChecksheet == "sd")
+					window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
+				else if(currentChecksheet == "Msd")
+					window.location.assign("Checksheets/v1.1/cscSDMastersChecksheet.php");
+				else
+					window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
+			}
+			
+			function saveChecksheet() {
+				alert("Checksheet saved");
+			}
+			
+			function clearChecksheet() {
 			}
 		</script>
 	</head>

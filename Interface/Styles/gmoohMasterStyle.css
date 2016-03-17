@@ -366,6 +366,18 @@ div.titleBox {
 	bottom: 10px;
 }
 
+.trashImg {
+	width: 5%;
+	min-width: 21px;
+	max-width: 30px;
+	position: absolute;
+	height: 5%;
+	min-height: 15px;
+	max-height: 28px;
+	right: 10px;
+	bottom: 10px;
+}
+
 select.courseSelect {
 	width: 100%; 
 	border-style: none none solid none; 
