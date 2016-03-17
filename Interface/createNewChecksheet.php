@@ -21,13 +21,14 @@
 							+ "</select>"
 							+ "<div id = 'innerSection' class = 'innerSection'></div>");
 					$("#left")
-						.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'>Courses For A Specific Section</div>"
+						.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'>"
+							+ "<div id = 'sectionTitle' class = 'titleBox'><label class = 'sectionLabel'>Checksheet Section</label></div><span></span></div>"
 							+ "<div class = 'newSection'><br/></div>"
 							+ "<div id = 'leftInnerSection2' class = 'leftInnerSection'>"
 							+ "<select name = 'courseDropdown' class = 'courseSelect'"
 							+ "title = 'Find courses related to a specific major from the dropdown menu'>"
 							+ "<option>***Select A Term***</option>"
-							+ "</select>Course Sequence Goes Here</div>");
+							+ "</select></div>");
 					$("#right")
 						.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection'>"
 							+ "<div class = 'searchBox'>"
@@ -112,37 +113,55 @@
 					$("#currentChecksheet").change(function() {
 						if($("#currentChecksheet option:selected").val() == "it") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscITChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
+							$("#sectionTitle label").text("Checksheet Section");
+							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 						else if($("#currentChecksheet option:selected").val() == "Mit") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscITMastersChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
+							$("#sectionTitle label").text("Checksheet Section");
+							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 						else if($("#currentChecksheet option:selected").val() == "itm") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscITMinorChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
+							$("#sectionTitle label").text("Checksheet Section");
+							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 						else if($("#currentChecksheet option:selected").val() == "sd") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscSDChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/cscSDChecksheet.php");
+							$("#sectionTitle label").text("Checksheet Section");
+							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 						else if($("#currentChecksheet option:selected").val() == "Msd") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscSDMastersChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
+							$("#sectionTitle label").text("Checksheet Section");
+							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 						else 
 						{
-							$("#innerSection").load("Checksheets/v1.1/cscSDMinorChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
+							$("#sectionTitle label").text("Checksheet Section");
+							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 						}
 					}) .change();
 				});
 			});
+			
+			function findCourses(id) {
+				$("#sectionTitle label").text(id);
+				$("#leftInnerSection span")
+					.replaceWith("<span><button class = 'courseBox'>Course Name Here</button></span>");
+			}
 		</script>
 	</head>
 	<body id = "master">
