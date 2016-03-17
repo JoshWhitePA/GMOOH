@@ -35,7 +35,7 @@
 				<!--<tr><td><button style = "height: 140%; width: 100%; text-align: left; border: none; background-color: transparent">COM 010</button></td><td></td><td></td></tr>-->
 				<?php
 					echo"<tr>
-							<th id = 'I. A. Oral Communication' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Oral Communication' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b>
@@ -48,7 +48,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'I. B. Written Communication' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Written Communication' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -60,7 +60,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'I. C. Mathematics' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Mathematics' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -72,7 +72,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'I. D. Wellness' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Wellness' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -95,7 +95,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. A. Natural Sciences' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Natural Sciences' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -108,7 +108,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. B. Social Sciences' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Social Sciences' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -121,7 +121,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. C. Humanities' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Humanities' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -134,7 +134,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. D. Arts' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Arts' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -173,7 +173,7 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo "<tr>
-								<th id = 'III. A. Writing Intensive' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'Writing Intensive' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'><b></b></th>
@@ -190,7 +190,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. B. QL or CP' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'QL or CP' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -206,7 +206,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. A. VL or CM' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'VL or CM' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b>						
 							</b></th>
@@ -221,7 +221,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. A. Cultural Diversity' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Cultural Diversity' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -234,7 +234,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. A. Critical Thinking' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Critical Thinking' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -262,7 +262,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. A. 1. Natural Science w/ Lab' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Natural Science with Lab' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>

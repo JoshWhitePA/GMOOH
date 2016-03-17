@@ -25,7 +25,7 @@ div.newSection {
 }
 
 .tableHeader {
-	background-color: #dadada;
+	background-color: rgba(190, 190, 190, 0.2);
 	font-size: 18px;
 }
 
@@ -52,7 +52,7 @@ div.newSection {
 
 table {
 	width: 100%;
-	min-width: 600px;
+	min-width: 430px;
 	border-collapse: collapse;
 	position: relative;
 	margin-left: auto;
