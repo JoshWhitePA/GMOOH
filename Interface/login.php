@@ -1,9 +1,11 @@
 <?php
 	require_once("../PHPClasses/logic.class.php");
 	session_start();	
+    
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 	$logic = new Logic();
+        $logic ->setDBPass("password");
 	$loggedIn = NULL;
 	if(!is_null($password) && !is_null($email) && $_SESSION["loggedIn"] == false){
 		$loggedIn = $logic -> validateUser($email, $password);

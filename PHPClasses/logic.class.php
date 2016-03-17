@@ -5,14 +5,14 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
    		
-#		public function setDBPass($Password){
-#			$newPass = $this -> generateHashWithSalt($Password);
-#			
-#			DB::update('STUDENT', array(
-#		  'Password' => $newPass
-#		  ), "1 = %i", '1');
-#			 return $newPass;
-#		}
+		public function setDBPass($Password){
+			$newPass = $this -> generateHashWithSalt($Password);
+			
+			DB::update('STUDENT', array(
+		  'Password' => $newPass
+		  ), "1 = %i", '1');
+			 return $newPass;
+		}
 		
 		public function validateUser($email, $password){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
