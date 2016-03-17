@@ -47,7 +47,7 @@
             <div class = "buffer"><xsl:text> </xsl:text></div>
             <div class = "section">
 <!--For each Checksheet->Section the xsl will do the following      -->
-                    <xsl:for-each select="GMOOH/Checksheet/Section">
+                    <xsl:for-each select="GMOOH/Checksheet/End/Column/Section">
                         <table>
 <!--                    Begin Table                            -->
                                 <tr>

@@ -75,70 +75,82 @@ class XMLBuilder {
     }
     
     public function buildGenEd(){
+//        DB::debugMode();
        // list of strings and list of integers placeholders
         $xmlString .= "<Checksheet>";
         $section = 0;
         $pos = 0;
-        $results = DB::query("select ch.SecID,ch.PosID,SectionDesc,PosDesc, Dept,ClassNo,LowRange,HighRange 
-                                FROM GenEdChecksheet ch
-                                INNER JOIN GenEdRestrictions r
-                                ON ch.CompID = r.CompID 
-                                INNER JOIN GenEdSection s
-                                ON ch.SecID = s.SectionID
-                                INNER JOIN GenEdPosition p
-                                ON ch.PosID = p.PosID
-                                where ch.SecID = p.SectionID
-                                ORDER BY SecID ASC, PosID ASC ");
-        foreach ($results as $row) {
-            if($section == 0){
-                #sets the section var to track when a new section begins
-               $section = $row['SecID'];
-               $xmlString .= "<Section><SectionNo>" . $row['SecID'] . "</SectionNo><SectionDesc>" .  $row['SectionDesc'] . "</SectionDesc>";
-            }elseif($row['SecID'] > $section){
-                #if this is not the first section and the section ended before then
-                #close old section
-                $section = $row['SecID'];
-                $xmlString .= "</Pos></Section>";
-                 $xmlString .= "<Section><SectionNo>" . $row['SecID'] . "</SectionNo><SectionDesc>" .  $row['SectionDesc'] . "</SectionDesc>";
-                $pos = 0;#reset pos because we strarted a new section
-            }
-            
-            if($pos == 0){
-                $pos = $row['PosID'];
-                $xmlString .= "<Pos>";
-                $xmlString .= "<PosDesc>" . $row['PosDesc'] . "</PosDesc>";
-            }elseif($row['PosID'] > $pos){
-                $xmlString .= "</Pos><Pos>";
-                $xmlString .= "<PosDesc>" . $row['PosDesc'] . "</PosDesc>";
-                $pos = $row['PosID'];
-            }
-            
-            #create requirment instance
-            $xmlString .= "<ReqInst>";
-            #Puts Department in row
-            $xmlString .= "<Dept>" . $row['Dept'] . "</Dept>";
-            #starts the class nums tag
-            $xmlString .= "<ClassNums>";
-            
-            
-            #handles class number naming scheme, 
-            if ($row['ClassNo'] != null){#if there is a class number then set it as what shows up, ex: MAT 30
-                $xmlString .= $row['ClassNo'] . "</ClassNums>";
-            }elseif($row['ClassNo'] == null && $row['LowRange'] != null && $row['HighRange'] == null){#there is no class number and there is a low class but the high class is null, ex MAT 10 - or above                
-                $xmlString .= $row['LowRange'] . " or above</ClassNums>";
-            }elseif($row['ClassNo'] == null && $row['LowRange'] != null && $row['HighRange'] != null){#if there is a lowRange and a highRange but not a regular number, :ex MAT 10 - 200
-                $xmlString .= $row['LowRange'] . " - " . $row['HighRange'] . "</ClassNums>";    
-            }elseif($row['ClassNo'] == null && $row['LowRange'] == null && $row['HighRange'] == null){#they are all null, means any class with that prefix is good. ex: Any AST course
-                $xmlString .= "Any</ClassNums>";     
-            }
-            $xmlString .="<ClassGrade></ClassGrade>";
+        $endsQ = DB::query("select DISTINCT Ends from GenEdChecksheet");
+        foreach ($endsQ as $row1) {
+            $xmlString .= "<End>";
+            $xmlString .= "<EndNumber>" . $row1['Ends'] . "</EndNumber>";
+//            echo "<br/>End: " . $row1['Ends'];
+            $columnQ = DB::query("select DISTINCT Columns from GenEdChecksheet where Ends = %i",$row1['Ends']);
+            foreach ($columnQ as $row2) {
+                $xmlString .= "<Column>";
+                $xmlString .= "<ColumnNum>" . $row2['Columns'] . "</ColumnNum>";
+//                echo "<br/>Column: " . $row2['Columns'];
+                $sectionQ = DB::query("select DISTINCT SectionID, SectionDesc from GenEdChecksheet gc,GenEdSection gs
+                                       where Ends = %i 
+                                       and Columns = %i 
+                                       and gc.SecID = gs.SectionID",$row1['Ends'],$row2['Columns']);
+                foreach ($sectionQ as $row3) {
+                    $xmlString .= "<Section>";
+                    $xmlString .= "<SectionID>" . $row3['SectionID'] . "</SectionID>";
+                    $xmlString .= "<SectionDesc>" . $row3['SectionDesc'] . "</SectionDesc>";
+//                    echo "<br/>Section: " . $row3['SectionID'];
+                    $posQ = DB::query("select gc.PosID,PosDesc from GenEdChecksheet gc,GenEdPosition gp
+                                       where Ends = %i 
+                                       and Columns = %i 
+                                       and gc.PosID = gp.PosID
+								       and gc.SecID = gp.SectionID
+                                       and gc.SecID = %i",$row1['Ends'],$row2['Columns'],$row3['SectionID']);
+                    foreach ($posQ as $row4) {
+                        $xmlString .= "<Pos>";
+                        $xmlString .= "<PosID>" . $row4['PosID'] . "</PosID>";                                        $xmlString .= "<PosDesc>" . $row4['PosDesc'] . "</PosDesc>";
+                        $xmlString .= "<PosUserTake> </PosUserTake>";
+                        $xmlString .="<ClassGrade></ClassGrade>";
+//                        echo "<br/>PosID: " . $row4['PosID'];
+                        $reqQ = DB::query("select Dept,ClassNo,LowRange,HighRange,gc.CompID
+                                            from GenEdChecksheet gc, GenEdRestrictions gr
+                                            where Ends = %i
+                                            and Columns = %i
+                                            and SecID = %i
+                                            and PosID = %i
+                                            and gc.CompID = gr.CompID",
+                                            $row1['Ends'],$row2['Columns'],$row3['SectionID'],$row4['PosID']);
+                         foreach ($reqQ as $row5) {
+                            $xmlString .= "<ReqInst>";
+                            #Puts Department in row
+                            $xmlString .= "<Dept>" . $row5['Dept'] . "</Dept>";
+                            #starts the class nums tag
+                            $xmlString .= "<ClassNums>";
+//                            echo "<br/>Dept: " . $row5['Dept'];
 
-            $xmlString .= "</ReqInst>";
+                            #handles class number naming scheme, 
+                            if ($row5['ClassNo'] != null){#if there is a class number then set it as what shows up, ex: MAT 30
+                                $xmlString .= $row5['ClassNo'] . "</ClassNums>";
+                            }elseif($row5['ClassNo'] == null && $row5['LowRange'] != null && $row5['HighRange'] == null){#there is no class number and there is a low class but the high class is null, ex MAT 10 - or above                
+                                $xmlString .= $row5['LowRange'] . " or above</ClassNums>";
+                            }elseif($row5['ClassNo'] == null && $row5['LowRange'] != null && $row5['HighRange'] != null){#if there is a lowRange and a highRange but not a regular number, :ex MAT 10 - 200
+                                $xmlString .= $row['LowRange'] . " - " . $row5['HighRange'] . "</ClassNums>";    
+                            }elseif($row5['ClassNo'] == null && $row5['LowRange'] == null && $row5['HighRange'] == null){#they are all null, means any class with that prefix is good. ex: Any AST course
+                                $xmlString .= "Any</ClassNums>";     
+                            }
+                            
+
+                            $xmlString .= "</ReqInst>";
+                         }
+                        $xmlString .= "</Pos>";
+                    }
+                    $xmlString .= "</Section>";
+                }
+                $xmlString .= "</Column>";
+            }
+            $xmlString .= "</End>";
         }
-        
-        #close the last section because there will be a unclosed tag after the loop ends
-        $xmlString .= "</Pos></Section></Checksheet>";
-        //echo $xmlString;
+         $xmlString .= "</Checksheet>";
+//        echo "<br/><br/>";
          return $xmlString ;
     }
     
