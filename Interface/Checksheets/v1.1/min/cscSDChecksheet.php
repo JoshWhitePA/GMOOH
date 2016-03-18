@@ -23,7 +23,7 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableCaption">I. UNIVERSITY CORE (12 Credits)</th>
+					<th class = "tableCaption">I. UNIVERSITY CORE</th>
 					<th class = "tableGradeCaption">RC</th>
 					<th class = "tableGradeCaption">CR</th>
 					<th class = "tableGradeCaption">GR</th>
@@ -35,7 +35,7 @@
 				<!--<tr><td><button style = "height: 140%; width: 100%; text-align: left; border: none; background-color: transparent">COM 010</button></td><td></td><td></td></tr>-->
 				<?php
 					echo"<tr>
-							<th id = 'I. A. Oral Communication' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Oral Communication' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b>
@@ -48,7 +48,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'I. B. Written Communication' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Written Communication' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -60,7 +60,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'I. C. Mathematics' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Mathematics' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -72,7 +72,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'I. D. Wellness' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Wellness' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -83,7 +83,7 @@
 			<table>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr>
-					<th class = "tableCaption">II. UNIVERSITY DISTRIBUTION (15 Credits)</th>
+					<th class = "tableCaption">II. UNIVERSITY DISTRIBUTION</th>
 					<th class = "tableGradeCaption">RC</th>
 					<th class = "tableGradeCaption">CR</th>
 					<th class = "tableGradeCaption">GR</th>
@@ -95,7 +95,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. A. Natural Sciences' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Natural Sciences' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -108,7 +108,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. B. Social Sciences' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Social Sciences' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -121,7 +121,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. C. Humanities' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Humanities' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -134,7 +134,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. D. Arts' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Arts' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -147,7 +147,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'II. E. Free Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'II. E. Free Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -167,13 +167,13 @@
 				</tr>
 		<!-- A. WRITING INTENSIVE SECTION -->
 				<tr>
-					<th>A. Writing Intensive (WI) <b class = "smaller">(9 credits)</b></th>
+					<th>A. Writing Intensive</th>
 				</tr>
 				<?php
 					for($i = 0; $i < 3; $i++)
 					{
 						echo "<tr>
-								<th id = 'III. A. Writing Intensive' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'Writing Intensive' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'><b></b></th>
@@ -183,14 +183,13 @@
 				?>
 		<!-- B. QUATNTITAVE LEARNING / COMPUTER-INTENSIVE SECTION -->
 				<tr>
-					<th>B. Quantitative Learning (QL) <b class = "smaller">(3 credits)</b>OR
-						<br/>&emsp; Computer-Intensive (CP)
-						<b class = "smaller">(3 credits)</b>
+					<th>B. Quantitative Learning OR
+						<br/>&emsp; Computer-Intensive
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. B. QL or CP' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'QL or CP' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -199,14 +198,13 @@
 				?>
 		<!-- C. VISUAL LITERACY / COMMUNICATION-INTENSIVE SECTION -->
 				<tr>
-					<th>C. Visual Literacy (VL) <b class = "smaller">(3 credits)</b>OR
-						<br/>&emsp; Communication-Intensive (CM)
-						<b class = "smaller">(3 credits)</b>
+					<th>C. Visual Literacy OR
+						<br/>&emsp; Communication-Intensive
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. A. VL or CM' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'VL or CM' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b>						
 							</b></th>
@@ -217,11 +215,11 @@
 				?>
 		<!-- D. CULTURAL DIVERSITY SECTION -->
 				<tr>
-					<th>D. Cultural Diversity <b class = "smaller">(3 credits)</b></th>
+					<th>D. Cultural Diversity</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. A. Cultural Diversity' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Cultural Diversity' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -230,11 +228,11 @@
 				?>
 		<!-- E. CRITICAL THINKING SECTION -->
 				<tr>
-					<th>E. Critical Thinking <b class = "smaller">(3 credits)</b></th>
+					<th>E. Critical Thinking</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'III. A. Critical Thinking' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Critical Thinking' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -246,7 +244,7 @@
 			<table>
 				<br/><hr/><br/>
 				<tr>
-					<th class = "tableCaption">IV. COLLEGE DISTRIBUTION (33 Credits)</th>
+					<th class = "tableCaption">IV. COLLEGE DISTRIBUTION</th>
 					<th class = "tableGradeCaption">RC</th>
 					<th class = "tableGradeCaption">CR</th>
 					<th class = "tableGradeCaption">GR</th>
@@ -254,7 +252,7 @@
 				</tr>
 		<!-- A. NATURAL SCIENCES SECTION -->
 				<tr>
-					<th>A. Natural Science, Mathematics, and Computer Science# (6 credits)</th>
+					<th>A. Natural Science, Mathematics, and Computer Science#</th>
 				</tr>
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
 				<tr>
@@ -262,7 +260,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. A. 1. Natural Science w/ Lab' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'Natural Science with Lab' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -275,7 +273,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. A. 2. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. A. 2. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -284,7 +282,7 @@
 				?>
 		<!-- B. SOCIAL SCIENCE SECTION -->
 				<tr>
-					<th>B. Social Science (9 credits)</th>
+					<th>B. Social Science</th>
 				</tr>
 				<!-- 1. SOCIAL SCIENCE ELECTIVE 1 SUBSECTION -->
 				<tr>
@@ -292,7 +290,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. B. 1. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. B. 1. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -305,7 +303,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. B. 2. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. B. 2. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -318,7 +316,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. B. 3. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. B. 3. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -338,7 +336,7 @@
 				</tr>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
-					<th>C. Humanities (9 credits)</th>
+					<th>C. Humanities</th>
 				</tr>
 				<!-- 1. HUMANITIES ELECTIVE 1 SUBSECTION -->
 				<tr>
@@ -346,7 +344,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. C. 1. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. C. 1. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -359,7 +357,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. C. 2. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. C. 2. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -372,7 +370,7 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'IV. C. 3. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+							<th id = 'IV. C. 3. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
@@ -381,13 +379,13 @@
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
-					<th>D. Free Electives (9 credits)</th>
+					<th>D. Free Electives</th>
 				</tr>
 				<?php
 					for($i = 0; $i < 3; $i++)
 					{
 						echo"<tr>
-								<th id = 'IV. D. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'IV. D. Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'><b></b></th>
@@ -412,7 +410,7 @@
 				<?php
 					for($i = 0; $i < 11; $i++)
 						echo"<tr>	
-								<th id = 'BS CSC:SD 1. Required' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'BS CSC:SD Required' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
@@ -420,14 +418,14 @@
 		<!-- CSC SD ELECTIVE COURSES SECTION -->
 				<tr>
 					<th>&emsp;2. Elective Courses: 
-						<b>18 sh (no more than two 200-level)</b></th>
+						<b>18 sh*</b></th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
 					for($i = 0; $i < 6; $i++)
 						echo"<tr>	
-								<th id = 'BS CSC:SD 2. Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
@@ -450,7 +448,7 @@
 				<?php
 					for($i = 0; $i < 3; $i++)
 						echo"<tr>	
-								<th id = 'BS CSC:SD Concomitant Required' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td class = 'tableGrade'></td>
 								<td class = 'tableGrade'></td>
 							</tr>";
@@ -464,7 +462,7 @@
 				<?php
 					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
-								<th id = 'BS CSC:SD Internship' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'>3-6</td>
 							</tr>";

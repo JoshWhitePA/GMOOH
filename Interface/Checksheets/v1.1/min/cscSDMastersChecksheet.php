@@ -31,7 +31,7 @@
 				<?php
 					for($i = 0; $i < 4; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:SD 400-Level Course' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'MS CSC:SD 400-Level Course' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
@@ -51,7 +51,7 @@
 				<?php
 					for($i = 0; $i < 10; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:SD 500-Level Course' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'MS CSC:SD 500-Level Course' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td class = 'tableGrade'></td>
 								<td class = 'tableGrade'></td>
 							</tr>";

@@ -8,11 +8,6 @@
 *					to be used by checksheet files. Visually, this creates a
 *					checksheet near identical to an official checksheet.
 */
-div.buffer {
-	width: 2%;
-	float: left;
-}
-
 div.section {
 	min-height: 300px;
     width: 90%;
@@ -52,7 +47,7 @@ div.newSection {
 
 table {
 	width: 100%;
-	min-width: 600px;
+	min-width: 425px;
 	border-collapse: collapse;
 	position: relative;
 	margin-left: auto;
