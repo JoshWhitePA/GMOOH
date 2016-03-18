@@ -8,7 +8,7 @@ html {
 	height: 100%;
 	background-image: url("../Images/softColorBackground.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% 50%;
+	background-size: 100% 100%;
 	background-position: top;
 	background-attachment: initial;
 }
@@ -18,8 +18,7 @@ body {
 	height: 100%;
 	min-width: 966px;
 	max-width: 2000px;
-	min-height: 600px;
-	max-height: 1400px;
+	min-height: 766px;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -280,7 +279,7 @@ div.footer {
 	height: 4%;
 	min-width: 966px;
 	text-align: center;
-	background-color: #f0f0f0;
+	background-color: none;
 	border-style: solid none none none;
 	border-weight: 2px;
 	border-color: white;
@@ -363,6 +362,18 @@ div.titleBox {
 	min-height: 15px;
 	max-height: 28px;
 	left: 55px;
+	bottom: 10px;
+}
+
+.trashImg {
+	width: 5%;
+	min-width: 21px;
+	max-width: 30px;
+	position: absolute;
+	height: 5%;
+	min-height: 15px;
+	max-height: 28px;
+	right: 10px;
 	bottom: 10px;
 }
 

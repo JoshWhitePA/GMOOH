@@ -32,8 +32,8 @@ function pageLoad() {
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection'>"
 				+ "<select name = 'courseDropdown' class = 'courseSelect'"
-				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
-				+ "<option>Select A Term<option>"
+				+ "title = 'See courses from previous semesters and schedule for future ones'>"
+				+ "<option>Select A Semester<option>"
 				+ "</select></div>");
 		//Place content inside the right section of the master page
 		$("#right")
