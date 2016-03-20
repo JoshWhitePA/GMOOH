@@ -407,3 +407,46 @@ label.sectionLabel {
 	position: relative;
 	top: 2px;
 }
+
+/* View Saved Checksheets Classes */
+
+div.leftViewSaved{
+	top: 0;
+	bottom: 10;
+	left: 0;
+	margin: auto;
+	height: 50%;
+    width: 25%;
+	padding: 10px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	background: rgba(249, 249, 249, 0.8);
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	visibility: hidden;
+}
+
+div.rightViewSaved{
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 90%;
+    width: 65%;
+	padding: 10px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	background: rgba(249, 249, 249, 0.8);
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	visibility: hidden;
+
+}
