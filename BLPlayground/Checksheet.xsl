@@ -1,4 +1,4 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     
 <!-- The <xsl:output> element defines the format of the output document.    -->
 <xsl:output
@@ -66,7 +66,11 @@
                                                     max-width: 65px;">
                                              <span style="white-space:nowrap;">
 <!--                                             -->
-                                                 <xsl:value-of select="PosDesc"/>
+                                                 <script>
+                                                    var str = '<xsl:value-of select="PosDesc"/>';
+                                                    var splitter = str.replace(/\|/g, "<br/>");
+                                                    document.write(splitter);
+                                                </script>
                                              </span>
 
 

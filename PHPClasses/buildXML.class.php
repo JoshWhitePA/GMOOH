@@ -16,7 +16,7 @@ class XMLBuilder {
     
     public function buildMajor($InpProgramID){
         //DB::debugMode();
-        $xmlString .= "<Checksheet><Program>";
+        $xmlString = "<Checksheet><Program>";
         $compID = 0;//used in second query
         $tracker = 0;//Placeholder varriable, lets me know if it is itterating in the loops
         $programRes = DB::queryFirstRow("Select PrgCompID, ProgramTitle,ProgramNo,ProgramVersion,ProgramAbriv,ProgramNotes 
@@ -61,7 +61,6 @@ class XMLBuilder {
                      $xmlString .= "<ClassDesc>". "$tracker" . "</ClassDesc>"; 
                      $xmlString .="<ClassGrade></ClassGrade>";
                      $xmlString .= "</Class>";
-
                  }
                 $xmlString .= "</Section>";
              }
@@ -77,7 +76,7 @@ class XMLBuilder {
     public function buildGenEd(){
 //        DB::debugMode();
        // list of strings and list of integers placeholders
-        $xmlString .= "<Checksheet>";
+        $xmlString = "<Checksheet>";
         $section = 0;
         $pos = 0;
         $endsQ = DB::query("select DISTINCT Ends from GenEdChecksheet");
@@ -126,19 +125,17 @@ class XMLBuilder {
                             #starts the class nums tag
                             $xmlString .= "<ClassNums>";
 //                            echo "<br/>Dept: " . $row5['Dept'];
-
                             #handles class number naming scheme, 
                             if ($row5['ClassNo'] != null){#if there is a class number then set it as what shows up, ex: MAT 30
                                 $xmlString .= $row5['ClassNo'] . "</ClassNums>";
                             }elseif($row5['ClassNo'] == null && $row5['LowRange'] != null && $row5['HighRange'] == null){#there is no class number and there is a low class but the high class is null, ex MAT 10 - or above                
                                 $xmlString .= $row5['LowRange'] . " or above</ClassNums>";
                             }elseif($row5['ClassNo'] == null && $row5['LowRange'] != null && $row5['HighRange'] != null){#if there is a lowRange and a highRange but not a regular number, :ex MAT 10 - 200
-                                $xmlString .= $row['LowRange'] . " - " . $row5['HighRange'] . "</ClassNums>";    
+                                $xmlString .= $row5['LowRange'] . " - " . $row5['HighRange'] . "</ClassNums>";    
                             }elseif($row5['ClassNo'] == null && $row5['LowRange'] == null && $row5['HighRange'] == null){#they are all null, means any class with that prefix is good. ex: Any AST course
                                 $xmlString .= "Any</ClassNums>";     
                             }
                             
-
                             $xmlString .= "</ReqInst>";
                          }
                         $xmlString .= "</Pos>";
@@ -155,5 +152,4 @@ class XMLBuilder {
     }
     
 }
-
 ?>
