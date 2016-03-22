@@ -4,29 +4,26 @@ var lastSection;
 
 function pageLoad() {	
 	$("#master").load("MasterPages/masterPage.html", function() {
-	//Make the side sections visible and main section invisible
-	$("#leftSave").css("visibility", "visible");
-	$("#rightSave").css("visibility", "visible");
-	$("#mainSection").css("visibility", "hidden");
-	$("#rightSave")
-		//Place content inside the main section of the master page
-		.append(
-			+ "<div id = 'innerSection' class = 'innerSection'></div>"
-			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
-			+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
-			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
-			+ "title = 'Delete Saved Checksheet' onclick = 'clearAlert()'/>");
+		//Make the side sections visible and main section invisible
+		$("#leftSave").css("visibility", "visible");
+		$("#rightSave").css("visibility", "visible");
+		$("#mainSection").css("visibility", "hidden");
+		$("#rightSave")
+			//Place content inside the main section of the master page
+			.append("<div id = 'innerSection' class = 'innerSection'></div>"
+				+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
+				+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
+				+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
+				+ "title = 'Delete Saved Checksheet' onclick = 'clearAlert()'/>");
 		//Place content inside the left section of the master page
 		$("#leftSave")
 			.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
-			+ "title = 'Select a saved checksheet'>"
-			+ "<option value = 's1'>Save 1</option>"
-			+ "<option value = 's2'>Save 2</option>"
-			+ "<option value = 's3'>Save 3</option>"								
-			+ "</select>");
-		
-		});
-}
+				+ "title = 'Select a saved checksheet'>"
+				+ "<option value = 's1'>Save 1</option>"
+				+ "<option value = 's2'>Save 2</option>"
+				+ "<option value = 's3'>Save 3</option>"								
+				+ "</select>");
+			
 		//Whenever the select dropdrown menu is changed
 		$("#currentChecksheet").change(function() {
 			if($("#currentChecksheet option:selected").val() == "s1") 
@@ -65,7 +62,8 @@ function pageLoad() {
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
 		}) .change(); //This makes sure it happens every time
-
+	});
+}
 
 //Function to direct the user to the current selected checksheet in its proper
 //two column form to make it easier to print		
