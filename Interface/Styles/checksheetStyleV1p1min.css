@@ -33,6 +33,7 @@ div.newSection {
 	width: 30px;
 	text-align: center;
 	border: none;
+	cursor: help;
 }
 
 .tableCaption {
@@ -52,6 +53,7 @@ table {
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
+	cursor: default;
 }
 
 th {
@@ -59,6 +61,11 @@ th {
 	text-align: left;
 	border: 1.5px solid black;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+th.courseBox {
+	padding: 0;
+	font-weight: normal;
 }
 
 td {
@@ -81,7 +88,8 @@ hr {
 
 u {
 	text-decoration: none;
-	color: blue;
+	color: #6699ee;
+	cursor: help;
 }
 
 u:hover {
@@ -89,9 +97,39 @@ u:hover {
 }
 
 .courseNameBox {
-	height: 16px;
-	width: 100%;
+	height: inherit;
+	padding: 2px;
 	text-align: left;
 	background-color: transparent;
-	border: none;
+	border: solid;
+	border-color: transparent;
+}
+
+th a, .dropButtonA {
+    text-decoration: none;
+}
+
+th a:hover, .dropdownA:hover .dropButtonA {
+	opacity: 0.4;
+}
+
+th.dropdownA {
+    color: black;
+}
+
+.dropdownStuff {
+    display: none;
+    position: relative;
+    background-color: #e9e9ff;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 5px;
+	top: 100%;
+	opacity: 0.9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+
+.dropdownA:hover .dropdownStuff {
+    display: block;
 }

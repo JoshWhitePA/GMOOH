@@ -1,7 +1,7 @@
 var lastSection; //Retains the location of the last checksheet section selected
 
 //Call this function within the jquery document ready function
-function pageLoadPrototype() {	
+function pageLoadEditOfficial() {	
 	$("#behindTheScenes")
 		.append("<div id = 'clearThis' title = 'Save Checksheet?' style = 'display: none; z-index: 3'>"
 			+ "<p>Do you wish to save your checksheet before clearing it?</p></div>"
@@ -31,22 +31,16 @@ function pageLoadPrototype() {
 	$("#right").css("visibility", "visible");
 	$("#mainSection")
 		//Place content inside the main section of the master page
-		.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
-			+ "title = 'Select a major or minor to start editing a checksheet'>"
-			+ "<option value = 'it'>CSC IT - Computer Science: Information Technology</option>"
-			+ "<option value = 'Mit'>CSC IT(M) - Computer Science: Information Technology Masters</option>"
-			+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
-			+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
-			+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
-			+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"								
-			+ "</select>"
-			+ "<div id = 'innerSection' class = 'innerSection'></div>"
+		.append("*Editing will create a new checksheet NOT change your official one*<div id = 'innerSection' class = 'innerSection'></div>"
 			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
 			+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 			+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
 			+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
-			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg' id = 'clearCheck"
-			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
+			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
+			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>"
+			+ "<input type = 'image' src = 'Images/resetIcon.png' class = 'resetImg'"
+			+ "title = 'Resets checksheet to your official checksheet' onclick = 'resetChecksheet()'/>");
+		$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 		//Place content inside the left section of the master page
 		$("#left")
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'>"
@@ -138,61 +132,6 @@ function pageLoadPrototype() {
 				+ "<option>WRI - Writing</option>"
 				+ "</select>"
 				+ "</div>");
-		
-		//Whenever the select dropdrown menu is changed
-		$("#currentChecksheet").change(function() {
-			if($("#currentChecksheet option:selected").val() == "it") 
-			{
-				//load chosen checksheet into the inner section of the master page
-				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
-				$("#sectionTitle label").text(""); //Clear the current title and course list
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); //Scroll to the top of the checksheet
-				//This holds the value of the current checksheet in order to direct the
-				//user to the correct checksheet whent the print button is pressed
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "Mit") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast");
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "itm") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast");
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "sd") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "Msd") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-		}) .change(); //This makes sure it happens every time
 	});
 }
 
@@ -343,6 +282,14 @@ function clearDialog() {
 	});
 }
 
+function resetChecksheet() {
+}
+
+//CHECKSHEET NOTES
+//
+//
+//
+////////////////////
 function geNotes1() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }

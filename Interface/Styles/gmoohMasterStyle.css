@@ -24,6 +24,16 @@ body {
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 
+div.pageBody {
+	height: 100%;
+	min-height: inherit;
+	width: 100%;
+	min-width: inherit;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
 div.background {
 	position: relative;
 	width: 100%;
@@ -376,6 +386,18 @@ div.titleBox {
 	bottom: 10px;
 }
 
+.resetImg {
+	width: 5%;
+	min-width: 21px;
+	max-width: 30px;
+	position: absolute;
+	height: 5%;
+	min-height: 15px;
+	max-height: 28px;
+	right: 55px;
+	bottom: 10px;
+}
+
 select.courseSelect {
 	width: 100%; 
 	border-style: none none solid none; 
@@ -405,4 +427,8 @@ button.courseBox {
 label.sectionLabel {
 	position: relative;
 	top: 2px;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
 }
