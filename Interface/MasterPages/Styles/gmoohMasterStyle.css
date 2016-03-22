@@ -429,10 +429,10 @@ label.sectionLabel {
 	top: 2px;
 }
 
-<<<<<<< HEAD
 .no-close .ui-dialog-titlebar-close {
   display: none;
-=======
+}
+
 /* View Saved Checksheets Classes */
 
 div.leftViewSaved{
@@ -473,6 +473,3 @@ div.rightViewSaved{
 	border-color: #dddddd;
 	border-radius: 5px;
 	visibility: hidden;
-
->>>>>>> origin/master
-}

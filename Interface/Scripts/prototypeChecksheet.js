@@ -216,7 +216,7 @@ function findCourses(item) {
 	$(item).css("border-color", "#6699ee");
 	$(item).css("border-width", "3px");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
-		$(item).effect("pulsate", 3000); 
+		$(item).effect("pulsate", 5000); 
 	});
 }
 
