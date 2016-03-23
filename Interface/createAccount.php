@@ -53,6 +53,21 @@
 						<td><input id ="studentID" title="9 Digit Student ID Only" pattern="[0-9]{9}" required/></td>
 					</tr>
 					<tr>
+						<th>Major &nbsp;</th>
+						<td>
+							<select id = "major">
+								<option>***Choose Major***</option>
+								<option value = "it">BS CSC:IT</option>
+								<option value = "sd">BS CSC:SD</option>
+								<option value = "itm">CSC:IT Minor</option>
+								<option value = "sdm">CSC:SD Minor</option>
+								<option value = "Mit">MS CSC:IT</option>	
+								<option value = "Msd">MS CSC:SD</option>
+								
+							</select>
+						</td>
+					</tr>
+					<tr>
 						<th>Password &nbsp;</th>
 						<td><input id="password" type="password" title="Please Enter an 8 or More Character Password" pattern="[A-Za-z0-9]{8,}" required/></td>
 					</tr>

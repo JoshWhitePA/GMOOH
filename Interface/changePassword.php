@@ -44,10 +44,14 @@
 							+ "<tr height = '10px'></tr>"
 							+ "<tr>"
 							+ "<th colspan ='2' align = 'center'>"
-							+ "<input type = 'button' class = 'button1' onclick = 'location.href='account.php'' value = 'Cancel'/>"
+							+ "<input type = 'button' class = 'button1' onclick = 'cancel()' value = 'Cancel'/>"
 							+ "</th></tr></table></form></div>");
 						});
 			});
+			
+			function cancel() {
+				window.location.assign("account.php");
+			}
 			
 			// client side verifying done here
 		    function formSubmit(){

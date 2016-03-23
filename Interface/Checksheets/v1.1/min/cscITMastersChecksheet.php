@@ -32,7 +32,7 @@
 				<?php
 					for($i = 0; $i < 8; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:IT Required' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'MS CSC:IT Required' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
@@ -46,7 +46,7 @@
 				</tr>
 				<!-- Since there can only be ONE thesis (or, if multiple, only one can count!), no need to have multiple columns -->
 				<tr>
-					<th id = 'MS CSC:IT Thesis' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+					<th id = 'MS CSC:IT Thesis' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 					<td  class = 'tableGrade'></td>
 					<td  class = 'tableGrade'></td>
 				</tr>
@@ -65,7 +65,7 @@
 				<?php
 					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:IT Elective' onclick = 'findCourses(this.id)'><input class = 'courseNameBox' readonly/></th>
+								<th id = 'MS CSC:IT Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
 								<td class = 'tableGrade'></td>
 								<td class = 'tableGrade'></td>
 							</tr>";
