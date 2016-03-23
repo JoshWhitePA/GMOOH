@@ -141,7 +141,7 @@
 						}
 						else if($("#currentChecksheet option:selected").val() == "Msd") 
 						{
-							$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
+							$("#innerSection").load("Checksheets/v1.1/min/OutputProto.php");
 							$("#sectionTitle label").text("Checksheet Section");
 							$("#leftInnerSection span").replaceWith("<span></span>");
 							$("#innerSection").animate({ scrollTop: 0 }, "fast"); 

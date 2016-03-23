@@ -55,11 +55,22 @@
                                             </xsl:choose>
                                         </xsl:for-each></xsl:attribute>
                                    <th>
+<!--                                       <xsl:value-of select="PosDesc"/>-->
+                                       <xsl:variable
+                                            name="Description"
+                                            select="PosDesc" />
+
+                                              <!-- Content:template -->
+
+                                       
+                                       <xsl:value-of select='translate($Description,"|", " " )'/>
+<!--
                                        <script>
                                            str = '<xsl:value-of select="PosDesc"/>';
                                            str = str.replace(/(\||,)/g, "<br />");
                                            document.write(str);
                                         </script>
+-->
                                        
                                     </th>
                                 </tr>
@@ -114,4 +125,5 @@
            </body>
         </html>
 	</xsl:template>
+    
 </xsl:stylesheet>
