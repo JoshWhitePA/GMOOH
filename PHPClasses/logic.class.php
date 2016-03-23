@@ -67,12 +67,12 @@
 			// First - Verify oldPassword is correct
 			
 
-			
+			//Final - Update user's password in DB
 			
 			// First - Verify oldPassword is correct
 //			if( crypt($oldPassword, $hashedPassword) == $hashedPassword){
 //				
-//			//Final - Update user's password in DB
+//				BAD SQL Don't use
 //				DB::update(('STUDENT') 
 //					set ('Password'=$hasshedPassword) 
 //					where ('StudentId'=$_SESSION['StudentId'])LIMIT 1);
