@@ -1,13 +1,15 @@
 <?php
 	require_once("../PHPClasses/logic.class.php");	
 	$logic = new Logic();
+	session_start();
 
 	$oldPassword = $_POST["oldPassword"];
 	$newPassword = $_POST["newPassword"];
 	$confirmPassword = $_POST["confirmPassword"];
-	//if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword)){
-	//	$loggedIin = $logic -> changePassword($password, $newPassword);
-	//} 
+	
+	  if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID)){
+		$loggedIin = $logic -> changePassword($password, $newPassword, $userID);
+	 } 
 ?>
 <!DOCTYPE html>
 <html>
