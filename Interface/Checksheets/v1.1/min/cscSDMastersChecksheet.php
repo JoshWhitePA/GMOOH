@@ -22,8 +22,11 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "1">
-						400-level courses: 0-12 SH</th>
+					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "msCSCNotes()">
+						Master Program: 30 sh</u></th>
+				</tr>
+				<tr>
+					<th colspan = "1">&emsp;1. 400-level Courses: <b>(0-12 sh)</b></th>
 						<td class = "tableGrade">Gr</td>
 						<td class = "tableGrade">SH</td>
 				</tr>
@@ -31,27 +34,21 @@
 				<?php
 					for($i = 0; $i < 4; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:SD 400-Level Course' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>	
-			</table>
-<!-- Second Half -->
-			<table>
 		<!-- 500 level courses -->
-				<tr><td class = "tableSpace"></td></tr>
 				<tr>	
-					<th class = "tableHeader" colspan = "1">
-						500-level courses: 18-30 sh
-					</th>
+					<th colspan = "1">&emsp;2. 500-level Courses: <b>(18-30 sh)</b></th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>			
 				<?php
 					for($i = 0; $i < 10; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:SD 500-Level Course' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+								<th class = 'courseBox'><div id = 'MS CSC:SD 500-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td class = 'tableGrade'></td>
 								<td class = 'tableGrade'></td>
 							</tr>";

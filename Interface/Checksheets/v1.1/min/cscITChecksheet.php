@@ -30,14 +30,14 @@
 				</tr>
 		<!-- A. ORAL COMMUNICATION SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "oc" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						A. Oral Communication</a>
-						<div class = "dropdownStuff">COM 010 or above</div>
+						<div class = "dropdownSectionNotes">COM 010 or above</div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox vertical'>&emsp;</div></th>
+							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b>
@@ -46,9 +46,9 @@
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "wc" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						B. Written Communication</a>
-						<div class = "dropdownStuff">ENG 23, 24 or 25</div>
+						<div class = "dropdownSectionNotes">ENG 23, 24 or 25</div>
 					</th>
 				</tr>
 				<?php
@@ -61,9 +61,9 @@
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "mat" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						C. Mathematics</a>
-						<div class = "dropdownStuff">MAT 17 or above</div>
+						<div class = "dropdownSectionNotes">MAT 17 or above</div>
 					</th>
 				</tr>
 				<?php
@@ -76,9 +76,9 @@
 				?>
 		<!-- D. WELLNESS SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "well" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						D. Wellness</a>
-						<div class = "dropdownStuff">Any 3-credit HEA course</div>
+						<div class = "dropdownSectionNotes">Any 3-credit HEA course</div>
 					</th>
 				</tr>
 				<?php
@@ -102,10 +102,10 @@
 				</tr>
 		<!-- A. NATURAL SCIENCES SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "ns" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						A. Natural Sciences</a>
-						<div class = "dropdownStuff">Any
-							AST, BIO, CHM, ENV, GEL, PHY, MAR, or <u onclick = "geNotes1()">GEG*</u></div>
+						<div class = "dropdownSectionNotes">Any
+							AST, BIO, CHM, ENV, GEL, PHY, MAR, or <u title = "Click for notes" onclick = "geNotes1()">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -119,10 +119,10 @@
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "ss" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						B. Social Sciences</a>
-						<div class = "dropdownStuff">Any ANT, CRJ, ECO, HIS, INT,
-							PSY, POL, SOC, SSE, SWK, or <u onclick = "geNotes1()">GEG*</u></div>
+						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, INT,
+							PSY, POL, SOC, SSE, SWK, or <u title = "Click for notes" onclick = "geNotes1()">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -136,9 +136,9 @@
 				?>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "hum" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						C. Humanities</a>
-						<div class = "dropdownStuff">Any ENG, HUM, PAG, PHI, WGS,
+						<div class = "dropdownSectionNotes">Any ENG, HUM, PAG, PHI, WGS,
 							WRI, or Modern Language</div>
 					</th>
 				</tr>
@@ -153,9 +153,9 @@
 				?>
 		<!-- D. ARTS SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "art" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						D. Arts</a>
-						<div class = "dropdownStuff">Any ARC, ARH, ART, CDE, CDH,
+						<div class = "dropdownSectionNotes">Any ARC, ARH, ART, CDE, CDH,
 							CFT, FAR, FAS, MUP, MUS, or THE</div>
 					</th>
 				</tr>
@@ -170,9 +170,9 @@
 				?>
 		<!-- E. FREE ELECTIVE SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "fel" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						E. Free Elective</a>
-						<div class = "dropdownStuff">Any course carrying university credit</div>
+						<div class = "dropdownSectionNotes">Any course carrying university credit</div>
 					</th>
 				</tr>
 				<?php
@@ -189,7 +189,8 @@
 			<table>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr>
-					<th class = "tableCaption">III. COMPETENCIES ACROSS THE CURRICULUM</th>
+					<th class = "tableCaption"><u title = "Click for notes" onclick = "geNotes2()">
+						III. COMPETENCIES ACROSS THE CURRICULUM</u></th>
 					<th class = "tableGradeCaption" title = "Minimum required number of credits">RC</th>
 					<th class = "tableGradeCaption" title = "Credits earned">CR</th>
 					<th class = "tableGradeCaption" title = "Grade earned">GR</th>
@@ -282,14 +283,15 @@
 				</tr>
 		<!-- A. NATURAL SCIENCES SECTION -->
 				<tr>
-					<th>A. Natural Science, Mathematics, and Computer Science<u onclick = "geNotes2()">#</u></th>
+					<th><u title = "Click for notes" onclick = "geNotes3()">
+						A. Natural Science, Mathematics, and Computer Science</u></th>
 				</tr>
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "nslab" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 1. Natural Science with Lab</a>
-						<div class = "dropdownStuff">Any course with a lab in AST, BIO, CHM, ENV, GEL,
-							PHY, MAR, or <u onclick = "geNotes3()">GEG*</u></div>
+						<div class = "dropdownSectionNotes">Any course with a lab in AST, BIO, CHM, ENV, GEL,
+							PHY, MAR, or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -303,10 +305,10 @@
 				?>
 				<!-- 2. NATURAL SCIENCES ELECTIVE SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "nsel" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 2. Elective</a>
-						<div class = "dropdownStuff">Any AST, BIO, CHM, CSC, ENV,
-							GEL, PHY, MAR, MAT or <u onclick = "geNotes3()">GEG*</u></div>
+						<div class = "dropdownSectionNotes">Any AST, BIO, CHM, CSC, ENV,
+							GEL, PHY, MAR, MAT or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -324,9 +326,10 @@
 				</tr>
 				<!-- 1. SOCIAL SCIENCE ELECTIVE 1 SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "ssel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 1. Elective</a>
-						<div class = "dropdownStuff">Any ANT, HIS, POL or <u onclick = "geNotes3()">GEG*</u></div>
+						<div class = "dropdownSectionNotes">Any ANT, HIS, POL or 
+						<u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -340,9 +343,9 @@
 				?>
 				<!-- 2. SOCIAL SCIENCE ELECTIVE 2 SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "ssel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 2. Elective</a>
-						<div class = "dropdownStuff">Any CRJ, PSY, SOC or SWK</div>
+						<div class = "dropdownSectionNotes">Any CRJ, PSY, SOC or SWK</div>
 					</th>
 				</tr>
 				<?php
@@ -356,10 +359,10 @@
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "ssel3" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 3. Elective</a>
-						<div class = "dropdownStuff">Any ANT, CRJ, ECO, HIS, POL, 
-							PSY, SOC, SWK or <u onclick = "geNotes3()">GEG*</u></div>
+						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, POL, 
+							PSY, SOC, SWK or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -388,9 +391,10 @@
 				</tr>
 				<!-- 1. HUMANITIES ELECTIVE 1 SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "humel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&emsp;1. Elective</a>
-						<div class = "dropdownStuff">Any ENG, HUM, WRI or <u onclick = "geNotes4()">PAG*</u></div>
+						<div class = "dropdownSectionNotes">Any ENG, HUM, WRI or 
+							<u title = "Click for notes" onclick = "geNotes5()">PAG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -404,9 +408,9 @@
 				?>
 				<!-- 2. HUMANITIES ELECTIVE 2 SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "humel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&emsp;2. Elective</a>
-						<div class = "dropdownStuff">Any Modern Language (103 or above) or PHI</div>
+						<div class = "dropdownSectionNotes">Any Modern Language (103 or above) or PHI</div>
 					</th>
 				</tr>
 				<?php
@@ -420,10 +424,10 @@
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "humel3" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&emsp;3. Elective</a>
-						<div class = "dropdownStuff">Any ENG, HUM, PHI, WRI, 
-							Modern Language (103 or above) or <u onclick = "geNotes4()">PAG*</u></div>
+						<div class = "dropdownSectionNotes">Any ENG, HUM, PHI, WRI, 
+							Modern Language (103 or above) or <u title = "Click for notes" onclick = "geNotes5()">PAG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -437,9 +441,9 @@
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
-					<th class = "dropdownA"><a class = "dropButtonA">
+					<th id = "fel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						D. Free Electives</a>
-						<div class = "dropdownStuff">Choose any university courses
+						<div class = "dropdownSectionNotes">Choose any university courses
 							that count toward graduation</div>
 					</th>
 				</tr>
@@ -460,8 +464,8 @@
 <!-- #BS CSC INFORMATION TECHNOLOGY MAJOR PROGRAM TABLE# -->
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3">
-						B. Major Program: 57 sh</th>
+					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "bsCSCNotes()">
+						B. Major Program: 57 sh</u></th>
 				</tr>
 		<!-- CSC IT REQUIRED COURSES SECTION -->
 				<tr>

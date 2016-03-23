@@ -22,7 +22,7 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3">Minor Program: 21sh</th>
+					<th class = "tableHeader" colspan = "3">Minor Program: 21 sh</th>
 				</tr>
 				<tr>
 					<th>&emsp;1. Required Courses: <b>15 sh</b></th>
@@ -32,31 +32,37 @@
 				<?php
 					for($i = 0; $i < 5; $i++)
 						echo"<tr>
-								<th id = 'CSC:IT Minor Required' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td class = 'tableGrade'><b></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>"
 				?>
 				<tr>
-					<th>&emsp;2. Elective Course: <b>3 sh</b></th>
+					<th id = "cscmel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
+						&emsp;2. Elective Course: <b>3 sh</b></a>
+						<div class = "dropdownSectionNotes">Any 200-level or higher CSC course</div>
+					</th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<td class = 'tableGrade'><b></b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"
 				?>
 				<tr>
-					<th>&emsp;3. Elective Course: <b>3 sh</b></th>
+					<th id = "cscmel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
+						&emsp;3. Elective Course: <b>3 sh</b></a>
+						<div class = "dropdownSectionNotes">Any 300-level or higher CSC course</div>
+					</th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
 					echo"<tr>
-							<th id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<td class = 'tableGrade'><b></b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"

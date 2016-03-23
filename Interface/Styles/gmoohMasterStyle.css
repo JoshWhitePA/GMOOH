@@ -386,18 +386,6 @@ div.titleBox {
 	bottom: 10px;
 }
 
-.resetImg {
-	width: 5%;
-	min-width: 21px;
-	max-width: 30px;
-	position: absolute;
-	height: 5%;
-	min-height: 15px;
-	max-height: 28px;
-	right: 55px;
-	bottom: 10px;
-}
-
 select.courseSelect {
 	width: 100%; 
 	border-style: none none solid none; 
@@ -435,7 +423,7 @@ label.sectionLabel {
 
 /* View Saved Checksheets Classes */
 
-div.leftViewSaved{
+div.leftViewSaved {
 	top: 0;
 	bottom: 10;
 	left: 0;
@@ -455,7 +443,7 @@ div.leftViewSaved{
 	visibility: hidden;
 }
 
-div.rightViewSaved{
+div.rightViewSaved {
 	top: 0;
 	bottom: 0;
 	right: 0;
@@ -473,3 +461,34 @@ div.rightViewSaved{
 	border-color: #dddddd;
 	border-radius: 5px;
 	visibility: hidden;
+}
+
+/* Edit Official Checksheet Classes */
+
+.resetImg {
+	width: 5%;
+	min-width: 21px;
+	max-width: 30px;
+	position: absolute;
+	height: 5%;
+	min-height: 15px;
+	max-height: 28px;
+	right: 55px;
+	bottom: 10px;
+}	
+
+div.officialHeaderBox {
+	width: 100%;
+	height: 20px;
+	top: 20px;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: white; 
+	border-style: solid none solid none; 
+	border-width: 2px; 
+	border-color: #dddddd;
+}

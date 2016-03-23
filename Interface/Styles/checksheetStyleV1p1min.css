@@ -88,12 +88,11 @@ hr {
 
 u {
 	text-decoration: none;
-	color: #6699ee;
 	cursor: help;
 }
 
 u:hover {
-	text-decoration: underline;
+	opacity: 0.4;
 }
 
 .courseNameBox {
@@ -102,22 +101,23 @@ u:hover {
 	text-align: left;
 	background-color: transparent;
 	border: solid;
+	border-width: 3px;
 	border-color: transparent;
 }
 
-th a, .dropButtonA {
+th a, .dropButtonNotes {
     text-decoration: none;
 }
 
-th a:hover, .dropdownA:hover .dropButtonA {
+th a:hover, .dropdownSection:hover .dropButtonNotes {
 	opacity: 0.4;
 }
 
-th.dropdownA {
-    color: black;
+th.dropdownSection {
+    cursor: pointer;
 }
 
-.dropdownStuff {
+.dropdownSectionNotes {
     display: none;
     position: relative;
     background-color: #e9e9ff;
@@ -128,8 +128,4 @@ th.dropdownA {
 	opacity: 0.9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	border-radius: 5px;
-}
-
-.dropdownA:hover .dropdownStuff {
-    display: block;
 }
