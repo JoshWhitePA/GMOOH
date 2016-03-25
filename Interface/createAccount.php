@@ -8,11 +8,11 @@
 	$studentId = $_POST["studentId"];
 	$email = $_POST["email"];
 	$password = $_POST["password"];
-	if(!is_null($password) && !is_null($lastName) && !is_null($studentId) && !is_null($email)
-			&& !is_null($firstName)){
-		$loggedIn = $logic -> createUser($studentId, $email, $password, $firstName, $lastName);
-	} 
-?>
+	
+	if (!isset($_POST['submit']) && !is_null($password) && !is_null($lastName) && !is_null($studentId) && !is_null($email) && !is_null($firstName)) { // if page is not submitted to itself echo the form
+		$logic -> createUser($studentId, $email, $password, $firstName, $lastName);
+	}
+	?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -97,3 +97,4 @@
 		</div>
 	</body>
 </html>
+
