@@ -5,15 +5,18 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
    		
-//		public function setDBPass($Password){
-//			$newPass = $this -> generateHashWithSalt($Password);
-//			
-//			DB::update('Student', array(
-//		  'Password' => $newPass
-//		  ), "1 = %i", '1');
-//			 return $newPass;
-//		}
-//		
+
+		//Does this work? Needs to be tested.
+		public function setDBPass($Password){
+			$newPass = $this -> generateHashWithSalt($Password);
+			
+			DB::update('FACULTY', array(
+		  'Password' => $newPass
+		  ), "1 = %i", '1');
+			 return $newPass;
+		}
+		
+
 		public function validateUser($email, $password){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
 			$row = $mysqli_result->fetch_assoc();
@@ -55,24 +58,56 @@
 			}
 		}
 		
+		function setSession($email){
+			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
+			$row = $mysqli_result->fetch_assoc();
+			
+			$mail = $row['Email'];
+			$ID = $row['StudentId'];
+			if($mail == null){
+				$mysqli_result = DB::queryRaw("SELECT Password,Email,FacultyId FROM FACULTY WHERE Email= %s", $email);
+				$row = $mysqli_result->fetch_assoc();
+				$ID = $row['FacultyId'];
+			}
+			return $ID;
+		}
+		
 		// This function will allow the user to change their password
-		function changePassword($oldPassword, $newPassword){
+		function changePassword($oldPassword, $newPassword, $userID){
 			// prerequisites - user is logged on and knows their password
 			// New Password match done on client side
 			// New Password does not match old password done on client side
-			
+			// Complete^^
 			
 			//*********** HELP  ********
 			// Check old password. Are there session variables? $_SESSION[]? 
 			// First - Verify oldPassword is correct
 			
-
+			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE StudentId= %s", $userID);
+			$row = $mysqli_result->fetch_assoc();
+		
+			$hashPass = $row['Password'];
+			$mail = $row['Email'];
+			$ID = $row['StudentId'];
+			if($mail == null){
+				$mysqli_result = DB::queryRaw("SELECT Password,Email,FacultyId FROM FACULTY WHERE FacultyId= %s", $UserID);
+				$row = $mysqli_result->fetch_assoc();
+				$hashPass = $row['Password'];
+				$ID = $row['FacultyId'];
+			}
 			
+			if(verifyPassword($oldPassword, $hashPass) == true){
+			setDBPass($newPassword);
+			}
+
+
+			//Final - Update user's password in DB
+
 			
 			// First - Verify oldPassword is correct
 //			if( crypt($oldPassword, $hashedPassword) == $hashedPassword){
 //				
-//			//Final - Update user's password in DB
+//				BAD SQL Don't use
 //				DB::update(('STUDENT') 
 //					set ('Password'=$hasshedPassword) 
 //					where ('StudentId'=$_SESSION['StudentId'])LIMIT 1);
