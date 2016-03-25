@@ -214,7 +214,7 @@ function pageLoadPrototype() {
 			}
 			else if($("#currentChecksheet option:selected").val() == "Msd") 
 			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
+				$("#innerSection").load("Checksheets/v1.1/min/OutputProto.php");
 				$("#sectionTitle label").text("");
 				$("#leftInnerSection span").replaceWith("<span></span>");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
@@ -318,7 +318,7 @@ function printThis() {
 	else if(currentChecksheet == "sd")
 		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
 	else if(currentChecksheet == "Msd")
-		window.location.assign("Checksheets/v1.1/cscSDMastersChecksheet.php");
+		window.location.assign("Checksheets/v1.1/OutputProto.php");
 	else
 		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
 }

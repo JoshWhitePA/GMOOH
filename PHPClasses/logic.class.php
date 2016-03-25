@@ -8,12 +8,12 @@
 //		public function setDBPass($Password){
 //			$newPass = $this -> generateHashWithSalt($Password);
 //			
-//			DB::update('FACULTY', array(
+//			DB::update('Student', array(
 //		  'Password' => $newPass
 //		  ), "1 = %i", '1');
 //			 return $newPass;
 //		}
-		
+//		
 		public function validateUser($email, $password){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
 			$row = $mysqli_result->fetch_assoc();
