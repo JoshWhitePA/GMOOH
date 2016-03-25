@@ -10,6 +10,35 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+function xml2array($fname){
+  $sxi = new SimpleXmlIterator($fname, null, true);
+  return sxiToArray($sxi);
+}
+
+function sxiToArray($sxi){
+  $a = array();
+  for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
+    if(!array_key_exists($sxi->key(), $a)){
+      $a[$sxi->key()] = array();
+    }
+    if($sxi->hasChildren()){
+      $a[$sxi->key()][] = sxiToArray($sxi->current());
+    }
+    else{
+      $a[$sxi->key()][] = strval($sxi->current());
+    }
+  }
+  return $a;
+}
+
+$sData = xml2array('../../../../BLPlayground/StudentData.xml');
+//print_r($sData);
+//echo "<br><br>";
+$indexOGen = 0;
+
+//echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,12 +66,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b>
 							</b></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
@@ -53,11 +83,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
@@ -68,11 +99,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- D. WELLNESS SECTION -->
 				<tr>
@@ -83,11 +115,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 			</table>
 <!-- II. UNIVERSITY DISTRIBUTION TABLE -->
@@ -110,12 +143,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
@@ -127,12 +161,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Social Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Social Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
@@ -144,12 +179,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Humanities' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Humanities' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- D. ARTS SECTION -->
 				<tr>
@@ -161,12 +197,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Arts' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Arts' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 		<!-- E. FREE ELECTIVE SECTION -->
 				<tr>
@@ -177,12 +214,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'II. E. Free Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'II. E. Free Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 			</table>
 <!-- III. COMPETENCIES ACROSS THE CURRICULUM TABLE-->
@@ -204,12 +242,13 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo "<tr>
-								<th class = 'courseBox'><div id = 'Writing Intensive' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+								<th class = 'courseBox'><div id = 'Writing Intensive' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'>WI</th>
 							</tr>";
+                        $indexOGen++;  
 					}
 				?>
 		<!-- B. QUATNTITAVE LEARNING / COMPUTER-INTENSIVE SECTION -->
@@ -220,12 +259,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'QL or CP' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'QL or CP' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 		<!-- C. VISUAL LITERACY / COMMUNICATION-INTENSIVE SECTION -->
 				<tr>
@@ -235,14 +275,15 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'VL or CM' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'VL or CM' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b>						
 							</b></th>
 							<th class = 'tableGrade'><b>
 							</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- D. CULTURAL DIVERSITY SECTION -->
 				<tr>
@@ -250,12 +291,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Cultural Diversity' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Cultural Diversity' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'>CD</th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- E. CRITICAL THINKING SECTION -->
 				<tr>
@@ -263,12 +305,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Critical Thinking' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Critical Thinking' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'>CT</th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 <!-- IV. COLLEGE DISTRIBUTION TABLE -->
 			</table>
@@ -296,12 +339,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Natural Science with Lab' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'Natural Science with Lab' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 				<!-- 2. NATURAL SCIENCES ELECTIVE SUBSECTION -->
 				<tr>
@@ -313,12 +357,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. A. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. A. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 		<!-- B. SOCIAL SCIENCE SECTION -->
 				<tr>
@@ -334,12 +379,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. B. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. B. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 				<!-- 2. SOCIAL SCIENCE ELECTIVE 2 SUBSECTION -->
 				<tr>
@@ -350,12 +396,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. B. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. B. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
@@ -367,12 +414,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. B. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. B. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;  
 				?>
 			</table>
 <!-- IV. COLLEGE DISTRIBUTION TABLE CONTINUED -->
@@ -399,12 +447,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. C. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. C. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 				<!-- 2. HUMANITIES ELECTIVE 2 SUBSECTION -->
 				<tr>
@@ -415,12 +464,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. C. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. C. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
@@ -432,12 +482,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. C. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'><div id = 'IV. C. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                    $indexOGen++;  
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
@@ -451,12 +502,13 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'IV. D. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+								<th class = 'courseBox'><div id = 'IV. D. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'></th>
 							</tr>";
+                        $indexOGen++;  
 					}
 				?>
 			</table>

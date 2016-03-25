@@ -6,11 +6,26 @@
 	$password = $_POST["password"];
 	$logic = new Logic();
 	$loggedIn = NULL;
+	$userID = NULL;
 	if(!is_null($password) && !is_null($email) && $_SESSION["loggedIn"] == false){
 		$loggedIn = $logic -> validateUser($email, $password);
 		$_SESSION["loggedIn"] = $loggedIn;
+		if(($_SESSION['loggedIn'] == false)) {
+			//Figure out which one of these methods for alerting the user their password is wrong will work best
+			echo 'incorrect username/ password please try again.' ;
+			echo '<script language="javascript">';
+			echo 'alert("incorrect username/ password please try again")';
+			echo '</script>';
+			//Should redirect to the login page
+			header('location: ../index.php');
+		}
+		if(($_SESSION['loggedIn'])) {
+			$userID = $logic -> setSession($email);
+			$_SESSION["userID"] = $userID;
+		}
 	}
 	if($_SESSION["loggedIn"]){
+		//Should redirect to the home page
 		header('location: ../index.php');
 	}
 

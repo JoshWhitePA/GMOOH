@@ -2,7 +2,7 @@ var lastSection; //Retains the location of the last checksheet section selected
 var startup;
 
 //Call this function within the jquery document ready function
-function pageLoadPrototype() {
+function pageLoadEditOfficial() {	
 	$("#behindTheScenes")
 		.append("<div id = 'startUp' title = 'Time to Create A Checksheet!' style = 'display: none; z-index: 3'>"
 			+ "<p>It looks like it's your first time here so let me tell you about creating a checksheet! "
@@ -22,7 +22,7 @@ function pageLoadPrototype() {
 			+ "&emsp;&bull; 30 sh of courses + comprehensive exam<br/>"
 			+ "&emsp;&bull; 24 sh of courses + 6 sh of CSC 599: Thesis</p>"
 			+ "<p>At least 18 sh must be 500-level courses.</p></div>"
-		
+			
 			+"<div id = 'clearThis' title = 'Save Checksheet?' style = 'display: none; z-index: 3'>"
 			+ "<p>Do you wish to save your checksheet before clearing it?</p></div>"
 			
@@ -34,6 +34,12 @@ function pageLoadPrototype() {
 			
 			+ "<div id = 'printThis' title = 'Print Alert' style = 'display: none; z-index: 3'>"
 			+ "<p>You are about to navigate away from your checksheet</p></div>"
+			
+			+ "<div id = 'resetThis' title = 'Save Checksheet?' style = 'display: none; z-index: 3'>"
+			+ "<p>Do you wish to save your checksheet before reseting it to your official checksheet?</p></div>"
+			
+			+ "<div id = 'wasReset' title = 'Your Checksheet Was Reset' style = 'display: none; z-index: 3'>"
+			+ "<p>Your checksheet was reset to your official checksheet. Get to filling it!</p></div>"
 			
 			+ "<div id = 'notes1' title = 'University Distribution Notes' style = 'display: none; z-index: 3'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in II.A. "
@@ -64,22 +70,17 @@ function pageLoadPrototype() {
 	$("#right").css("visibility", "visible");
 	$("#mainSection")
 		//Place content inside the main section of the master page
-		.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
-			+ "title = 'Select a major or minor to start editing a checksheet'>"
-			+ "<option value = 'it'>CSC IT - Computer Science: Information Technology</option>"
-			+ "<option value = 'Mit'>CSC IT(M) - Computer Science: Information Technology Masters</option>"
-			+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
-			+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
-			+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
-			+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"								
-			+ "</select>"
+		.append("<div class = 'officialHeaderBox'>Editing will create a new checksheet NOT change your official one</div>"
 			+ "<div id = 'innerSection' class = 'innerSection'></div>"
 			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
 			+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 			+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
 			+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
-			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg' id = 'clearCheck'"
-			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
+			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
+			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>"
+			+ "<input type = 'image' src = 'Images/resetIcon.png' class = 'resetImg'"
+			+ "title = 'Resets checksheet to your official checksheet' onclick = 'resetChecksheet()'/>");
+		$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 		//Place content inside the left section of the master page
 		$("#left")
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
@@ -174,61 +175,6 @@ function pageLoadPrototype() {
 				+ "<option>WRI - Writing</option>"
 				+ "</select>"
 				+ "</div>");
-		
-		//Whenever the select dropdrown menu is changed
-		$("#currentChecksheet").change(function() {
-			if($("#currentChecksheet option:selected").val() == "it") 
-			{
-				//load chosen checksheet into the inner section of the master page
-				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
-				$("#sectionTitle label").text(""); //Clear the current title and course list
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); //Scroll to the top of the checksheet
-				//This holds the value of the current checksheet in order to direct the
-				//user to the correct checksheet whent the print button is pressed
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "Mit") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast");
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "itm") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast");
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "sd") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else if($("#currentChecksheet option:selected").val() == "Msd") 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/OutputProto.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-			else 
-			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
-				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
-				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-				currentChecksheet = $("#currentChecksheet option:selected").val();
-			}
-		}) .change(); //This makes sure it happens every time
 	});
 	if(!startup)
 	{
@@ -255,6 +201,7 @@ function findCourses(item) {
 	}	
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
+	$(item).css("border-width", "3px");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
 		$(item).effect("pulsate", 5000); 
 	});
@@ -286,7 +233,6 @@ function printChecksheet() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#printThis").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -318,7 +264,7 @@ function printThis() {
 	else if(currentChecksheet == "sd")
 		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
 	else if(currentChecksheet == "Msd")
-		window.location.assign("Checksheets/v1.1/OutputProto.php");
+		window.location.assign("Checksheets/v1.1/cscSDMastersChecksheet.php");
 	else
 		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
 }
@@ -329,7 +275,6 @@ function saveChecksheet() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#saveThis").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -350,7 +295,6 @@ function clearAlert() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#clearThis").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -393,7 +337,6 @@ function clearChecksheet() {
 function clearDialog() {
 	$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 	$("#master").block({ message: null, baseZ: 2 });
-	$.ui.dialog.prototype._focusTabbable = function(){};
 	$("#cleared").dialog({
 		dialogClass: "no-close",
 		resizable: false,
@@ -406,12 +349,74 @@ function clearDialog() {
 	});
 }
 
+function resetChecksheet() {
+		$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$("#master").block({ message: null, baseZ: 2 });
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$("#resetThis").dialog({
+				dialogClass: "no-close",
+				resizable: false,
+				draggable: false,
+				width: 535,		
+				buttons: {
+					"Save & Reset": function() {
+						$( this ).dialog( "close" );
+						saveChecksheet();
+						reset();
+					},
+					"Reset Without Saving": function() {
+						$( this ).dialog( "close" );
+						reset();
+						resetDialog();
+					},
+					Cancel: function() {
+						$("#master").unblock();
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		});
+	});
+}
+
+function reset() {
+		if(lastSection) //If lastSection != NULL (has not been initialized yet)
+	{
+		$(lastSection).css("border-color", "transparent");
+		$(lastSection).css("border-width", "1px");
+		lastSection = null;
+		$("#sectionTitle label").text("");
+		$("#leftInnerSection span")
+			.replaceWith("<span><button class = 'courseBox'></button></span>");
+	}
+}
+
+function resetDialog() {
+	$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+	$("#master").block({ message: null, baseZ: 2 });
+	$("#wasReset").dialog({
+		dialogClass: "no-close",
+		resizable: false,
+		draggable: false,
+		width: 535,		
+		buttons: {
+			"Got it!": function() { $("#master").unblock();
+			$( this ).dialog( "close" ); }
+		}
+	});
+}
+
+//CHECKSHEET NOTES
+//
+//
+//
+////////////////////
 function geNotes1() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#notes1").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -431,7 +436,6 @@ function geNotes2() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#notes2").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -451,7 +455,6 @@ function geNotes3() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#notes3").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -471,7 +474,6 @@ function geNotes4() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#notes4").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -491,7 +493,6 @@ function geNotes5() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#notes5").dialog({
 				dialogClass: "no-close",
 				resizable: false,

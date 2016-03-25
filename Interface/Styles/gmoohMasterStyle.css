@@ -17,13 +17,21 @@ body {
 	width: 100%;
 	height: 100%;
 	min-width: 966px;
-	max-width: 2000px;
-	min-height: 600px;
-	max-height: 1400px;
+	min-height: 766px;
 	margin: 0;
 	padding: 0;
 	position: relative;
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+}
+
+div.pageBody {
+	height: 100%;
+	min-height: inherit;
+	width: 100%;
+	min-width: inherit;
+	margin: 0;
+	padding: 0;
+	position: relative;
 }
 
 div.background {
@@ -407,4 +415,80 @@ button.courseBox {
 label.sectionLabel {
 	position: relative;
 	top: 2px;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+/* View Saved Checksheets Classes */
+
+div.leftViewSaved {
+	top: 0;
+	bottom: 10;
+	left: 0;
+	margin: auto;
+	height: 50%;
+    width: 25%;
+	padding: 10px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	background: rgba(249, 249, 249, 0.8);
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	visibility: hidden;
+}
+
+div.rightViewSaved {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 90%;
+    width: 65%;
+	padding: 10px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: absolute;
+	background: rgba(249, 249, 249, 0.8);
+	border: solid;
+	border-width: 2px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	visibility: hidden;
+}
+
+/* Edit Official Checksheet Classes */
+
+.resetImg {
+	width: 5%;
+	min-width: 21px;
+	max-width: 30px;
+	position: absolute;
+	height: 5%;
+	min-height: 15px;
+	max-height: 28px;
+	right: 55px;
+	bottom: 10px;
+}	
+
+div.officialHeaderBox {
+	width: 100%;
+	height: 20px;
+	top: 20px;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: white; 
+	border-style: solid none solid none; 
+	border-width: 2px; 
+	border-color: #dddddd;
 }

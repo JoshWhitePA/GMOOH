@@ -17,7 +17,7 @@ body {
 	display: flex;
 	flex-flow: row wrap;
 	align-content: flex-start;
-	flex: 1
+	flex: 1;
 }
 
 div.buffer {

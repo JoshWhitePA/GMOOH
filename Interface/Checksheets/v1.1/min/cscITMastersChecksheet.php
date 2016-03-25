@@ -22,50 +22,46 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "1">
-						Core Courses (18-24 sh)</th>
-						<td class = "tableGrade">Gr</td>
-						<td class = "tableGrade">SH</td>
+					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "msCSCNotes()">
+						Master Program: 30 sh</u></th>
+				</tr>
+				<tr>
+					<th colspan = "1">&emsp;1. Core Courses <b>(18-24 sh)</b></th>
+					<td class = "tableGrade">Gr</td>
+					<td class = "tableGrade">SH</td>
 				</tr>
 		<!-- CSC ITM CORE COURSES SECTION -->
 				
 				<?php
 					for($i = 0; $i < 8; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:IT Required' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+								<th class = 'courseBox'><div id = 'MS CSC:IT Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
 		<!-- Thesis (optional) -->
 				<tr>
-					<th class = "tableHeader" colspan = "1">
-						Thesis (0 or 6 SH)</th>
-						<td class = "tableGrade">Gr</td>
-						<td class = "tableGrade">SH</td>
+					<th colspan = "1">&emsp;2. Thesis <b>(0 or 6 sh)</b></th>
+					<td class = "tableGrade">Gr</td>
+					<td class = "tableGrade">SH</td>
 				</tr>
 				<!-- Since there can only be ONE thesis (or, if multiple, only one can count!), no need to have multiple columns -->
 				<tr>
-					<th id = 'MS CSC:IT Thesis' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+					<th class = 'courseBox'><div id = 'MS CSC:IT Thesis' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 					<td  class = 'tableGrade'></td>
 					<td  class = 'tableGrade'></td>
 				</tr>
-			</table>
-<!-- Second half -->
-			<table>
 		<!-- ELECTIVE COURSES SECTION -->
-				<tr><td class = "tableSpace"></td></tr>
 				<tr>
-					<th class = "tableHeader" colspan = "1">
-						Elective Courses (0-6 sh)
-					</th>
+					<th colspan = "1">&emsp;3. Elective Courses <b>(0-6 sh)</b></th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>				
 				<?php
 					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
-								<th id = 'MS CSC:IT Elective' onclick = 'findCourses(this)'><input class = 'courseNameBox' readonly/></th>
+								<th class = 'courseBox'><div id = 'MS CSC:IT Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td class = 'tableGrade'></td>
 								<td class = 'tableGrade'></td>
 							</tr>";
