@@ -39,12 +39,13 @@
 			return $this -> verifyPassword($password, $hashPass);;
 		}
 		
-		function createUser($email, $password, $ID, $Name){
-			DB::insert('Users', array(
+		function createUser($studentId, $email, $password, $firstName, $lastName){
+			DB::insert('STUDENT', array(
+  			'StudentId' => $studentId,
   			'Email' => $email,
   			'Password' => $password,
-  			'ID' => $ID,
-  			'Name' => $Name
+  			'FirstName' => $firstName,
+  			'LastName' => $lastName
 			));
 		}
 		
