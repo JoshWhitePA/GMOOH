@@ -27,7 +27,7 @@
 	}
 	if($_SESSION["loggedIn"]){
 		//Should redirect to the home page
-		header('location: ../Interface/gmoohHome.php');
+		header('location: ../login.php');
 	}
 
 ?>
