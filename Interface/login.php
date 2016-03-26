@@ -7,7 +7,8 @@
 	$logic = new Logic();
 	$loggedIn = NULL;
 	$userID = NULL;
-	if(!is_null($password) && !is_null($email) && $_SESSION["loggedIn"] == false){
+	if(!isset($_POST['submit']) && !is_null($password) && !is_null($email) 
+			&& $_SESSION["loggedIn"] == false){
 		$loggedIn = $logic -> validateUser($email, $password);
 		$_SESSION["loggedIn"] = $loggedIn;
 		if(($_SESSION['loggedIn'] == false)) {
@@ -17,7 +18,7 @@
 			echo 'alert("incorrect username/ password please try again")';
 			echo '</script>';
 			//Should redirect to the login page
-			header('location: ../index.php');
+			header('location: ../login.php');
 		}
 		if(($_SESSION['loggedIn'])) {
 			$userID = $logic -> setSession($email);
@@ -26,7 +27,7 @@
 	}
 	if($_SESSION["loggedIn"]){
 		//Should redirect to the home page
-		header('location: ../index.php');
+		header('location: ../gmoohHome.php');
 	}
 
 ?>
@@ -57,7 +58,7 @@
 					<tr height = "10px"></tr>
 					<tr>
 						<th colspan = "2" align = "center">
-							<button class="button1" type="submit" value="Submit">Submit</button>
+							<button class="button1" type="submit" value="submit">Submit</button>
 							<button class="button1" type="reset" value="Reset">Clear</button>
 						</th>
 					</tr>		
