@@ -1,52 +1,48 @@
 <!--
-*	File: 			cscITChecksheetTest.php
-*	Created:		02/18/2016
-*	Version:		1.1 (02/28/2016)
-*	Author:			Christian Carreras
+*	File: 		cscSDChecksheetTest.php
+*	Created:	02/13/2016
+*	Version:	1.1 (02/27/2016)
+*	Author:		Christian Carreras
 *	Organization:	Kutztown University CSC 355 Spring
-*	Purpose:		This php file creates a skeleton course checksheet
-*					as visually close as possible to an official checksheet.
-*					**THIS FILE IS FOR READ ONLY PURPOSES**
-*					This file will be used only to view/print a checksheet.
+*	Purpose:	This php file creates a skeleton course checksheet
+*			as visually close as possible to an official checksheet.
+*			**THIS FILE IS FOR READ ONLY PURPOSES**
+*			This file will be used only to view/print a checksheet.
 -->
 <?php
     function xml2array($fname){
-      $sxi = new SimpleXmlIterator($fname, null, true);
-      return sxiToArray($sxi);
-    }
-
-    function sxiToArray($sxi){
-      $a = array();
-      for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
-        if(!array_key_exists($sxi->key(), $a)){
-          $a[$sxi->key()] = array();
+          $sxi = new SimpleXmlIterator($fname, null, true);
+          return sxiToArray($sxi);
         }
-        if($sxi->hasChildren()){
-          $a[$sxi->key()][] = sxiToArray($sxi->current());
+
+        function sxiToArray($sxi){
+          $a = array();
+          for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
+            if(!array_key_exists($sxi->key(), $a)){
+              $a[$sxi->key()] = array();
+            }
+            if($sxi->hasChildren()){
+              $a[$sxi->key()][] = sxiToArray($sxi->current());
+            }
+            else{
+              $a[$sxi->key()][] = strval($sxi->current());
+            }
+          }
+          return $a;
         }
-        else{
-          $a[$sxi->key()][] = strval($sxi->current());
-        }
-      }
-      return $a;
-    }
 
-    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
-    //print_r($sData);
-    //echo "<br><br>";
-    $indexOGen = 0;
-    $indexOPro = 0;
-//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassGrade"][0];
-    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
-
-
+        $sData = xml2array('../../../../BLPlayground/StudentData.xml');
+        //print_r($sData);
+        //echo "<br><br>";
+        $indexOGen = 0;
+        $indexoPro = 0;
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>BS Computer Science: IT Checksheet</title>
+	<title>BS Computer Science: SD Checksheet</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1min.css"/>
-	</head>	
+	</head>
 	<body>
 <!-- #GENERAL EDUCATION# -->
 <!-- I. UNIVERSITY CORE TABLE -->
@@ -73,7 +69,7 @@
 							<th class = 'tableGrade'><b>
 							</b></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
@@ -89,7 +85,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
@@ -105,7 +101,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- D. WELLNESS SECTION -->
 				<tr>
@@ -121,7 +117,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b></b></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 			</table>
 <!-- II. UNIVERSITY DISTRIBUTION TABLE -->
@@ -150,7 +146,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
@@ -168,7 +164,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
@@ -186,7 +182,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- D. ARTS SECTION -->
 				<tr>
@@ -204,7 +200,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- E. FREE ELECTIVE SECTION -->
 				<tr>
@@ -221,7 +217,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 			</table>
 <!-- III. COMPETENCIES ACROSS THE CURRICULUM TABLE-->
@@ -249,13 +245,13 @@
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'>WI</th>
 							</tr>";
-                        $indexOGen++;  
+                        $indexOGen++; 
 					}
 				?>
 		<!-- B. QUATNTITAVE LEARNING / COMPUTER-INTENSIVE SECTION -->
 				<tr>
 					<th>B. Quantitative Learning <i>OR</i>
-						<br/>&#8195; Computer-Intensive
+						<br/>&emsp; Computer-Intensive
 					</th>
 				</tr>
 				<?php
@@ -266,12 +262,12 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- C. VISUAL LITERACY / COMMUNICATION-INTENSIVE SECTION -->
 				<tr>
 					<th>C. Visual Literacy <i>OR</i>
-						<br/>&#8195; Communication-Intensive
+						<br/>&emsp; Communication-Intensive
 					</th>
 				</tr>
 				<?php
@@ -284,7 +280,7 @@
 							</b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- D. CULTURAL DIVERSITY SECTION -->
 				<tr>
@@ -298,7 +294,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'>CD</th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- E. CRITICAL THINKING SECTION -->
 				<tr>
@@ -312,7 +308,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'>CT</th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 <!-- IV. COLLEGE DISTRIBUTION TABLE -->
 			</table>
@@ -333,7 +329,7 @@
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
 				<tr>
 					<th id = "nslab" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195; 1. Natural Science with Lab</a>
+						&nbsp; 1. Natural Science with Lab</a>
 						<div class = "dropdownSectionNotes">Any course with a lab in AST, BIO, CHM, ENV, GEL,
 							PHY, MAR, or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
@@ -346,12 +342,12 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 				<!-- 2. NATURAL SCIENCES ELECTIVE SUBSECTION -->
 				<tr>
 					<th id = "nsel" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195; 2. Elective</a>
+						&nbsp; 2. Elective</a>
 						<div class = "dropdownSectionNotes">Any AST, BIO, CHM, CSC, ENV,
 							GEL, PHY, MAR, MAT or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
@@ -364,7 +360,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- B. SOCIAL SCIENCE SECTION -->
 				<tr>
@@ -373,7 +369,7 @@
 				<!-- 1. SOCIAL SCIENCE ELECTIVE 1 SUBSECTION -->
 				<tr>
 					<th id = "ssel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195; 1. Elective</a>
+						&nbsp; 1. Elective</a>
 						<div class = "dropdownSectionNotes">Any ANT, HIS, POL or 
 						<u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
@@ -386,12 +382,12 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 				<!-- 2. SOCIAL SCIENCE ELECTIVE 2 SUBSECTION -->
 				<tr>
 					<th id = "ssel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195; 2. Elective</a>
+						&nbsp; 2. Elective</a>
 						<div class = "dropdownSectionNotes">Any CRJ, PSY, SOC or SWK</div>
 					</th>
 				</tr>
@@ -403,12 +399,12 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
 					<th id = "ssel3" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195; 3. Elective</a>
+						&nbsp; 3. Elective</a>
 						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, POL, 
 							PSY, SOC, SWK or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
 					</th>
@@ -421,7 +417,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                        $indexOGen++;  
+                    $indexOGen++; 
 				?>
 			</table>
 <!-- IV. COLLEGE DISTRIBUTION TABLE CONTINUED -->
@@ -441,7 +437,7 @@
 				<!-- 1. HUMANITIES ELECTIVE 1 SUBSECTION -->
 				<tr>
 					<th id = "humel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195;1. Elective</a>
+						&emsp;1. Elective</a>
 						<div class = "dropdownSectionNotes">Any ENG, HUM, WRI or 
 							<u title = "Click for notes" onclick = "geNotes5()">PAG*</u></div>
 					</th>
@@ -454,12 +450,12 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 				<!-- 2. HUMANITIES ELECTIVE 2 SUBSECTION -->
 				<tr>
 					<th id = "humel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195;2. Elective</a>
+						&emsp;2. Elective</a>
 						<div class = "dropdownSectionNotes">Any Modern Language (103 or above) or PHI</div>
 					</th>
 				</tr>
@@ -471,12 +467,12 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
 					<th id = "humel3" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
-						&#8195;3. Elective</a>
+						&emsp;3. Elective</a>
 						<div class = "dropdownSectionNotes">Any ENG, HUM, PHI, WRI, 
 							Modern Language (103 or above) or <u title = "Click for notes" onclick = "geNotes5()">PAG*</u></div>
 					</th>
@@ -489,7 +485,7 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
-                    $indexOGen++;  
+                    $indexOGen++; 
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
@@ -509,111 +505,86 @@
 								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'></th>
 							</tr>";
-                        $indexOGen++;  
+                        $indexOGen++; 
 					}
 				?>
 			</table>
 			<br/><hr/><br/>
-<!-- #BS CSC INFORMATION TECHNOLOGY MAJOR PROGRAM TABLE# -->
+<!-- #BS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "bsCSCNotes()">
-						B. Major Program: 57 sh</u></th>
+						B. Major Program: 51 sh</u></th>
 				</tr>
-		<!-- CSC IT REQUIRED COURSES SECTION -->
+		<!-- CSC SD REQUIRED COURSES SECTION -->
 				<tr>
-					<th>&#8195;1. Required Courses: <b>33 sh</b></th>
+					<th>&emsp;1. Required Courses: <b>33 sh</b></th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 11; $i++){
+					for($i = 0; $i < 11; $i++)
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:IT Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
-								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
+								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-                         $indexOPro++;
-                        
-                    }
 				?>
-		<!-- CSC IT ELECTIVE COURSES SECTION -->
+		<!-- CSC SD ELECTIVE COURSES SECTION -->
 				<tr>
-					<th>&#8195; 2. Elective Courses: <b>15-24 sh</b></th>
+					<th id = "fel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
+						&emsp;2. Elective Courses: <b>18 sh</b></a>
+						<div class = "dropdownSectionNotes">No more than two 200-level</div>
+					</th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 8; $i++){
+					for($i = 0; $i < 6; $i++)
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:IT Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
-								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='gen" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
+								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-                         $indexOPro++;
-                    }
-				?>
-		<!-- CSC IT ELECTIVE COURSES SECTION CONTINUED -->
-				<tr>
-					<th>&#8195; 3. Elective Courses: <b>0-9 sh</b></th>
-					<td class = "tableGrade">Gr</td>
-					<td class = "tableGrade">SH</td>
-				</tr>
-				<?php
-					for($i = 0; $i < 3; $i++){
-						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:IT Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
-								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
-								<td  class = 'tableGrade'></td>
-							</tr>";
-                         echo $indexOPro++;
-                    }
 				?>
 				<tr><th class = "tableSpace"></th></tr>
-			</table>	
-<!-- CSC INFORMATION TECHNOLOGY CONCOMITANT COURSE TABLE -->
+			</table>
+<!-- CSC SOFTWARE DEVELOPMENT CONCOMITANT COURSE TABLE -->
 			<table>
-		<!-- CSC IT CONCOMITANT COURSES SECTION -->
+		<!-- CSC SD CONCOMITANT COURSES SECTION -->
 				<tr>	
 					<th class = "tableHeader" colspan = "3">
-						C. Concomitant Courses: 3 sh
+						C. Concomitant Courses: 9 sh
 					</th>
 				</tr>
 				<tr>
-					<th>&#8195; 1. Required Courses: <b>3 sh</b></th>
+					<th>&emsp;1. Required Courses: <b>9 sh</b></th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 1; $i++){
-						echo"<tr>
-								<th class = 'courseBox'><div id = 'BS CSC:IT Concomitant' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
-								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
-								<td  class = 'tableGrade'></td>
-							</tr>";
-                        echo $indexOPro++;
-                    }
-				?>
-		<!-- CSC IT INTERNSHIP SECTION -->
-				<tr>
-					<th>&#8195; 2. Internship - optional (free elective)</th>
-					<td class = "tableGrade">Gr</td>
-					<td class = "tableGrade">SH</td>
-				</tr>
-				<?php
-					for($i = 0; $i < 2; $i++){
-                        
+					for($i = 0; $i < 3; $i++)
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:IT Internship' onclick = 'findCourses(this)' class = 'courseNameBox'></div></th>
-								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
-								<td  class = 'tableGrade'></td>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<td class = 'tableGrade'></td>
+								<td class = 'tableGrade'></td>
 							</tr>";
-                        echo $indexOPro++;
-                    }
-                
+				?>
+		<!-- CSC SD INTERNSHIP SECTION -->
+				<tr>
+					<th>&emsp;2. Internship - optional (free elective)</th>
+					<td class = "tableGrade">Gr</td>
+					<td class = "tableGrade">SH</td>
+				</tr>
+				<?php
+					for($i = 0; $i < 2; $i++)
+						echo"<tr>	
+								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<td  class = 'tableGrade'></td>
+								<td  class = 'tableGrade'>3-6</td>
+							</tr>";
 				?>
 			</table>
 		</div>
 	</body>
-</html>
-			
+</html>		
