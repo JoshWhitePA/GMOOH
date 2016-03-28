@@ -492,3 +492,37 @@ div.officialHeaderBox {
 	border-width: 2px; 
 	border-color: #dddddd;
 }
+
+/* Work-in-progress additional classes */
+.changepass{
+	border:3px;
+	border-style:solid; 
+	border-color:#800020; 
+	position: relative;
+}
+
+span.box { /* Box for containing data. */
+  margin: 2%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.8;
+  text-align: right;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  color: #000000;
+}
+
+div.boxed{ /* Box container for page. */
+	border:3px; 
+	border-style:solid; 
+	border-color:#800020; 
+	padding: 0;
+}
+
+td.labelAlign{ /* alignment for TD elements that are labels */
+	text-align: right;
+}
+
+table.interface{ /* Align table to center. */
+	margin-left: auto;
+	margin-right: auto;
+}
