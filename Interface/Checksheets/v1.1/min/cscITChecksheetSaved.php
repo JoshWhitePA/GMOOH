@@ -525,7 +525,7 @@
 					<th>&#8195;1. Required Courses: <b>33 sh</b></th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
-				</tr>
+                </tr>
 				<?php
 					for($i = 0; $i < 11; $i++){
 						echo"<tr>	
@@ -566,7 +566,7 @@
 								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-                         echo $indexOPro++;
+                          $indexOPro++;
                     }
 				?>
 				<tr><th class = "tableSpace"></th></tr>
@@ -591,7 +591,7 @@
 								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-                        echo $indexOPro++;
+                        $indexOPro++;
                     }
 				?>
 		<!-- CSC IT INTERNSHIP SECTION -->
@@ -608,7 +608,7 @@
 								<td  class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-                        echo $indexOPro++;
+                        $indexOPro++;
                     }
                 
 				?>

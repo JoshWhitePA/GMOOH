@@ -565,8 +565,8 @@
 				<?php
 					for($i = 0; $i < 3; $i++)
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<td class = 'tableGrade'></td>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='Pro" .$indexOPro."'>&#8195;". "</span>" ."</div></th>
+								<td class = 'tableGrade'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
 							</tr>";
 				?>
@@ -579,7 +579,7 @@
 				<?php
 					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='Pro" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox'>"."<span id='Pro" .$indexOPro."'>&#8195;"."</span>"."</div></th>
 								<td  class = 'tableGrade'></td>
 								<td  class = 'tableGrade'>3-6</td>
 							</tr>";
