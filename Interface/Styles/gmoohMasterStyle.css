@@ -522,7 +522,12 @@ td.labelAlign{ /* alignment for TD elements that are labels */
 	text-align: right;
 }
 
-table.interface{ /* Align table to center. */
+table,td,tr.interface{ /* general interface table elements */
+	border: 1px solid black;
+}
+
+table.interface{ /* Align table to center. Add some general class. */
 	margin-left: auto;
 	margin-right: auto;
 }
+/* End of my awful WIP stuff. - C Steckhouse */
