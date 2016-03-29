@@ -1,14 +1,35 @@
 <?php
-	require_once("../PHPClasses/logic.class.php");	
+	require_once("../PHPClasses/logic.class.php");
+	session_start();	
 	$logic = new Logic();
-	session_start();
 
 	$oldPassword = $_POST["oldPassword"];
 	$newPassword = $_POST["newPassword"];
 	$confirmPassword = $_POST["confirmPassword"];
-	
-	  if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID)){
-		$loggedIin = $logic -> changePassword($password, $newPassword, $userID);
+	$userID = $_SESSION["userID"];
+	$passwordValid = NULL;
+	echo hello;
+	echo $oldPassword;
+	echo $newPassword;
+	echo $confirmPassword;
+	if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID) && ($newPassword == $confirmPassword)){
+		$passwordValid = $logic -> changePassword($oldPassword, $newPassword, $userID);
+		echo hello0;
+		echo $passwordValid;
+		//If your old password is wrong execute this code
+		if($passwordValid == false) {
+			echo hello1;
+			echo '<script language="javascript">';
+			echo 'window.alert("Incorrect password please try again")';
+			echo '</script>';
+		}
+		//If your password is correct execute this code
+		if($passwordValid) {
+			echo hello2;
+			echo '<script language="javascript">';
+			echo 'window.alert("Success! Your password has been changed")';
+			echo '</script>';
+		}
 	 } 
 ?>
 <!DOCTYPE html>
@@ -26,15 +47,15 @@
 							+ "<table style = 'left: 25%; top: 35%; position: absolute'>"
 							+ "<tr>"
 							+ "<th>Old Password &nbsp;</th>"
-							+ "<td><input id='oldPassword' type='password' title='Please enter your current password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "<td><input id='oldPassword' name='oldPassword' type='password' title='Please enter your current password' pattern='[A-Za-z0-9]{8,}' required/></td>"
 							+ "</tr>"
 							+ "<tr>"
 							+ "<th>New Password &nbsp;</th>"
-							+ "<td><input id='newPassword' type='password' title='Please enter a new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "<td><input id='newPassword' name='newPassword' type='password' title='Please enter a new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
 							+ "</tr>"
 							+ "<tr>"
 							+ "<th>Confirm New Password &nbsp;</th>"
-							+ "<td><input id='confirmPassword' type='password' title='Please confirm your new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "<td><input id='confirmPassword' name='confirmPassword' type='password' title='Please confirm your new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
 							+ "</tr>"
 							+ "<tr height = '10px'></tr>"
 							+ "<tr>"
@@ -71,7 +92,7 @@
 				}
 					//Everything checked out
 				  document.getElementById("UserForm").submit();
-				  alert("Password Successfully Changed!");
+				    //alert("Password Successfully Changed!");
 			 }
 						 
 		</script>

@@ -75,17 +75,21 @@
 	header('location: gmoohHome.php');
 	$userID = $logic -> setSession($email);
 	$_SESSION["userID"] = $userID;
+	exit();
 	}
 	//This code will only execute if you've never logged in or you've tried to log in incorrectly(wrong password/username)
 	//Logout code will have to unset session variable loggedIn or set it to false
 	if(!isset($_POST['submit']) && (!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false)&& !is_null($password) && !is_null($email)){
 		$loggedIn = $logic -> validateUser($email, $password);
+		//Uncomment the line below and log in with "password" to reset all the passwords to a hashed "password"
+		//$loggedIn = $logic -> setDBPass($password);
 		$_SESSION["loggedIn"] = $loggedIn;
 		//If your password/Username is wrong execute this code
-		if($_SESSION["loggedIn"] == false) {
+		if($_SESSION["loggedIn"] == false){
 			echo '<script language="javascript">';
-			echo 'window.alert("incorrect username/password please try again")';
+			echo 'window.alert("Incorrect username/password please try again")';
 			echo '</script>';
+			
 		}
 		//If your password/Username are correct execute this code
 		if($_SESSION["loggedIn"]) {
@@ -94,6 +98,7 @@
 			//should redirect to the home page - gmoohHome.php
 			//header('location: ../Interface/gmoohHome.php'); - not sure what this link will be
 			header('location: gmoohHome.php');
+			exit();
 		}
 	}
 	?>
