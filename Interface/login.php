@@ -2,33 +2,57 @@
 	require_once("../PHPClasses/logic.class.php");
 	session_start();	
     echo "All passwords are password";
-	$email = $_POST["email"];
-	$password = $_POST["password"];
+	if(isset($_POST['email'])){
+		$email = $_POST['email'];
+	}
+	else{
+		$email = NULL;
+	}
+	if(isset($_POST['password'])){
+		$password = $_POST['password'];
+	}
+	else{
+		$password = NULL;
+	}
+	if(isset($_SESSION['loggedIn'])){
+		$loggedIn = $_SESSION['loggedIn'];
+	}
+	else{
+		$loggedIn = NULL;
+	}
 	$logic = new Logic();
-	$loggedIn = NULL;
 	$userID = NULL;
-	if(!isset($_POST['submit']) && !is_null($password) && !is_null($email) 
-			&& $_SESSION["loggedIn"] == false){
+	
+	//If you've already logged in previously execute this code
+	if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
+	//Should redirect to the home page - gmoohHome.php
+	//header('location: ../Interface/gmoohHome.php');
+	header('location: ../login.php');
+	$userID = $logic -> setSession($email);
+	$_SESSION["userID"] = $userID;
+	}
+	//This code will only execute if you've never logged in or you've tried to log in incorrectly(wrong password/username)
+	//Logout code will have to unset session variable loggedIn or set it to false
+	if(!isset($_POST['submit']) && (!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false)&& !is_null($password) && !is_null($email)){
 		$loggedIn = $logic -> validateUser($email, $password);
 		$_SESSION["loggedIn"] = $loggedIn;
-		if(($_SESSION['loggedIn'] == false)) {
-			//Figure out which one of these methods for alerting the user their password is wrong will work best
-			echo 'incorrect username/ password please try again.' ;
+		//If your password/Username is wrong execute this code
+		if($_SESSION["loggedIn"] == false) {
+			echo 'incorrect username/password please try again.' ;
 			echo '<script language="javascript">';
-			echo 'alert("incorrect username/ password please try again")';
+			echo 'window.alert("incorrect username/password please try again")';
 			echo '</script>';
-			//Should redirect to the login page
-			header('location: ../login.php');
 		}
-		if(($_SESSION['loggedIn'])) {
+		//If your password/Username are correct execute this code
+		if($_SESSION["loggedIn"]) {
 			$userID = $logic -> setSession($email);
 			$_SESSION["userID"] = $userID;
+			//should redirect to the home page - gmoohHome.php
+			//header('location: ../Interface/gmoohHome.php'); - not sure what this link will be
+			header('location: ../login.php');
 		}
 	}
-	if($_SESSION["loggedIn"]){
-		//Should redirect to the home page
-		header('location: ../login.php');
-	}
+
 
 ?>
 <!DOCTYPE html>

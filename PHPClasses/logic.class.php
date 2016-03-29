@@ -36,7 +36,8 @@
 			}
 			$_SESSION["Email"] = $mail;
 			$_SESSION['ID'] = $ID;
-			return $this -> verifyPassword($password, $hashPass);;
+			
+			return $this -> verifyPassword($password, $hashPass);
 		}
 		
 		function createUser($studentId, $email, $password, $firstName, $lastName){
