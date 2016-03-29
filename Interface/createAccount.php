@@ -2,12 +2,40 @@
 	require_once("../PHPClasses/logic.class.php");	
 	$logic = new Logic();
 
+	if(isset($_POST['firstName'])){
+		$firstName = $_POST['firstName'];
+	}
+	else{
+		$firstName = NULL;
+	}	
 	
-	$firstName = $_POST["firstName"];
-	$lastName = $_POST["lastName"];
-	$studentId = $_POST["studentId"];
-	$email = $_POST["email"];
-	$password = $_POST["password"];
+	if(isset($_POST['lastName'])){
+		$lastName = $_POST['lastName'];
+	}
+	else{
+		$lastName = NULL;
+	}	
+	
+	if(isset($_POST['studentId'])){
+		$studentId = $_POST['studentId'];
+	}
+	else{
+		$studentId = NULL;
+	}	
+	
+	if(isset($_POST['email'])){
+		$email = $_POST['email'];
+	}
+	else{
+		$email = NULL;
+	}
+	
+	if(isset($_POST['password'])){
+		$password = $_POST['password'];
+	}
+	else{
+		$password = NULL;
+	}
 	
 	if (!isset($_POST['submit']) && !is_null($password) && !is_null($lastName) && !is_null($studentId) && !is_null($email) && !is_null($firstName)) { // if page is not submitted to itself echo the form
 	
@@ -15,7 +43,9 @@
 		$hashedPassword = $logic -> generateHashWithSalt($password);
 		
 		$logic -> createUser($studentId, $email, $hashedPassword, $firstName, $lastName);
-		// needs to be directed to login or home. probably login to login in with new account
+		//header('location: gmoohHome.php');
+		//header('location: login.php');
+		//needs to be directed to login or home. probably login to login in with new account
 		}
 	?>
 <!DOCTYPE html>
