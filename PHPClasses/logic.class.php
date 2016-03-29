@@ -10,7 +10,7 @@
 		public function setDBPass($Password){
 			$newPass = $this -> generateHashWithSalt($Password);
 			
-			DB::update('FACULTY', array(
+			DB::update('STUDENT', array(
 		  'Password' => $newPass
 		  ), "1 = %i", '1');
 			 return $newPass;
@@ -52,10 +52,13 @@
 		
 		function verifyPassword($password, $hashedPassword) {
 			// example call $logic -> verifyPassword("L33t",$hashedPassword);
+//            echo crypt($password, $hashedPassword);
 			
 			if( crypt($password, $hashedPassword) == $hashedPassword){
+                echo "true";
 				return true;
 			}else{
+                echo "false";
 				return false;
 			}
 		}

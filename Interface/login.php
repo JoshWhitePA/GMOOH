@@ -27,7 +27,7 @@
 	if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
 	//Should redirect to the home page - gmoohHome.php
 	//header('location: ../Interface/gmoohHome.php');
-	header('location: ../login.php');
+	header('location: gmoohHome.php');
 	$userID = $logic -> setSession($email);
 	$_SESSION["userID"] = $userID;
 	}
@@ -49,9 +49,11 @@
 			$_SESSION["userID"] = $userID;
 			//should redirect to the home page - gmoohHome.php
 			//header('location: ../Interface/gmoohHome.php'); - not sure what this link will be
-			header('location: ../login.php');
+			header('location: gmoohHome.php');
 		}
 	}
+
+
 
 
 ?>
