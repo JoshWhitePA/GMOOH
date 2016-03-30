@@ -512,14 +512,15 @@ span.box { /* Box for containing data. */
   color: #000000;
   padding-left: 2px;
   padding-right: 2px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 div.boxed{ /* Box container for page. */
-	border:3px; 
+	/*
+	border:1px; 
 	border-style:solid; 
-	border-color:#800020; 
+	border-color:#800020; */ /* Disabled for the moment. */
 	padding: 0;
 }
 
