@@ -49,7 +49,6 @@ function xml2array($fname){
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
 	</head>	
 	<body>
-	<div style="overflow-y:auto;"> <!-- Force allow scrolling -->
 <!-- HEADER -->
 		<div class = "sectionTop">
 			<br/><br/>
@@ -753,7 +752,6 @@ function xml2array($fname){
 			</table>
 		</div>
 		<div class = "buffer">&nbsp;</div>
-	</div>
 	</body>
 </html>
 			
