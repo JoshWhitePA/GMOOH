@@ -1,37 +1,3 @@
-<?php
-	require_once("../PHPClasses/logic.class.php");
-	session_start();	
-	$logic = new Logic();
-
-	$oldPassword = $_POST["oldPassword"];
-	$newPassword = $_POST["newPassword"];
-	$confirmPassword = $_POST["confirmPassword"];
-	$userID = $_SESSION["userID"];
-	$passwordValid = NULL;
-	echo hello;
-	echo $oldPassword;
-	echo $newPassword;
-	echo $confirmPassword;
-	if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID) && ($newPassword == $confirmPassword)){
-		$passwordValid = $logic -> changePassword($oldPassword, $newPassword, $userID);
-		echo hello0;
-		echo $passwordValid;
-		//If your old password is wrong execute this code
-		if($passwordValid == false) {
-			echo hello1;
-			echo '<script language="javascript">';
-			echo 'window.alert("Incorrect password please try again")';
-			echo '</script>';
-		}
-		//If your password is correct execute this code
-		if($passwordValid) {
-			echo hello2;
-			echo '<script language="javascript">';
-			echo 'window.alert("Success! Your password has been changed")';
-			echo '</script>';
-		}
-	 } 
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -96,7 +62,35 @@
 			 }
 						 
 		</script>
+<?php
+	require_once("../PHPClasses/logic.class.php");
+	session_start();	
+	$logic = new Logic();
+
+	$oldPassword = $_POST["oldPassword"];
+	$newPassword = $_POST["newPassword"];
+	$confirmPassword = $_POST["confirmPassword"];
+	$userID = $_SESSION["userID"];
+	$passwordValid = NULL;
+	
+	if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID) && ($newPassword == $confirmPassword)){
+		$passwordValid = $logic -> changePassword($oldPassword, $newPassword, $userID);
+		//If your old password is wrong execute this code
+		if($passwordValid == false) {
+			echo '<script language="javascript">';
+			echo 'window.alert("Incorrect password please try again")';
+			echo '</script>';
+		}
+		//If your password is correct execute this code
+		if($passwordValid) {
+			echo '<script language="javascript">';
+			echo 'window.alert("Success! Your password has been changed")';
+			echo '</script>';
+		}
+	 } 
+?>
 	</head>
 	<body id = "master">
 	</body>
 </html>
+
