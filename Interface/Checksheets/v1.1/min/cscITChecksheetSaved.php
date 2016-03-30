@@ -515,6 +515,9 @@
 					}
 				?>
 			</table>
+             <?php 
+                echo "<input type='hidden' id='genEdCount' value='".$indexOGen."'  />";
+            ?>
 			<br/><hr/><br/>
 <!-- #BS CSC INFORMATION TECHNOLOGY MAJOR PROGRAM TABLE# -->
 			<table>
@@ -602,6 +605,10 @@
 							</tr>"; $indexOPro++;}
 				?>
 			</table>
+            <?php 
+                echo "<input type='hidden' id=programCount' value='".$indexOPro."'  />";
+            ?>
+            
 		</div>
 	</body>
 </html>
