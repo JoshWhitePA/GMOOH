@@ -505,10 +505,15 @@ span.box { /* Box for containing data. */
   margin: 2%;
   background-color: #ffffff;
   border: 1px solid black;
+  border-radius: 5px;
   opacity: 0.8;
   text-align: right;
   filter: alpha(opacity=80); /* For IE8 and earlier */
   color: #000000;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 div.boxed{ /* Box container for page. */
@@ -523,7 +528,13 @@ td.labelAlign{ /* alignment for TD elements that are labels */
 }
 
 table,td,tr.interface{ /* general interface table elements */
-	border: 1px solid black;
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 5px;
+}
+
+td,tr.interface{ /* Add padding and some other tweaks*/
+	padding: 3px;
 }
 
 table.interface{ /* Align table to center. Add some general class. */
