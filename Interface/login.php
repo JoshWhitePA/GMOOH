@@ -1,4 +1,6 @@
-
+<?php 
+	require_once("../PHPClasses/logic.class.php");
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,7 +46,7 @@
 	</body>
 </html>
 <?php
-	require_once("../PHPClasses/logic.class.php");
+
 	session_start();	
     echo "All passwords are password";
 	if(isset($_POST['email'])){
