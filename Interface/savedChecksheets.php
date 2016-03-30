@@ -10,9 +10,8 @@
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection")
 						.append("<div class=\"changepass\">"
-							+ "<table> <!-- These fields will need to be filled via PHP -->"
+							+ "<table class=\"interface\"> <!-- These fields will need to be filled via PHP -->"
 							+ "<form action=\"saved_checksheets_response.php\" method=\"post\" id=\"main\">"
-							+ "<fieldset class=\"changepass\">"
 							+ "<tr><td>Checksheet 1 - Major: PLACEHOLDER, Date Created: PLACEHOLDER </td> <td><input type=\"submit\" value=\"Open\" id=\"chksht1_open\" /></td> <td><input type=\"submit\" value=\"Delete\" id=\"chksht1_delete\" /></td></tr>"
 							+ "<tr><td>Checksheet 2 - Major: PLACEHOLDER, Date Created: PLACEHOLDER </td> <td><input type=\"submit\" value=\"Open\" id=\"chksht2_open\" /></td> <td><input type=\"submit\" value=\"Delete\" id=\"chksht1_delete\" /></td> </tr>"
 							+ "<tr><td>Checksheet 3 - Major: PLACEHOLDER, Date Created: PLACEHOLDER </td> <td><input type=\"submit\" value=\"Open\" id=\"chksht3_open\" /></td> <td><input type=\"submit\" value=\"Delete\" id=\"chksht1_delete\" /></td> </tr>"
