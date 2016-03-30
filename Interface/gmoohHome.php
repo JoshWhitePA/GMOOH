@@ -9,6 +9,12 @@
 				$("#master").load("MasterPages/masterPage.html");
 				$("#mainSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
 			});
+			$(document).ready(function(){
+				$("#master").load("MasterPages/masterPage.html", function() {
+					$("#mainSection")
+						$("#mainSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php"); 
+				});
+			});
 		</script>
 	</head>
 	<body id = "master">
