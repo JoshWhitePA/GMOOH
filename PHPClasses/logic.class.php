@@ -4,18 +4,17 @@
 		function __construct() {
   			require_once 'meekrodb.2.3.class.php';
    		}
-   		
-
-		//Does this work? Needs to be tested.
+		
+		//This function will set all of the passwords in the db to 
+		//whatever parameter you pass it. Be currful
 		public function setDBPass($Password){
 			$newPass = $this -> generateHashWithSalt($Password);
 			
-			DB::update('FACULTY', array(
+			DB::update('STUDENT', array(
 		  'Password' => $newPass
 		  ), "1 = %i", '1');
 			 return $newPass;
 		}
-		
 
 		public function validateUser($email, $password){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
@@ -24,6 +23,7 @@
 			$hashPass = $row['Password'];
 			$mail = $row['Email'];
 			$ID = $row['StudentId'];
+			
 			if($mail == null){
 				$mysqli_result = DB::queryRaw("SELECT Password,Email,FacultyId FROM FACULTY WHERE Email= %s", $email);
 				$row = $mysqli_result->fetch_assoc();
@@ -36,7 +36,8 @@
 			}
 			$_SESSION["Email"] = $mail;
 			$_SESSION['ID'] = $ID;
-			return $this -> verifyPassword($password, $hashPass);;
+			
+			return $this -> verifyPassword($password, $hashPass);
 		}
 		
 		function createUser($studentId, $email, $password, $firstName, $lastName){
@@ -51,10 +52,13 @@
 		
 		function verifyPassword($password, $hashedPassword) {
 			// example call $logic -> verifyPassword("L33t",$hashedPassword);
+//            echo crypt($password, $hashedPassword);
 			
 			if( crypt($password, $hashedPassword) == $hashedPassword){
+                echo "true";
 				return true;
 			}else{
+                echo "false";
 				return false;
 			}
 		}
@@ -75,15 +79,8 @@
 		
 		// This function will allow the user to change their password
 		function changePassword($oldPassword, $newPassword, $userID){
-			// prerequisites - user is logged on and knows their password
-			// New Password match done on client side
-			// New Password does not match old password done on client side
-			// Complete^^
-			
-			//*********** HELP  ********
-			// Check old password. Are there session variables? $_SESSION[]? 
-			// First - Verify oldPassword is correct
-			
+			$facultyValid = NULL;
+			$studentValid = NULL;
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE StudentId= %s", $userID);
 			$row = $mysqli_result->fetch_assoc();
 		
@@ -95,31 +92,30 @@
 				$row = $mysqli_result->fetch_assoc();
 				$hashPass = $row['Password'];
 				$ID = $row['FacultyId'];
+				$facultyValid = $this -> verifyPassword($oldPassword, $hashPass);
+				if($facultyValid == true){
+					$newPassword = $this -> generateHashWithSalt($newPassword);
+					DB::update('FACULTY', array(
+					'Password' => $newPassword
+					), "FacultyId = %s", $ID);
+					return true;
+				}
+				else{
+					return false;
+				}
 			}
 			
-			if(verifyPassword($oldPassword, $hashPass) == true){
-			setDBPass($newPassword);
+			$studentValid = $this -> verifyPassword($oldPassword, $hashPass);
+			if($studentValid == true){
+				$newPassword = $this -> generateHashWithSalt($newPassword);
+				DB::update('STUDENT', array(
+				'Password' => $newPassword
+				), "StudentId = %s", $ID);
+				return true;
 			}
-
-
-			//Final - Update user's password in DB
-
-			
-			// First - Verify oldPassword is correct
-//			if( crypt($oldPassword, $hashedPassword) == $hashedPassword){
-//				
-//				BAD SQL Don't use
-//				DB::update(('STUDENT') 
-//					set ('Password'=$hasshedPassword) 
-//					where ('StudentId'=$_SESSION['StudentId'])LIMIT 1);
-//				return true;
-//			}else{
-//				return false;
-//				}
-//			}
-						
-			//old code - $q = "UPDATE Users SET pass=SHA1('$') WHERE userId=$uid LIMIT 1";
-			
+			else{
+				return false;
+			}
 		}
 		
 		public function generateHashWithSalt($Password) {

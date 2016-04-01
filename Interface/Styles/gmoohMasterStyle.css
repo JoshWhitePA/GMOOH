@@ -492,3 +492,54 @@ div.officialHeaderBox {
 	border-width: 2px; 
 	border-color: #dddddd;
 }
+
+/* Work-in-progress additional classes */
+.changepass{
+	/* border:3px;
+	border-style:solid; 
+	border-color:#800020; */ /* May re-do the border later. */
+	position: relative;
+}
+
+span.box { /* Box for containing data. */
+  margin: 2%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 5px;
+  opacity: 0.8;
+  text-align: right;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  color: #000000;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+div.boxed{ /* Box container for page. */
+	/*
+	border:1px; 
+	border-style:solid; 
+	border-color:#800020; */ /* Disabled for the moment. */
+	padding: 0;
+}
+
+td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
+	text-align: right;
+}
+
+table,tr.interface{ /* general interface table elements */
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 5px;
+}
+
+td.paddedTD{ /* Add padding and some other tweaks*/
+	padding: 3px;
+}
+
+table.tableCenter{ /* Align table to center. Add some general class. */
+	margin-left: auto;
+	margin-right: auto;
+}
+/* End of my awful WIP stuff. - C Steckhouse */

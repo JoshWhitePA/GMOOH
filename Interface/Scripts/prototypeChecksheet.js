@@ -71,7 +71,9 @@ function pageLoadPrototype() {
 			+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
 			+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
 			+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
-			+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"								
+			+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"
+            + "<option value = 'savIT'>CSC IT(M) - Computer Science: Information Technology Saved</option>"
+                
 			+ "</select>"
 			+ "<div id = 'innerSection' class = 'innerSection'></div>"
 			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
@@ -94,11 +96,12 @@ function pageLoadPrototype() {
 				+ "</select>"
 				+ "</div>");
 		//Place content inside the right section of the master page
+///////////////
 		$("#right")
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
 				+ "title = 'Search for a course by using keywords such as course name or number'>"
 				+ "<div class = 'searchBox'>"
-				+ "<input type = 'text' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
+				+ "<input type = 'text' onkeydown='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
 				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
@@ -220,9 +223,17 @@ function pageLoadPrototype() {
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
+            else if($("#currentChecksheet option:selected").val() == "savIT") 
+			{
+				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
+				$("#sectionTitle label").text("");
+				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+				currentChecksheet = $("#currentChecksheet option:selected").val();
+			}
 			else 
 			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
+				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
 				$("#sectionTitle label").text("");
 				$("#leftInnerSection span").replaceWith("<span></span>");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
@@ -319,6 +330,8 @@ function printThis() {
 		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
 	else if(currentChecksheet == "Msd")
 		window.location.assign("Checksheets/v1.1/OutputProto.php");
+    else if(currentChecksheet == "savIT")
+		window.location.assign("Checksheets/v1.1/cscITChecksheetSaved.php");
 	else
 		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
 }
@@ -547,3 +560,16 @@ function msCSCNotes() {
 function displaySectionNotes(id) {
 	$("#" + id + " div").toggle();
 }
+
+function searchBox(){
+    
+    $.ajax({
+                url: "./Scripts/DBSearchWAJAX.php?search=" + $('#searchInput').val(),
+                success: function (data) {
+                    alert(String(data));
+                }
+            });
+    return true;
+}
+     
+
