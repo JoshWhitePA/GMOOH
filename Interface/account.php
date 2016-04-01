@@ -10,7 +10,7 @@
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection")
 						.append("<div class = 'boxed'>"
-							+ "<table class = 'interface' >"
+							+ "<table class = 'tableCenter' >"
 							+ "<tr><td class = 'labelAlign' >Name:</td><td class = 'paddedTD'><span class = 'box'>PLACEHOLDER</span></td></tr>"
 							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td class = 'paddedTD'><span class = 'box'>PLACEHOLDER</span></td></tr>"
 							+ "<tr><td class = 'labelAlign' >Email:</td><td class = 'paddedTD'><span class = 'box'>PLACEHOLDER</span></td></tr>"

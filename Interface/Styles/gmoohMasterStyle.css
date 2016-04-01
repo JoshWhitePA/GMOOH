@@ -524,7 +524,7 @@ div.boxed{ /* Box container for page. */
 	padding: 0;
 }
 
-td.labelAlign{ /* alignment for TD elements that are labels */
+td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
 	text-align: right;
 }
 
@@ -538,7 +538,7 @@ td.paddedTD{ /* Add padding and some other tweaks*/
 	padding: 3px;
 }
 
-table.interface{ /* Align table to center. Add some general class. */
+table.tableCenter{ /* Align table to center. Add some general class. */
 	margin-left: auto;
 	margin-right: auto;
 }
