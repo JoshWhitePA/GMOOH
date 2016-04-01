@@ -535,7 +535,7 @@ table,tr.interface{ /* general interface table elements */
 }
 
 td.interface{ /* Add padding and some other tweaks*/
-	padding: 3px;
+	/* padding: 3px; */
 }
 
 table.interface{ /* Align table to center. Add some general class. */
