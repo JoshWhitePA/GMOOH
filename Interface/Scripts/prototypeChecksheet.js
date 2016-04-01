@@ -103,10 +103,10 @@ function pageLoadPrototype() {
 				+ "<div class = 'searchBox'>"
 				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
-                +"<div id='searchResults' style=' overflow: scroll;'></div>"
+                +"<div id='searchResults' style=' overflow: scroll;white-space: pre;'></div>"
 				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
-				+ "<select name = 'courseDropdown' class = 'courseSelect'>"
+				+ "<select name = 'courseDropdown' id='deptDD' onchange='searchByDept()' class = 'courseSelect'>"
 				+ "<option>Select A Department</option>"
 								
 				//Temporary, should be filled by database at a later time
@@ -177,7 +177,7 @@ function pageLoadPrototype() {
 				+ "<option>WGS - Women's and Gender Studies</option>"
 				+ "<option>WRI - Writing</option>"
 				+ "</select>"
-				+ "</div>");
+				+ "<div id='deptS' style=' overflow: scroll;white-space: pre;'></div></div>");
 		
 		//Whenever the select dropdrown menu is changed
 		$("#currentChecksheet").change(function() {
@@ -568,6 +568,19 @@ function searchBox(){
                 url: "./Scripts/DBSearchWAJAX.php?search=" + $('#searchInput').val(),
                 success: function (data) {
                    $('#searchResults').html(String(data));
+                }
+            });
+    return true;
+}
+
+function searchByDept(){
+    var sel =  $('#deptDD').find(":selected").text()
+    sel = sel.substr(0,sel.indexOf(' '));
+    
+    $.ajax({
+                url: "./Scripts/DBSearchWAJAX.php?deptSearch=" +sel.trim(),
+                success: function (data) {
+                   $('#deptS').html(String(data));
                 }
             });
     return true;

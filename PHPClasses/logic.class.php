@@ -12,7 +12,7 @@
         }
         
         public function searchByDept($searchParam){
-            $results = DB::query("SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`= %ss ORDER BY `CourseNum   ;", $searchParam);
+            $results = DB::query("SELECT CourseID,CourseName,Credits, CourseNum FROM COURSE WHERE CoursePrefix= %s ORDER BY CourseNum;", $searchParam);
             return $results;
         }
 		
