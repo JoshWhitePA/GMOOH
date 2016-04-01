@@ -495,9 +495,9 @@ div.officialHeaderBox {
 
 /* Work-in-progress additional classes */
 .changepass{
-	border:3px;
+	/* border:3px;
 	border-style:solid; 
-	border-color:#800020; 
+	border-color:#800020; */ /* May re-do the border later. */
 	position: relative;
 }
 
@@ -510,8 +510,8 @@ span.box { /* Box for containing data. */
   text-align: right;
   filter: alpha(opacity=80); /* For IE8 and earlier */
   color: #000000;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
   padding-top: 1px;
   padding-bottom: 1px;
 }
@@ -524,21 +524,21 @@ div.boxed{ /* Box container for page. */
 	padding: 0;
 }
 
-td.labelAlign{ /* alignment for TD elements that are labels */
+td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
 	text-align: right;
 }
 
-table,td,tr.interface{ /* general interface table elements */
+table,tr.interface{ /* general interface table elements */
 	border: 1px solid;
 	border-color: #999999;
 	border-radius: 5px;
 }
 
-td,tr.interface{ /* Add padding and some other tweaks*/
+td.paddedTD{ /* Add padding and some other tweaks*/
 	padding: 3px;
 }
 
-table.interface{ /* Align table to center. Add some general class. */
+table.tableCenter{ /* Align table to center. Add some general class. */
 	margin-left: auto;
 	margin-right: auto;
 }

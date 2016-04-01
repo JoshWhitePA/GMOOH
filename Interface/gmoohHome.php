@@ -7,7 +7,8 @@
 		<script>
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
-					$("#mainSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php"); 
+					$("mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
+					$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php"); 
 				});
 			});
 		</script>
