@@ -495,9 +495,9 @@ div.officialHeaderBox {
 
 /* Work-in-progress additional classes */
 .changepass{
-	border:3px;
+	/* border:3px;
 	border-style:solid; 
-	border-color:#800020; 
+	border-color:#800020; */ /* May re-do the border later. */
 	position: relative;
 }
 
@@ -528,13 +528,13 @@ td.labelAlign{ /* alignment for TD elements that are labels */
 	text-align: right;
 }
 
-table,td,tr.interface{ /* general interface table elements */
+table,tr.interface{ /* general interface table elements */
 	border: 1px solid;
 	border-color: #999999;
 	border-radius: 5px;
 }
 
-td,tr.interface{ /* Add padding and some other tweaks*/
+td.interface{ /* Add padding and some other tweaks*/
 	padding: 3px;
 }
 
