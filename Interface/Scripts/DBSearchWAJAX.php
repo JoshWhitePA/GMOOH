@@ -8,7 +8,7 @@
           echo "<span>CourseName: " . $row['CourseName'] . "</span>";
           echo "<span>CourseID: " . $row['CourseID'] . "</span";
           echo "<span>Credits: " . $row['Credits'] . "</span>";
-            echo "<span> CourseNum: " . $row['CourseNum'] . "</span>";
+            echo "<span> CourseNum: " . $row['CourseNum'] . "</span><br>";
         }
         
        
@@ -18,17 +18,20 @@
 
      
  if(isset($_GET['deptSearch']) && $_GET['deptSearch'] != "" && $_GET['deptSearch'] != " "){
-            $logic = new Logic();
-        $searchTxt = $_GET['search'];
+        $logic = new Logic();
+        $searchTxt = $_GET['deptSearch'];
+//     echo $searchTxt;
         $results = $logic->searchByDept($searchTxt);
         foreach ($results as $row) {
           echo "<span>CourseName: " . $row['CourseName'] . "</span>";
           echo "<span>CourseID: " . $row['CourseID'] . "</span";
           echo "<span>Credits: " . $row['Credits'] . "</span>";
-          echo "<span> CourseNum: " . $row['CourseNum'] . "</span>";
+          echo "<span> CourseNum: " . $row['CourseNum'] . "</span><br>";
         }
-      echo "";
+     echo "";
+     
     }
+    
         
 ?>
 
