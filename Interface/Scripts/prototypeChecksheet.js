@@ -101,7 +101,7 @@ function pageLoadPrototype() {
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
 				+ "title = 'Search for a course by using keywords such as course name or number'>"
 				+ "<div class = 'searchBox'>"
-				+ "<input type = 'text' onkeydown='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
+				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
                 +"<div id='searchResults' style=' overflow: scroll;'></div>"
 				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "

@@ -7,7 +7,12 @@
         
         
         public function searchBoxQuery($searchParam){
-            $results = DB::query("SELECT CourseID,CourseName,Credits FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);
+            $results = DB::query("SELECT CourseID,CourseName,Credits,CourseNum FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);
+            return $results;
+        }
+        
+        public function searchByDept($searchParam){
+            $results = DB::query("SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`= %ss ORDER BY `CourseNum   ;", $searchParam);
             return $results;
         }
 		
