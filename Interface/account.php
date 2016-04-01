@@ -11,9 +11,9 @@
 					$("#mainSection")
 						.append("<div class = 'boxed'>"
 							+ "<table class = 'interface' >"
-							+ "<tr><td class = 'labelAlign' >Name:</td><td><span class = 'box'>PLACEHOLDER</span></td></tr>"
-							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td><span class = 'box'>PLACEHOLDER</span></td></tr>"
-							+ "<tr><td class = 'labelAlign' >Email:</td><td><span class = 'box'>PLACEHOLDER</span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Name:</td><td class = 'paddedTD'><span class = 'box'>PLACEHOLDER</span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td class = 'paddedTD'><span class = 'box'>PLACEHOLDER</span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Email:</td><td class = 'paddedTD'><span class = 'box'>PLACEHOLDER</span></td></tr>"
 							+ "</table>"
 							+ "<p><a href = 'changePassword.php'>Change your password</a></p></div>");
 				});
