@@ -101,8 +101,9 @@ function pageLoadPrototype() {
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
 				+ "title = 'Search for a course by using keywords such as course name or number'>"
 				+ "<div class = 'searchBox'>"
-				+ "<input type = 'text' onkeydown='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
+				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
+                +"<div id='searchResults' style=' overflow: scroll;'></div>"
 				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
 				+ "<select name = 'courseDropdown' class = 'courseSelect'>"
@@ -566,7 +567,7 @@ function searchBox(){
     $.ajax({
                 url: "./Scripts/DBSearchWAJAX.php?search=" + $('#searchInput').val(),
                 success: function (data) {
-                    alert(String(data));
+                   $('#searchResults').html(String(data));
                 }
             });
     return true;
