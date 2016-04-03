@@ -44,7 +44,7 @@
 		
 		$logic -> createUser($studentId, $email, $hashedPassword, $firstName, $lastName);
 		//header('location: gmoohHome.php');
-		//header('location: login.php');
+		header('location: login.php');
 		//needs to be directed to login or home. probably login to login in with new account
 		}
 	?>

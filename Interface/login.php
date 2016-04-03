@@ -1,5 +1,7 @@
 <?php 
 	require_once("../PHPClasses/logic.class.php");
+	session_start();	
+//    $_SESSION["loggedIn"] = null;
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,8 +48,6 @@
 	</body>
 </html>
 <?php
-
-	session_start();	
     echo "All passwords are password";
 	if(isset($_POST['email'])){
 		$email = $_POST['email'];
@@ -72,16 +72,18 @@
 	
 	//If you've already logged in previously execute this code
 	if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
-	//Should redirect to the home page - gmoohHome.php
-	//header('location: ../Interface/gmoohHome.php');
-	header('location: gmoohHome.php');
-	$userID = $logic -> setSession($email);
-	$_SESSION["userID"] = $userID;
-	exit();
+        echo "if 1: loggedinis set" . $_SESSION["loggedIn"];
+        //Should redirect to the home page - gmoohHome.php
+        //header('location: ../Interface/gmoohHome.php');
+        $userID = $logic -> setSession($email);
+        $_SESSION["userID"] = $userID;
+        header('location: gmoohHome.php');
+        exit();
 	}
 	//This code will only execute if you've never logged in or you've tried to log in incorrectly(wrong password/username)
 	//Logout code will have to unset session variable loggedIn or set it to false
 	if(!isset($_POST['submit']) && (!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false)&& !is_null($password) && !is_null($email)){
+        echo "if 2";
 		$loggedIn = $logic -> validateUser($email, $password);
 		//Uncomment the line below and log in with "password" to reset all the passwords to a hashed "password"
 		//$loggedIn = $logic -> setDBPass($password);
@@ -94,7 +96,8 @@
 			
 		}
 		//If your password/Username are correct execute this code
-		if($_SESSION["loggedIn"]) {
+		if($_SESSION["loggedIn"] == true) {
+            echo "if 3 loggedIn: " . $_SESSION["loggedIn"];
 			$userID = $logic -> setSession($email);
 			$_SESSION["userID"] = $userID;
 			//should redirect to the home page - gmoohHome.php
