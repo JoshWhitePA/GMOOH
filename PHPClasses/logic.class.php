@@ -6,6 +6,15 @@
    		}
         
         
+        
+        public function getUserInfo($ID){
+            $results = DB::query("SELECT FirstName,LastName,Email,StudentId as ID from STUDENT where StudentId = %s;", $ID);
+            if($results == null){
+                 $results = DB::query("SELECT FirstName,LastName,Email,FacultyID as ID from FACULTY where FacultyID = %s;", $ID);
+            }
+            return $results;
+        }
+        
         public function searchBoxQuery($searchParam){
             $results = DB::query("SELECT CourseID,CourseName,Credits,CourseNum FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);
             return $results;
@@ -18,14 +27,14 @@
 		
 		//This function will set all of the passwords in the db to 
 		//whatever parameter you pass it. Be currful
-		public function setDBPass($Password){
-			$newPass = $this -> generateHashWithSalt($Password);
-			
-			DB::update('STUDENT', array(
-		  'Password' => $newPass
-		  ), "1 = %i", '1');
-			 return $newPass;
-		}
+//		public function setDBPass($Password){
+//			$newPass = $this -> generateHashWithSalt($Password);
+//			
+//			DB::update('STUDENT', array(
+//		  'Password' => $newPass
+//		  ), "1 = %i", '1');
+//			 return $newPass;
+//		}
 
 		public function validateUser($email, $password){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
