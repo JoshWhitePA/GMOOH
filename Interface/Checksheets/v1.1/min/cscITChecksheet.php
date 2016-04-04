@@ -37,7 +37,14 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
+							<th class = 'courseBox'>
+								<div id = 'Oral Communication' 
+									ondrop = 'drop_handler(event)'
+									ondragover = 'dragover_handler(event)'
+									onclick = 'findCourses(this)' 
+									class = 'courseNameBox'>
+								</div>
+							</th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' />

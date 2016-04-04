@@ -6,6 +6,8 @@ html {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	min-width: 966px;
+	min-height: 600px;
 	background-image: url("../Images/softColorBackground.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -180,8 +182,6 @@ div.leftSection {
     width: 18%;
 	padding: 10px;
 	text-align: center;
-	overflow-x: hidden;
-	overflow-y: hidden;
 	position: absolute;
 	background: rgba(249, 249, 249, 0.8);
 	border: solid;
@@ -199,8 +199,6 @@ div.leftInnerSection {
 	height: 44%;
 	float: left;
 	text-align: left;
-	overflow-x: hidden;
-	overflow-y: auto;
 	position: relative;
 	background-color: #f9f9f9;
 	opacity: 0.8;
@@ -220,8 +218,6 @@ div.rightSection {
     width: 18%;
 	padding: 10px;
 	text-align: center;
-	overflow-x: hidden;
-	overflow-y: hidden;
 	position: absolute;
 	background: rgba(249, 249, 249, 0.8);
 	border: solid;
@@ -239,8 +235,6 @@ div.rightInnerSection {
 	height: 44%;
 	float: left;
 	text-align: left;
-	overflow-x: hidden;
-	overflow-y: auto;
 	position: relative;
 	background-color: #f9f9f9;
 	opacity: 0.8;
@@ -322,9 +316,17 @@ div.titleBox {
 	font-size: 16px;
 	font-weight: bold;
 	background-color: white; 
-	border-style: none none solid none; 
+	border-style: none none solid none;
 	border-width: 2px; 
 	border-color: #dddddd;
+}
+
+div.sectionCourses {
+	width: 100%;
+	height: calc(100% - 27px);
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .searchTextBox {
@@ -388,7 +390,8 @@ div.titleBox {
 }
 
 select.courseSelect {
-	width: 100%; 
+	width: 100%;
+	height: 25px;
 	border-style: none none solid none; 
 	border-width: 2px; 
 	border-color: #dddddd;
@@ -405,12 +408,14 @@ select.checksheetSelect {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-button.courseBox {
+div.courseBox {
 	height: 20px;
-	width: 100%;
+	width: calc(100% - 5px);
+	margin-left: 5px;
 	text-align: left;
 	background-color: transparent;
-	border: none;
+	z-index: 3;
+	cursor: default;
 }
 
 label.sectionLabel {

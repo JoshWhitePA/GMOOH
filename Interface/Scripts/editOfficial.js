@@ -1,5 +1,5 @@
 var lastSection; //Retains the location of the last checksheet section selected
-var startup;
+var startup = false;
 
 //Call this function within the jquery document ready function
 function pageLoadEditOfficial() {	
@@ -35,6 +35,12 @@ function pageLoadEditOfficial() {
 			+ "<div id = 'printThis' title = 'Print Alert' class = 'popupDialog'>"
 			+ "<p>You are about to navigate away from your checksheet</p></div>"
 			
+			+ "<div id = 'resetThis' title = 'Save Checkhsheet?' class = 'popupDialog'>"
+			+ "<p>Do you wish to save your checksheet before resetting?</p></div>"
+			
+			+ "<div id = 'wasReset' title = 'Checksheet Reset' class = 'popupDialog'>"
+			+ "<p>Your checksheet was reset to the last save of your official checksheet.</p></div>"
+			
 			+ "<div id = 'notes1' title = 'University Distribution Notes' class = 'popupDialog'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in II.A. "
 			+ "GEG courses 40, 204, 274, 304, 322, 323, 324, 347, 380 and 394 may NOT be used in II.B.</p></div>"
@@ -64,8 +70,7 @@ function pageLoadEditOfficial() {
 	$("#right").css("visibility", "visible");
 	$("#mainSection")
 		//Place content inside the main section of the master page
-		.append("<div class = 'officialHeaderBox'>Editing will create a new checksheet NOT change your official one</div>"
-			+ "<div id = 'innerSection' class = 'innerSection'></div>"
+		.append("<div id = 'innerSection' class = 'innerSection'></div>"
 			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
 			+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 			+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
@@ -73,21 +78,21 @@ function pageLoadEditOfficial() {
 			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
 			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>"
 			+ "<input type = 'image' src = 'Images/resetIcon.png' class = 'resetImg'"
-			+ "title = 'Resets checksheet to your official checksheet' onclick = 'resetChecksheet()'/>");
+			+ "title = 'Resets checksheet to your last official checkheet save' onclick = 'resetChecksheet()'/>");
 		$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 		//Place content inside the left section of the master page
 		$("#left")
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
 				+ "title = 'The course section you select and its related courses will appear here'>"
 				+ "<div id = 'sectionTitle' class = 'titleBox'>"	
-				+ "<label class = 'sectionLabel'></label></div><span></span></div>"
+				+ "<label class = 'sectionLabel'></label></div><div id = 'sectionCourseList' class = 'sectionCourses'></div></div>"
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
 				+ "<select name = 'courseDropdown' class = 'courseSelect'>"	
 				+ "<option>Select A Semester</option>"
 				+ "</select>"
-				+ "</div>");
+				+ "<div id = 'sectionCourseList' class = 'sectionCourses'></div></div>");
 		//Place content inside the right section of the master page
 		$("#right")
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
@@ -95,8 +100,8 @@ function pageLoadEditOfficial() {
 				+ "<div class = 'searchBox'>"
 				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
-                +"<div id='searchResults' style=' overflow: scroll;white-space: pre;'></div>"
-				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
+                + "<div id = 'searchResults' class = 'sectionCourses'></div></div>"
+				+ "<div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
 				+ "<select name = 'courseDropdown'  id='deptDD' onchange='searchByDept()' class = 'courseSelect'>"
 				+ "<option>Select A Department</option>"
@@ -169,20 +174,21 @@ function pageLoadEditOfficial() {
 				+ "<option>WGS - Women's and Gender Studies</option>"
 				+ "<option>WRI - Writing</option>"
 				+ "</select>"
-				+ "<div id='deptS' style=' overflow: scroll;white-space: pre;'></div></div>");
+				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
 	});
+	/*
 	if(!startup)
 	{
 		startUpNotes();
 		startup = true;
-	}
+	}*/
 }
 
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-	$("#leftInnerSection span") //replace span content with courses
-		.replaceWith("<span><button class = 'courseBox'>" + $(item).attr("id") + " Course</button></span>");
+	$("#sectionCourseList") //replace span content with courses
+		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'><button class = 'courseBox' onclick = 'startUpNotes()'>" + $(item).attr("id") + " Course</button></div>");
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
 		
@@ -216,7 +222,7 @@ function startUpNotes() {
 				buttons: {
 					"Got it!": function() { 
 						$("#master").unblock();
-						$( this ).dialog( "close" ); 
+						$( this ).dialog( "close" );
 					}
 				}
 			});
@@ -253,18 +259,7 @@ function printChecksheet() {
 }
 
 function printThis() {
-	if(currentChecksheet == "it")
-		window.location.assign("Checksheets/v1.1/cscITChecksheet.php");
-	else if(currentChecksheet == "Mit")
-		window.location.assign("Checksheets/v1.1/cscITMastersChecksheet.php");
-	else if(currentChecksheet == "itm")
-		window.location.assign("Checksheets/v1.1/cscITMinorChecksheet.php");
-	else if(currentChecksheet == "sd")
-		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
-	else if(currentChecksheet == "Msd")
-		window.location.assign("Checksheets/v1.1/cscSDMastersChecksheet.php");
-	else
-		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
+	window.open("Checksheets/v1.1/cscITChecksheet.php", "_blank");
 }
 
 //Function to save the checksheet		
@@ -327,8 +322,8 @@ function clearChecksheet() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#leftInnerSection span")
-			.replaceWith("<span><button class = 'courseBox'></button></span>");
+		$("#sectionCourseList")
+			.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'></div>");
 	}
 }
 	

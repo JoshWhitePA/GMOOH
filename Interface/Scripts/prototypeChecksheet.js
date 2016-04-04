@@ -12,6 +12,8 @@ function pageLoadPrototype() {
 			+ "met the prerequisites for. Now that the formalities are out of the way, let's get to filling that "
 			+ "checksheet!</p></div>"
 			
+			+ "<div id = 'draggableHelper'></div>"
+			
 			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' class = 'popupDialog'>"
 			+ "<p>Before taking any 300-level course you must have completed 18 credit hours in CSC courses "
 			+ "numbered 125 or above with a GPA of 2.25 in the CSC courses.</p>"
@@ -87,14 +89,14 @@ function pageLoadPrototype() {
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
 				+ "title = 'The course section you select and its related courses will appear here'>"
 				+ "<div id = 'sectionTitle' class = 'titleBox'>"	
-				+ "<label class = 'sectionLabel'></label></div><span></span></div>"
+				+ "<label class = 'sectionLabel'></label></div><div id = 'sectionCourseList' class = 'sectionCourses'></div></div>"
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
-				+ "<select name = 'courseDropdown' class = 'courseSelect'>"	
+				+ "<select id = 'termDD' name = 'courseDropdown' class = 'courseSelect'>"	
 				+ "<option>Select A Semester</option>"
 				+ "</select>"
-				+ "</div>");
+				+ "<div id = 'termList' class = 'sectionCourses'></div></div>");
 		//Place content inside the right section of the master page
 ///////////////
 		$("#right")
@@ -103,13 +105,14 @@ function pageLoadPrototype() {
 				+ "<div class = 'searchBox'>"
 				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
-                +"<div id='searchResults' style=' overflow: scroll;white-space: pre;'></div>"
-				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
+                + "<div id = 'searchResults' class = 'sectionCourses'></div></div>"
+				+ "<div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
-				+ "<select name = 'courseDropdown' id='deptDD' onchange='searchByDept()' class = 'courseSelect'>"
+				+ "<select name = 'courseDropdown' id = 'deptDD' onchange = 'searchByDept()' class = 'courseSelect'>"
 				+ "<option>Select A Department</option>"
 								
 				//Temporary, should be filled by database at a later time
+				+ "<optgroup label = 'A ------------------------------------'>"
 				+ "<option>ACC - Accounting</option>"
 				+ "<option>ANT - Anthropology</option>"
 				+ "<option>ARA - Arabic</option>"
@@ -118,8 +121,12 @@ function pageLoadPrototype() {
 				+ "<option>ART - Art</option>"
 				+ "<option>ARU - Art Education</option>"
 				+ "<option>AST - Astronomy</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'B ------------------------------------'>"
 				+ "<option>BIO - Biology</option>"
 				+ "<option>BUS - Business</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'C ------------------------------------'>"
 				+ "<option>CDE - Communication Design</option>"
 				+ "<option>CDH - Communication Design History</option>"
 				+ "<option>CFT - Crafts</option>"
@@ -128,6 +135,8 @@ function pageLoadPrototype() {
 				+ "<option>COM - Communication</option>"
 				+ "<option>CRJ - Criminal Justice</option>"
 				+ "<option>CSC - Computer Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'E ------------------------------------'>"
 				+ "<option>ECO - Economics</option>"
 				+ "<option>EDU - Education</option>"
 				+ "<option>EEU - Elementary Education: Pre-K 4</option>"
@@ -135,19 +144,31 @@ function pageLoadPrototype() {
 				+ "<option>ELU - Elementary Education</option>"
 				+ "<option>ENG - English</option>"
 				+ "<option>ENV - Environmental Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'F ------------------------------------'>"
 				+ "<option>FAR - Fine Arts</option>"
 				+ "<option>FAS - Fine Arts Studio</option>"
 				+ "<option>FIN - Finance</option>"
 				+ "<option>FRE - French</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'G ------------------------------------'>"
 				+ "<option>GEG - Geography</option>"
 				+ "<option>GEL - Geology</option>"
 				+ "<option>GER - German</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'H ------------------------------------'>"
 				+ "<option>HEA - Health</option>"
 				+ "<option>HIS - History</option>"
 				+ "<option>HUM - Humanities</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'I ------------------------------------'>"
 				+ "<option>INT - International Studies</option>"
 				+ "<option>ITC - Instructional Technology</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'L ------------------------------------'>"
 				+ "<option>LIB - Library Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'M ------------------------------------'>"
 				+ "<option>MAR - Marine Science</option>"
 				+ "<option>MAT - Mathematics</option>"
 				+ "<option>MGM - Management</option>"
@@ -157,6 +178,8 @@ function pageLoadPrototype() {
 				+ "<option>MUP - Music Performance</option>"
 				+ "<option>MUS - Music</option>"
 				+ "<option>MUU - Music Education</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'P ------------------------------------'>"
 				+ "<option>PAG - Pennsylvania German Studies</option>"
 				+ "<option>PEC - Physical Education Class</option>"
 				+ "<option>PHI - Philosophy</option>"
@@ -165,19 +188,28 @@ function pageLoadPrototype() {
 				+ "<option>POL - Political Science</option>"
 				+ "<option>PRO - Professional Studies</option>"
 				+ "<option>PSY - Psychology</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'R ------------------------------------'>"
 				+ "<option>RUS - Russian</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'S ------------------------------------'>"
 				+ "<option>SEU - Secondary Education</option>"
 				+ "<option>SOC - Sociology</option>"
 				+ "<option>SPA - Spanish</option>"
 				+ "<option>SPT - Sport</option>"
 				+ "<option>SPU - Special Education</option>"
 				+ "<option>SWK - Social Work</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'T ------------------------------------'>"
 				+ "<option>THE - Theatre</option>"
 				+ "<option>TVE - Electronic Media</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'W ------------------------------------'>"
 				+ "<option>WGS - Women's and Gender Studies</option>"
 				+ "<option>WRI - Writing</option>"
+				+ "</optgroup>"
 				+ "</select>"
-				+ "<div id='deptS' style=' overflow: scroll;white-space: pre;'></div></div>");
+				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
 		
 		//Whenever the select dropdrown menu is changed
 		$("#currentChecksheet").change(function() {
@@ -218,15 +250,15 @@ function pageLoadPrototype() {
 			}
 			else if($("#currentChecksheet option:selected").val() == "Msd") 
 			{
-				$("#innerSection").load("Checksheets/v1.1/min/OutputProto.php");
+				$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
 				$("#sectionTitle label").text("");
 				$("#leftInnerSection span").replaceWith("<span></span>");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
-            else if($("#currentChecksheet option:selected").val() == "savIT") 
+            else if($("#currentChecksheet option:selected").val() == "sdm") 
 			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
+				$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
 				$("#sectionTitle label").text("");
 				$("#leftInnerSection span").replaceWith("<span></span>");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
@@ -242,18 +274,22 @@ function pageLoadPrototype() {
 			}
 		}) .change(); //This makes sure it happens every time
 	});
+	/*
 	if(!startup)
 	{
 		startUpNotes();
 		startup = true;
-	}
+	}*/
 }
 
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-	$("#leftInnerSection span") //replace span content with courses
-		.replaceWith("<span><button class = 'courseBox'>" + $(item).attr("id") + " Course</button></span>");
+	$("#sectionCourseList") //replace span content with courses
+		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
+			+" <div id = 'draggableCourse' class = 'courseBox' draggable = 'true' ondragstart = 'dragstart_handler(event)'>"
+			+ $(item).attr("id") + " Course</div></div>");
+	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
 		
@@ -269,6 +305,12 @@ function findCourses(item) {
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
 		$(item).effect("pulsate", 5000); 
+	});
+	
+	addEvent($(item), 'dragstart', function (event) {
+		// store the ID of the element, and collect it on the drop later on
+
+		event.dataTransfer.setData('Text', this.id);
 	});
 }
 
@@ -286,7 +328,7 @@ function startUpNotes() {
 				buttons: {
 					"Got it!": function() { 
 						$("#master").unblock();
-						$( this ).dialog( "close" ); 
+						$( this ).dialog( "close" );
 					}
 				}
 			});
@@ -325,19 +367,19 @@ function printChecksheet() {
 
 function printThis() {
 	if(currentChecksheet == "it")
-		window.location.assign("Checksheets/v1.1/cscITChecksheet.php");
+		window.open("Checksheets/v1.1/cscITChecksheet.php", "_blank");
 	else if(currentChecksheet == "Mit")
-		window.location.assign("Checksheets/v1.1/cscITMastersChecksheet.php");
+		window.open("Checksheets/v1.1/cscITMastersChecksheet.php", "_blank");
 	else if(currentChecksheet == "itm")
-		window.location.assign("Checksheets/v1.1/cscITMinorChecksheet.php");
+		window.open("Checksheets/v1.1/cscITMinorChecksheet.php", "_blank");
 	else if(currentChecksheet == "sd")
-		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
+		window.open("Checksheets/v1.1/cscSDChecksheet.php", "_blank");
 	else if(currentChecksheet == "Msd")
-		window.location.assign("Checksheets/v1.1/OutputProto.php");
+		window.open("Checksheets/v1.1/OutputProto.php", "_blank");
     else if(currentChecksheet == "savIT")
-		window.location.assign("Checksheets/v1.1/cscITChecksheetSaved.php");
+		window.open("Checksheets/v1.1/cscITChecksheetSaved.php", "_blank");
 	else
-		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
+		window.open("Checksheets/v1.1/cscSDMinorChecksheet.php", "_blank");
 }
 
 //Function to save the checksheet		
@@ -347,16 +389,13 @@ function saveChecksheet() {
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$("#saveThis").dialog({
+				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-						$( this ).dialog( "close" ); },
-					Cancel: function() {
-						$("#master").unblock();
-						$( this ).dialog( "close" );
-					}
+						$( this ).dialog( "close" ); }
 				}
 			});
 		});
@@ -404,8 +443,8 @@ function clearChecksheet() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#leftInnerSection span")
-			.replaceWith("<span><button class = 'courseBox'></button></span>");
+		$("#sectionCourseList")
+			.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'></div>");
 	}
 }
 	
@@ -591,4 +630,18 @@ function searchByDept(){
     return true;
 }
      
+function dragstart_handler(ev) {
+	ev.dataTransfer.setData("text/plain", ev.target.id);
+	ev.dataTransfer.dropEffect = "copy";
+}
 
+function dragover_handler(ev) {
+	ev.preventDefault();
+	ev.dataTransfer.dropEffect = "copy"
+}
+function drop_handler(ev) {
+	ev.preventDefault();
+	// Get the id of the target and add the moved element to the target's DOM
+	var data = ev.dataTransfer.getData("text");
+	ev.target.appendChild(document.getElementById(data));
+}
