@@ -134,3 +134,7 @@ th.dropdownSection {
 th.topSection {
     /* Future tweaks mirroring th.dropdownSection */
 }
+
+.sectionNoteStyle { /* Don't know if this NEEDS to be duplicated, but I'm not going to futz with it. */
+    text-decoration: none;
+}
