@@ -4,7 +4,7 @@ var startup;
 //Call this function within the jquery document ready function
 function pageLoadPrototype() {
 	$("#behindTheScenes")
-		.append("<div id = 'startUp' title = 'Time to Create A Checksheet!' style = 'display: none; z-index: 3'>"
+		.append("<div id = 'startUpDialog' title = 'Time to Create A Checksheet!' class = 'popupDialog'>"
 			+ "<p>It looks like it's your first time here so let me tell you about creating a checksheet! "
 			+ "Just click on a section to display courses that would go there or you can search for courses "
 			+ "by keyword or department. Once you find a course you like, drag and drop it into the appropriate "
@@ -12,49 +12,49 @@ function pageLoadPrototype() {
 			+ "met the prerequisites for. Now that the formalities are out of the way, let's get to filling that "
 			+ "checksheet!</p></div>"
 			
-			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' class = 'popupDialog'>"
 			+ "<p>Before taking any 300-level course you must have completed 18 credit hours in CSC courses "
 			+ "numbered 125 or above with a GPA of 2.25 in the CSC courses.</p>"
 			+ "<p>CSC-prefix courses below 125-level, CSC 130, CSC 280 and CSC 380 do not count towards the BS in CSC.</p></div>"
 			
-			+ "<div id = 'msCSCNotes' title = 'Notes on MS in Computer Science' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'msCSCNotes' title = 'Notes on MS in Computer Science' class = 'popupDialog'>"
 			+ "<p>You can take one of the following options:<br/>"
 			+ "&emsp;&bull; 30 sh of courses + comprehensive exam<br/>"
 			+ "&emsp;&bull; 24 sh of courses + 6 sh of CSC 599: Thesis</p>"
 			+ "<p>At least 18 sh must be 500-level courses.</p></div>"
 		
-			+"<div id = 'clearThis' title = 'Save Checksheet?' style = 'display: none; z-index: 3'>"
+			+"<div id = 'clearThis' title = 'Save Checksheet?' class = 'popupDialog'>"
 			+ "<p>Do you wish to save your checksheet before clearing it?</p></div>"
 			
-			+ "<div id = 'saveThis' title = 'Save Complete' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'saveThis' title = 'Save Complete' class = 'popupDialog'>"
 			+ "<p>Your checksheet was successfully saved. You can find it on the view saved checksheets page.</p></div>"
 			
-			+ "<div id = 'cleared' title = 'Checksheet Cleared' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'cleared' title = 'Checksheet Cleared' class = 'popupDialog'>"
 			+ "<p>Your checksheet is now empty. Get to filling it!</p></div>"
 			
-			+ "<div id = 'printThis' title = 'Print Alert' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'printThis' title = 'Print Alert' class = 'popupDialog'>"
 			+ "<p>You are about to navigate away from your checksheet</p></div>"
 			
-			+ "<div id = 'notes1' title = 'University Distribution Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes1' title = 'University Distribution Notes' class = 'popupDialog'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in II.A. "
 			+ "GEG courses 40, 204, 274, 304, 322, 323, 324, 347, 380 and 394 may NOT be used in II.B.</p></div>"
 			
-			+ "<div id = 'notes2' title = 'Competancy Across the Curriculum Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes2' title = 'Competancy Across the Curriculum Notes' class = 'popupDialog'>"
 			+ "<p>A Competency Across the Curriculum (CAC) course in not a separate course, but rather an overlay that is "
 			+ "'double counted' as fulfilling both the CAC requirement and another requirement in either General Eduacation "
 			+ "(except for the University Core) the major, or the minor</p></div>"
 			
-			+ "<div id = 'notes3' title = 'College of Liberal Arts and Sciences Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes3' title = 'College of Liberal Arts and Sciences Notes' class = 'popupDialog'>"
 			+ "<p>Students in the College of Liberal Arts and Sciences are required to take at least one course in "
 			+ "Biological Science (BIO) and at least one course in Physical Science (AST, CHM, ENV, GEL, PHY, MAR, GEG "
 			+ "with a lab, or GEG 40, 322 or 323) and at least one of which must be a lab "
 			+ "(each course may be counted in either II.A or IV.A).</p></div>"
 			
-			+ "<div id = 'notes4' title = 'College Distribution Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes4' title = 'College Distribution Notes' class = 'popupDialog'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in IV.A. "
 			+ "GEG courses 40, 204, 274, 304, 322, 323, 324, 347, 380 and 394 may NOT be used in IV.B.</p></div>"
 			
-			+ "<div id = 'notes5' title = 'Pennsylvania German Studies Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes5' title = 'Pennsylvania German Studies Notes' class = 'popupDialog'>"
 			+ "<p>Excludes PAG 11 and 12</p></div>");
 			
 	//Load master page into current page's body
@@ -274,17 +274,20 @@ function findCourses(item) {
 
 function startUpNotes() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
-			$("#startUp").dialog({
+			$("#startUpDialog").dialog({
+				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
 				width: 535,		
 				buttons: {
-					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					"Got it!": function() { 
+						$("#master").unblock();
+						$( this ).dialog( "close" ); 
+					}
 				}
 			});
 		});
@@ -294,8 +297,8 @@ function startUpNotes() {
 //Function to direct the user to the current selected checksheet in its proper
 //two column form to make it easier to print		
 function printChecksheet() {
-		$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+	$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -340,18 +343,20 @@ function printThis() {
 //Function to save the checksheet		
 function saveChecksheet() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#saveThis").dialog({
-				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-						$( this ).dialog( "close" ); }
+						$( this ).dialog( "close" ); },
+					Cancel: function() {
+						$("#master").unblock();
+						$( this ).dialog( "close" );
+					}
 				}
 			});
 		});
@@ -361,7 +366,7 @@ function saveChecksheet() {
 //Function to alert the user they are about to clear the checksheet
 function clearAlert() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -405,7 +410,7 @@ function clearChecksheet() {
 }
 	
 function clearDialog() {
-	$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+	$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 	$("#master").block({ message: null, baseZ: 2 });
 	$.ui.dialog.prototype._focusTabbable = function(){};
 	$("#cleared").dialog({
@@ -422,7 +427,7 @@ function clearDialog() {
 
 function geNotes1() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -442,7 +447,7 @@ function geNotes1() {
 
 function geNotes2() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -462,7 +467,7 @@ function geNotes2() {
 
 function geNotes3() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -482,7 +487,7 @@ function geNotes3() {
 
 function geNotes4() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -502,7 +507,7 @@ function geNotes4() {
 
 function geNotes5() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -522,7 +527,7 @@ function geNotes5() {
 
 function bsCSCNotes() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$("#bsCSCNotes").dialog({
@@ -541,7 +546,7 @@ function bsCSCNotes() {
 
 function msCSCNotes() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$("#msCSCNotes").dialog({

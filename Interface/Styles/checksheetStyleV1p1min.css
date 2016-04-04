@@ -11,8 +11,8 @@
 div.section {
 	min-height: 300px;
     width: 90%;
-	float: left;
-	position: abolute;
+	left: 10px;
+	position: relative;
 }
 
 div.newSection {
