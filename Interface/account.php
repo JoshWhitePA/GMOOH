@@ -26,9 +26,9 @@
 					$("#mainSection")
 						.append("<div class = 'boxed'>"
 							+ "<table class = 'tableCenter' >"
-							+ "<tr><td class = 'labelAlign' >Name:</td><td class = 'paddedTD'><span class = 'box'><?php echo $name; ?></span></td></tr>"
-							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td class = 'paddedTD'><span class = 'box'><?php echo $ID; ?></span></td></tr>"
-							+ "<tr><td class = 'labelAlign' >Email:</td><td class = 'paddedTD'><span class = 'box'><?php echo $email; ?></span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Name:</td><td class = 'dataTD'><span class = 'box'><?php echo $name; ?></span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td class = 'dataTD'><span class = 'box'><?php echo $ID; ?></span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Email:</td><td class = 'dataTD'><span class = 'box'><?php echo $email; ?></span></td></tr>"
 							+ "</table>"
 							+ "<p><a href = 'changePassword.php'>Change your password</a></p></div>");
 				});

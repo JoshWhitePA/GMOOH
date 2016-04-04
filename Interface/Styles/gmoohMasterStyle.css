@@ -544,6 +544,11 @@ td.paddedTD{ /* Add padding and some other tweaks*/
 	padding: 3px;
 }
 
+td.dataTD{ /* Add padding and some other tweaks*/
+	padding: 3px;
+	text-align: left;
+}
+
 table.tableCenter{ /* Align table to center. Add some general class. */
 	margin-left: auto;
 	margin-right: auto;
