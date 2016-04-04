@@ -129,3 +129,8 @@ th.dropdownSection {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	border-radius: 5px;
 }
+
+/* Additional styles for the homepage version of the checksheet */
+th.topSection {
+    /* Future tweaks mirroring th.dropdownSection */
+}
