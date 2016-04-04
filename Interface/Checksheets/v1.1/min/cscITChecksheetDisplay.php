@@ -218,8 +218,8 @@
 			<table>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr>
-					<th class = "tableCaption"><u title = "Click for notes" onclick = "geNotes2()">
-						III. COMPETENCIES ACROSS THE CURRICULUM</u></th>
+					<th class = "tableCaption">
+						III. COMPETENCIES ACROSS THE CURRICULUM</th>
 					<th class = "tableGradeCaption" title = "Minimum required number of credits">RC</th>
 					<th class = "tableGradeCaption" title = "Credits earned">CR</th>
 					<th class = "tableGradeCaption" title = "Grade earned">GR</th>

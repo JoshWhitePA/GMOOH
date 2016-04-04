@@ -138,3 +138,7 @@ th.topSection {
 .sectionNoteStyle { /* Don't know if this NEEDS to be duplicated, but I'm not going to futz with it. */
     text-decoration: none;
 }
+
+.sectionNoteStyle:hover { /* HACK! This is here until I'm sure that I can safely remove the 'th a:hover' tag from one of the above styles. */
+	opacity: 1;
+}
