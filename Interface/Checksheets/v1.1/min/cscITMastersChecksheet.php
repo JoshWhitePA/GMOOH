@@ -36,8 +36,8 @@
 					for($i = 0; $i < 8; $i++)
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:IT Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-								<td  class = 'tableGrade'></td>
-								<td  class = 'tableGrade'></td>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 							</tr>";
 				?>
 		<!-- Thesis (optional) -->
@@ -49,8 +49,8 @@
 				<!-- Since there can only be ONE thesis (or, if multiple, only one can count!), no need to have multiple columns -->
 				<tr>
 					<th class = 'courseBox'><div id = 'MS CSC:IT Thesis' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-					<td  class = 'tableGrade'></td>
-					<td  class = 'tableGrade'></td>
+					<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+					<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 				</tr>
 		<!-- ELECTIVE COURSES SECTION -->
 				<tr>
@@ -62,8 +62,8 @@
 					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:IT Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-								<td class = 'tableGrade'></td>
-								<td class = 'tableGrade'></td>
+								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 							</tr>";
 				?>
 			</table>
