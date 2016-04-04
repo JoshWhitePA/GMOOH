@@ -209,3 +209,11 @@ u {
 u:hover {
 	text-decoration: underline;
 }
+/* textbox for grades */
+.gradeBox{
+	width: 25px;
+	border: none;
+	background: transparent;
+	text-align: center;
+	
+}
