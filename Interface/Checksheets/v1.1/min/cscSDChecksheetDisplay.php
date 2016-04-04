@@ -59,7 +59,6 @@
 				<tr>
 					<th id = "oc" class = "dropdownSection"><a class = "dropButtonNotes">
 						A. Oral Communication</a>
-						<div class = "dropdownSectionNotes">COM 010 or above</div>
 					</th>
 				</tr>
 				<?php
@@ -76,7 +75,6 @@
 				<tr>
 					<th id = "wc" class = "dropdownSection"><a class = "dropButtonNotes">
 						B. Written Communication</a>
-						<div class = "dropdownSectionNotes">ENG 23, 24 or 25</div>
 					</th>
 				</tr>
 				<?php
@@ -91,7 +89,6 @@
 				<tr>
 					<th id = "mat" class = "dropdownSection"><a class = "dropButtonNotes">
 						C. Mathematics</a>
-						<div class = "dropdownSectionNotes">MAT 17 or above</div>
 					</th>
 				</tr>
 				<?php
@@ -106,7 +103,6 @@
 				<tr>
 					<th id = "well" class = "dropdownSection"><a class = "dropButtonNotes">
 						D. Wellness</a>
-						<div class = "dropdownSectionNotes">Any 3-credit HEA course</div>
 					</th>
 				</tr>
 				<?php
@@ -132,8 +128,6 @@
 				<tr>
 					<th id = "ns" class = "dropdownSection"><a class = "dropButtonNotes">
 						A. Natural Sciences</a>
-						<div class = "dropdownSectionNotes">Any
-							AST, BIO, CHM, ENV, GEL, PHY, MAR, or <u>GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -149,8 +143,6 @@
 				<tr>
 					<th id = "ss" class = "dropdownSection"><a class = "dropButtonNotes">
 						B. Social Sciences</a>
-						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, INT,
-							PSY, POL, SOC, SSE, SWK, or <u>GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -166,8 +158,6 @@
 				<tr>
 					<th id = "hum" class = "dropdownSection"><a class = "dropButtonNotes">
 						C. Humanities</a>
-						<div class = "dropdownSectionNotes">Any ENG, HUM, PAG, PHI, WGS,
-							WRI, or Modern Language</div>
 					</th>
 				</tr>
 				<?php
@@ -183,8 +173,6 @@
 				<tr>
 					<th id = "art" class = "dropdownSection"><a class = "dropButtonNotes">
 						D. Arts</a>
-						<div class = "dropdownSectionNotes">Any ARC, ARH, ART, CDE, CDH,
-							CFT, FAR, FAS, MUP, MUS, or THE</div>
 					</th>
 				</tr>
 				<?php
@@ -200,7 +188,6 @@
 				<tr>
 					<th id = "fel" class = "dropdownSection"><a class = "dropButtonNotes">
 						E. Free Elective</a>
-						<div class = "dropdownSectionNotes">Any course carrying university credit</div>
 					</th>
 				</tr>
 				<?php
@@ -318,8 +305,6 @@
 				<tr>
 					<th id = "nslab" class = "dropdownSection"><a class = "dropButtonNotes">
 						&nbsp; 1. Natural Science with Lab</a>
-						<div class = "dropdownSectionNotes">Any course with a lab in AST, BIO, CHM, ENV, GEL,
-							PHY, MAR, or <u>GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -335,8 +320,6 @@
 				<tr>
 					<th id = "nsel" class = "dropdownSection"><a class = "dropButtonNotes">
 						&nbsp; 2. Elective</a>
-						<div class = "dropdownSectionNotes">Any AST, BIO, CHM, CSC, ENV,
-							GEL, PHY, MAR, MAT or <u>GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -356,8 +339,6 @@
 				<tr>
 					<th id = "ssel1" class = "dropdownSection"><a class = "dropButtonNotes">
 						&nbsp; 1. Elective</a>
-						<div class = "dropdownSectionNotes">Any ANT, HIS, POL or 
-						<u>GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -373,7 +354,6 @@
 				<tr>
 					<th id = "ssel2" class = "dropdownSection"><a class = "dropButtonNotes">
 						&nbsp; 2. Elective</a>
-						<div class = "dropdownSectionNotes">Any CRJ, PSY, SOC or SWK</div>
 					</th>
 				</tr>
 				<?php
@@ -389,8 +369,6 @@
 				<tr>
 					<th id = "ssel3" class = "dropdownSection"><a class = "dropButtonNotes">
 						&nbsp; 3. Elective</a>
-						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, POL, 
-							PSY, SOC, SWK or <u>GEG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -421,8 +399,6 @@
 				<tr>
 					<th id = "humel1" class = "dropdownSection"><a class = "dropButtonNotes">
 						&emsp;1. Elective</a>
-						<div class = "dropdownSectionNotes">Any ENG, HUM, WRI or 
-							<u>PAG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -438,7 +414,6 @@
 				<tr>
 					<th id = "humel2" class = "dropdownSection"><a class = "dropButtonNotes">
 						&emsp;2. Elective</a>
-						<div class = "dropdownSectionNotes">Any Modern Language (103 or above) or PHI</div>
 					</th>
 				</tr>
 				<?php
@@ -454,8 +429,6 @@
 				<tr>
 					<th id = "humel3" class = "dropdownSection"><a class = "dropButtonNotes">
 						&emsp;3. Elective</a>
-						<div class = "dropdownSectionNotes">Any ENG, HUM, PHI, WRI, 
-							Modern Language (103 or above) or <u>PAG*</u></div>
 					</th>
 				</tr>
 				<?php
@@ -471,8 +444,6 @@
 				<tr>
 					<th id = "fel2" class = "dropdownSection"><a class = "dropButtonNotes">
 						D. Free Electives</a>
-						<div class = "dropdownSectionNotes">Choose any university courses
-							that count toward graduation</div>
 					</th>
 				</tr>
 				<?php
@@ -513,7 +484,6 @@
 				<tr>
 					<th id = "fel2" class = "dropdownSection"><a class = "dropButtonNotes">
 						&emsp;2. Elective Courses: <b>18 sh</b></a>
-						<div class = "dropdownSectionNotes">No more than two 200-level</div>
 					</th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
