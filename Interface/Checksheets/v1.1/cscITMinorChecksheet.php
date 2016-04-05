@@ -44,7 +44,7 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3">Minor Program: 21sh</th>
+					<th class = "tableHeader" colspan = "3">Minor Program: 21 sh</th>
 				</tr>
 				<tr>
 					<th>&emsp;1. Required Courses: <b>15 sh</b></th>

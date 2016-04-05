@@ -45,7 +45,7 @@
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "1">
-						400-level courses: 0-12 SH</th>
+						400-level courses: 0-12 sh</th>
 						<td class = "tableGrade">Gr</td>
 						<td class = "tableGrade">SH</td>
 				</tr>

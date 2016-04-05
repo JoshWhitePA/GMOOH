@@ -1,5 +1,5 @@
 var lastSection; //Retains the location of the last checksheet section selected
-var startup;
+var startup = false;
 
 //Call this function within the jquery document ready function
 function pageLoadEditOfficial() {	
@@ -11,6 +11,14 @@ function pageLoadEditOfficial() {
 			+ "section or semester. Please note that you take all responsibility for picking courses that you have or have not "
 			+ "met the prerequisites for. Now that the formalities are out of the way, let's get to filling that "
 			+ "checksheet!</p></div>"
+			
+			+ "<div id = 'startUpDialog2' title = 'Sorry.. One More Thing!' class = 'popupDialog'>"
+			+ "<p>As much as I would love to give you unlimited checksheets to create and save, "
+			+ "I can only give you three. Why three you ask? Well three is a nice low number that we can all "
+			+ " count on our fingers, toes, paws, tentacles, or whatever you have (I apologise now if you have "
+			+ "less than three digits and I'll refrain from the follow up question of why) "
+			+ "Just blame Josh for your unfortunate limitations on creativity and scholarly planning.</p></div>"
+			
 			
 			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' class = 'popupDialog'>"
 			+ "<p>Before taking any 300-level course you must have completed 18 credit hours in CSC courses "
@@ -34,6 +42,12 @@ function pageLoadEditOfficial() {
 			
 			+ "<div id = 'printThis' title = 'Print Alert' class = 'popupDialog'>"
 			+ "<p>You are about to navigate away from your checksheet</p></div>"
+			
+			+ "<div id = 'resetThis' title = 'Save Checkhsheet?' class = 'popupDialog'>"
+			+ "<p>Do you wish to save your checksheet before resetting?</p></div>"
+			
+			+ "<div id = 'wasReset' title = 'Checksheet Reset' class = 'popupDialog'>"
+			+ "<p>Your checksheet was reset to the last save of your official checksheet.</p></div>"
 			
 			+ "<div id = 'notes1' title = 'University Distribution Notes' class = 'popupDialog'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in II.A. "
@@ -64,8 +78,7 @@ function pageLoadEditOfficial() {
 	$("#right").css("visibility", "visible");
 	$("#mainSection")
 		//Place content inside the main section of the master page
-		.append("<div class = 'officialHeaderBox'>Editing will create a new checksheet NOT change your official one</div>"
-			+ "<div id = 'innerSection' class = 'innerSection'></div>"
+		.append("<div id = 'innerSection' class = 'innerSection'></div>"
 			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
 			+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 			+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
@@ -73,21 +86,21 @@ function pageLoadEditOfficial() {
 			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
 			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>"
 			+ "<input type = 'image' src = 'Images/resetIcon.png' class = 'resetImg'"
-			+ "title = 'Resets checksheet to your official checksheet' onclick = 'resetChecksheet()'/>");
+			+ "title = 'Resets checksheet to your last official checkheet save' onclick = 'resetChecksheet()'/>");
 		$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 		//Place content inside the left section of the master page
 		$("#left")
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
 				+ "title = 'The course section you select and its related courses will appear here'>"
 				+ "<div id = 'sectionTitle' class = 'titleBox'>"	
-				+ "<label class = 'sectionLabel'></label></div><span></span></div>"
+				+ "<label class = 'sectionLabel'></label></div><div id = 'sectionCourseList' class = 'sectionCourses'></div></div>"
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
 				+ "<select name = 'courseDropdown' class = 'courseSelect'>"	
 				+ "<option>Select A Semester</option>"
 				+ "</select>"
-				+ "</div>");
+				+ "<div id = 'sectionCourseList' class = 'sectionCourses'></div></div>");
 		//Place content inside the right section of the master page
 		$("#right")
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
@@ -95,8 +108,8 @@ function pageLoadEditOfficial() {
 				+ "<div class = 'searchBox'>"
 				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
-                +"<div id='searchResults' style=' overflow: scroll;white-space: pre;'></div>"
-				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
+                + "<div id = 'searchResults' class = 'sectionCourses'></div></div>"
+				+ "<div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
 				+ "<select name = 'courseDropdown'  id='deptDD' onchange='searchByDept()' class = 'courseSelect'>"
 				+ "<option>Select A Department</option>"
@@ -169,10 +182,11 @@ function pageLoadEditOfficial() {
 				+ "<option>WGS - Women's and Gender Studies</option>"
 				+ "<option>WRI - Writing</option>"
 				+ "</select>"
-				+ "<div id='deptS' style=' overflow: scroll;white-space: pre;'></div></div>");
+				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
 	});
+	
 	if(!startup)
-	{
+	{	
 		startUpNotes();
 		startup = true;
 	}
@@ -181,8 +195,11 @@ function pageLoadEditOfficial() {
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-	$("#leftInnerSection span") //replace span content with courses
-		.replaceWith("<span><button class = 'courseBox'>" + $(item).attr("id") + " Course</button></span>");
+	$("#sectionCourseList") //replace span content with courses
+		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
+			+" <div id = 'draggableCourse' class = 'courseBox''>"
+			+ $(item).attr("id") + " Course</div></div>");
+	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
 		
@@ -196,7 +213,6 @@ function findCourses(item) {
 	}	
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
-	$(item).css("border-width", "3px");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
 		$(item).effect("pulsate", 5000); 
 	});
@@ -212,12 +228,31 @@ function startUpNotes() {
 				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
-				width: 535,		
+				width: 535,
 				buttons: {
-					"Got it!": function() { 
-						$("#master").unblock();
-						$( this ).dialog( "close" ); 
-					}
+					"Got it!": function() { startUpNotes2();
+						$(this).dialog("destroy"); }
+				}
+			});
+		});
+	});
+}
+
+
+function startUpNotes2() {
+	$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
+		$("#master").block({ message: null, baseZ: 2 });
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$.ui.dialog.prototype._focusTabbable = function(){};
+			$("#startUpDialog2").dialog({
+				dialogClass: "no-close",
+				resizable: false,
+				draggable: false,
+				width: 700,
+				buttons: {
+					"Enough! I Get It Already!": function() { $("#master").unblock();
+								$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -239,12 +274,12 @@ function printChecksheet() {
 				buttons: {
 					"I Want To Print!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						printThis();	
 					},
 					"Stay Here!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -253,18 +288,7 @@ function printChecksheet() {
 }
 
 function printThis() {
-	if(currentChecksheet == "it")
-		window.location.assign("Checksheets/v1.1/cscITChecksheet.php");
-	else if(currentChecksheet == "Mit")
-		window.location.assign("Checksheets/v1.1/cscITMastersChecksheet.php");
-	else if(currentChecksheet == "itm")
-		window.location.assign("Checksheets/v1.1/cscITMinorChecksheet.php");
-	else if(currentChecksheet == "sd")
-		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
-	else if(currentChecksheet == "Msd")
-		window.location.assign("Checksheets/v1.1/cscSDMastersChecksheet.php");
-	else
-		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
+	window.open("Checksheets/v1.1/cscITChecksheet.php", "_blank");
 }
 
 //Function to save the checksheet		
@@ -280,7 +304,7 @@ function saveChecksheet() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-						$( this ).dialog( "close" ); }
+						$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -300,18 +324,18 @@ function clearAlert() {
 				width: 535,		
 				buttons: {
 					"Save & Clear": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						saveChecksheet();
 						clearChecksheet();
 					},
 					"Clear Without Saving": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						clearChecksheet();
 						clearDialog();
 					},
 					Cancel: function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -327,8 +351,7 @@ function clearChecksheet() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#leftInnerSection span")
-			.replaceWith("<span><button class = 'courseBox'></button></span>");
+		$("#sectionCourseList").text("");
 	}
 }
 	
@@ -342,7 +365,7 @@ function clearDialog() {
 		width: 535,		
 		buttons: {
 			"Got it!": function() { $("#master").unblock();
-			$( this ).dialog( "close" ); }
+			$(this).dialog("destroy"); }
 		}
 	});
 }
@@ -359,18 +382,18 @@ function resetChecksheet() {
 				width: 535,		
 				buttons: {
 					"Save & Reset": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						saveChecksheet();
 						reset();
 					},
 					"Reset Without Saving": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						reset();
 						resetDialog();
 					},
 					Cancel: function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -385,8 +408,7 @@ function reset() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#leftInnerSection span")
-			.replaceWith("<span><button class = 'courseBox'></button></span>");
+		$("#sectionCourseList").text("");
 	}
 }
 
@@ -400,7 +422,7 @@ function resetDialog() {
 		width: 535,		
 		buttons: {
 			"Got it!": function() { $("#master").unblock();
-			$( this ).dialog( "close" ); }
+			$(this).dialog("destroy"); }
 		}
 	});
 }
@@ -422,7 +444,7 @@ function geNotes1() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -441,7 +463,7 @@ function geNotes2() {
 				width: 600,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -460,7 +482,7 @@ function geNotes3() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -479,7 +501,7 @@ function geNotes4() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -498,7 +520,7 @@ function geNotes5() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -517,7 +539,7 @@ function bsCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -536,7 +558,7 @@ function msCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});

@@ -57,7 +57,7 @@
 				</tr>
 		<!-- A. ORAL COMMUNICATION SECTION -->
 				<tr>
-					<th id = "oc" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "oc" class = "topSection"><a class = "sectionNoteStyle">
 						A. Oral Communication</a>
 					</th>
 				</tr>
@@ -73,7 +73,7 @@
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
-					<th id = "wc" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "wc" class = "topSection"><a class = "sectionNoteStyle">
 						B. Written Communication</a>
 					</th>
 				</tr>
@@ -87,7 +87,7 @@
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
-					<th id = "mat" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "mat" class = "topSection"><a class = "sectionNoteStyle">
 						C. Mathematics</a>
 					</th>
 				</tr>
@@ -101,7 +101,7 @@
 				?>
 		<!-- D. WELLNESS SECTION -->
 				<tr>
-					<th id = "well" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "well" class = "topSection"><a class = "sectionNoteStyle">
 						D. Wellness</a>
 					</th>
 				</tr>
@@ -126,7 +126,7 @@
 				</tr>
 		<!-- A. NATURAL SCIENCES SECTION -->
 				<tr>
-					<th id = "ns" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "ns" class = "topSection"><a class = "sectionNoteStyle">
 						A. Natural Sciences</a>
 					</th>
 				</tr>
@@ -141,7 +141,7 @@
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
-					<th id = "ss" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "ss" class = "topSection"><a class = "sectionNoteStyle">
 						B. Social Sciences</a>
 					</th>
 				</tr>
@@ -156,7 +156,7 @@
 				?>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
-					<th id = "hum" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "hum" class = "topSection"><a class = "sectionNoteStyle">
 						C. Humanities</a>
 					</th>
 				</tr>
@@ -171,7 +171,7 @@
 				?>
 		<!-- D. ARTS SECTION -->
 				<tr>
-					<th id = "art" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "art" class = "topSection"><a class = "sectionNoteStyle">
 						D. Arts</a>
 					</th>
 				</tr>
@@ -186,7 +186,7 @@
 				?>
 		<!-- E. FREE ELECTIVE SECTION -->
 				<tr>
-					<th id = "fel" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "fel" class = "topSection"><a class = "sectionNoteStyle">
 						E. Free Elective</a>
 					</th>
 				</tr>
@@ -303,7 +303,7 @@
 				</tr>
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
 				<tr>
-					<th id = "nslab" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "nslab" class = "topSection"><a class = "sectionNoteStyle">
 						&nbsp; 1. Natural Science with Lab</a>
 					</th>
 				</tr>
@@ -318,7 +318,7 @@
 				?>
 				<!-- 2. NATURAL SCIENCES ELECTIVE SUBSECTION -->
 				<tr>
-					<th id = "nsel" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "nsel" class = "topSection"><a class = "sectionNoteStyle">
 						&nbsp; 2. Elective</a>
 					</th>
 				</tr>
@@ -337,7 +337,7 @@
 				</tr>
 				<!-- 1. SOCIAL SCIENCE ELECTIVE 1 SUBSECTION -->
 				<tr>
-					<th id = "ssel1" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "ssel1" class = "topSection"><a class = "sectionNoteStyle">
 						&nbsp; 1. Elective</a>
 					</th>
 				</tr>
@@ -352,7 +352,7 @@
 				?>
 				<!-- 2. SOCIAL SCIENCE ELECTIVE 2 SUBSECTION -->
 				<tr>
-					<th id = "ssel2" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "ssel2" class = "topSection"><a class = "sectionNoteStyle">
 						&nbsp; 2. Elective</a>
 					</th>
 				</tr>
@@ -367,7 +367,7 @@
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
-					<th id = "ssel3" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "ssel3" class = "topSection"><a class = "sectionNoteStyle">
 						&nbsp; 3. Elective</a>
 					</th>
 				</tr>
@@ -397,7 +397,7 @@
 				</tr>
 				<!-- 1. HUMANITIES ELECTIVE 1 SUBSECTION -->
 				<tr>
-					<th id = "humel1" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "humel1" class = "topSection"><a class = "sectionNoteStyle">
 						&emsp;1. Elective</a>
 					</th>
 				</tr>
@@ -412,7 +412,7 @@
 				?>
 				<!-- 2. HUMANITIES ELECTIVE 2 SUBSECTION -->
 				<tr>
-					<th id = "humel2" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "humel2" class = "topSection"><a class = "sectionNoteStyle">
 						&emsp;2. Elective</a>
 					</th>
 				</tr>
@@ -427,7 +427,7 @@
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
-					<th id = "humel3" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "humel3" class = "topSection"><a class = "sectionNoteStyle">
 						&emsp;3. Elective</a>
 					</th>
 				</tr>
@@ -442,7 +442,7 @@
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
-					<th id = "fel2" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "fel2" class = "topSection"><a class = "sectionNoteStyle">
 						D. Free Electives</a>
 					</th>
 				</tr>
@@ -482,7 +482,7 @@
 				?>
 		<!-- CSC SD ELECTIVE COURSES SECTION -->
 				<tr>
-					<th id = "fel2" class = "dropdownSection"><a class = "dropButtonNotes">
+					<th id = "fel2" class = "topSection"><a class = "sectionNoteStyle">
 						&emsp;2. Elective Courses: <b>18 sh</b></a>
 					</th>
 					<td class = "tableGrade">Gr</td>

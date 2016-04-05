@@ -35,8 +35,8 @@
 					for($i = 0; $i < 4; $i++)
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-								<td  class = 'tableGrade'></td>
-								<td  class = 'tableGrade'></td>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 							</tr>";
 				?>	
 		<!-- 500 level courses -->
@@ -49,8 +49,8 @@
 					for($i = 0; $i < 10; $i++)
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:SD 500-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-								<td class = 'tableGrade'></td>
-								<td class = 'tableGrade'></td>
+								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 							</tr>";
 				?>	
 			</table>

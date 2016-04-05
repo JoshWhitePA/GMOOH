@@ -33,8 +33,8 @@
 					for($i = 0; $i < 5; $i++)
 						echo"<tr>
 								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-								<td class = 'tableGrade'><b></b></td>
-								<td class = 'tableGrade'><b></b></td>
+								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 							</tr>"
 				?>
 				<tr>
@@ -48,8 +48,8 @@
 				<?php
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-							<td class = 'tableGrade'><b></b></td>
-							<td class = 'tableGrade'><b></b></td>
+							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 						</tr>"
 				?>
 				<tr>
@@ -63,8 +63,8 @@
 				<?php
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
-							<td class = 'tableGrade'><b></b></td>
-							<td class = 'tableGrade'><b></b></td>
+							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 						</tr>"
 				?>
 				<tr><th class = "tableSpace"></th></tr>
