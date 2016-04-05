@@ -1,5 +1,6 @@
 var lastSection; //Retains the location of the last checksheet section selected
 var startup;
+var loadup = false;
 
 //Call this function within the jquery document ready function
 function pageLoadPrototype() {
@@ -12,7 +13,12 @@ function pageLoadPrototype() {
 			+ "met the prerequisites for. Now that the formalities are out of the way, let's get to filling that "
 			+ "checksheet!</p></div>"
 			
-			+ "<div id = 'draggableHelper'></div>"
+			+ "<div id = 'startUpDialog2' title = 'Sorry.. One More Thing!' class = 'popupDialog'>"
+			+ "<p>As much as I would love to give you unlimited checksheets to create and save, "
+			+ "I can only give you three. Why three you ask? Well three is a nice low number that we can all "
+			+ " count on our fingers, toes, paws, tentacles, or whatever you have (I apologise now if you have "
+			+ "less than three digits and I'll refrain from the follow up question of why) "
+			+ "Just blame Josh for your unfortunate limitations on creativity and scholarly planning.</p></div>"
 			
 			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' class = 'popupDialog'>"
 			+ "<p>Before taking any 300-level course you must have completed 18 credit hours in CSC courses "
@@ -213,12 +219,19 @@ function pageLoadPrototype() {
 		
 		//Whenever the select dropdrown menu is changed
 		$("#currentChecksheet").change(function() {
+			if(loadup)
+			{
+				if(!confirm("Switching checksheets will clear your current checksheet. Continue?"))
+					return;
+			}
+			loadup = true;
+			
 			if($("#currentChecksheet option:selected").val() == "it") 
 			{
 				//load chosen checksheet into the inner section of the master page
 				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 				$("#sectionTitle label").text(""); //Clear the current title and course list
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); //Scroll to the top of the checksheet
 				//This holds the value of the current checksheet in order to direct the
 				//user to the correct checksheet whent the print button is pressed
@@ -228,7 +241,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast");
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -236,7 +249,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast");
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -244,7 +257,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscSDChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -252,7 +265,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -260,7 +273,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -268,18 +281,18 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
 		}) .change(); //This makes sure it happens every time
 	});
-	/*
+	
 	if(!startup)
-	{
+	{	
 		startUpNotes();
 		startup = true;
-	}*/
+	}
 }
 
 //This function shows the tile of the section selected and what classes fit there			
@@ -287,7 +300,7 @@ function findCourses(item) {
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
 	$("#sectionCourseList") //replace span content with courses
 		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-			+" <div id = 'draggableCourse' class = 'courseBox' draggable = 'true' ondragstart = 'dragstart_handler(event)'>"
+			+" <div id = 'draggableCourse' class = 'courseBox''>"
 			+ $(item).attr("id") + " Course</div></div>");
 	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
@@ -306,12 +319,6 @@ function findCourses(item) {
 	$.getScript("Scripts/jquery-ui.min.js", function() {
 		$(item).effect("pulsate", 5000); 
 	});
-	
-	addEvent($(item), 'dragstart', function (event) {
-		// store the ID of the element, and collect it on the drop later on
-
-		event.dataTransfer.setData('Text', this.id);
-	});
 }
 
 function startUpNotes() {
@@ -324,12 +331,30 @@ function startUpNotes() {
 				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
-				width: 535,		
+				width: 535,
 				buttons: {
-					"Got it!": function() { 
-						$("#master").unblock();
-						$( this ).dialog( "close" );
-					}
+					"Got it!": function() { startUpNotes2();
+						$(this).dialog("destroy"); }
+				}
+			});
+		});
+	});
+}
+
+function startUpNotes2() {
+	$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
+		$("#master").block({ message: null, baseZ: 2 });
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$.ui.dialog.prototype._focusTabbable = function(){};
+			$("#startUpDialog2").dialog({
+				dialogClass: "no-close",
+				resizable: false,
+				draggable: false,
+				width: 700,
+				buttons: {
+					"Enough! I Get It Already!": function() { $("#master").unblock();
+								$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -352,12 +377,12 @@ function printChecksheet() {
 				buttons: {
 					"I Want To Print!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						printThis();	
 					},
 					"Stay Here!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -375,7 +400,7 @@ function printThis() {
 	else if(currentChecksheet == "sd")
 		window.open("Checksheets/v1.1/cscSDChecksheet.php", "_blank");
 	else if(currentChecksheet == "Msd")
-		window.open("Checksheets/v1.1/OutputProto.php", "_blank");
+		window.open("Checksheets/v1.1/cscSDMastersChecksheet.php", "_blank");
     else if(currentChecksheet == "savIT")
 		window.open("Checksheets/v1.1/cscITChecksheetSaved.php", "_blank");
 	else
@@ -395,7 +420,7 @@ function saveChecksheet() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-						$( this ).dialog( "close" ); }
+						$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -416,18 +441,18 @@ function clearAlert() {
 				width: 535,		
 				buttons: {
 					"Save & Clear": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						saveChecksheet();
 						clearChecksheet();
 					},
 					"Clear Without Saving": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						clearChecksheet();
 						clearDialog();
 					},
 					Cancel: function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -443,8 +468,7 @@ function clearChecksheet() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#sectionCourseList")
-			.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'></div>");
+		$("#sectionCourseList").text("");
 	}
 }
 	
@@ -459,7 +483,7 @@ function clearDialog() {
 		width: 535,		
 		buttons: {
 			"Got it!": function() { $("#master").unblock();
-			$( this ).dialog( "close" ); }
+			$(this).dialog("destroy"); }
 		}
 	});
 }
@@ -477,7 +501,7 @@ function geNotes1() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -497,7 +521,7 @@ function geNotes2() {
 				width: 600,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -517,7 +541,7 @@ function geNotes3() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -537,7 +561,7 @@ function geNotes4() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -557,7 +581,7 @@ function geNotes5() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -576,7 +600,7 @@ function bsCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -595,7 +619,7 @@ function msCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -628,20 +652,4 @@ function searchByDept(){
                 }
             });
     return true;
-}
-     
-function dragstart_handler(ev) {
-	ev.dataTransfer.setData("text/plain", ev.target.id);
-	ev.dataTransfer.dropEffect = "copy";
-}
-
-function dragover_handler(ev) {
-	ev.preventDefault();
-	ev.dataTransfer.dropEffect = "copy"
-}
-function drop_handler(ev) {
-	ev.preventDefault();
-	// Get the id of the target and add the moved element to the target's DOM
-	var data = ev.dataTransfer.getData("text");
-	ev.target.appendChild(document.getElementById(data));
 }

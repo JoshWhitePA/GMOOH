@@ -98,7 +98,7 @@ u:hover {
 
 .courseNameBox {
 	height: inherit;
-	padding: 2px;
+	padding: 3px;
 	text-align: left;
 	background-color: transparent;
 	border: solid;
@@ -142,4 +142,19 @@ th.topSection {
 
 .sectionNoteStyle:hover { /* HACK! This is here until I'm sure that I can safely remove the 'th a:hover' tag from one of the above styles. */
 	opacity: 1;
+}
+
+/* textbox for grades */
+.gradeBox{
+	width: 25px;
+	border: none;
+	background: transparent;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+.gradeBox:focus {
+outline: none;
+border: none;
 }

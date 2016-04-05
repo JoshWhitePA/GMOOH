@@ -12,6 +12,14 @@ function pageLoadEditOfficial() {
 			+ "met the prerequisites for. Now that the formalities are out of the way, let's get to filling that "
 			+ "checksheet!</p></div>"
 			
+			+ "<div id = 'startUpDialog2' title = 'Sorry.. One More Thing!' class = 'popupDialog'>"
+			+ "<p>As much as I would love to give you unlimited checksheets to create and save, "
+			+ "I can only give you three. Why three you ask? Well three is a nice low number that we can all "
+			+ " count on our fingers, toes, paws, tentacles, or whatever you have (I apologise now if you have "
+			+ "less than three digits and I'll refrain from the follow up question of why) "
+			+ "Just blame Josh for your unfortunate limitations on creativity and scholarly planning.</p></div>"
+			
+			
 			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' class = 'popupDialog'>"
 			+ "<p>Before taking any 300-level course you must have completed 18 credit hours in CSC courses "
 			+ "numbered 125 or above with a GPA of 2.25 in the CSC courses.</p>"
@@ -176,19 +184,22 @@ function pageLoadEditOfficial() {
 				+ "</select>"
 				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
 	});
-	/*
+	
 	if(!startup)
-	{
+	{	
 		startUpNotes();
 		startup = true;
-	}*/
+	}
 }
 
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
 	$("#sectionCourseList") //replace span content with courses
-		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'><button class = 'courseBox' onclick = 'startUpNotes()'>" + $(item).attr("id") + " Course</button></div>");
+		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
+			+" <div id = 'draggableCourse' class = 'courseBox''>"
+			+ $(item).attr("id") + " Course</div></div>");
+	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
 		
@@ -202,7 +213,6 @@ function findCourses(item) {
 	}	
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
-	$(item).css("border-width", "3px");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
 		$(item).effect("pulsate", 5000); 
 	});
@@ -218,12 +228,31 @@ function startUpNotes() {
 				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
-				width: 535,		
+				width: 535,
 				buttons: {
-					"Got it!": function() { 
-						$("#master").unblock();
-						$( this ).dialog( "close" );
-					}
+					"Got it!": function() { startUpNotes2();
+						$(this).dialog("destroy"); }
+				}
+			});
+		});
+	});
+}
+
+
+function startUpNotes2() {
+	$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
+		$("#master").block({ message: null, baseZ: 2 });
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$.ui.dialog.prototype._focusTabbable = function(){};
+			$("#startUpDialog2").dialog({
+				dialogClass: "no-close",
+				resizable: false,
+				draggable: false,
+				width: 700,
+				buttons: {
+					"Enough! I Get It Already!": function() { $("#master").unblock();
+								$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -245,12 +274,12 @@ function printChecksheet() {
 				buttons: {
 					"I Want To Print!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						printThis();	
 					},
 					"Stay Here!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -275,7 +304,7 @@ function saveChecksheet() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-						$( this ).dialog( "close" ); }
+						$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -295,18 +324,18 @@ function clearAlert() {
 				width: 535,		
 				buttons: {
 					"Save & Clear": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						saveChecksheet();
 						clearChecksheet();
 					},
 					"Clear Without Saving": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						clearChecksheet();
 						clearDialog();
 					},
 					Cancel: function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -322,8 +351,7 @@ function clearChecksheet() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#sectionCourseList")
-			.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'></div>");
+		$("#sectionCourseList").text("");
 	}
 }
 	
@@ -337,7 +365,7 @@ function clearDialog() {
 		width: 535,		
 		buttons: {
 			"Got it!": function() { $("#master").unblock();
-			$( this ).dialog( "close" ); }
+			$(this).dialog("destroy"); }
 		}
 	});
 }
@@ -354,18 +382,18 @@ function resetChecksheet() {
 				width: 535,		
 				buttons: {
 					"Save & Reset": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						saveChecksheet();
 						reset();
 					},
 					"Reset Without Saving": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						reset();
 						resetDialog();
 					},
 					Cancel: function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -380,8 +408,7 @@ function reset() {
 		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
-		$("#leftInnerSection span")
-			.replaceWith("<span><button class = 'courseBox'></button></span>");
+		$("#sectionCourseList").text("");
 	}
 }
 
@@ -395,7 +422,7 @@ function resetDialog() {
 		width: 535,		
 		buttons: {
 			"Got it!": function() { $("#master").unblock();
-			$( this ).dialog( "close" ); }
+			$(this).dialog("destroy"); }
 		}
 	});
 }
@@ -417,7 +444,7 @@ function geNotes1() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -436,7 +463,7 @@ function geNotes2() {
 				width: 600,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -455,7 +482,7 @@ function geNotes3() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -474,7 +501,7 @@ function geNotes4() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -493,7 +520,7 @@ function geNotes5() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -512,7 +539,7 @@ function bsCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -531,7 +558,7 @@ function msCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});

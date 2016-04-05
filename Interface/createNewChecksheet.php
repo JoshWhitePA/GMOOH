@@ -7,10 +7,15 @@
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script src = "Scripts/prototypeChecksheet.js"></script>
 		<script>
-			$(document).ready(pageLoadPrototype);
+			$(window).load(function() {
+				$(".blank").show();
+				$(document).ready(pageLoadPrototype);
+				$(".blank").delay(500).fadeOut(1000);
+			});	
 		</script>
 	</head>
 	<body id = "behindTheScenes">
+		<div class = 'blank'><div class = "loadingImg"></div><div class = "loadingText">Loading</div></div>
 		<div id = "master" class = "pageBody"></div>
 	</body>
 </html>

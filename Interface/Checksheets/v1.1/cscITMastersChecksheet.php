@@ -63,7 +63,7 @@
 		<!-- Thesis (optional) -->
 				<tr>
 					<th class = "tableHeader" colspan = "1">
-						Thesis (0 or 6 SH)</th>
+						Thesis (0 or 6 sh)</th>
 						<td class = "tableGrade">Gr</td>
 						<td class = "tableGrade">SH</td>
 				</tr>

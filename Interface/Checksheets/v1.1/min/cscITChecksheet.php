@@ -39,10 +39,8 @@
 					echo"<tr>
 							<th class = 'courseBox'>
 								<div id = 'Oral Communication' 
-									ondrop = 'drop_handler(event)'
-									ondragover = 'dragover_handler(event)'
 									onclick = 'findCourses(this)' 
-									class = 'courseNameBox'>
+									class = 'courseNameBox'>&#8195;
 								</div>
 							</th>
 							<th class = 'tableGrade'><b>3</b></th>
