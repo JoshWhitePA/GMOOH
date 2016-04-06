@@ -11,7 +11,6 @@
 -->
 <?php
 
-
  function xml2array($fname){
       $sxi = new SimpleXmlIterator($fname, null, true);
       return sxiToArray($sxi);
@@ -606,7 +605,7 @@
 				?>
 			</table>
             <?php 
-                echo "<input type='hidden' id=programCount' value='".$indexOPro."'  />";
+                echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
             ?>
             
 		</div>

@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    require("../PHPClasses/logic.class.php");
+    $logic = new Logic();
+    $results = $logic->displaySave($_SESSION["userID"]);
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,21 +14,23 @@
 		<script src = "Scripts/viewSavedChecksheets.js"></script>
 		<script>
 			$(document).ready(function(){
+                
+                var str = "<div class='changepass'><table class='tableCenter'> <!-- These fields will need to be filled via PHP -->";
+                
+               str +="<?php  
+                        $counter = 1;
+                            foreach ($results as $row) {
+
+
+                            echo "<tr><td class = 'paddedTD'>Checksheet $counter - ".$row['CheckSheetDescr']."</td><td><input type='submit' onClick='load_Click(this.id)' value='submit' id='load_".$row['CheckSheetDescr']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='del_".$row['CheckSheetDescr']."' /></td></tr>";
+                                $counter++;
+                            }
+                   ?>";
+                    
+                    str+="</table>";
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection")
-						.append("<div class=\"changepass\">"
-							+ "<table class=\"tableCenter\"> <!-- These fields will need to be filled via PHP -->"
-							+ "<form action=\"saved_checksheets_response.php\" method=\"post\" id=\"main\">"
-							+ "<tr><td class = 'paddedTD'>Checksheet 1 - Major: PLACEHOLDER, Date Created: PLACEHOLDER </td> <td><input type=\"submit\" value=\"Open\" id=\"chksht1_open\" /></td> <td><input type=\"submit\" value=\"Delete\" id=\"chksht1_delete\" /></td></tr>"
-							+ "<tr><td class = 'paddedTD'>Checksheet 2 - Major: PLACEHOLDER, Date Created: PLACEHOLDER </td> <td><input type=\"submit\" value=\"Open\" id=\"chksht2_open\" /></td> <td><input type=\"submit\" value=\"Delete\" id=\"chksht1_delete\" /></td> </tr>"
-							+ "<tr><td class = 'paddedTD'>Checksheet 3 - Major: PLACEHOLDER, Date Created: PLACEHOLDER </td> <td><input type=\"submit\" value=\"Open\" id=\"chksht3_open\" /></td> <td><input type=\"submit\" value=\"Delete\" id=\"chksht1_delete\" /></td> </tr>"
-							+ "</table>"
-							+ "<hr />"
-							+ "<input type=\"submit\" value=\"Submit\" /> <input type=\"reset\" value=\"Reset\" /> <button type=\"submit\" form=\"Cancel\" value=\"Cancel\">Cancel</button>"
-							+ "</div>"
-							+ "</form>"
-							+ "<form action=\"account_page.php\" method=\"post\" id=\"Cancel\"></form>"
-							); 
+						.append(str); 
 				});
 			});
 		</script>
