@@ -56,19 +56,18 @@
 			$hashPass = $row['Password'];
 			$mail = $row['Email'];
 			$ID = $row['StudentId'];
-			
+			$_SESSION['stuID'] = $ID;
 			if($mail == null){
 				$mysqli_result = DB::queryRaw("SELECT Password,Email,FacultyId FROM FACULTY WHERE Email= %s", $email);
 				$row = $mysqli_result->fetch_assoc();
 				$hashPass = $row['Password'];
 				$mail = $row['Email'];
 				$ID = $row['FacultyId'];
+				$_SESSION['facID'] = $ID;
 			}
 			if(is_null($hashPass)){
 				return false;
 			}
-			$_SESSION["Email"] = $mail;
-			$_SESSION['ID'] = $ID;
 			
 			return $this -> verifyPassword($password, $hashPass);
 		}
