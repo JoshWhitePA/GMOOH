@@ -2,7 +2,7 @@
     require_once("../PHPClasses/logic.class.php");	
 	$logic = new Logic();
     session_start();
-    $results = $logic->getUserInfo($_SESSION['ID']);
+    $results = $logic->getUserInfo($_SESSION['userID']);
     $name = "";
     $ID = "";//could get from session but I want to keep data source the same.
     $email = "";
