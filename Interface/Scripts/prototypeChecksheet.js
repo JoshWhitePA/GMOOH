@@ -1,10 +1,11 @@
 var lastSection; //Retains the location of the last checksheet section selected
 var startup;
+var loadup = false;
 
 //Call this function within the jquery document ready function
 function pageLoadPrototype() {
 	$("#behindTheScenes")
-		.append("<div id = 'startUp' title = 'Time to Create A Checksheet!' style = 'display: none; z-index: 3'>"
+		.append("<div id = 'startUpDialog' title = 'Time to Create A Checksheet!' class = 'popupDialog'>"
 			+ "<p>It looks like it's your first time here so let me tell you about creating a checksheet! "
 			+ "Just click on a section to display courses that would go there or you can search for courses "
 			+ "by keyword or department. Once you find a course you like, drag and drop it into the appropriate "
@@ -12,49 +13,56 @@ function pageLoadPrototype() {
 			+ "met the prerequisites for. Now that the formalities are out of the way, let's get to filling that "
 			+ "checksheet!</p></div>"
 			
-			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'startUpDialog2' title = 'Sorry.. One More Thing!' class = 'popupDialog'>"
+			+ "<p>As much as I would love to give you unlimited checksheets to create and save, "
+			+ "I can only give you three. Why three you ask? Well three is a nice low number that we can all "
+			+ " count on our fingers, toes, paws, tentacles, or whatever you have (I apologise now if you have "
+			+ "less than three digits and I'll refrain from the follow up question of why) "
+			+ "Just blame Josh for your unfortunate limitations on creativity and scholarly planning.</p></div>"
+			
+			+ "<div id = 'bsCSCNotes' title = 'Notes on BS in Computer Science' class = 'popupDialog'>"
 			+ "<p>Before taking any 300-level course you must have completed 18 credit hours in CSC courses "
 			+ "numbered 125 or above with a GPA of 2.25 in the CSC courses.</p>"
 			+ "<p>CSC-prefix courses below 125-level, CSC 130, CSC 280 and CSC 380 do not count towards the BS in CSC.</p></div>"
 			
-			+ "<div id = 'msCSCNotes' title = 'Notes on MS in Computer Science' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'msCSCNotes' title = 'Notes on MS in Computer Science' class = 'popupDialog'>"
 			+ "<p>You can take one of the following options:<br/>"
 			+ "&emsp;&bull; 30 sh of courses + comprehensive exam<br/>"
 			+ "&emsp;&bull; 24 sh of courses + 6 sh of CSC 599: Thesis</p>"
 			+ "<p>At least 18 sh must be 500-level courses.</p></div>"
 		
-			+"<div id = 'clearThis' title = 'Save Checksheet?' style = 'display: none; z-index: 3'>"
+			+"<div id = 'clearThis' title = 'Save Checksheet?' class = 'popupDialog'>"
 			+ "<p>Do you wish to save your checksheet before clearing it?</p></div>"
 			
-			+ "<div id = 'saveThis' title = 'Save Complete' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'saveThis' title = 'Save Complete' class = 'popupDialog'>"
 			+ "<p>Your checksheet was successfully saved. You can find it on the view saved checksheets page.</p></div>"
 			
-			+ "<div id = 'cleared' title = 'Checksheet Cleared' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'cleared' title = 'Checksheet Cleared' class = 'popupDialog'>"
 			+ "<p>Your checksheet is now empty. Get to filling it!</p></div>"
 			
-			+ "<div id = 'printThis' title = 'Print Alert' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'printThis' title = 'Print Alert' class = 'popupDialog'>"
 			+ "<p>You are about to navigate away from your checksheet</p></div>"
 			
-			+ "<div id = 'notes1' title = 'University Distribution Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes1' title = 'University Distribution Notes' class = 'popupDialog'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in II.A. "
 			+ "GEG courses 40, 204, 274, 304, 322, 323, 324, 347, 380 and 394 may NOT be used in II.B.</p></div>"
 			
-			+ "<div id = 'notes2' title = 'Competancy Across the Curriculum Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes2' title = 'Competancy Across the Curriculum Notes' class = 'popupDialog'>"
 			+ "<p>A Competency Across the Curriculum (CAC) course in not a separate course, but rather an overlay that is "
 			+ "'double counted' as fulfilling both the CAC requirement and another requirement in either General Eduacation "
 			+ "(except for the University Core) the major, or the minor</p></div>"
 			
-			+ "<div id = 'notes3' title = 'College of Liberal Arts and Sciences Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes3' title = 'College of Liberal Arts and Sciences Notes' class = 'popupDialog'>"
 			+ "<p>Students in the College of Liberal Arts and Sciences are required to take at least one course in "
 			+ "Biological Science (BIO) and at least one course in Physical Science (AST, CHM, ENV, GEL, PHY, MAR, GEG "
 			+ "with a lab, or GEG 40, 322 or 323) and at least one of which must be a lab "
 			+ "(each course may be counted in either II.A or IV.A).</p></div>"
 			
-			+ "<div id = 'notes4' title = 'College Distribution Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes4' title = 'College Distribution Notes' class = 'popupDialog'>"
 			+ "<p>GEG courses with a lab and GEG 40, 322 and 323 may be used in IV.A. "
 			+ "GEG courses 40, 204, 274, 304, 322, 323, 324, 347, 380 and 394 may NOT be used in IV.B.</p></div>"
 			
-			+ "<div id = 'notes5' title = 'Pennsylvania German Studies Notes' style = 'display: none; z-index: 3'>"
+			+ "<div id = 'notes5' title = 'Pennsylvania German Studies Notes' class = 'popupDialog'>"
 			+ "<p>Excludes PAG 11 and 12</p></div>");
 			
 	//Load master page into current page's body
@@ -87,14 +95,14 @@ function pageLoadPrototype() {
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
 				+ "title = 'The course section you select and its related courses will appear here'>"
 				+ "<div id = 'sectionTitle' class = 'titleBox'>"	
-				+ "<label class = 'sectionLabel'></label></div><span></span></div>"
+				+ "<label class = 'sectionLabel'></label></div><div id = 'sectionCourseList' class = 'sectionCourses'></div></div>"
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
-				+ "<select name = 'courseDropdown' class = 'courseSelect'>"	
+				+ "<select id = 'termDD' name = 'courseDropdown' class = 'courseSelect'>"	
 				+ "<option>Select A Semester</option>"
 				+ "</select>"
-				+ "</div>");
+				+ "<div id = 'termList' class = 'sectionCourses'></div></div>");
 		//Place content inside the right section of the master page
 ///////////////
 		$("#right")
@@ -103,13 +111,14 @@ function pageLoadPrototype() {
 				+ "<div class = 'searchBox'>"
 				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
-                +"<div id='searchResults' style=' overflow: scroll;white-space: pre;'></div>"
-				+ "</div><div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
+                + "<div id = 'searchResults' class = 'sectionCourses'></div></div>"
+				+ "<div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
 				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
-				+ "<select name = 'courseDropdown' id='deptDD' onchange='searchByDept()' class = 'courseSelect'>"
+				+ "<select name = 'courseDropdown' id = 'deptDD' onchange = 'searchByDept()' class = 'courseSelect'>"
 				+ "<option>Select A Department</option>"
 								
 				//Temporary, should be filled by database at a later time
+				+ "<optgroup label = 'A ------------------------------------'>"
 				+ "<option>ACC - Accounting</option>"
 				+ "<option>ANT - Anthropology</option>"
 				+ "<option>ARA - Arabic</option>"
@@ -118,8 +127,12 @@ function pageLoadPrototype() {
 				+ "<option>ART - Art</option>"
 				+ "<option>ARU - Art Education</option>"
 				+ "<option>AST - Astronomy</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'B ------------------------------------'>"
 				+ "<option>BIO - Biology</option>"
 				+ "<option>BUS - Business</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'C ------------------------------------'>"
 				+ "<option>CDE - Communication Design</option>"
 				+ "<option>CDH - Communication Design History</option>"
 				+ "<option>CFT - Crafts</option>"
@@ -128,6 +141,8 @@ function pageLoadPrototype() {
 				+ "<option>COM - Communication</option>"
 				+ "<option>CRJ - Criminal Justice</option>"
 				+ "<option>CSC - Computer Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'E ------------------------------------'>"
 				+ "<option>ECO - Economics</option>"
 				+ "<option>EDU - Education</option>"
 				+ "<option>EEU - Elementary Education: Pre-K 4</option>"
@@ -135,19 +150,31 @@ function pageLoadPrototype() {
 				+ "<option>ELU - Elementary Education</option>"
 				+ "<option>ENG - English</option>"
 				+ "<option>ENV - Environmental Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'F ------------------------------------'>"
 				+ "<option>FAR - Fine Arts</option>"
 				+ "<option>FAS - Fine Arts Studio</option>"
 				+ "<option>FIN - Finance</option>"
 				+ "<option>FRE - French</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'G ------------------------------------'>"
 				+ "<option>GEG - Geography</option>"
 				+ "<option>GEL - Geology</option>"
 				+ "<option>GER - German</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'H ------------------------------------'>"
 				+ "<option>HEA - Health</option>"
 				+ "<option>HIS - History</option>"
 				+ "<option>HUM - Humanities</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'I ------------------------------------'>"
 				+ "<option>INT - International Studies</option>"
 				+ "<option>ITC - Instructional Technology</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'L ------------------------------------'>"
 				+ "<option>LIB - Library Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'M ------------------------------------'>"
 				+ "<option>MAR - Marine Science</option>"
 				+ "<option>MAT - Mathematics</option>"
 				+ "<option>MGM - Management</option>"
@@ -157,6 +184,8 @@ function pageLoadPrototype() {
 				+ "<option>MUP - Music Performance</option>"
 				+ "<option>MUS - Music</option>"
 				+ "<option>MUU - Music Education</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'P ------------------------------------'>"
 				+ "<option>PAG - Pennsylvania German Studies</option>"
 				+ "<option>PEC - Physical Education Class</option>"
 				+ "<option>PHI - Philosophy</option>"
@@ -165,28 +194,44 @@ function pageLoadPrototype() {
 				+ "<option>POL - Political Science</option>"
 				+ "<option>PRO - Professional Studies</option>"
 				+ "<option>PSY - Psychology</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'R ------------------------------------'>"
 				+ "<option>RUS - Russian</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'S ------------------------------------'>"
 				+ "<option>SEU - Secondary Education</option>"
 				+ "<option>SOC - Sociology</option>"
 				+ "<option>SPA - Spanish</option>"
 				+ "<option>SPT - Sport</option>"
 				+ "<option>SPU - Special Education</option>"
 				+ "<option>SWK - Social Work</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'T ------------------------------------'>"
 				+ "<option>THE - Theatre</option>"
 				+ "<option>TVE - Electronic Media</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'W ------------------------------------'>"
 				+ "<option>WGS - Women's and Gender Studies</option>"
 				+ "<option>WRI - Writing</option>"
+				+ "</optgroup>"
 				+ "</select>"
-				+ "<div id='deptS' style=' overflow: scroll;white-space: pre;'></div></div>");
+				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
 		
 		//Whenever the select dropdrown menu is changed
 		$("#currentChecksheet").change(function() {
+			if(loadup)
+			{
+				if(!confirm("Switching checksheets will clear your current checksheet. Continue?"))
+					return;
+			}
+			loadup = true;
+			
 			if($("#currentChecksheet option:selected").val() == "it") 
 			{
 				//load chosen checksheet into the inner section of the master page
 				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
 				$("#sectionTitle label").text(""); //Clear the current title and course list
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); //Scroll to the top of the checksheet
 				//This holds the value of the current checksheet in order to direct the
 				//user to the correct checksheet whent the print button is pressed
@@ -196,7 +241,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast");
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -204,7 +249,7 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast");
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -212,23 +257,23 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscSDChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
 			else if($("#currentChecksheet option:selected").val() == "Msd") 
 			{
-				$("#innerSection").load("Checksheets/v1.1/min/OutputProto.php");
+				$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
-            else if($("#currentChecksheet option:selected").val() == "savIT") 
+            else if($("#currentChecksheet option:selected").val() == "sdm") 
 			{
-				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
+				$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
@@ -236,14 +281,15 @@ function pageLoadPrototype() {
 			{
 				$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
 				$("#sectionTitle label").text("");
-				$("#leftInnerSection span").replaceWith("<span></span>");
+				$("#sectionCourseList").text("");
 				$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 				currentChecksheet = $("#currentChecksheet option:selected").val();
 			}
 		}) .change(); //This makes sure it happens every time
 	});
+	
 	if(!startup)
-	{
+	{	
 		startUpNotes();
 		startup = true;
 	}
@@ -280,7 +326,6 @@ function findCourses(item) {
 			$("#draggableCourse").draggable("destroy");
 	});
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-
 	$("#sectionCourseList") //replace span content with courses
 		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
 			+" <div id = 'draggableCourse' class = 'courseBox'>"
@@ -332,17 +377,38 @@ function findCourses(item) {
 
 function startUpNotes() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
-			$("#startUp").dialog({
+			$("#startUpDialog").dialog({
+				dialogClass: "no-close",
 				resizable: false,
 				draggable: false,
-				width: 535,		
+				width: 535,
 				buttons: {
-					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					"Got it!": function() { startUpNotes2();
+						$(this).dialog("destroy"); }
+				}
+			});
+		});
+	});
+}
+
+function startUpNotes2() {
+	$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
+		$("#master").block({ message: null, baseZ: 2 });
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$.ui.dialog.prototype._focusTabbable = function(){};
+			$("#startUpDialog2").dialog({
+				dialogClass: "no-close",
+				resizable: false,
+				draggable: false,
+				width: 700,
+				buttons: {
+					"Enough! I Get It Already!": function() { $("#master").unblock();
+								$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -352,8 +418,8 @@ function startUpNotes() {
 //Function to direct the user to the current selected checksheet in its proper
 //two column form to make it easier to print		
 function printChecksheet() {
-		$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+	$.getScript("Scripts/jquery.blockUI.js", function() {
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -365,12 +431,12 @@ function printChecksheet() {
 				buttons: {
 					"I Want To Print!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						printThis();	
 					},
 					"Stay Here!": function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -380,29 +446,27 @@ function printChecksheet() {
 
 function printThis() {
 	if(currentChecksheet == "it")
-		window.location.assign("Checksheets/v1.1/cscITChecksheet.php");
+		window.open("Checksheets/v1.1/cscITChecksheet.php", "_blank");
 	else if(currentChecksheet == "Mit")
-		window.location.assign("Checksheets/v1.1/cscITMastersChecksheet.php");
+		window.open("Checksheets/v1.1/cscITMastersChecksheet.php", "_blank");
 	else if(currentChecksheet == "itm")
-		window.location.assign("Checksheets/v1.1/cscITMinorChecksheet.php");
+		window.open("Checksheets/v1.1/cscITMinorChecksheet.php", "_blank");
 	else if(currentChecksheet == "sd")
-		window.location.assign("Checksheets/v1.1/cscSDChecksheet.php");
+		window.open("Checksheets/v1.1/cscSDChecksheet.php", "_blank");
 	else if(currentChecksheet == "Msd")
-		window.location.assign("Checksheets/v1.1/OutputProto.php");
+		window.open("Checksheets/v1.1/cscSDMastersChecksheet.php", "_blank");
     else if(currentChecksheet == "savIT")
-		window.location.assign("Checksheets/v1.1/cscITChecksheetSaved.php");
+		window.open("Checksheets/v1.1/cscITChecksheetSaved.php", "_blank");
 	else
-		window.location.assign("Checksheets/v1.1/cscSDMinorChecksheet.php");
+		window.open("Checksheets/v1.1/cscSDMinorChecksheet.php", "_blank");
 }
 
 //Function to save the checksheet		
 function saveChecksheet() {
-    scrapeTheSucka();
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
 			$("#saveThis").dialog({
 				dialogClass: "no-close",
 				resizable: false,
@@ -410,7 +474,7 @@ function saveChecksheet() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-						$( this ).dialog( "close" ); }
+						$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -420,7 +484,7 @@ function saveChecksheet() {
 //Function to alert the user they are about to clear the checksheet
 function clearAlert() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -431,18 +495,18 @@ function clearAlert() {
 				width: 535,		
 				buttons: {
 					"Save & Clear": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						saveChecksheet();
 						clearChecksheet();
 					},
 					"Clear Without Saving": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 						clearChecksheet();
 						clearDialog();
 					},
 					Cancel: function() {
 						$("#master").unblock();
-						$( this ).dialog( "close" );
+						$(this).dialog("destroy");
 					}
 				}
 			});
@@ -461,13 +525,12 @@ function clearChecksheet() {
 		});
 		resetChecksheet();
 		$("#sectionTitle label").text("");
-		$("#leftInnerSection span")
-			.replaceWith("<span><button class = 'courseBox'></button></span>");
+		$("#sectionCourseList").text("");
 	}
 }
 	
 function clearDialog() {
-	$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+	$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 	$("#master").block({ message: null, baseZ: 2 });
 	$.ui.dialog.prototype._focusTabbable = function(){};
 	$("#cleared").dialog({
@@ -477,14 +540,14 @@ function clearDialog() {
 		width: 535,		
 		buttons: {
 			"Got it!": function() { $("#master").unblock();
-			$( this ).dialog( "close" ); }
+			$(this).dialog("destroy"); }
 		}
 	});
 }
 
 function geNotes1() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -495,7 +558,7 @@ function geNotes1() {
 				width: 535,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -504,7 +567,7 @@ function geNotes1() {
 
 function geNotes2() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -515,7 +578,7 @@ function geNotes2() {
 				width: 600,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -524,7 +587,7 @@ function geNotes2() {
 
 function geNotes3() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -535,7 +598,7 @@ function geNotes3() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -544,7 +607,7 @@ function geNotes3() {
 
 function geNotes4() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -555,7 +618,7 @@ function geNotes4() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -564,7 +627,7 @@ function geNotes4() {
 
 function geNotes5() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$.ui.dialog.prototype._focusTabbable = function(){};
@@ -575,7 +638,7 @@ function geNotes5() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -584,7 +647,7 @@ function geNotes5() {
 
 function bsCSCNotes() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$("#bsCSCNotes").dialog({
@@ -594,7 +657,7 @@ function bsCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
@@ -603,7 +666,7 @@ function bsCSCNotes() {
 
 function msCSCNotes() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" }
+		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$("#msCSCNotes").dialog({
@@ -613,7 +676,7 @@ function msCSCNotes() {
 				width: 550,		
 				buttons: {
 					"Got it!": function() { $("#master").unblock();
-					$( this ).dialog( "close" ); }
+					$(this).dialog("destroy"); }
 				}
 			});
 		});
