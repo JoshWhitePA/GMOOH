@@ -7,15 +7,16 @@
         
         
         public function displaySave($ID){
-              $results = DB::query("SELECT StudentID,CheckSheetDescr,SaveData FROM CHECKSHEET WHERE StudentID = %s;", $ID);
+              $results = DB::query("SELECT StudentID,CheckSheetID,SaveData FROM CHECKSHEET WHERE StudentID = %s;", $ID);
             return $results;
         }
         
         public function saveChecksheet($ID,$xml,$chkID){
             DB::insert('CHECKSHEET', array(
                           'StudentID' => $ID,
-                          'CheckSheetDescr' => $chkID,
-                            'SaveData' => $xml
+                          'CheckSheetID' => $chkID,
+                            'SaveData' => $xml,
+                            'Date' => DB::sqleval("NOW()")
                         ));
             return true;
         }
