@@ -7,7 +7,7 @@
         
         
         public function displaySave($ID){
-              $results = DB::query("SELECT StudentID,CheckSheetID,SaveData FROM CHECKSHEET WHERE StudentID = %s;", $ID);
+              $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date FROM CHECKSHEET WHERE StudentID = %s;", $ID);
             return $results;
         }
         
