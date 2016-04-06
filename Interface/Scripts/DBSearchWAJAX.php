@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require("../../PHPClasses/logic.class.php");
     if(isset($_GET['search']) && $_GET['search'] != "" && $_GET['search'] != " "){
         $logic = new Logic();
@@ -30,6 +31,11 @@
         }
      echo "";
      
+    }
+    
+ if(isset($_GET['Save']) && $_GET['Save'] != "" && $_GET['Save'] != " "){
+        $logic = new Logic();
+        $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id']);
     }
     
         

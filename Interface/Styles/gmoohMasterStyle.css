@@ -587,7 +587,7 @@ td.dataTD{ /* Add padding and some other tweaks*/
 }
 
 table.tableCenter{ /* Align table to center. Add some general class. */
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
+	
 }
 /* End of my awful WIP stuff. - C Steckhouse */

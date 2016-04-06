@@ -6,6 +6,19 @@
    		}
         
         
+        public function displaySave($ID){
+              $results = DB::query("SELECT StudentID,CheckSheetDescr,SaveData FROM CHECKSHEET WHERE StudentID = %s;", $ID);
+            return $results;
+        }
+        
+        public function saveChecksheet($ID,$xml,$chkID){
+            DB::insert('CHECKSHEET', array(
+                          'StudentID' => $ID,
+                          'CheckSheetDescr' => $chkID,
+                            'SaveData' => $xml
+                        ));
+            return true;
+        }
         
         public function getUserInfo($ID){
             $results = DB::query("SELECT FirstName,LastName,Email,StudentId as ID from STUDENT where StudentId = %s;", $ID);
