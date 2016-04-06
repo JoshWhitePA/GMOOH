@@ -298,8 +298,7 @@
 				</tr>
 		<!-- A. NATURAL SCIENCES SECTION -->
 				<tr>
-					<th><u>
-						A. Natural Science, Mathematics, and Computer Science</u></th>
+					<th>A. Natural Science, Mathematics, and Computer Science</th>
 				</tr>
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
 				<tr>
@@ -463,8 +462,7 @@
 <!-- #BS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3"><u>
-						B. Major Program: 51 sh</u></th>
+					<th class = "tableHeader" colspan = "3">B. Major Program: 51 sh</th>
 				</tr>
 		<!-- CSC SD REQUIRED COURSES SECTION -->
 				<tr>

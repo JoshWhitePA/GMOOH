@@ -15,6 +15,7 @@
 		</script>
 	</head>
 	<body id = "behindTheScenes">
+		<div id = "helper"></div>
 		<div class = 'blank'><div class = "loadingImg"></div><div class = "loadingText">Loading</div></div>
 		<div id = "master" class = "pageBody"></div>
 	</body>
