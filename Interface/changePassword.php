@@ -8,9 +8,9 @@
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection")
-						.append("<div id = 'two' style = 'top: 0; bottom: 0; left: 0; right: 0; margin: auto; height: 100%; position: relative'>"
+						.append("<div id = 'two' class = 'innerSection'>"
 							+ "<form action='changePassword.php' onsubmit='event.preventDefault(); return formSubmit();' method='post' id='UserForm'>"
-							+ "<table style = 'left: 25%; top: 35%; position: absolute'>"
+							+ "<table class = 'tableCenter'>"
 							+ "<tr>"
 							+ "<th>Old Password &nbsp;</th>"
 							+ "<td class = 'paddedTD'><input id='oldPassword' name='oldPassword' type='password' title='Please enter your current password' pattern='[A-Za-z0-9]{8,}' required/></td>"

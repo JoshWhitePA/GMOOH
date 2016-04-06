@@ -115,6 +115,7 @@ function pageLoadEditOfficial() {
 				+ "<option>Select A Department</option>"
 								
 				//Temporary, should be filled by database at a later time
+				+ "<optgroup label = 'A ------------------------------------'>"
 				+ "<option>ACC - Accounting</option>"
 				+ "<option>ANT - Anthropology</option>"
 				+ "<option>ARA - Arabic</option>"
@@ -123,8 +124,12 @@ function pageLoadEditOfficial() {
 				+ "<option>ART - Art</option>"
 				+ "<option>ARU - Art Education</option>"
 				+ "<option>AST - Astronomy</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'B ------------------------------------'>"
 				+ "<option>BIO - Biology</option>"
 				+ "<option>BUS - Business</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'C ------------------------------------'>"
 				+ "<option>CDE - Communication Design</option>"
 				+ "<option>CDH - Communication Design History</option>"
 				+ "<option>CFT - Crafts</option>"
@@ -133,6 +138,8 @@ function pageLoadEditOfficial() {
 				+ "<option>COM - Communication</option>"
 				+ "<option>CRJ - Criminal Justice</option>"
 				+ "<option>CSC - Computer Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'E ------------------------------------'>"
 				+ "<option>ECO - Economics</option>"
 				+ "<option>EDU - Education</option>"
 				+ "<option>EEU - Elementary Education: Pre-K 4</option>"
@@ -140,19 +147,31 @@ function pageLoadEditOfficial() {
 				+ "<option>ELU - Elementary Education</option>"
 				+ "<option>ENG - English</option>"
 				+ "<option>ENV - Environmental Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'F ------------------------------------'>"
 				+ "<option>FAR - Fine Arts</option>"
 				+ "<option>FAS - Fine Arts Studio</option>"
 				+ "<option>FIN - Finance</option>"
 				+ "<option>FRE - French</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'G ------------------------------------'>"
 				+ "<option>GEG - Geography</option>"
 				+ "<option>GEL - Geology</option>"
 				+ "<option>GER - German</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'H ------------------------------------'>"
 				+ "<option>HEA - Health</option>"
 				+ "<option>HIS - History</option>"
 				+ "<option>HUM - Humanities</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'I ------------------------------------'>"
 				+ "<option>INT - International Studies</option>"
 				+ "<option>ITC - Instructional Technology</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'L ------------------------------------'>"
 				+ "<option>LIB - Library Science</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'M ------------------------------------'>"
 				+ "<option>MAR - Marine Science</option>"
 				+ "<option>MAT - Mathematics</option>"
 				+ "<option>MGM - Management</option>"
@@ -162,6 +181,8 @@ function pageLoadEditOfficial() {
 				+ "<option>MUP - Music Performance</option>"
 				+ "<option>MUS - Music</option>"
 				+ "<option>MUU - Music Education</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'P ------------------------------------'>"
 				+ "<option>PAG - Pennsylvania German Studies</option>"
 				+ "<option>PEC - Physical Education Class</option>"
 				+ "<option>PHI - Philosophy</option>"
@@ -170,17 +191,26 @@ function pageLoadEditOfficial() {
 				+ "<option>POL - Political Science</option>"
 				+ "<option>PRO - Professional Studies</option>"
 				+ "<option>PSY - Psychology</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'R ------------------------------------'>"
 				+ "<option>RUS - Russian</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'S ------------------------------------'>"
 				+ "<option>SEU - Secondary Education</option>"
 				+ "<option>SOC - Sociology</option>"
 				+ "<option>SPA - Spanish</option>"
 				+ "<option>SPT - Sport</option>"
 				+ "<option>SPU - Special Education</option>"
 				+ "<option>SWK - Social Work</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'T ------------------------------------'>"
 				+ "<option>THE - Theatre</option>"
 				+ "<option>TVE - Electronic Media</option>"
+				+ "</optgroup>"
+				+ "<optgroup label = 'W ------------------------------------'>"
 				+ "<option>WGS - Women's and Gender Studies</option>"
 				+ "<option>WRI - Writing</option>"
+				+ "</optgroup>"
 				+ "</select>"
 				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
 	});
@@ -348,7 +378,6 @@ function clearChecksheet() {
 	if(lastSection) //If lastSection != NULL (has not been initialized yet)
 	{
 		$(lastSection).css("border-color", "transparent");
-		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
 		$("#sectionCourseList").text("");
@@ -405,7 +434,6 @@ function reset() {
 		if(lastSection) //If lastSection != NULL (has not been initialized yet)
 	{
 		$(lastSection).css("border-color", "transparent");
-		$(lastSection).css("border-width", "1px");
 		lastSection = null;
 		$("#sectionTitle label").text("");
 		$("#sectionCourseList").text("");

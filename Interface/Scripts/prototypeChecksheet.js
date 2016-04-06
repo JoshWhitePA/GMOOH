@@ -68,28 +68,28 @@ function pageLoadPrototype() {
 	//Load master page into current page's body
 	$("#master").load("MasterPages/masterPage.html", function() {
 	//Make the side sections visible
-	$("#left").css("visibility", "visible");
-	$("#right").css("visibility", "visible");
-	$("#mainSection")
-		//Place content inside the main section of the master page
-		.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
-			+ "title = 'Select a major or minor to start editing a checksheet'>"
-			+ "<option value = 'it'>CSC IT - Computer Science: Information Technology</option>"
-			+ "<option value = 'Mit'>CSC IT(M) - Computer Science: Information Technology Masters</option>"
-			+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
-			+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
-			+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
-			+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"
-            + "<option value = 'savIT'>CSC IT(M) - Computer Science: Information Technology Saved</option>"
-                
-			+ "</select>"
-			+ "<div id = 'innerSection' class = 'innerSection'></div>"
-			+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
-			+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
-			+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
-			+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
-			+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg' id = 'clearCheck'"
-			+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
+		$("#left").css("visibility", "visible");
+		$("#right").css("visibility", "visible");
+		$("#mainSection")
+			//Place content inside the main section of the master page
+			.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
+				+ "title = 'Select a major or minor to start editing a checksheet'>"
+				+ "<option value = 'it'>CSC IT - Computer Science: Information Technology</option>"
+				+ "<option value = 'Mit'>CSC IT(M) - Computer Science: Information Technology Masters</option>"
+				+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
+				+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
+				+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
+				+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"
+				+ "<option value = 'savIT'>CSC IT(M) - Computer Science: Information Technology Saved</option>"
+					
+				+ "</select>"
+				+ "<div id = 'innerSection' class = 'innerSection'></div>"
+				+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
+				+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
+				+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
+				+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
+				+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg' id = 'clearCheck'"
+				+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
 		//Place content inside the left section of the master page
 		$("#left")
 			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
@@ -295,12 +295,40 @@ function pageLoadPrototype() {
 	}
 }
 
+function resetChecksheet() {
+	if(currentChecksheet == "it") 
+		//load chosen checksheet into the inner section of the master page
+		$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
+		
+	else if(currentChecksheet == "Mit") 
+		$("#innerSection").load("Checksheets/v1.1/min/cscITMastersChecksheet.php");
+		
+	else if(currentChecksheet == "itm") 
+		$("#innerSection").load("Checksheets/v1.1/min/cscITMinorChecksheet.php");
+		
+	else if(currentChecksheet == "sd") 
+		$("#innerSection").load("Checksheets/v1.1/min/cscSDChecksheet.php");
+		
+	else if(currentChecksheet == "Msd") 
+		$("#innerSection").load("Checksheets/v1.1/min/cscSDMastersChecksheet.php");
+		
+    else if(currentChecksheet == "sdm") 
+		$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
+		
+	else 
+		$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
+}
+
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
+	$.getScript("Scripts/jquery-ui.min.js", function() {
+		if($("#draggableCourse").draggable("instance"))
+			$("#draggableCourse").draggable("destroy");
+	});
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
 	$("#sectionCourseList") //replace span content with courses
 		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-			+" <div id = 'draggableCourse' class = 'courseBox''>"
+			+" <div id = 'draggableCourse' class = 'courseBox'>"
 			+ $(item).attr("id") + " Course</div></div>");
 	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
@@ -313,11 +341,37 @@ function findCourses(item) {
 	{	//Replace the last section selected back to normal
 		$(lastSection).css("border-color", "transparent");
 		lastSection = item; //Make lastSection point to the new section
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$(lastSection).droppable("destroy");
+		});
 	}	
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
-		$(item).effect("pulsate", 5000); 
+		//$(item).effect("pulsate", 5000); 
+		
+		$("#draggableCourse").draggable({
+			revert: "invalid",
+			scroll: false,
+			distance: 5,
+			helper: function() { return $(this).clone().appendTo("#left").show(); },
+			containment: "body",
+			start : function() {
+				this.style.display = "none";
+			},
+			stop: function() {
+				this.style.display = "";
+			}
+		});
+		
+		$(item).droppable({
+			activate: function() {
+				$(item).effect("pulsate", 5000); 
+			},
+			drop: function(event, ui) {
+				$(item).html($("#draggableCourse").text());
+			}
+		});
 	});
 }
 
@@ -465,8 +519,11 @@ function clearChecksheet() {
 	if(lastSection) //If lastSection != NULL (has not been initialized yet)
 	{
 		$(lastSection).css("border-color", "transparent");
-		$(lastSection).css("border-width", "1px");
 		lastSection = null;
+		$.getScript("Scripts/jquery-ui.min.js", function() {
+			$("#draggableCourse").draggable("destroy");
+		});
+		resetChecksheet();
 		$("#sectionTitle label").text("");
 		$("#sectionCourseList").text("");
 	}
@@ -653,3 +710,7 @@ function searchByDept(){
             });
     return true;
 }
+
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
