@@ -592,6 +592,6 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 
 table.advisorOptions{ /* style for the advisor homepage options panel */
 	margin: auto;
-	text-align: right;
+	text-align: left;
 }
 /* End of my awful WIP stuff. - C Steckhouse */
