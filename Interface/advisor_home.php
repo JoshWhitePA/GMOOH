@@ -13,7 +13,7 @@ Created for CSC 355WI 020 -->
 					$("#mainSection")
 						.append("<form action='advisor_response.php' method='post' id='main'>"
 							+ "<div class='changepass'>"
-							+ "<table class='tableCenter'>"
+							+ "<table class='advisorOptions'>"
 							+ "<tr><td>Advisee: <select name = 'advisee'>"
 							+ "<option value = 'PlaceholdA'>John Carmack</option>"
 							+ "<option value = 'PlaceholdB'>John Romaro</option>"
@@ -22,7 +22,7 @@ Created for CSC 355WI 020 -->
 							+ "<option value = 'PlaceholdE'>Kevin Cloud</option>"
 							+ "<option value = 'PlaceholdF'>Sandy Petersen</option>"
 							+ "</select></td><td>Major: <span class='box'>PLACEHOLDER</span></td></tr>"
-							+ "<tr><td>Select Option: </td><td>"
+							+ "<tr><td class='labelAlign'>Select Option: </td><td>"
 							+ "<input type='radio' name='selectedAction' value='viewAdviseeOffical'>View selected Advisee's offical checksheet</input><br />"
 							+ "<input type='radio' name='selectedAction' value='createProto'>Create a prototype checksheet for the selected Advisee</input><br />"
 							+ "<input type='radio' name='selectedAction' value='viewAdviseeSaved'>View selected Advisee's saved checksheets</input>"

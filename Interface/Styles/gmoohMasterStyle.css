@@ -588,6 +588,10 @@ td.dataTD{ /* Add padding and some other tweaks*/
 
 table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
-	
+}
+
+table.advisorOptions{ /* style for the advisor homepage options panel */
+	margin: auto;
+	text-align: right;
 }
 /* End of my awful WIP stuff. - C Steckhouse */
