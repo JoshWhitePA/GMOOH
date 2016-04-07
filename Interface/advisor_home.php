@@ -29,7 +29,7 @@ Created for CSC 355WI 020 -->
 							+ "</td></tr>"
 							+ "</table>"
 							+ "<hr />"
-							+ "<table class='tableCenter'><tr><td><input type="submit" value="Submit" /></td> <td><input type="reset" value="Reset" /></td></tr></table>"
+							+ "<table class='tableCenter'><tr><td><input type='submit' value='Submit' /></td> <td><input type='reset' value='Reset' /></td></tr></table>"
 							+ "</div>"
 							+ "</form>"
 							); 
