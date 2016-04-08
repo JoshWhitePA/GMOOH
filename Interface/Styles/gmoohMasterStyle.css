@@ -569,6 +569,7 @@ div.boxed{ /* Box container for page. */
 
 td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
 	text-align: right;
+	padding-right: 2px;
 }
 
 table,tr.interface{ /* general interface table elements */
@@ -590,16 +591,18 @@ td.majorData{ /* Needed specific padding on an element */
 	padding-left: 25px;
 }
 
-td.optionSelect{ /* Add a box around the advisor option selection. Might be useful elsewhere too! */
+td.optionSelect td { /* Add a box around the advisor option selection. Might be useful elsewhere too! */
 	border: 1px solid;
 	border-color: #999999;
 	border-radius: 6px;
 }
 
-tr.bordedBottom{
+/* Bordered bottom style. Broken currently. */ /*
+tr.bordedBottom{ 
 	border-bottom: 1px solid;
 	border-color: #999999;
 }
+*/
 
 table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
@@ -608,5 +611,6 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 table.advisorOptions{ /* style for the advisor homepage options panel */
 	margin: auto;
 	text-align: left;
+	padding: 3px;
 }
 /* End of my awful WIP stuff. - C Steckhouse */

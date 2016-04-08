@@ -14,7 +14,7 @@ Created for CSC 355WI 020 -->
 						.append("<form action='advisor_response.php' method='post' id='main'>"
 							+ "<div class='changepass'>"
 							+ "<table class='advisorOptions'>"
-							+ "<tr class='bordedBottom'><td>Advisee: <select name = 'advisee'>"
+							+ "<tr><td>Advisee: <select name = 'advisee'>"
 							+ "<option value = 'PlaceholdA'>John Carmack</option>"
 							+ "<option value = 'PlaceholdB'>John Romaro</option>"
 							+ "<option value = 'PlaceholdC'>Dave Taylor</option>"
