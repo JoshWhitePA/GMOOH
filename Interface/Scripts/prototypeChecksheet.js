@@ -67,15 +67,6 @@ function pageLoad(checksheetFlag) {
 			+ "&emsp;&bull; 30 sh of courses + comprehensive exam<br/>"
 			+ "&emsp;&bull; 24 sh of courses + 6 sh of CSC 599: Thesis</p>"
 			+ "<p>At least 18 sh must be 500-level courses.</p></div>");
-			
-	if(!checksheetFlag) {
-		$("#behindTheScenes")
-			.append("<div id = 'resetThis' title = 'Save Checkhsheet?' class = 'popupDialog'>"
-				+ "<p>Do you wish to save your checksheet before resetting?</p></div>"
-			
-				+ "<div id = 'wasReset' title = 'Checksheet Reset' class = 'popupDialog'>"
-				+ "<p>Your checksheet was reset to the last save of your official checksheet.</p></div>");
-	}
 	
 	//Load master page into current page's body
 	$("#master").load("MasterPages/masterPage.html", function() {
@@ -109,7 +100,7 @@ function pageLoad(checksheetFlag) {
 				+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 				+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
 				+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
-				+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg' id = 'clearCheck'"
+				+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
 				+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
 		//Place content inside the left section of the master page
 		$("#left")
@@ -121,9 +112,11 @@ function pageLoad(checksheetFlag) {
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
 				+ "<select id = 'termDD' name = 'courseDropdown' class = 'courseSelect'>"	
-				+ "<option>Select A Semester</option>"
+				+ "<option>Select A Term</option>"
 				+ "</select>"
-				+ "<div id = 'termList' class = 'sectionCourses'></div></div>");
+				+ "<div id = 'termList' class = 'sectionCourses'>"
+				+ "<ul class = 'semFormat'><li class = 'semFormat'>*Unassigned*</li></ul></div></div>");
+				
 		//Place content inside the right section of the master page
 		$("#right")
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
@@ -326,8 +319,10 @@ function findCourses(item) {
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
 	$("#sectionCourseList") //replace span content with courses
 		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-			+" <div id = 'draggableCourse' class = 'courseBox'>"
-			+ $(item).attr("id") + " Course</div></div>");
+			+ "<div id = 'draggableCourse' class = 'courseBox'>"
+			+ $(item).attr("id") + " Course</div>"
+			+ "<div id = 'draggableCourse2' class = 'courseBox'>"
+			+ $(item).attr("id") + " Course2</div></div>");
 	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
@@ -341,8 +336,9 @@ function findCourses(item) {
 		lastSection = item; //Make lastSection point to the new section
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$(lastSection).droppable("destroy");
+			$("#termList ul li").droppable("destroy");
 		});
-	}	
+	}
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {
@@ -362,12 +358,32 @@ function findCourses(item) {
 			}
 		});
 		
+		$("#draggableCourse2").draggable({
+			revert: "invalid",
+			scroll: false,
+			distance: 5,
+			helper: function() { return $(this).clone().appendTo("#left").show(); },
+			containment: "body",
+			start : function() {
+				this.style.display = "none";
+			},
+			stop: function() {
+				this.style.display = "";
+			}
+		});
+		
 		$(item).droppable({
 			activate: function() {
-				$(item).effect("pulsate", 5000); 
+				$(item).effect("pulsate", 2000); 
 			},
 			drop: function(event, ui) {
-				$(item).html($("#draggableCourse").text());
+				$(item).html($("#" + ui.draggable.prop("id")).text());
+			}
+		});
+		
+		$("#termList ul li").droppable({
+			drop: function(event, ui) {
+				$(this).append("<div class = 'courseBox'>" + $("#" + ui.draggable.prop("id")).text() + "</div>");
 			}
 		});
 	});
@@ -436,19 +452,20 @@ function resetChecksheet() {
 //Function to save the checksheet		
 function saveChecksheet() {
     scrapeTheSucka();
-	showDialog("#saveDialog", 535);
+	showDialog("#saveDialog", 535, true);
 }
 
 function displaySectionNotes(id) {
 	$("#" + id + " div").toggle();
 }
 
-function showDialog(id, setWidth) {
+function showDialog(id, setWidth, openDialog) {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
 			$(id).dialog({
+				autoOpen: openDialog,
 				dialogClass: "no-close",
 				closeOnEscape: false,
 				resizable: false,
@@ -457,7 +474,8 @@ function showDialog(id, setWidth) {
 				buttons: {
 					"Got it!": function() { 
 						$("#master").unblock();
-						$(this).dialog("destroy"); }
+						$(this).dialog("destroy"); 
+					}
 				}
 			});
 		});
@@ -465,23 +483,9 @@ function showDialog(id, setWidth) {
 }
 
 function startUpNotes() {
-	$.getScript("Scripts/jquery.blockUI.js", function() {
-		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
-		$("#master").block({ message: null, baseZ: 2 });
-		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$.ui.dialog.prototype._focusTabbable = function(){};
-			$("#startUpDialog").dialog({
-				dialogClass: "no-close",
-				closeOnEscape: false,
-				resizable: false,
-				draggable: false,
-				width: 535,
-				buttons: {
-					"Got it!": function() { showDialog("#startUpDialog", 700);
-						$(this).dialog("destroy"); }
-				}
-			});
-		});
+	$.getScript("Scripts/jquery-ui.min.js", function() {
+		//showDialog("#startUpDialog", 535, false);	
+		//$("#startUpDialog").dialog("open");
 	});
 }
 
@@ -507,7 +511,7 @@ function clearAlert() {
 					"Clear Without Saving": function() {
 						$(this).dialog("destroy");
 						clearChecksheet();
-						showDialog("#clearedDialog", 535);
+						showDialog("#clearedDialog", 535, true);
 					},
 					Cancel: function() {
 						$("#master").unblock();
@@ -539,7 +543,7 @@ function resetAlert() {
 					"Reset Without Saving": function() {
 						$(this).dialog("destroy");
 						resetChecksheet();
-						showDialog("#wasResetDialog", 535);
+						showDialog("#wasResetDialog", 535, true);
 					},
 					Cancel: function() {
 						$("#master").unblock();
