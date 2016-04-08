@@ -586,6 +586,10 @@ td.dataTD{ /* Add padding and some other tweaks*/
 	text-align: left;
 }
 
+td.majorData{ /* Needed very specific padding on an element */
+	padding-left: 10px;
+}
+
 table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
 }

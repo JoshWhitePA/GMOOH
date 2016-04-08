@@ -21,7 +21,7 @@ Created for CSC 355WI 020 -->
 							+ "<option value = 'PlaceholdD'>Adrian Carmack</option>"
 							+ "<option value = 'PlaceholdE'>Kevin Cloud</option>"
 							+ "<option value = 'PlaceholdF'>Sandy Petersen</option>"
-							+ "</select></td><td>Major: <span class='box'>PLACEHOLDER</span></td></tr>"
+							+ "</select></td><td class='majorData'>Major: <span class='box'>PLACEHOLDER</span></td></tr>"
 							+ "<tr><td class='labelAlign'>Select Option: </td><td>"
 							+ "<input type='radio' name='selectedAction' value='viewAdviseeOffical'>View selected Advisee's offical checksheet</input><br />"
 							+ "<input type='radio' name='selectedAction' value='createProto'>Create a prototype checksheet for the selected Advisee</input><br />"
