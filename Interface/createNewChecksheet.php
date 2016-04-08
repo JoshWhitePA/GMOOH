@@ -9,13 +9,12 @@
 		<script>
 			$(window).load(function() {
 				$(".blank").show();
-				$(document).ready(pageLoadPrototype);
+				$(document).ready(pageLoad(true));
 				$(".blank").delay(500).fadeOut(1000);
 			});	
 		</script>
 	</head>
 	<body id = "behindTheScenes">
-		<div id = "helper"></div>
 		<div class = 'blank'><div class = "loadingImg"></div><div class = "loadingText">Loading</div></div>
 		<div id = "master" class = "pageBody"></div>
 	</body>

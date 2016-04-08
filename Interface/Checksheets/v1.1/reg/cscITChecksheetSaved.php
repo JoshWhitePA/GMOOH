@@ -10,12 +10,43 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+
+function xml2array($fname){
+      $sxi = new SimpleXmlIterator($fname, null, true);
+      return sxiToArray($sxi);
+    }
+
+    function sxiToArray($sxi){
+      $a = array();
+      for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
+        if(!array_key_exists($sxi->key(), $a)){
+          $a[$sxi->key()] = array();
+        }
+        if($sxi->hasChildren()){
+          $a[$sxi->key()][] = sxiToArray($sxi->current());
+        }
+        else{
+          $a[$sxi->key()][] = strval($sxi->current());
+        }
+      }
+      return $a;
+    }
+
+    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
+    //print_r($sData);
+    //echo "<br><br>";
+    $indexOGen = 0;
+    $indexOPro = 0;
+//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
+    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
+
+
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 	<title>BS Computer Science: IT Checksheet</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../../../Styles/checksheetStyleV1p1reg.css"/>
 	</head>	
 	<body>
 <!-- HEADER -->
@@ -26,7 +57,7 @@
 			______________________________
 		</div>
 		<div class = "sectionTop">
-			<img src = "Images/KU_Logo.jpg">
+			<img src = "../../../Images/KU_Logo.jpg">
 		</div>
 		<div class = "sectionTop">
 			<br/><br/>
@@ -57,12 +88,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."
 							</b></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
@@ -70,11 +102,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
@@ -82,11 +115,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- D. WELLNESS SECTION -->
 				<tr>
@@ -94,11 +128,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
+						</tr>";
+                $indexOGen++;
 				?>
 			</table>
 <!-- II. UNIVERSITY DISTRIBUTION TABLE -->
@@ -123,12 +158,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
@@ -142,12 +178,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
@@ -159,12 +196,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- D. ARTS SECTION -->
 				<tr>
@@ -176,12 +214,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- E. FREE ELECTIVE SECTION -->
 				<tr>
@@ -191,12 +230,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 			</table>
 		</div>
@@ -218,12 +258,13 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo "<tr>
-								<th><b>&emsp;&emsp;COURSE:</b></th>
+								<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
-								<th class = 'tableGrade'><b></b></th>
+								<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 								<th class = 'tableGrade'>WI</th>
 							</tr>";
+                        $indexOGen++;
 					}
 				?>
 		<!-- B. QUATNTITAVE LEARNING / COMPUTER-INTENSIVE SECTION -->
@@ -235,12 +276,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- C. VISUAL LITERACY / COMMUNICATION-INTENSIVE SECTION -->
 				<tr>
@@ -251,27 +293,30 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b>						
 							</b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."
 							</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
+                
 		<!-- D. CULTURAL DIVERSITY SECTION -->
 				<tr>
 					<th>D. Cultural Diversity <b class = "smaller">(3 credits) </b></th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'>CD</th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- E. CRITICAL THINKING SECTION -->
 				<tr>
@@ -279,12 +324,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'>CT</th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 			</table>
 		<!-- GENERAL EDUCATION CHECKSHEET NOTES PT.1 -->
@@ -357,12 +403,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 				<!-- 2. NATURAL SCIENCES ELECTIVE SUBSECTION -->
 				<tr>
@@ -375,12 +422,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- B. SOCIAL SCIENCE SECTION -->
 				<tr>
@@ -396,12 +444,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 				<!-- 2. SOCIAL SCIENCE ELECTIVE 2 SUBSECTION -->
 				<tr>
@@ -411,12 +460,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
@@ -428,12 +478,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 			</table>
 		</div>
@@ -461,12 +512,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 				<!-- 2. HUMANITIES ELECTIVE 2 SUBSECTION -->
 				<tr>
@@ -476,12 +528,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
@@ -493,12 +546,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+                $indexOGen++;
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
@@ -512,12 +566,13 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo"<tr>
-								<th><b>&emsp;&emsp;COURSE:</b></th>
+								<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
-								<th class = 'tableGrade'><b></b></th>
+								<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 								<th class = 'tableGrade'></th>
 							</tr>";
+                        $indexOGen++;
 					}
 				?>
 			</table>
@@ -571,8 +626,8 @@
 				<?php
 					for($i = 0; $i < 11; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td  class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
@@ -585,8 +640,8 @@
 				<?php
 					for($i = 0; $i < 8; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td  class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
@@ -599,8 +654,8 @@
 				<?php
 					for($i = 0; $i < 3; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td  class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
@@ -624,8 +679,8 @@
 				<?php
 					for($i = 0; $i < 1; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td  class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
@@ -638,8 +693,8 @@
 				<?php
 					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td  class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>

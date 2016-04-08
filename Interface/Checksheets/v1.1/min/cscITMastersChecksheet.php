@@ -22,7 +22,7 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "msCSCNotes()">
+					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "showDialog('#msCSCNotes', 550)">
 						Master Program: 30 sh</u></th>
 				</tr>
 				<tr>
