@@ -40,7 +40,7 @@
 							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' />
+							<th class = 'tableGrade'><b>
 							</b></th>
 						</tr>"
 				?>
@@ -56,7 +56,7 @@
 							<th class = 'courseBox'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 						</tr>"
 				?>
 		<!-- C. MATHEMATICS SECTION -->
@@ -71,7 +71,7 @@
 							<th class = 'courseBox'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 						</tr>"
 				?>
 		<!-- D. WELLNESS SECTION -->
@@ -86,7 +86,7 @@
 							<th class = 'courseBox'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 						</tr>"
 				?>
 			</table>
@@ -113,7 +113,7 @@
 							<th class = 'courseBox'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -130,7 +130,7 @@
 							<th class = 'courseBox'><div id = 'Social Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -147,7 +147,7 @@
 							<th class = 'courseBox'><div id = 'Humanities' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -164,7 +164,7 @@
 							<th class = 'courseBox'><div id = 'Arts' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -180,7 +180,7 @@
 							<th class = 'courseBox'><div id = 'II. E. Free Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -207,7 +207,7 @@
 								<th class = 'courseBox'><div id = 'Writing Intensive' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'>WI</th>
 							</tr>";
 					}
@@ -223,7 +223,7 @@
 							<th class = 'courseBox'><div id = 'QL or CP' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -239,7 +239,7 @@
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' />						
 							</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' />
+							<th class = 'tableGrade'><b>
 							</b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
@@ -253,7 +253,7 @@
 							<th class = 'courseBox'><div id = 'Cultural Diversity' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'>CD</th>
 						</tr>"
 				?>
@@ -266,7 +266,7 @@
 							<th class = 'courseBox'><div id = 'Critical Thinking' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'>CT</th>
 						</tr>"
 				?>
@@ -299,7 +299,7 @@
 							<th class = 'courseBox'><div id = 'Natural Science with Lab' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -316,7 +316,7 @@
 							<th class = 'courseBox'><div id = 'IV. A. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -337,7 +337,7 @@
 							<th class = 'courseBox'><div id = 'IV. B. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -353,7 +353,7 @@
 							<th class = 'courseBox'><div id = 'IV. B. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -370,7 +370,7 @@
 							<th class = 'courseBox'><div id = 'IV. B. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -402,7 +402,7 @@
 							<th class = 'courseBox'><div id = 'IV. C. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -418,7 +418,7 @@
 							<th class = 'courseBox'><div id = 'IV. C. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -435,7 +435,7 @@
 							<th class = 'courseBox'><div id = 'IV. C. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>"
 				?>
@@ -454,7 +454,7 @@
 								<th class = 'courseBox'><div id = 'IV. D. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
+								<th class = 'tableGrade'><b></b></th>
 								<th class = 'tableGrade'></th>
 							</tr>";
 					}
@@ -478,7 +478,7 @@
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
-								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
 		<!-- CSC SD ELECTIVE COURSES SECTION -->
@@ -495,7 +495,7 @@
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
-								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>
 				<tr><th class = "tableSpace"></th></tr>
@@ -518,7 +518,7 @@
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
 								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
-								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td class = 'tableGrade'></td>
 							</tr>";
 				?>
 		<!-- CSC SD INTERNSHIP SECTION -->
