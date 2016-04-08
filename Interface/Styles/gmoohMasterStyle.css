@@ -586,8 +586,19 @@ td.dataTD{ /* Add padding and some other tweaks*/
 	text-align: left;
 }
 
-td.majorData{ /* Needed very specific padding on an element */
-	padding-left: 10px;
+td.majorData{ /* Needed specific padding on an element */
+	padding-left: 25px;
+}
+
+td.optionSelect{ /* Add a box around the advisor option selection. Might be useful elsewhere too! */
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 6px;
+}
+
+tr.bordedBottom{
+	border-bottom: 1px solid;
+	border-color: #999999;
 }
 
 table.tableCenter{ /* Align table to center. Add some general class. */
