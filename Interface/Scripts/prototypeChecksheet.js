@@ -463,6 +463,7 @@ function printThis() {
 
 //Function to save the checksheet		
 function saveChecksheet() {
+    scrapeTheSucka();
 	$.getScript("Scripts/jquery.blockUI.js", function() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
@@ -713,13 +714,10 @@ function searchByDept(){
      
 function scrapeTheSucka(){
     var xmlSaveData = "<GMOOH><Student><GenEd>";
-//    alert($('#genClass0').text());
     var numOGenEd = parseInt($('#genEdCount').val());
-//    alert("numOGenEd"+numOGenEd);
     for(idxGen = 0; idxGen < numOGenEd; idxGen++ ){
         xmlSaveData += "<Class>";
         var idStr = "#genClass" + idxGen;
-//        alert(idStr);
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
         idStr = "#genGrade" + idxGen;
         xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
@@ -729,11 +727,9 @@ function scrapeTheSucka(){
 
     xmlSaveData += "<Program>";
     var numOProgram = parseInt($('#programCount').val());
-//     console.log($('#programCount').val());
     for(idxPro = 0; idxPro < numOProgram; idxPro++ ){
         xmlSaveData += "<Class>";
         var idStr = "#proClass" + idxPro;
-//        alert(idStr);
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
         idStr = "#proGrade" + idxPro;
         xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
@@ -741,27 +737,13 @@ function scrapeTheSucka(){
     }
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
-//    $.ajax({
-//           url             :   './Scripts/DBSearchWAJAX.php',
-//           type            :   'POST',
-//           processData     :   false,
-//           contentType     :   'text/xml',
-//           data            :   xmlSaveData,
-//           success         :   function( data ) {
-//              alert('success');
-//           },
-//           error           :   function() {
-//              alert('failed to send ajax request');
-//           },
-//           complete        :   function() {
-//              alert('ajax request completed');
-//           }
-//        });
-    var chkID = $('#currentChecksheet').val();
+
+    var chkID = $('#programID').val();
+       
      $.ajax({
                 url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData,
                 success: function (data) {
-                    $('#deptS').html(String(data));
+                    console.log(data);
                 }
             });
     

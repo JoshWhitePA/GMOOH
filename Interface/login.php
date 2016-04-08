@@ -90,6 +90,7 @@
 		$_SESSION["loggedIn"] = $loggedIn;
 		//If your password/Username is wrong execute this code
 		if($_SESSION["loggedIn"] == false){
+			$_SESSION["loggedIn"] = NULL;
 			echo '<script language="javascript">';
 			echo 'window.alert("Incorrect username/password please try again")';
 			echo '</script>';
