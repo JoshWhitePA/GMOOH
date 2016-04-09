@@ -1,5 +1,5 @@
 <!--
-*	File: 			cscSDMChecksheet.php
+*	File: 			cscITMChecksheet.php
 *	Created:	  	02/18/2016
 *	Version:		1.1 (02/28/2016)
 *	Authors:			Christian Carreras, Christopher Steckhouse
@@ -31,7 +31,7 @@ function xml2array($fname){
       return $a;
     }
 
-    $sData = xml2array('../../../BLPlayground/StudentData.xml');
+    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
     //print_r($sData);
     //echo "<br><br>";
     $indexOGen = 0;
@@ -39,12 +39,13 @@ function xml2array($fname){
 //    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
     //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
 
+
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>MS Computer Science: SD Checksheet</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
+	<title>MS Computer Science: IT Checksheet</title>
+	<link rel = "stylesheet" type = "text/css" href = "../../../Styles/checksheetStyleV1p1reg.css"/>
 	</head>
 	<body>
 <!-- HEADER -->
@@ -55,7 +56,7 @@ function xml2array($fname){
 			______________________________
 		</div>
 		<div class = "sectionTop">
-			<img src = "Images/KU_Logo.jpg">
+			<img src = "../../../Images/KU_Logo.jpg">
 		</div>
 		<div class = "sectionTop">
 			<br/><br/>
@@ -65,59 +66,74 @@ function xml2array($fname){
 		</div>
 		<div class = "newSection"></div>
 		<div class = "headerBox">DEPARTMENT OF COMPUTER SCIENCE & INFORMATION TECHNOLOGY
-		</div>		
+		</div>
+		
 <!-- #MS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
-		<div class = "header">MS in Computer Science: Software Development (30 sh)</div>
+		<div class = "header">MS in Computer Science: Information Technology (30 sh)</div>
 		<div class = "newSection"></div>
 		<div class = "buffer">&nbsp;</div>
 		<div class = "section">
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "1">
-						400-level courses: 0-12 sh</th>
+						Core Courses (18-24 sh)</th>
 						<td class = "tableGrade">Gr</td>
 						<td class = "tableGrade">SH</td>
 				</tr>
-		<!-- 400 level courses -->			
+		<!-- CSC SDM CORE COURSES SECTION -->
+				
 				<?php
-					for($i = 0; $i < 4; $i++)
+					for($i = 0; $i < 8; $i++)
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-				?>	
+				?>
+		<!-- Thesis (optional) -->
+				<tr>
+					<th class = "tableHeader" colspan = "1">
+						Thesis (0 or 6 sh)</th>
+						<td class = "tableGrade">Gr</td>
+						<td class = "tableGrade">SH</td>
+				</tr>
+				<!-- Since there can only be ONE thesis (or, if multiple, only one can count!), no need to have multiple columns -->
+				<tr>
+					<td>&emsp;&emsp;</td>
+					<td  class = 'tableGrade'></td>
+					<td  class = 'tableGrade'></td>
+				</tr>
 			</table>
 		</div>
-<!-- Second Half -->
+<!-- Second half -->
 		<div class = "section">
 			<table>
-		<!-- 500 level courses -->
+		<!-- ELECTIVE COURSES SECTION -->
 				<tr>	
 					<th class = "tableHeader" colspan = "1">
-						500-level courses: 18-30 sh
+						Elective Courses (0-6 sh)
 					</th>
 					<td class = "tableGrade">Gr</td>
 					<td class = "tableGrade">SH</td>
-				</tr>			
+				</tr>				
 				<?php
-					for($i = 0; $i < 10; $i++)
+					for($i = 0; $i < 2; $i++)
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
 							</tr>";
-				?>	
+				?>
 			</table>
 		<!-- Program code, version number, possibly additional stuff. Should be able to grab this from the database. -->
 			<table>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr>
-					<th><b>Program Code: GLASCSC</b></th>
+					<th><b>Program Code: GLASCSCIT</b></th>
 				</tr>
 				<tr>
-					<th><b>Version Number: 2122</b></th> 
-				</tr>
+					<th><b>Version Number: 2138</b></th>
+				</tr>			
 			</table>
 		</div>
 		<div class = "buffer">&nbsp;</div>

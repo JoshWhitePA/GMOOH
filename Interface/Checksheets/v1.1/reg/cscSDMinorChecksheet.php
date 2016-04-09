@@ -15,7 +15,7 @@
 <html>
 	<head>
 	<title>Computer Science: SD Minor Checksheet</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../../../Styles/checksheetStyleV1p1reg.css"/>
 	</head>
 	<body>
 <!-- HEADER -->
@@ -26,7 +26,7 @@
 			______________________________
 		</div>
 		<div class = "sectionTop">
-			<img src = "Images/KU_Logo.jpg">
+			<img src = "../../../Images/KU_Logo.jpg">
 		</div>
 		<div class = "sectionTop">
 			<br/><br/>

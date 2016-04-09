@@ -34,7 +34,7 @@
 						echo"<tr>
 								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
-								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+								<td class = 'tableGrade'><b></b></td>
 							</tr>"
 				?>
 				<tr>
@@ -49,7 +49,7 @@
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'CSC: SD Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
-							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+							<td class = 'tableGrade'><b></b></td>
 						</tr>"
 				?>
 				<tr>
@@ -64,7 +64,7 @@
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'CSC: SD Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
-							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+							<td class = 'tableGrade'><b></b></td>
 						</tr>"
 				?>
 				<tr><th class = "tableSpace"></th></tr>
