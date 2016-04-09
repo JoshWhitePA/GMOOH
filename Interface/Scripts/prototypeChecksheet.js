@@ -99,8 +99,16 @@ function pageLoadPrototype() {
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
-				+ "<select id = 'termDD' name = 'courseDropdown' class = 'courseSelect'>"	
+				+ "<select id = 'termDD' onchange='loadSchedule()' name = 'courseDropdown' class = 'courseSelect'>"	
 				+ "<option>Select A Semester</option>"
+                + "<option>Fall 2016</option>"
+                + "<option>Spring 2017</option>"
+                + "<option>Fall 2017</option>"
+                + "<option>Spring 2018</option>"
+                + "<option>Fall 2018</option>"
+                + "<option>Fall 2018</option>"
+                + "<option>Spring 2019</option>"
+                + "<option>Fall 2019</option>"
 				+ "</select>"
 				+ "<div id = 'termList' class = 'sectionCourses'></div></div>");
 		//Place content inside the right section of the master page
@@ -746,5 +754,37 @@ function scrapeTheSucka(){
                     console.log(data);
                 }
             });
+    
+}
+
+function loadSchedule(){
+    var sel =  $('#termDD').find(":selected").text();
+    //magic ajax
+     $.ajax({
+                url: "./Scripts/DBSearchWAJAX.php?termSearch=" + sel,
+                success: function (data) {
+                    $('#termList').html(String(data));
+                }
+            });
+    saveSchedule();
+    return true;
+    
+}
+function saveSchedule(){
+    var sel =  $('#termDD').find(":selected").text();
+         var m = $('#termList').text();  
+         var k = m.split('\n');  // I have used space, you can use any thing.
+         for(i=0;i<k.length;i++)  
+            alert(k[i]); 
+        
+        
+    //magic ajax
+
+//     $.ajax({
+//                url: "./Scripts/DBSearchWAJAX.php?popTerm=" + sel,
+//                success: function (data) {
+//                    $('#termList').html(String(data));
+//                }
+//            });
     
 }

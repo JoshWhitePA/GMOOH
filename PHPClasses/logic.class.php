@@ -5,6 +5,14 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
         
+        public function termSearch($term,$sID){
+             $results = DB::query("SELECT ClassNum,ClassPrefix FROM TERMSAVES WHERE Term = %s and StudentID = %s;", $term, $sID);
+            return $results;
+            
+        }
+        public function termSave(){
+            
+        }
         
         public function displaySave($ID){
               $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date FROM CHECKSHEET WHERE StudentID = %s;", $ID);
