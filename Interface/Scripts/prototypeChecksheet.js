@@ -1,6 +1,8 @@
 var lastSection; //Retains the location of the last checksheet section selected
 var showWelcomeNotes = true;
 var initialChecksheetLoaded = false;
+var spanIdIdx = 1;
+var termCourseIdIdx = 1;
 
 //Call this function within the jquery document ready function
 function pageLoad(checksheetFlag) {
@@ -100,7 +102,7 @@ function pageLoad(checksheetFlag) {
 				+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
 				+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
 				+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
-				+ "<input type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
+				+ "<input id = 'trashButton' type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
 				+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
 		//Place content inside the left section of the master page
 		$("#left")
@@ -122,7 +124,7 @@ function pageLoad(checksheetFlag) {
 			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
 				+ "title = 'Search for a course by using keywords such as course name or number'>"
 				+ "<div class = 'searchBox'>"
-				+ "<input type = 'text' onkeyup='searchBox()' id='searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
+				+ "<input type = 'text' onkeyup = 'searchBox()' id = 'searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
 				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
                 + "<div id = 'searchResults' class = 'sectionCourses'></div></div>"
 				+ "<div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
@@ -299,6 +301,10 @@ function pageLoad(checksheetFlag) {
 					currentChecksheet = $("#currentChecksheet option:selected").val();
 				}
 				initialChecksheetLoaded = true;
+				$.getScript("Scripts/jquery-ui.min.js", function() {
+					$("span").draggable("destroy");
+					spanIdIdx = 1;
+				});
 			}) .change(); //This makes sure it happens every time
 		}
 		else {
@@ -320,9 +326,7 @@ function findCourses(item) {
 	$("#sectionCourseList") //replace span content with courses
 		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
 			+ "<div id = 'draggableCourse' class = 'courseBox'>"
-			+ $(item).attr("id") + " Course</div>"
-			+ "<div id = 'draggableCourse2' class = 'courseBox'>"
-			+ $(item).attr("id") + " Course2</div></div>");
+			+ $(item).attr("id") + " Course</div>");
 	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
@@ -334,58 +338,107 @@ function findCourses(item) {
 	{	//Replace the last section selected back to normal
 		$(lastSection).css("border-color", "transparent");
 		lastSection = item; //Make lastSection point to the new section
-		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$(lastSection).droppable("destroy");
-			$("#termList ul li").droppable("destroy");
-		});
 	}
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
-	$.getScript("Scripts/jquery-ui.min.js", function() {
-		//$(item).effect("pulsate", 5000); 
-		
+	$.getScript("Scripts/jquery-ui.min.js", function() {		
+		makeTermDraggable(item);
 		$("#draggableCourse").draggable({
 			revert: "invalid",
 			scroll: false,
-			distance: 5,
 			helper: function() { return $(this).clone().appendTo("#left").show(); },
 			containment: "body",
+			distance: 5,
 			start : function() {
 				this.style.display = "none";
+				makeItemDroppable(item);
+				makeTermDroppable();
 			},
 			stop: function() {
 				this.style.display = "";
+				$(item).droppable("destroy");
+				$("#termList ul li").droppable("destroy");
+				makeChecksheetSpansDraggable(item);	
 			}
 		});
-		
-		$("#draggableCourse2").draggable({
-			revert: "invalid",
-			scroll: false,
-			distance: 5,
-			helper: function() { return $(this).clone().appendTo("#left").show(); },
-			containment: "body",
-			start : function() {
-				this.style.display = "none";
-			},
-			stop: function() {
-				this.style.display = "";
-			}
-		});
-		
-		$(item).droppable({
-			activate: function() {
-				$(item).effect("pulsate", 2000); 
-			},
-			drop: function(event, ui) {
-				$(item).html($("#" + ui.draggable.prop("id")).text());
-			}
-		});
-		
-		$("#termList ul li").droppable({
-			drop: function(event, ui) {
-				$(this).append("<div class = 'courseBox'>" + $("#" + ui.draggable.prop("id")).text() + "</div>");
-			}
-		});
+	});
+}
+
+function makeItemDroppable(item) {
+	$(item).droppable({
+		activate: function() {
+			$(item).effect("pulsate", 2000); 
+		},
+		drop: function(event, ui) {
+			$(item).html("&emsp;");
+			$(item).append("<span id = 'ChecksheetSectioin" + spanIdIdx 
+			+ "' class = 'noWrap'>" + $("#" + ui.draggable.prop("id")).text() + "</span>");
+			spanIdIdx++;
+		}
+	});
+}
+
+function makeTermDroppable() {
+	$("#termList ul li").droppable({
+		drop: function(event, ui) {
+			$(this).append("<div id = '" + termCourseIdIdx 
+			+"'class = 'courseBox'>" + $("#" + ui.draggable.prop("id")).text() + "</div>");
+			termCourseIdIdx++;
+		}
+	});
+}
+
+function makeTrashDroppable() {
+	$("#trashButton").droppable({
+		tolerance: "pointer",
+		hoverClass: "trashHover",
+		drop: function(event, ui) {
+			$(temp).replaceWith("");
+		}
+	});
+}
+
+function makeTermDraggable(item) {
+	$("#termList ul li div").draggable({
+		revert: "invalid",
+		scroll: false,
+		helper: function() { return $(this).clone().appendTo("#left").show(); },
+		containment: "body",
+		distance: 5,
+		start : function() {
+			this.style.display = "none";
+			temp = this;
+			makeItemDroppable(item);
+			makeTrashDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			$(item).droppable("destroy");
+			$("#trashButton").droppable("destroy");
+			makeChecksheetSpansDraggable(item);
+		}
+	});
+}
+
+function makeChecksheetSpansDraggable(item) {
+	$("span").draggable({
+		revert: "invalid",
+		scroll: false,
+		helper: function() { return $(this).clone().appendTo("body").show(); },
+		containment: "body",
+		distance: 5,
+		start : function() {
+			this.style.display = "none";
+			temp = this;
+			makeTermDroppable();
+			makeTrashDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			$("#termList ul li").droppable("destroy");
+			$("#trashButton").droppable("destroy");
+			makeTermDraggable(item);
+		}
 	});
 }
 
@@ -566,13 +619,13 @@ function searchBox(){
 }
 
 function searchByDept(){
-	var sel =  $('#deptDD').find(":selected").text()
-    sel = sel.substr(0,sel.indexOf(' '));
+	var sel = $("#deptDD").find(":selected").text()
+    sel = sel.substr(0,sel.indexOf(" "));
     
     $.ajax({
-		url: "./Scripts/DBSearchWAJAX.php?deptSearch=" +sel.trim(),
+		url: "./Scripts/DBSearchWAJAX.php?deptSearch=" + sel.trim(),
 		success: function (data) {
-			$('#deptS').html(String(data));
+			$("#deptS").html(String(data));
 		}
 	});
     return true;
