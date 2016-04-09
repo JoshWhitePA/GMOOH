@@ -10,12 +10,41 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+function xml2array($fname){
+      $sxi = new SimpleXmlIterator($fname, null, true);
+      return sxiToArray($sxi);
+    }
+
+    function sxiToArray($sxi){
+      $a = array();
+      for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
+        if(!array_key_exists($sxi->key(), $a)){
+          $a[$sxi->key()] = array();
+        }
+        if($sxi->hasChildren()){
+          $a[$sxi->key()][] = sxiToArray($sxi->current());
+        }
+        else{
+          $a[$sxi->key()][] = strval($sxi->current());
+        }
+      }
+      return $a;
+    }
+
+    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
+    //print_r($sData);
+    //echo "<br><br>";
+    $indexOGen = 0;
+    $indexOPro = 0;
+//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
+    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
+
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 	<title>MS Computer Science: SD Checksheet</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../../../Styles/checksheetStyleV1p1reg.css"/>
 	</head>
 	<body>
 <!-- HEADER -->
@@ -26,7 +55,7 @@
 			______________________________
 		</div>
 		<div class = "sectionTop">
-			<img src = "Images/KU_Logo.jpg">
+			<img src = "../../../Images/KU_Logo.jpg">
 		</div>
 		<div class = "sectionTop">
 			<br/><br/>
@@ -53,8 +82,8 @@
 				<?php
 					for($i = 0; $i < 4; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td  class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>	
@@ -74,8 +103,8 @@
 				<?php
 					for($i = 0; $i < 10; $i++)
 						echo"<tr>	
-								<td>&emsp;&emsp;</td>
-								<td class = 'tableGrade'></td>
+								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
 							</tr>";
 				?>	

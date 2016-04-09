@@ -22,7 +22,7 @@
 		<div class = "section">
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "msCSCNotes()">
+					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "showDialog('#msCSCNotes', 550, true)">
 						Master Program: 30 sh</u></th>
 				</tr>
 				<tr>
@@ -36,7 +36,7 @@
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
-								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
 							</tr>";
 				?>	
 		<!-- 500 level courses -->
@@ -50,7 +50,7 @@
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:SD 500-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
 								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
-								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
+								<td class = 'tableGrade'></td>
 							</tr>";
 				?>	
 			</table>

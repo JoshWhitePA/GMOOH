@@ -31,7 +31,7 @@ function xml2array($fname){
       return $a;
     }
 
-    $sData = xml2array('../../../BLPlayground/StudentData.xml');
+    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
     //print_r($sData);
     //echo "<br><br>";
     $indexOGen = 0;
@@ -44,7 +44,7 @@ function xml2array($fname){
 <html>
 	<head>
 	<title>Computer Science: SD Minor Checksheet</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../../../Styles/checksheetStyleV1p1reg.css"/>
 	</head>
 	<body>
 <!-- HEADER -->
@@ -55,7 +55,7 @@ function xml2array($fname){
 			______________________________
 		</div>
 		<div class = "sectionTop">
-			<img src = "Images/KU_Logo.jpg">
+			<img src = "../../../Images/KU_Logo.jpg">
 		</div>
 		<div class = "sectionTop">
 			<br/><br/>

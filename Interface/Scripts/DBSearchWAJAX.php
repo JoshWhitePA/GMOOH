@@ -44,23 +44,18 @@ if(isset($_GET['termSearch']) && $_GET['termSearch'] != "" && $_GET['termSearch'
 
     $results = $logic->termSearch($termTxt ,$_SESSION["userID"]);
     foreach ($results as $row) {
-          echo '<div id="draggableCourse" class="courseBox"><span>'. $row['ClassPrefix']." ". $row['ClassNum'] . '</span></div><br/>';
+          echo '<span>'. $row['ClassPrefix']." ". $row['ClassNum'] . '</span><br/>';
         
         }
      echo "";
     
 }
-//if(isset($_GET['termSearch']) && $_GET['termSearch'] != "" && $_GET['termSearch'] != " "){
-//    $logic = new Logic();
-//    $termTxt = $_GET['termSearch'];
-//    
-//    $results = $logic->termSearch($term,$_SESSION["userID"]);
-//    foreach ($results as $row) {
-//          echo "<span>ClassID: " . $row['ClassID'] . "</span>";
-//        }
-//     echo "";
-//    
-//}
+
+if(isset($_GET['termPre']) && $_GET['termPre'] != "" && $_GET['termPre'] != " "){
+    $logic = new Logic();
+    $results = $logic->termSave($_SESSION["userID"],$_GET['termPre'],$_GET['termNum'],$_GET['currentTerm']);
+
+}
         
 ?>
 

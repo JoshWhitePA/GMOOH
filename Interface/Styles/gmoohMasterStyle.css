@@ -448,6 +448,8 @@ div.courseBox {
 	background-color: transparent;
 	z-index: 3;
 	cursor: default;
+	font-weight: normal;
+	font-size: 16px;
 }
 
 label.sectionLabel {
@@ -462,6 +464,11 @@ label.sectionLabel {
 div.popupDialog {
 	display: none;
 	z-index: 3;
+}
+
+.semFormat {
+	width: 100%;
+	text-align: center;
 }
 
 /* View Saved Checksheets Classes */

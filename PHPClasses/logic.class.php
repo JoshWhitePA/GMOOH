@@ -10,7 +10,14 @@
             return $results;
             
         }
-        public function termSave(){
+        public function termSave($studentID,$termPre,$termNum,$term){
+             DB::insert('TERMSAVES', array(
+                          'StudentID' => $studentID,
+                          'Term' => $term,
+                            'ClassNum' => $termNum,
+                            'ClassPrefix' => $termPre
+                        ));
+            return true;
             
         }
         
