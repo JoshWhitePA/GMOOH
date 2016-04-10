@@ -453,6 +453,13 @@ div.courseBox {
 	font-size: 16px;
 }
 
+label.termLabel {
+	width: calc(100% - 5px);
+	white-space: nowrap;
+	margin-left: 5px;
+	text-align: left;
+}
+
 label.sectionLabel {
 	position: relative;
 	top: 2px;
@@ -469,7 +476,8 @@ div.popupDialog {
 
 .semFormat {
 	width: 100%;
-	text-align: center;
+	height: initial;
+	border: none;
 }
 
 .noWrap {
@@ -479,6 +487,10 @@ div.popupDialog {
 .trashHover {
 	background-color: rgba(175, 175, 175, 0.5);
 	border-radius: 5px;
+}
+
+.termHover {
+	background-color: rgba(175, 175, 175, 0.5);
 }
 
 /* View Saved Checksheets Classes */

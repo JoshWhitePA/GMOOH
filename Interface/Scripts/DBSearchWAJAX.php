@@ -1,4 +1,5 @@
 <?php
+	$i = 1;
     session_start();
     require("../../PHPClasses/logic.class.php");
     if(isset($_GET['search']) && $_GET['search'] != "" && $_GET['search'] != " "){
@@ -23,11 +24,12 @@
 	//echo $searchTxt;
 	$results = $logic->searchByDept($searchTxt);
 	foreach ($results as $row) {
-		echo "<div id = 'deptCourse" . $i . "' class = 'courseBox' style = 'font-weight: bold' title = '" . $row['CourseID'] . " " . $row['CourseName'] . "'>" . $row['CourseID'];
-		echo "<b> " . $row['CourseName'] . "</b></div>";
+		echo "<div  class = 'courseBox' style = 'font-weight: bold'>";
+		echo "<span id = 'deptCourse" . $i . "' style = 'white-space: nowrap'>" . $row['CourseID'];
+		echo "<b> " . $row['CourseName'] . "</b></span></div>";
 		$i = $i + 1;
 	}
-    echo "";    
+    echo "<script>makeDeptSpansDraggable();</script>";    
 }
     
  if(isset($_GET['Save']) && $_GET['Save'] != "" && $_GET['Save'] != " "){

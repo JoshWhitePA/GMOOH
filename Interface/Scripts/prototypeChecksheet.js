@@ -1,6 +1,7 @@
 var lastSection; //Retains the location of the last checksheet section selected
 var showWelcomeNotes = true;
 var initialChecksheetLoaded = false;
+var thisItem;
 var spanIdIdx = 1;
 var termCourseIdIdx = 1;
 
@@ -117,7 +118,9 @@ function pageLoad(checksheetFlag) {
 				+ "<option>Select A Term</option>"
 				+ "</select>"
 				+ "<div id = 'termList' class = 'sectionCourses'>"
-				+ "<ul class = 'semFormat'><li class = 'semFormat'>*Unassigned*</li></ul></div></div>");
+				+ "<ul class = 'semFormat'>"
+				+ "<li class = 'semFormat'><label class = 'termLabel'>*Unassigned*</label></li>"
+				+ "</ul></div></div>");
 				
 		//Place content inside the right section of the master page
 		$("#right")
@@ -318,6 +321,10 @@ function pageLoad(checksheetFlag) {
 		startUpNotes();
 		showWelcomeNotes = false;
 	}
+	
+	$.getScript("Scripts/jquery-ui.min.js", function() {
+		makeTermItemDraggable();
+	});
 }
 
 //This function shows the tile of the section selected and what classes fit there			
@@ -327,6 +334,8 @@ function findCourses(item) {
 		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
 			+ "<div id = 'draggableCourse' class = 'courseBox'>"
 			+ $(item).attr("id") + " Course</div>");
+			
+	thisItem = item;
 	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
 		lastSection = item;
@@ -343,6 +352,7 @@ function findCourses(item) {
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {		
 		makeTermDraggable(item);
+		makeDeptSpansDraggable(item);
 		$("#draggableCourse").draggable({
 			revert: "invalid",
 			scroll: false,
@@ -358,7 +368,8 @@ function findCourses(item) {
 				this.style.display = "";
 				$(item).droppable("destroy");
 				$("#termList ul li").droppable("destroy");
-				makeChecksheetSpansDraggable(item);	
+				makeChecksheetSpansDraggable(item);
+				makeTermDraggable(item);
 			}
 		});
 	});
@@ -371,7 +382,7 @@ function makeItemDroppable(item) {
 		},
 		drop: function(event, ui) {
 			$(item).html("&emsp;");
-			$(item).append("<span id = 'ChecksheetSectioin" + spanIdIdx 
+			$(item).append("<span id = 'checksheetSection" + spanIdIdx 
 			+ "' class = 'noWrap'>" + $("#" + ui.draggable.prop("id")).text() + "</span>");
 			spanIdIdx++;
 		}
@@ -380,6 +391,7 @@ function makeItemDroppable(item) {
 
 function makeTermDroppable() {
 	$("#termList ul li").droppable({
+		hoverClass: "termHover",
 		drop: function(event, ui) {
 			$(this).append("<div id = '" + termCourseIdIdx 
 			+"'class = 'courseBox'>" + $("#" + ui.draggable.prop("id")).text() + "</div>");
@@ -418,6 +430,33 @@ function makeTermDraggable(item) {
 			makeChecksheetSpansDraggable(item);
 		}
 	});
+	makeTermItemDraggable();
+}
+
+function makeTermItemDraggable() {
+	$("#termList ul li").draggable({
+		revert: "invalid",
+		scroll: false,
+		//helper: function() { return $(this).clone().appendTo("#left").show(); },
+		helper: function() { return $("<span style = 'white-space: nowrap'/>")
+			.text($(this).children("label").clone().text()).appendTo("#left").show(); },
+		containment: "body",
+		distance: 5,
+		handle: "label",
+		zIndex: 3,
+		opacity: 0.5,
+		start : function() {
+			this.style.display = "none";
+			temp = this;
+			makeTrashDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			//$(item).droppable("destroy");
+			$("#trashButton").droppable("destroy");
+			//makeChecksheetSpansDraggable(item);
+		}
+	});
 }
 
 function makeChecksheetSpansDraggable(item) {
@@ -438,6 +477,29 @@ function makeChecksheetSpansDraggable(item) {
 			$("#termList ul li").droppable("destroy");
 			$("#trashButton").droppable("destroy");
 			makeTermDraggable(item);
+		}
+	});
+}
+
+function makeDeptSpansDraggable(item) {
+	$("span").draggable({
+		revert: "invalid",
+		scroll: false,
+		helper: function() { return $(this).clone().appendTo("body").show(); },
+		containment: "body",
+		distance: 5,
+		start : function() {
+			this.style.display = "none";
+			if(thisItem)
+				makeItemDroppable(thisItem);
+			makeTermDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			$(item).droppable("destroy");
+			$("#termList ul li").droppable("destroy");
+			makeTermDraggable(item);
+			makeChecksheetSpansDraggable();
 		}
 	});
 }
