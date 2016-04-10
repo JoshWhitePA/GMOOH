@@ -533,7 +533,7 @@
 					for($i = 0; $i < 11; $i++){
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:IT Required' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 								<td class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}
 				?>
