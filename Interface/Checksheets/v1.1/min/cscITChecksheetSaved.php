@@ -547,7 +547,7 @@
 					for($i = 0; $i < 8; $i++){
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:IT Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 								<td class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}
 				?>
@@ -561,7 +561,7 @@
 					for($i = 0; $i < 3; $i++){
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:IT Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 								<td class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}
 				?>
@@ -584,7 +584,7 @@
 					for($i = 0; $i < 1; $i++){
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:IT Concomitant' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 								<td class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}
 				?>
@@ -598,7 +598,7 @@
 					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:IT Internship' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 								<td  class = 'tableGrade'>3-6</td>
 							</tr>"; $indexOPro++;}
 				?>
