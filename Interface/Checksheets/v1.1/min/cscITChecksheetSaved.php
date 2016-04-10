@@ -72,7 +72,6 @@
 							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>"."<span id='genClass" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							#<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 						</tr>";
                         $indexOGen++;
