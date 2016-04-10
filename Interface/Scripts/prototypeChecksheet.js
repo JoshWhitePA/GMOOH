@@ -460,7 +460,7 @@ function makeTermItemDraggable() {
 }
 
 function makeChecksheetSpansDraggable(item) {
-	$("span").draggable({
+	$("#mainSection span").draggable({
 		revert: "invalid",
 		scroll: false,
 		helper: function() { return $(this).clone().appendTo("body").show(); },
@@ -482,7 +482,7 @@ function makeChecksheetSpansDraggable(item) {
 }
 
 function makeDeptSpansDraggable(item) {
-	$("span").draggable({
+	$("#right span").draggable({
 		revert: "invalid",
 		scroll: false,
 		helper: function() { return $(this).clone().appendTo("body").show(); },
