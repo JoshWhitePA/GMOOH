@@ -597,8 +597,13 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
 }
 
-table.advisorOptions{ /* style for the advisor homepage options panel */
+table.adviseeList{ /* style for the advisor homepage options panel */
 	margin: auto;
 	text-align: left;
 }
+
+.rowSel > td{ border-left: 1px solid black; }
+.rowSel > td:first-child{ border-left: none; }
+.rowSel > th{ border-left: 1px solid black; }
+.rowSel > th:first-child{ border-left: none; }
 /* End of my awful WIP stuff. - C Steckhouse */
