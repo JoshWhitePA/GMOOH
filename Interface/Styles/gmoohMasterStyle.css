@@ -600,13 +600,13 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 table.adviseeList{ /* style for the advisor homepage options panel */
 	margin: auto;
 	text-align: left;
-	width: 45%;
+	width: 80%;
 	border-collapse: collapse;
 	border-radius: 5px;
 }
 
-.rowSel > td{ border-left: 1px solid black; }
+.rowSel > td{ border-left: 1px solid #999999; }
 .rowSel > td:first-child{ border-left: none; }
-.rowSel > th{ border-left: 1px solid black; }
+.rowSel > th{ border-left: 1px solid #999999; }
 .rowSel > th:first-child{ border-left: none; }
 /* End of my awful WIP stuff. - C Steckhouse */
