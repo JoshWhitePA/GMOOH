@@ -31,7 +31,7 @@ function xml2array($fname){
       return $a;
     }
 
-    $sData = xml2array('../../../BLPlayground/StudentData.xml');
+    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
     //print_r($sData);
     //echo "<br><br>";
     $indexOGen = 0;
@@ -56,7 +56,7 @@ function xml2array($fname){
 			______________________________
 		</div>
 		<div class = "sectionTop">
-			<img src = "Images/KU_Logo.jpg">
+			<img src = "../../../Images/KU_Logo.jpg">
 		</div>
 		<div class = "sectionTop">
 			<br/><br/>
