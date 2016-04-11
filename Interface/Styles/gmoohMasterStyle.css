@@ -113,7 +113,6 @@ ul {
 	height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 li {
@@ -637,20 +636,9 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
 }
 
-table.adviseeList{ /* style for the advisor homepage options panel */
+table.advisorOptions{ /* style for the advisor homepage options panel */
 	margin: auto;
 	text-align: left;
-<<<<<<< HEAD
 	padding: 3px;
-=======
-	width: 80%;
-	border-collapse: collapse;
-	/* border-radius: 5px; */ /* Doesn't work with boarder-collapse. Will try to find a workaround. */
->>>>>>> origin/master
 }
-
-.rowSel > td{ border-left: 1px solid #999999; padding: 5px; }
-.rowSel > td:first-child{ border-left: none; padding: 5px; }
-.rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; }
-.rowSel > th:first-child{ border-left: none; border-bottom: 1px solid #999999; }
 /* End of my awful WIP stuff. - C Steckhouse */
