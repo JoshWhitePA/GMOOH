@@ -22,7 +22,6 @@
         </script>
 		<script>
 			$(document).ready(function(){
-                
                 var str = "<div class='changepass'><table class='tableCenter'> <!-- These fields will need to be filled via PHP -->";
                 
                str +="<?php  

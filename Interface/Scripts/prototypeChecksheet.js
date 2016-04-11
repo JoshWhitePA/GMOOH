@@ -114,13 +114,27 @@ function pageLoad(checksheetFlag) {
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
 				+ "title = 'See courses from previous semesters and schedule for future ones'>"
-				+ "<select id = 'termDD' name = 'courseDropdown' class = 'courseSelect'>"	
-				+ "<option>Select A Term</option>"
+				+ "<select id = 'termDD' onchange='loadSchedule()' name = 'courseDropdown' class = 'courseSelect'>"	
+				+ "<option>Select A Semester</option>"
+                + "<option>Fall 2016</option>"
+                + "<option>Spring 2017</option>"
+                + "<option>Fall 2017</option>"
+                + "<option>Spring 2018</option>"
+                + "<option>Fall 2018</option>"
+                + "<option>Fall 2018</option>"
+                + "<option>Spring 2019</option>"
+                + "<option>Fall 2019</option>"
+
 				+ "</select>"
+<<<<<<< HEAD
 				+ "<div id = 'termList' class = 'sectionCourses'>"
 				+ "<ul class = 'semFormat'>"
 				+ "<li class = 'semFormat'><label class = 'termLabel'>*Unassigned*</label></li>"
 				+ "</ul></div></div>");
+=======
+				+ "<div id = 'termList' ondblclick='saveSchedule()' class = 'sectionCourses'>"
+				+ "<ul class = 'semFormat'><li class = 'semFormat'>*Unassigned*</li></ul></div></div>");
+>>>>>>> origin/master
 				
 		//Place content inside the right section of the master page
 		$("#right")
@@ -727,4 +741,48 @@ function scrapeTheSucka(){
 			console.log(data);
 		}
 	});
+}
+
+function loadSchedule(){
+    var sel =  $('#termDD').find(":selected").text();
+    //magic ajax
+     $.ajax({
+                url: "./Scripts/DBSearchWAJAX.php?termSearch=" + sel,
+                success: function (data) {
+                    $('#termList').html(String(data));
+                }
+            });
+    return true;
+    
+}
+function saveSchedule(){
+    var sel =  $('#termDD').find(":selected").text();
+    
+            var list = $("#termList").children().html();
+//     console.log(list);
+        var newList = list.split('<br>'); //$(newList[1]).text()
+//        console.log($(newList[1]).text());
+        var newerList;
+        for (idx = 0; idx < newList.length; idx++){
+            newerList = newList[idx].trim().split(" ");
+            if (newerList[0] != ""){
+                console.log(newerList[0] +newerList[1]);
+//                $.ajax({
+//                    url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&termPre="+newerList[0] +"&termNum="+newerList[1],
+//                    success: function (data) {
+//    //                    console.log(String(data));
+//                        }
+//                 });
+            
+            }
+        }
+        
+
+
+        
+        
+    //magic ajax
+
+
+    
 }
