@@ -602,11 +602,11 @@ table.adviseeList{ /* style for the advisor homepage options panel */
 	text-align: left;
 	width: 80%;
 	border-collapse: collapse;
-	border-radius: 5px;
+	/* border-radius: 5px; */ /* Doesn't work with boarder-collapse. Will try to find a workaround. */
 }
 
-.rowSel > td{ border-left: 1px solid #999999; }
-.rowSel > td:first-child{ border-left: none; }
-.rowSel > th{ border-left: 1px solid #999999; }
-.rowSel > th:first-child{ border-left: none; }
+.rowSel > td{ border-left: 1px solid #999999; padding: 5px; }
+.rowSel > td:first-child{ border-left: none; padding: 5px; }
+.rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; }
+.rowSel > th:first-child{ border-left: none; border-bottom: 1px solid #999999; }
 /* End of my awful WIP stuff. - C Steckhouse */
