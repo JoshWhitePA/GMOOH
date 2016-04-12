@@ -33,6 +33,7 @@
 	if(isset($_GET['Save']) && $_GET['Save'] != "" && $_GET['Save'] != " "){
         $logic = new Logic();
         $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id']);
+        echo $_GET['Save'];
     }    
 
     

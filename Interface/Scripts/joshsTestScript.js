@@ -699,8 +699,8 @@ function scrapeTheSucka(){
         xmlSaveData += "<Class>";
         var idStr = "#genClass" + idxGen;
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
-        idStr = "#genGrade" + idxGen;
-        xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
+
+        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim() + "</ClassGrade>";
         xmlSaveData += "</Class>";
     }
     xmlSaveData += "</GenEd>";
@@ -712,14 +712,14 @@ function scrapeTheSucka(){
         var idStr = "#proClass" + idxPro;
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
         idStr = "#proGrade" + idxPro;
-        xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
+        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim() + "</ClassGrade>";
         xmlSaveData += "</Class>";
     }
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
 
     var chkID = $('#programID').val();
-    alert(chkID);
+
        
      $.ajax({
 		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData,
