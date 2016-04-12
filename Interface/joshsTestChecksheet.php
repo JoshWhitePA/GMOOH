@@ -1,3 +1,9 @@
+<?php
+$page = $_GET["pae"];
+$chkID = $_GET["chkID"];
+
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +18,8 @@
 				$(document).ready(pageLoad(false));
 				$(".blank").delay(500).fadeOut(1000);
 			});	
+            var lPage = '<?php echo $page; ?>';
+             var chkID = '<?php echo $chkID; ?>';
 		</script>
 	</head>
 	<body id = "behindTheScenes">

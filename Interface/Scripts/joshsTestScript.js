@@ -242,12 +242,11 @@ function pageLoad(checksheetFlag) {
 				{
 					if(!confirm("Switching checksheets will clear your current checksheet. Continue?"))
 						return;
-				}
-				
+				}				
 				if($("#currentChecksheet option:selected").val() == "it") 
 				{
 					//load chosen checksheet into the inner section of the master page
-					$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
+					$("#innerSection").load(lPage);
 					$("#sectionTitle label").text(""); //Clear the current title and course list
 					$("#sectionCourseList").text("");
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); //Scroll to the top of the checksheet
@@ -311,7 +310,7 @@ function pageLoad(checksheetFlag) {
 			}) .change(); //This makes sure it happens every time
 		}
 		else {
-			$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
+			$("#innerSection").load(lPage+"?chkID="+chkID);
 			currentChecksheet = "it";
 		}
 	});
@@ -720,6 +719,7 @@ function scrapeTheSucka(){
     xmlSaveData += "</Student></GMOOH>";
 
     var chkID = $('#programID').val();
+    alert(chkID);
        
      $.ajax({
 		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData,

@@ -5,6 +5,12 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
         
+    
+        public function displaySaveFromCheck($ID, $checkID){
+            $results = DB::query("SELECT SaveData FROM CHECKSHEET WHERE StudentID = %s and ChecksheetID = %s;", $ID,$checkID);
+            return $results;
+        }
+        
         public function termSearch($term,$sID){
              $results = DB::query("SELECT ClassNum,ClassPrefix FROM TERMSAVES WHERE Term = %s and StudentID = %s;", $term, $sID);
             return $results;

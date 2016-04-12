@@ -16,7 +16,8 @@
             function load_Click(clicked_id){
                  clicked_id = clicked_id.substring(clicked_id.indexOf("_") + 1);
                 if(clicked_id == "ULASCSCIT"){
-                       window.location='form2.html?chkID=clicked_id';
+                    
+                       window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT';
                 }
             }
         </script>
