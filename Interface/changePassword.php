@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -64,7 +70,6 @@
 		</script>
 <?php
 	require_once("../PHPClasses/logic.class.php");
-	session_start();	
 	$logic = new Logic();
 	
 	if(isset($_POST["oldPassword"])){
