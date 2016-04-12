@@ -43,16 +43,16 @@
  
      $results = $logic->termSearch($termTxt ,$_SESSION["userID"]);
      foreach ($results as $row) {
-           echo '<span>'. $row['ClassPrefix']." ". $row['ClassNum'] . '</span><br/>';
+           echo '<span>'. $row['ClassInfo']. '</span><br/>';
          
          }
       echo "";
      
  }
  
- if(isset($_GET['termPre']) && $_GET['termPre'] != "" && $_GET['termPre'] != " "){
+ if(isset($_GET['classInfo']) && $_GET['classInfo'] != "" && $_GET['classInfo'] != " "){
      $logic = new Logic();
-     $results = $logic->termSave($_SESSION["userID"],$_GET['termPre'],$_GET['termNum'],$_GET['currentTerm']);
+     $results = $logic->termSave($_SESSION["userID"],$_GET['classInfo'],$_GET['currentTerm']);
  
  }
 ?>

@@ -759,7 +759,7 @@ function saveSchedule(){
         console.log( $(listOfClass[1]).text());
  
         $.ajax({
-                     url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&termClass=" ,
+                     url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&classInfo=" ,
                      success: function (data) {
      //                    console.log(String(data));
                          }

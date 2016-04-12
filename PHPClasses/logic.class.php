@@ -7,33 +7,32 @@
         
     
         public function displaySaveFromCheck($ID, $checkID){
-            $results = DB::query("SELECT SaveData FROM CHECKSHEET WHERE StudentID = %s and ChecksheetID = %s;", $ID,$checkID);
+            $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and ChecksheetID = %s;", $ID,$checkID);
             return $results;
         }
         
         public function termSearch($term,$sID){
-             $results = DB::query("SELECT ClassNum,ClassPrefix FROM TERMSAVES WHERE Term = %s and StudentID = %s;", $term, $sID);
+             $results = DB::query("SELECT ClassInfo  FROM TERMSAVE WHERE Term = %s and StudentID = %s;", $term, $sID);
             return $results;
             
         }
-        public function termSave($studentID,$termPre,$termNum,$term){
-             DB::insert('TERMSAVES', array(
+        public function termSave($studentID,$classInfo,$term){
+             DB::insert('TERMSAVE', array(
                           'StudentID' => $studentID,
                           'Term' => $term,
-                            'ClassNum' => $termNum,
-                            'ClassPrefix' => $termPre
+                        'ClassInfo' => $classInfo
                         ));
             return true;
             
         }
         
         public function displaySave($ID){
-              $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date FROM CHECKSHEET WHERE StudentID = %s;", $ID);
+              $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date FROM CHECKSHEETSAVE WHERE StudentID = %s;", $ID);
             return $results;
         }
         
         public function saveChecksheet($ID,$xml,$chkID){
-            DB::insert('CHECKSHEET', array(
+            DB::insert('CHECKSHEETSAVE', array(
                           'StudentID' => $ID,
                           'CheckSheetID' => $chkID,
                             'SaveData' => $xml,
