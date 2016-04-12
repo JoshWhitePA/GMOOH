@@ -113,7 +113,6 @@ ul {
 	height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 li {
@@ -357,7 +356,7 @@ div.sectionCourses {
 	width: 100%;
 	height: calc(100% - 27px);
 	position: relative;
-	overflow-x: hidden;
+	overflow-x: auto;
 	overflow-y: auto;
 }
 
@@ -434,7 +433,7 @@ select.courseSelect {
 select.checksheetSelect {
 	width: 100%; 
 	border: solid;
-	border-width: 2px; 
+	border-width: 2px;  	
 	border-color: #dddddd;
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -443,6 +442,7 @@ select.checksheetSelect {
 div.courseBox {
 	height: 20px;
 	width: calc(100% - 5px);
+	white-space: nowrap;
 	margin-left: 5px;
 	text-align: left;
 	background-color: transparent;
@@ -450,6 +450,13 @@ div.courseBox {
 	cursor: default;
 	font-weight: normal;
 	font-size: 16px;
+}
+
+label.termLabel {
+	width: calc(100% - 5px);
+	white-space: nowrap;
+	margin-left: 5px;
+	text-align: left;
 }
 
 label.sectionLabel {
@@ -468,7 +475,21 @@ div.popupDialog {
 
 .semFormat {
 	width: 100%;
-	text-align: center;
+	height: initial;
+	border: none;
+}
+
+.noWrap {
+	white-space: nowrap;
+}
+
+.trashHover {
+	background-color: rgba(175, 175, 175, 0.5);
+	border-radius: 5px;
+}
+
+.termHover {
+	background-color: rgba(175, 175, 175, 0.5);
 }
 
 /* View Saved Checksheets Classes */
@@ -576,6 +597,7 @@ div.boxed{ /* Box container for page. */
 
 td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
 	text-align: right;
+	padding-right: 2px;
 }
 
 table,tr.interface{ /* general interface table elements */
@@ -593,6 +615,23 @@ td.dataTD{ /* Add padding and some other tweaks*/
 	text-align: left;
 }
 
+td.majorData{ /* Needed specific padding on an element */
+	padding-left: 25px;
+}
+
+td.optionSelect td { /* Add a box around the advisor option selection. Might be useful elsewhere too! */
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 6px;
+}
+
+/* Bordered bottom style. Broken currently. */ /*
+tr.bordedBottom{ 
+	border-bottom: 1px solid;
+	border-color: #999999;
+}
+*/
+
 table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
 }
@@ -600,5 +639,6 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 table.advisorOptions{ /* style for the advisor homepage options panel */
 	margin: auto;
 	text-align: left;
+	padding: 3px;
 }
 /* End of my awful WIP stuff. - C Steckhouse */

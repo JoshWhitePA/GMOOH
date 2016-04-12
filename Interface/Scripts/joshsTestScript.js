@@ -437,6 +437,7 @@ function makeTermItemDraggable() {
 	$("#termList ul li").draggable({
 		revert: "invalid",
 		scroll: false,
+		//helper: function() { return $(this).clone().appendTo("#left").show(); },
 		helper: function() { return $("<span style = 'white-space: nowrap'/>")
 			.text($(this).children("label").clone().text()).appendTo("#left").show(); },
 		containment: "body",
@@ -451,7 +452,9 @@ function makeTermItemDraggable() {
 		},
 		stop: function() {
 			this.style.display = "";
+			//$(item).droppable("destroy");
 			$("#trashButton").droppable("destroy");
+			//makeChecksheetSpansDraggable(item);
 		}
 	});
 }
@@ -724,37 +727,4 @@ function scrapeTheSucka(){
 			console.log(data);
 		}
 	});
-}
-
-
-function loadSchedule(){
-    var sel =  $('#termDD').find(":selected").text();
-    //magic ajax
-     $.ajax({
-                url: "./Scripts/DBSearchWAJAX.php?termSearch=" + sel,
-                success: function (data) {
-                    $('#termList').html(String(data));
-                }
-            });
-    return true;
-    
-}
-function saveSchedule(){
-    var sel =  $('#termDD').find(":selected").text();
-    
-//       var list = $("#termList span");
-        var listOfClass = $('#termList').find('span').toArray();
-       console.log( $(listOfClass[1]).text());
-
-                console.log(newerList[0] +newerList[1]);
-                $.ajax({
-                    url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&termClass=" ,
-                    success: function (data) {
-    //                    console.log(String(data));
-                        }
-                 });
-            
-            
-        
-        
 }
