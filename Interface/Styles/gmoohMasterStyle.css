@@ -639,10 +639,10 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 table.advisorOptions{ /* style for the advisor homepage options panel */
 	margin: auto;
 	text-align: left;
-<<<<<<< HEAD
+
 	padding: 3px;
 }
-=======
+
 	width: 100%;
 	border-collapse: collapse;
 	border-style: hidden;
@@ -661,5 +661,5 @@ div.boarderedTable{
 	width: 80%;
 	margin: auto;
 }
->>>>>>> origin/master
+
 /* End of my awful WIP stuff. - C Steckhouse */
