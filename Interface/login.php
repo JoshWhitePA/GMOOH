@@ -75,6 +75,7 @@
         echo "if 1: loggedinis set" . $_SESSION["loggedIn"];
         //Should redirect to the home page - gmoohHome.php
         //header('location: ../Interface/gmoohHome.php');
+		$email = $_SESSION['email'];
         $userID = $logic -> setSession($email);
         $_SESSION["userID"] = $userID;
         header('location: gmoohHome.php');
@@ -101,6 +102,7 @@
             echo "if 3 loggedIn: " . $_SESSION["loggedIn"];
 			$userID = $logic -> setSession($email);
 			$_SESSION["userID"] = $userID;
+			$_SESSION["email"] = $email;
 			//should redirect to the home page - gmoohHome.php
 			//header('location: ../Interface/gmoohHome.php'); - not sure what this link will be
 			header('location: gmoohHome.php');

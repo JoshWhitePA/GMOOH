@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -64,13 +70,33 @@
 		</script>
 <?php
 	require_once("../PHPClasses/logic.class.php");
-	session_start();	
 	$logic = new Logic();
-
-	$oldPassword = $_POST["oldPassword"];
-	$newPassword = $_POST["newPassword"];
-	$confirmPassword = $_POST["confirmPassword"];
-	$userID = $_SESSION["userID"];
+	
+	if(isset($_POST["oldPassword"])){
+		$oldPassword = $_POST["oldPassword"];
+	}
+	else{
+		$oldPassword = NULL;
+	}
+	if(isset($_POST["newPassword"])){
+		$newPassword = $_POST["newPassword"];
+	}
+	else{
+		$newPassword = NULL;
+	}
+	if(isset($_POST["confirmPassword"])){
+		$confirmPassword = $_POST["confirmPassword"];
+	}
+	else{
+		$confirmPassword = NULL;
+	}
+	if(isset($_SESSION["userID"])){
+		$userID = $_SESSION["userID"];
+	}
+	else{
+		$userID = NULL;
+	}
+	
 	$passwordValid = NULL;
 	
 	if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID) && ($newPassword == $confirmPassword)){

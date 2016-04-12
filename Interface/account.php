@@ -1,8 +1,19 @@
 <?php
     require_once("../PHPClasses/logic.class.php");	
-	$logic = new Logic();
     session_start();
-    $results = $logic->getUserInfo($_SESSION['userID']);
+
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
+	
+	$logic = new Logic();
+	if(isset($_SESSION["userID"])){
+		$userID = $_SESSION["userID"];
+	}
+	else{
+		$userID = NULL;
+	}
+    $results = $logic->getUserInfo($userID);
     $name = "";
     $ID = "";//could get from session but I want to keep data source the same.
     $email = "";

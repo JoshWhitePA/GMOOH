@@ -1,9 +1,13 @@
 <?php 
     session_start();
     require("../PHPClasses/logic.class.php");
-    $logic = new Logic();
+	
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
+	
+	$logic = new Logic();
     $results = $logic->displaySave($_SESSION["userID"]);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +20,8 @@
             function load_Click(clicked_id){
                  clicked_id = clicked_id.substring(clicked_id.indexOf("_") + 1);
                 if(clicked_id == "ULASCSCIT"){
-                       window.location='form2.html?chkID=clicked_id';
+                    
+                       window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT';
                 }
             }
         </script>

@@ -553,6 +553,7 @@
 				?>
 			</table>
 		</div>
+        <input type="hidden" id="programID" value="ULASCSCIT" />
 	</body>
 </html>
 			
