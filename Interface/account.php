@@ -1,8 +1,12 @@
 <?php
     require_once("../PHPClasses/logic.class.php");	
-	$logic = new Logic();
     session_start();
+
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
 	
+	$logic = new Logic();
 	if(isset($_SESSION["userID"])){
 		$userID = $_SESSION["userID"];
 	}

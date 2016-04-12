@@ -1,9 +1,13 @@
 <?php 
     session_start();
     require("../PHPClasses/logic.class.php");
-    $logic = new Logic();
+	
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
+	
+	$logic = new Logic();
     $results = $logic->displaySave($_SESSION["userID"]);
-
 ?>
 <!DOCTYPE html>
 <html>
