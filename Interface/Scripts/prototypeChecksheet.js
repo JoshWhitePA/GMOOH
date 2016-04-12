@@ -742,19 +742,31 @@ function loadSchedule(){
 function saveSchedule(){
     var sel =  $('#termDD').find(":selected").text();
     
-//       var list = $("#termList span");
-        var listOfClass = $('#termList').find('span').toArray();
-       console.log( $(listOfClass[1]).text());
-
+            var list = $("#termList").children().html();
+//     console.log(list);
+        var newList = list.split('<br>'); //$(newList[1]).text()
+//        console.log($(newList[1]).text());
+        var newerList;
+        for (idx = 0; idx < newList.length; idx++){
+            newerList = newList[idx].trim().split(" ");
+            if (newerList[0] != ""){
                 console.log(newerList[0] +newerList[1]);
-                $.ajax({
-                    url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&termClass=" ,
-                    success: function (data) {
-    //                    console.log(String(data));
-                        }
-                 });
+//                $.ajax({
+//                    url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&termPre="+newerList[0] +"&termNum="+newerList[1],
+//                    success: function (data) {
+//    //                    console.log(String(data));
+//                        }
+//                 });
             
-            
+            }
+        }
+        
+
+
         
         
+    //magic ajax
+
+
+    
 }
