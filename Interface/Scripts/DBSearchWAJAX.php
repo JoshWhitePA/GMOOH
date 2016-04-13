@@ -31,8 +31,14 @@
 	}
     
 	if(isset($_GET['Save']) && $_GET['Save'] != "" && $_GET['Save'] != " "){
+        $AIDID=null;
+        if(empty($_GET['AIDID'])){
+           $AIDID =-1;
+        }else{
+            $AIDID=$_GET['AIDID'];
+        }
         $logic = new Logic();
-        $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id']);
+        $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id'],$AIDID);
         echo $_GET['Save'];
     }    
 
@@ -56,6 +62,14 @@
      $results = $logic->termSave($_SESSION["userID"],$_GET['classInfo'],$_GET['currentTerm']);
  
  }
+
+
+    if(isset($_GET['delID']) && $_GET['delID'] != "" && $_GET['delID'] != " "){
+     $logic = new Logic();
+     $results = $logic->deleteSavedChecksheet($_SESSION["userID"],$_GET['delID']);
+ 
+ }
+
 ?>
 
 

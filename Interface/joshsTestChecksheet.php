@@ -1,6 +1,7 @@
 <?php
 $page = $_GET["pae"];
 $chkID = $_GET["chkID"];
+$AIDID = $_GET["AIDID"];
 
 
 ?>
@@ -20,6 +21,7 @@ $chkID = $_GET["chkID"];
 			});	
             var lPage = '<?php echo $page; ?>';
              var chkID = '<?php echo $chkID; ?>';
+             var AIDID = '<?php echo $AIDID; ?>';
 		</script>
 	</head>
 	<body id = "behindTheScenes">

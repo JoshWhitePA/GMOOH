@@ -37,7 +37,7 @@ session_start();
     }
     $logic = new Logic();
     $sData = "";
-    $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['chkID']);
+    $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['chkID'],$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
         
