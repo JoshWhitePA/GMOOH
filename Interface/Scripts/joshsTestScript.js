@@ -323,6 +323,8 @@ function pageLoad(checksheetFlag) {
 	
 	$.getScript("Scripts/jquery-ui.min.js", function() {
 		makeTermItemDraggable();
+		makeTermDraggable();
+		makeChecksheetSpansDraggable();
 	});
 }
 
@@ -350,8 +352,8 @@ function findCourses(item) {
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {		
-		makeTermDraggable(item);
-		makeDeptSpansDraggable(item);
+		makeTermDraggable();
+		makeDeptSpansDraggable();
 		$("#draggableCourse").draggable({
 			revert: "invalid",
 			scroll: false,
@@ -367,8 +369,8 @@ function findCourses(item) {
 				this.style.display = "";
 				$(item).droppable("destroy");
 				$("#termList ul li").droppable("destroy");
-				makeChecksheetSpansDraggable(item);
-				makeTermDraggable(item);
+				makeChecksheetSpansDraggable();
+				makeTermDraggable();
 			}
 		});
 	});
@@ -409,7 +411,7 @@ function makeTrashDroppable() {
 	});
 }
 
-function makeTermDraggable(item) {
+function makeTermDraggable() {
 	$("#termList ul li div").draggable({
 		revert: "invalid",
 		scroll: false,
@@ -419,14 +421,16 @@ function makeTermDraggable(item) {
 		start : function() {
 			this.style.display = "none";
 			temp = this;
-			makeItemDroppable(item);
+			if(thisItem)
+				makeItemDroppable(thisItem);
 			makeTrashDroppable();
 		},
 		stop: function() {
 			this.style.display = "";
-			$(item).droppable("destroy");
-			$("#trashButton").droppable("destroy");
-			makeChecksheetSpansDraggable(item);
+			if(thisItem)
+				$(thisItem).droppable("destroy");
+			makeChecksheetSpansDraggable();
+			$("#trashButton").droppable("destroy");	
 		}
 	});
 	makeTermItemDraggable();
@@ -436,7 +440,6 @@ function makeTermItemDraggable() {
 	$("#termList ul li").draggable({
 		revert: "invalid",
 		scroll: false,
-		//helper: function() { return $(this).clone().appendTo("#left").show(); },
 		helper: function() { return $("<span style = 'white-space: nowrap'/>")
 			.text($(this).children("label").clone().text()).appendTo("#left").show(); },
 		containment: "body",
@@ -451,14 +454,12 @@ function makeTermItemDraggable() {
 		},
 		stop: function() {
 			this.style.display = "";
-			//$(item).droppable("destroy");
 			$("#trashButton").droppable("destroy");
-			//makeChecksheetSpansDraggable(item);
 		}
 	});
 }
 
-function makeChecksheetSpansDraggable(item) {
+function makeChecksheetSpansDraggable() {
 	$("#mainSection span").draggable({
 		revert: "invalid",
 		scroll: false,
@@ -475,12 +476,12 @@ function makeChecksheetSpansDraggable(item) {
 			this.style.display = "";
 			$("#termList ul li").droppable("destroy");
 			$("#trashButton").droppable("destroy");
-			makeTermDraggable(item);
+			makeTermDraggable();
 		}
 	});
 }
 
-function makeDeptSpansDraggable(item) {
+function makeDeptSpansDraggable() {
 	$("#right span").draggable({
 		revert: "invalid",
 		scroll: false,
@@ -495,9 +496,10 @@ function makeDeptSpansDraggable(item) {
 		},
 		stop: function() {
 			this.style.display = "";
-			$(item).droppable("destroy");
+			if(thisItem)
+				$(thisItem).droppable("destroy");
 			$("#termList ul li").droppable("destroy");
-			makeTermDraggable(item);
+			makeTermDraggable();
 			makeChecksheetSpansDraggable();
 		}
 	});

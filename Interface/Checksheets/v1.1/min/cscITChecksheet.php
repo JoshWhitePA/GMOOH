@@ -507,7 +507,7 @@
 				<?php
 					for($i = 0; $i < 11; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'  ><div id = 'BS CSC:IT Required' onclick = 'findCourses(this)' class='courseNameBox courseNameBoxPro'  >&#8195;</div></th>
+								<th class = 'courseBox'  ><div id = 'BS CSC:IT Required' onclick = 'findCourses(this)' class=' courseNameBoxPro'  >&#8195;</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
