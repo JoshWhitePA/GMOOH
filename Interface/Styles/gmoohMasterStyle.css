@@ -636,19 +636,26 @@ table.tableCenter{ /* Align table to center. Add some general class. */
 	margin: auto;
 }
 
-table.advisorOptions{ /* style for the advisor homepage options panel */
+table.advisorOptions{ /* style for the advisor homepage options panel - only around in case someone used it elsewhere! */
 	margin: auto;
 	text-align: left;
 
 	padding: 3px;
 }
 
+table.adviseeList{ /* style for the advisor homepage student select table */
+	margin: auto;
+	text-align: left;
 	width: 100%;
 	border-collapse: collapse;
 	border-style: hidden;
-	/* border-radius: 5px; */ /* Doesn't work with boarder-collapse. Will try to find a workaround. */
 }
 
+/* WARNING! WARNING! HACKY STUFF BELOW!
+You can't use border-collapse with a border-radius on tables,
+ but you CAN create a div around the table and have the table's width be 100%
+ within that div.
+It results in the look I wanted, though it feels kinda dirty. */
 .rowSel > td{ border-left: 1px solid #999999; padding: 5px; }
 .rowSel > td:first-child{ border-left: none; padding: 5px; }
 .rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; }
