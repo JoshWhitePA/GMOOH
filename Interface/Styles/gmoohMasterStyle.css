@@ -658,7 +658,7 @@ You can't use border-collapse with a border-radius on tables,
 It results in the look I wanted, though it feels kinda dirty. */
 .rowSel > td{ border-left: 1px solid #999999; padding: 5px; }
 .rowSel > td:first-child{ border-left: none; padding: 5px; }
-.rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; }
+.rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; padding-left: 4px; }
 .rowSel > th:first-child{ border-left: none; border-bottom: 1px solid #999999; }
 
 div.boarderedTable{

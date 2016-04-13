@@ -9,7 +9,7 @@ Created for CSC 355WI 020 -->
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load("MasterPages/advisorMasterPage.html", function() {
 					$("#mainSection")
 						.append("<div style='text-align:right'><form action='advisor_home.php' method='get' id='search'> <input type='text'/><input type='submit' value='Search' /> </form></div>"
 							+ "<br />"
@@ -23,8 +23,8 @@ Created for CSC 355WI 020 -->
 							+ "</div>"
 							+ "</form>"
 							);
-						$("advisorList").append("<!-- This is a test -->"
-							+ "<tr class='rowSel'><td>Advisee2</td><td>Major2</td><td>Button2</td></tr>"
+						$("#advisorList").append("<!-- This is a test -->"
+							+ "<tr class='rowSel' ><td><span class='box'>Bill Kerman</span></td><td>Science!</td><td><input type='submit' name='SID112' value='View'/></td></tr>"
 							);
 				});
 			});
