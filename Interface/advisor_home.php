@@ -24,7 +24,7 @@ Created for CSC 355WI 020 -->
 							+ "</form>"
 							);
 						$("#advisorList").append("<!-- This is a test -->"
-							+ "<tr class='rowSel'><td>Advisee2</td><td>Major2</td><td>Button2</td></tr>"
+							+ "<tr class='rowSel' ><td><span class='box'>Bill Kerman</span></td><td>Science!</td><td><input type='submit' name='SID112' value='View'/></td></tr>"
 							);
 				});
 			});
