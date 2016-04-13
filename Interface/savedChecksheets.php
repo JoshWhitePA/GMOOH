@@ -18,11 +18,26 @@
 		<script src = "Scripts/viewSavedChecksheets.js"></script>
         <script>
             function load_Click(clicked_id){
-                 clicked_id = clicked_id.substring(clicked_id.indexOf("_") + 1);
-                if(clicked_id == "ULASCSCIT"){
-                    
-                       window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT';
-                }
+                var trid = $("#"+clicked_id).closest('tr').attr('id');
+                console.log("tr id: "+trid);
+                 clicked_id = clicked_id.split('_');
+                
+                       if("ULASCSCIT" == clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                       }
+                
+            }
+            
+            function del_Click(clicked_id){
+                $.ajax({
+                url: "./Scripts/DBSearchWAJAX.php?delID="+clicked_id,
+                success: function (data) {
+                    location.reload();
+                    }
+                });
+                
+                      
+                
             }
         </script>
 		<script>
@@ -39,7 +54,7 @@
                                      $check = "";
                                 }
 
-                            echo "<tr><td class = 'paddedTD'><label for='real_" .$row['CheckSheetID'] ."'>Official? </label><input type='checkbox' ".$check." disabled id='real_" .$row['CheckSheetID'] ."' />Checksheet $counter - ".$row['CheckSheetID']." Date: ".$row['Date'] . "</td><td><input type='submit' onClick='load_Click(this.id)' value='Load' id='load_".$row['CheckSheetID']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='del_".$row['CheckSheetID']."' /></td></tr>";
+                            echo "<tr><td class = 'paddedTD' ><label for='real_" .$row['CheckSheetID'] ."'>Official? </label><input type='checkbox' ".$check." disabled id='real_" .$row['CheckSheetID'] ."' />Checksheet $counter - ".$row['CheckSheetID']." Date: ".$row['Date'] . "</td><td><input type='submit' onClick='load_Click(this.id)' value='Load' id='".$row['CheckSheetID']."_".$row['AIDID']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='".$row['AIDID']."' /></td></tr>";
                                 $counter++;
                             }
                    ?>";

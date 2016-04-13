@@ -310,7 +310,7 @@ function pageLoad(checksheetFlag) {
 			}) .change(); //This makes sure it happens every time
 		}
 		else {
-			$("#innerSection").load(lPage+"?chkID="+chkID);
+			$("#innerSection").load(lPage+"?chkID="+chkID+"&AIDID="+AIDID);
 			currentChecksheet = "it";
 		}
 	});
@@ -691,6 +691,7 @@ function searchByDept(){
 	});
     return true;
 }
+
      
 function scrapeTheSucka(){
     var xmlSaveData = "<GMOOH><Student><GenEd>";
@@ -699,8 +700,8 @@ function scrapeTheSucka(){
         xmlSaveData += "<Class>";
         var idStr = "#genClass" + idxGen;
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
-
-        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim() + "</ClassGrade>";
+        var idStr = "#genGrade" + idxGen;
+        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim().toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
     }
     xmlSaveData += "</GenEd>";
@@ -712,8 +713,9 @@ function scrapeTheSucka(){
         var idStr = "#proClass" + idxPro;
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
         idStr = "#proGrade" + idxPro;
-        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim() + "</ClassGrade>";
+        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim().toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+        
     }
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
@@ -722,7 +724,7 @@ function scrapeTheSucka(){
 
        
      $.ajax({
-		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData,
+		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData+"&AIDID="+AIDID,
 		success: function (data) {
 			console.log(data);
 		}

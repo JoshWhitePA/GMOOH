@@ -10,6 +10,8 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+    $indexOGen=0;
+    $indexOPro=0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,18 +38,20 @@
 					</th>
 				</tr>
 				<?php
+                
 					echo"<tr>
 							<th class = 'courseBox'>
 								<div id = 'Oral Communication' 
 									onclick = 'findCourses(this)' 
-									class = 'courseNameBox'>&#8195;
+									class = 'courseNameBox'><span id='genClass" .$indexOGen."'>&#8195;</span> 
 								</div>
 							</th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /><b>
 							</b></th>
-						</tr>"
+						</tr>";
+                        $indexOGen++;
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
@@ -60,9 +64,9 @@
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
+						</tr>";
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
@@ -75,8 +79,8 @@
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 						</tr>"
 				?>
 		<!-- D. WELLNESS SECTION -->
@@ -90,8 +94,8 @@
 					echo"<tr>
 							<th class = 'courseBox'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox'>&#8195;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 						</tr>"
 				?>
 			</table>

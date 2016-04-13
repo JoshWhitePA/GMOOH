@@ -6,8 +6,15 @@
    		}
         
     
-        public function displaySaveFromCheck($ID, $checkID){
-            $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and ChecksheetID = %s;", $ID,$checkID);
+        public function deleteSavedChecksheet($ID, $checkID){
+            $results = DB::delete('CHECKSHEETSAVE', "StudentID=%s and AIDID=%s", $ID,$checkID);
+
+            return $results;
+        }
+        
+        
+        public function displaySaveFromCheck($ID, $checkID,$AIDID){
+            $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
             return $results;
         }
         
@@ -27,17 +34,24 @@
         }
         
         public function displaySave($ID){
-              $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date FROM CHECKSHEETSAVE WHERE StudentID = %s;", $ID);
+              $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date,AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s;", $ID);
             return $results;
         }
         
-        public function saveChecksheet($ID,$xml,$chkID){
+        public function saveChecksheet($ID,$xml,$chkID,$AIDID){
+            DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
+            $counter = DB::count();
+            if ($counter >0){
+                DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s WHERE AIDID=%s", $xml,$AIDID);
+            }
+            else{
             DB::insert('CHECKSHEETSAVE', array(
                           'StudentID' => $ID,
                           'CheckSheetID' => $chkID,
                             'SaveData' => $xml,
                             'Date' => DB::sqleval("NOW()")
                         ));
+            }
             return true;
         }
         

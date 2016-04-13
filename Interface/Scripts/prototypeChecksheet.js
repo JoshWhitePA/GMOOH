@@ -699,6 +699,10 @@ function searchByDept(){
 }
      
 function scrapeTheSucka(){
+    $.each($('.courseBox div'), function (index, value) { 
+        console.log(index + ':' + $(value).text()); 
+    });
+    
     var xmlSaveData = "<GMOOH><Student><GenEd>";
     var numOGenEd = parseInt($('#genEdCount').val());
     for(idxGen = 0; idxGen < numOGenEd; idxGen++ ){
