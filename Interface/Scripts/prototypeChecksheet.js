@@ -699,34 +699,56 @@ function searchByDept(){
 }
      
 function scrapeTheSucka(){
-    $.each($('.courseBox div'), function (index, value) { 
-        console.log(index + ':' + $(value).text()); 
-    });
     
     var xmlSaveData = "<GMOOH><Student><GenEd>";
-    var numOGenEd = parseInt($('#genEdCount').val());
-    for(idxGen = 0; idxGen < numOGenEd; idxGen++ ){
+    $.each($('.courseNameBoxGen'), function (index, value) { 
+//  console.log(index + ':' + $(value).text()); 
         xmlSaveData += "<Class>";
-        var idStr = "#genClass" + idxGen;
-        xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
-        idStr = "#genGrade" + idxGen;
-        xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
+        
+        xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
+        idStr = "#genGrade" + index;
+        var catToText = "" + $(idStr).val();
+        xmlSaveData += "<ClassGrade>" + catToText + "</ClassGrade>";
         xmlSaveData += "</Class>";
-    }
+        
+});
     xmlSaveData += "</GenEd>";
+//        console.log(xmlSaveData);
 
+//    $.each($('.courseBoxGen'), function (index, value) { 
+//        console.log(index + ':' + $(value).text()); 
+//    var numOGenEd = parseInt($('#genEdCount').val());
+//        xmlSaveData += "<Class>";
+//        
+//        xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
+//        idStr = "#genGrade" + index;
+//        xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
+//        xmlSaveData += "</Class>";
+//    
+//         });
+//    xmlSaveData += "</GenEd>";
+//
     xmlSaveData += "<Program>";
-    var numOProgram = parseInt($('#programCount').val());
-    for(idxPro = 0; idxPro < numOProgram; idxPro++ ){
+    
+    
+     $.each($('.courseNameBoxPro'), function (idx, valuez) { 
         xmlSaveData += "<Class>";
-        var idStr = "#proClass" + idxPro;
-        xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
-        idStr = "#proGrade" + idxPro;
-        xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
+        
+        xmlSaveData += "<ClassName>" + $(valuez).text().trim() + "</ClassName>";
+        idStr = "#proGrade" + idx;
+//         console.log("idStr: "+idStr);
+         var catToText = "" + $(idStr).val();
+//         console.log("$(idStr).val(): "+$(idStr).val());
+//         console.log("catToText:"+catToText);
+        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
-    }
+                 console.log("idStr: "+idStr);
+    });
+    
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
+//        console.log(xmlSaveData);
+
 
     var chkID = $('#programID').val();
        

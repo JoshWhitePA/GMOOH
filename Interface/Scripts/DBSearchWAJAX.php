@@ -31,8 +31,14 @@
 	}
     
 	if(isset($_GET['Save']) && $_GET['Save'] != "" && $_GET['Save'] != " "){
+        $AIDID=null;
+        if(empty($_GET['AIDID'])){
+           $AIDID =-1;
+        }else{
+            $AIDID=$_GET['AIDID'];
+        }
         $logic = new Logic();
-        $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id'],$_GET['AIDID']);
+        $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id'],$AIDID);
         echo $_GET['Save'];
     }    
 
