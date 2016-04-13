@@ -13,7 +13,7 @@ Created for CSC 355WI 020 -->
 					$("#mainSection")
 						.append("<div style='text-align:right'><form action='advisor_home.php' method='get' id='search'> <input type='text'/><input type='submit' value='Search' /> </form></div>"
 							+ "<br />"
-							+ "<form action='' method='post' id='selectAdvisee'>"
+							+ "<form action='advisor_student_page_placeholder.php' method='post' id='selectAdvisee'>"
 							+ "<div class='boarderedTable'>"
 							+ "<table class='adviseeList' id = 'advisorList'>"
 							+ "<tr class='rowSel'><th>Advisee</th><th>Major</th><th></th></tr>"
