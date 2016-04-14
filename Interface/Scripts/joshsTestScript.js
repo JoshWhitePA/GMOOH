@@ -69,7 +69,15 @@ function pageLoad(checksheetFlag) {
 			+ "<p>You can take one of the following options:<br/>"
 			+ "&emsp;&bull; 30 sh of courses + comprehensive exam<br/>"
 			+ "&emsp;&bull; 24 sh of courses + 6 sh of CSC 599: Thesis</p>"
-			+ "<p>At least 18 sh must be 500-level courses.</p></div>");
+			+ "<p>At least 18 sh must be 500-level courses.</p></div>"
+			
+			+ "<div id = 'chooseSemester' title = 'Choose A Semester' class = 'popupDialog' style = 'text-align: center'>"
+			+ "Drag and Drop Your Choice Into The Sequence Box"
+			+ "<p><span id = 'unassignedSem'>Unassigned</span><br/>"
+			+ "<span id = 'sp16'>Spring 16</span><br/>"
+			+ "<span id = 'sum16'>Summer 16</span><br/>"
+			+ "<span id = 'f16'>Fall 16</span><br/>"
+			+ "<span id = 'w17'>Winter 17</span></p></div>");
 	
 	//Load master page into current page's body
 	$("#master").load("MasterPages/masterPage.html", function() {
@@ -113,14 +121,13 @@ function pageLoad(checksheetFlag) {
 				+ "<label class = 'sectionLabel'></label></div><div id = 'sectionCourseList' class = 'sectionCourses'></div></div>"
 				+ "<div class = 'newSection'><br/></div>"
 				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
-				+ "title = 'See courses from previous semesters and schedule for future ones'>"
-				+ "<select id = 'termDD' name = 'courseDropdown' class = 'courseSelect'>"	
-				+ "<option>Select A Term</option>"
-				+ "</select>"
+				+ "title = 'Prepare for the future by creating a course sequence'>"
+				+ "<div id = 'termBar' class = 'titleBox'>"
+				+ "<input type = 'image' src = 'Images/plusImg.png' class = 'addImg' onclick = 'termSemesters()'"
+				+ "title = 'Add a semester to the course sequence'/></div>"
 				+ "<div id = 'termList' class = 'sectionCourses'>"
-				+ "<ul class = 'semFormat'>"
-				+ "<li class = 'semFormat'><label class = 'termLabel'>*Unassigned*</label></li>"
-				+ "</ul></div></div>");
+ 				+ "<ul class = 'semFormat' id = 'userCourseSequence'>"
+ 				+ "</ul></div></div>");
 				
 		//Place content inside the right section of the master page
 		$("#right")
@@ -242,7 +249,8 @@ function pageLoad(checksheetFlag) {
 				{
 					if(!confirm("Switching checksheets will clear your current checksheet. Continue?"))
 						return;
-				}				
+				}
+				
 				if($("#currentChecksheet option:selected").val() == "it") 
 				{
 					//load chosen checksheet into the inner section of the master page
@@ -303,10 +311,6 @@ function pageLoad(checksheetFlag) {
 					currentChecksheet = $("#currentChecksheet option:selected").val();
 				}
 				initialChecksheetLoaded = true;
-				$.getScript("Scripts/jquery-ui.min.js", function() {
-					$("span").draggable("destroy");
-					spanIdIdx = 1;
-				});
 			}) .change(); //This makes sure it happens every time
 		}
 		else {
@@ -325,6 +329,7 @@ function pageLoad(checksheetFlag) {
 		makeTermItemDraggable();
 		makeTermDraggable();
 		makeChecksheetSpansDraggable();
+		$("#userCourseSequence").sortable({ cancel: "li div" });
 	});
 }
 
@@ -360,6 +365,8 @@ function findCourses(item) {
 			helper: function() { return $(this).clone().appendTo("#left").show(); },
 			containment: "body",
 			distance: 5,
+			opacity: 0.5,
+			addClasses: false,
 			start : function() {
 				this.style.display = "none";
 				makeItemDroppable(item);
@@ -379,6 +386,7 @@ function findCourses(item) {
 function makeItemDroppable(item) {
 	$(item).droppable({
 		activate: function() {
+		addClasses: false,
 			$(item).effect("pulsate", 2000); 
 		},
 		drop: function(event, ui) {
@@ -391,12 +399,31 @@ function makeItemDroppable(item) {
 }
 
 function makeTermDroppable() {
+	var el = document.getElementById("termList");
 	$("#termList ul li").droppable({
 		hoverClass: "termHover",
+		addClasses: false,
+		drop: function(event, ui) {
+			if(el.innerHTML.indexOf($("#" + ui.draggable.prop("id")).text()) != -1) {
+				return;
+			}
+			$(this).append("<div id = '" + termCourseIdIdx 
+			+"'class = 'courseBox'>" + $("#" + ui.draggable.prop("id")).text() + "</div>");
+			termCourseIdIdx++;
+		}
+	});
+}
+
+function makeTermSwitchable() {
+	$("#termList ul li").droppable({
+		hoverClass: "termHover",
+		addClasses: false,
 		drop: function(event, ui) {
 			$(this).append("<div id = '" + termCourseIdIdx 
 			+"'class = 'courseBox'>" + $("#" + ui.draggable.prop("id")).text() + "</div>");
 			termCourseIdIdx++;
+			$(temp).replaceWith("");
+			makeTermDraggable();
 		}
 	});
 }
@@ -405,8 +432,25 @@ function makeTrashDroppable() {
 	$("#trashButton").droppable({
 		tolerance: "pointer",
 		hoverClass: "trashHover",
+		addClasses: false,
 		drop: function(event, ui) {
 			$(temp).replaceWith("");
+		}
+	});
+}
+
+function makeSequenceDroppable() {
+	var el = document.getElementById("termList");
+	$("#termList").droppable({
+		hoverClass: "trashHover",
+		addClasses: false,
+		drop: function(event, ui) {
+			if(el.innerHTML.indexOf($("#" + ui.draggable.prop("id")).text()) == -1) {
+				$("#termList ul").append("<li class = 'semFormat'><label class = 'termLabel'>*"
+				+ $("#" + ui.draggable.prop("id")).text() + "*</label></li>");
+			}
+			makeTermDraggable();
+			makeTermItemDraggable();
 		}
 	});
 }
@@ -418,11 +462,15 @@ function makeTermDraggable() {
 		helper: function() { return $(this).clone().appendTo("#left").show(); },
 		containment: "body",
 		distance: 5,
+		opacity: 0.5,
+		addClasses: false,
 		start : function() {
 			this.style.display = "none";
 			temp = this;
 			if(thisItem)
 				makeItemDroppable(thisItem);
+			temp = this;
+			makeTermSwitchable();
 			makeTrashDroppable();
 		},
 		stop: function() {
@@ -431,14 +479,13 @@ function makeTermDraggable() {
 				$(thisItem).droppable("destroy");
 			makeChecksheetSpansDraggable();
 			$("#trashButton").droppable("destroy");	
+			$("#termList ul li").droppable("destroy");
 		}
 	});
-	makeTermItemDraggable();
 }
 
 function makeTermItemDraggable() {
 	$("#termList ul li").draggable({
-		revert: "invalid",
 		scroll: false,
 		helper: function() { return $("<span style = 'white-space: nowrap'/>")
 			.text($(this).children("label").clone().text()).appendTo("#left").show(); },
@@ -447,6 +494,7 @@ function makeTermItemDraggable() {
 		handle: "label",
 		zIndex: 3,
 		opacity: 0.5,
+		addClasses: false,
 		start : function() {
 			this.style.display = "none";
 			temp = this;
@@ -466,6 +514,8 @@ function makeChecksheetSpansDraggable() {
 		helper: function() { return $(this).clone().appendTo("body").show(); },
 		containment: "body",
 		distance: 5,
+		opacity: 0.5,
+		addClasses: false,
 		start : function() {
 			this.style.display = "none";
 			temp = this;
@@ -488,6 +538,8 @@ function makeDeptSpansDraggable() {
 		helper: function() { return $(this).clone().appendTo("body").show(); },
 		containment: "body",
 		distance: 5,
+		opacity: 0.5,
+		addClasses: false,
 		start : function() {
 			this.style.display = "none";
 			if(thisItem)
@@ -501,6 +553,27 @@ function makeDeptSpansDraggable() {
 			$("#termList ul li").droppable("destroy");
 			makeTermDraggable();
 			makeChecksheetSpansDraggable();
+		}
+	});
+}
+
+function makeNewTermsDraggable() {
+	$("#chooseSemester span").draggable({
+		revert: "invalid",
+		scroll: false,
+		helper: function() { return $(this).clone().appendTo("body").show(); },
+		containment: "body",
+		distance: 5,
+		zIndex: 9999,
+		opacity: 0.5,
+		addClasses: false,
+		start : function() {
+			this.style.display = "none";
+			makeSequenceDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			$("#termList").droppable("destroy");
 		}
 	});
 }
@@ -605,6 +678,21 @@ function startUpNotes() {
 	});
 }
 
+function termSemesters() {
+	makeNewTermsDraggable();
+	$.getScript("Scripts/jquery-ui.min.js", function() {
+		$("#chooseSemester").dialog({
+			width: 535,
+			height: 325,
+			buttons: {
+				"Close": function() { 
+					$(this).dialog("destroy"); 
+				}
+			}
+		});
+	});
+}
+
 //Function to alert the user they are about to clear the checksheet
 function clearAlert() {
 	$.getScript("Scripts/jquery.blockUI.js", function() {
@@ -644,7 +732,7 @@ function resetAlert() {
 		$.blockUI.defaults.overlayCSS = { backgroundColor: "#000", opacity: 0.6, cursor: "default" };
 		$("#master").block({ message: null, baseZ: 2 });
 		$.getScript("Scripts/jquery-ui.min.js", function() {
-			$("#resetThis").dialog({
+			$("#resetDialog").dialog({
 				dialogClass: "no-close",
 				closeOnEscape: false,
 				resizable: false,
@@ -693,7 +781,6 @@ function searchByDept(){
 	});
     return true;
 }
-
      
 function scrapeTheSucka(){
     var xmlSaveData = "<GMOOH><Student><GenEd>";
@@ -704,8 +791,8 @@ function scrapeTheSucka(){
         xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
         var idStr = "#genGrade" + idxGen;
         xmlSaveData += "<ClassGrade>" + $(idStr).val().trim().toUpperCase() + "</ClassGrade>";
-        xmlSaveData += "</Class>";
-    }
+		xmlSaveData += "</Class>";
+	}
     xmlSaveData += "</GenEd>";
 
     xmlSaveData += "<Program>";
@@ -717,13 +804,14 @@ function scrapeTheSucka(){
         idStr = "#proGrade" + idxPro;
         xmlSaveData += "<ClassGrade>" + $(idStr).val().trim().toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
-        
     }
+    
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
+//        console.log(xmlSaveData);
+
 
     var chkID = $('#programID').val();
-
        
      $.ajax({
 		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData+"&AIDID="+AIDID,
