@@ -186,6 +186,7 @@ b.smaller {
 
 hr {
 	border-top: double;
+	page-break-after: always;
 }
 
 img {
@@ -210,4 +211,13 @@ u:hover {
 	background: transparent;
 	text-align: center;
 	
+}
+
+@media print { 
+	body { zoom: 67%; }
+	hr { border: none; }
+	@page {
+		size: 297mm 210mm; /* landscape */
+		margin: 10mm;
+	}
 }
