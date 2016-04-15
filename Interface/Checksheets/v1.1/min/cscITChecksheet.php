@@ -38,7 +38,6 @@
 					</th>
 				</tr>
 				<?php
-					// need courseNameBoxGen
 					echo"<tr>
 							<th class = 'courseBox'>
 								<div id = 'Oral Communication' 
@@ -84,7 +83,7 @@
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
-						</tr>"; // this goes to the others input/indexogen
+						</tr>";
                 $indexOGen++;
 				?>
 		<!-- D. WELLNESS SECTION -->
