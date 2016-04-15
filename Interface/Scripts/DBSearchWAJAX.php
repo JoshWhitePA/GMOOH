@@ -30,36 +30,37 @@
 		echo "<script>makeDeptSpansDraggable();</script>";    
 	}
     
-	if(isset($_GET['Save']) && $_GET['Save'] != "" && $_GET['Save'] != " "){
+	if(isset($_POST['Save']) && $_POST['Save'] != "" && $_POST['Save'] != " "){
         $AIDID=null;
-        if(empty($_GET['AIDID'])){
+        if(empty($_POST['AIDID'])){
            $AIDID =-1;
         }else{
-            $AIDID=$_GET['AIDID'];
+            $AIDID=$_POST['AIDID'];
         }
         $logic = new Logic();
-        $result = $logic->saveChecksheet($_SESSION["userID"],$_GET['Save'],$_GET['id'],$AIDID);
-        echo $_GET['Save'];
+        $result = $logic->saveChecksheet($_SESSION["userID"],$_POST['Save'],$_POST['id'],$AIDID);
+        echo $result;
     }    
 
     
          
-    if(isset($_GET['termSearch']) && $_GET['termSearch'] != "" && $_GET['termSearch'] != " "){
+    if(isset($_GET['AIDID']) && $_GET['AIDID'] != "" && $_GET['AIDID'] != " "){
      $logic = new Logic();
-     $termTxt = $_GET['termSearch'];
+     $termTxt = $_GET['AIDID'];
  
      $results = $logic->termSearch($termTxt ,$_SESSION["userID"]);
      foreach ($results as $row) {
-           echo '<span>'. $row['ClassInfo']. '</span><br/>';
+           echo $row['ScheduleRaw'];
          
          }
-      echo "";
+//      echo "";
      
  }
  
- if(isset($_GET['classInfo']) && $_GET['classInfo'] != "" && $_GET['classInfo'] != " "){
+// if(isset($_GET['classInfo']) && $_GET['classInfo'] != "" && $_GET['classInfo'] != " "){
+ if(isset($_POST['classInfo']) && $_POST['classInfo'] != "" && $_POST['classInfo'] != " "){
      $logic = new Logic();
-     $results = $logic->termSave($_SESSION["userID"],$_GET['classInfo'],$_GET['currentTerm']);
+     $results = $logic->termSave($_SESSION["userID"],$_POST['classInfo'],$_POST['AIDID']);
  
  }
 

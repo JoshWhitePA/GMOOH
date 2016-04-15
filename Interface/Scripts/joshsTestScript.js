@@ -331,6 +331,7 @@ function pageLoad(checksheetFlag) {
 		makeChecksheetSpansDraggable();
 		$("#userCourseSequence").sortable({ cancel: "li div" });
 	});
+     loadSchedule();
 }
 
 //This function shows the tile of the section selected and what classes fit there			
@@ -640,7 +641,8 @@ function resetChecksheet() {
 
 //Function to save the checksheet		
 function saveChecksheet() {
-    scrapeTheSucka();
+    var curAIDID = scrapeTheSucka();
+    saveSchedule(curAIDID)
 	showDialog("#saveDialog", 535, true);
 }
 
@@ -819,4 +821,43 @@ function scrapeTheSucka(){
 			console.log(data);
 		}
 	});
+    return AIDID;
+}
+
+function loadSchedule(){
+
+    //magic ajax
+     $.ajax({
+                url: "./Scripts/DBSearchWAJAX.php?AIDID=" + AIDID,
+                success: function (data) {
+                    $('#termList').html(String(data));
+                }
+            });
+    return true;
+    
+}
+function saveSchedule(curAIDID){
+//    var sel =  $('#termDD').find(":selected").text();
+    
+//        var list = $("#termList").children().html();
+            var list = $("#termList").html();
+
+//     console.log(list);
+//        var newList = list.split('<br>'); //$(newList[1]).text()
+////        console.log($(newList[1]).text());
+//        var listOfClass = $('#termList').find('span').toArray();
+//        console.log("curAIDID before send: "+curAIDID);
+//            alert("AIDID:"+AIDID+"classInfo: "+classInfo);
+            
+            $.post( "./Scripts/DBSearchWAJAX.php", { AIDID: AIDID, classInfo: list })
+              .done(function( data ) {
+                 console.log("classInfo: "+String(data));
+              });
+//        $.ajax({
+//                     url: "./Scripts/DBSearchWAJAX.php?AIDID=" + curAIDID +"&classInfo="+list ,
+//                     success: function (data) {
+//                         console.log("classInfo: "+String(data));
+//                         }
+//                  });
+////    
 }

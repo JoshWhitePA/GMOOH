@@ -18,17 +18,25 @@
             return $results;
         }
         
-        public function termSearch($term,$sID){
-             $results = DB::query("SELECT ClassInfo  FROM TERMSAVE WHERE Term = %s and StudentID = %s;", $term, $sID);
+        public function termSearch($AIDID,$sID){
+             $results = DB::query("SELECT ScheduleRaw  FROM TERMSAVES WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
             return $results;
             
         }
-        public function termSave($studentID,$classInfo,$term){
-             DB::insert('TERMSAVE', array(
+        public function termSave($studentID,$classInfo,$AIDID){
+            DB::query("SELECT AIDID FROM TERMSAVES WHERE AIDID=%s", $AIDID);
+            $counter = DB::count();
+            
+            if ($counter > 0){
+                DB::query("UPDATE TERMSAVES SET ScheduleRaw=%s WHERE AIDID=%s", $classInfo,$AIDID);
+            }else{
+             DB::insert('TERMSAVES', array(
                           'StudentID' => $studentID,
-                          'Term' => $term,
-                        'ClassInfo' => $classInfo
+                          'AIDID' => $AIDID,
+                        'ScheduleRaw' => $classInfo
                         ));
+            }
+        
             return true;
             
         }
@@ -41,7 +49,8 @@
         public function saveChecksheet($ID,$xml,$chkID,$AIDID){
             DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
-            if ($counter >0){
+             $fancyID = $AIDID;
+            if ($counter > 0){
                 DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s WHERE AIDID=%s", $xml,$AIDID);
             }
             else{
@@ -51,8 +60,10 @@
                             'SaveData' => $xml,
                             'Date' => DB::sqleval("NOW()")
                         ));
+               $fancyID = DB::insertId();
             }
-            return true;
+           
+            return $fancyID;
         }
         
         public function getUserInfo($ID){

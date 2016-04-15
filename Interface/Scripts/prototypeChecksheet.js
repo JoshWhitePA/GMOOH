@@ -640,7 +640,8 @@ function resetChecksheet() {
 
 //Function to save the checksheet		
 function saveChecksheet() {
-    scrapeTheSucka();
+    var curanAIDID = scrapeTheSucka();
+    saveSchedule(curanAIDID);
 	showDialog("#saveDialog", 535, true);
 }
 
@@ -786,7 +787,6 @@ function scrapeTheSucka(){
     
     var xmlSaveData = "<GMOOH><Student><GenEd>";
     $.each($('.courseNameBoxGen'), function (index, value) { 
-//  console.log(index + ':' + $(value).text()); 
         xmlSaveData += "<Class>";
         
         xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
@@ -797,21 +797,6 @@ function scrapeTheSucka(){
         
 });
     xmlSaveData += "</GenEd>";
-//        console.log(xmlSaveData);
-
-//    $.each($('.courseBoxGen'), function (index, value) { 
-//        console.log(index + ':' + $(value).text()); 
-//    var numOGenEd = parseInt($('#genEdCount').val());
-//        xmlSaveData += "<Class>";
-//        
-//        xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
-//        idStr = "#genGrade" + index;
-//        xmlSaveData += "<ClassGrade>" + $(idStr).text().trim() + "</ClassGrade>";
-//        xmlSaveData += "</Class>";
-//    
-//         });
-//    xmlSaveData += "</GenEd>";
-//
     xmlSaveData += "<Program>";
     
     
@@ -820,37 +805,45 @@ function scrapeTheSucka(){
         
         xmlSaveData += "<ClassName>" + $(valuez).text().trim() + "</ClassName>";
         idStr = "#proGrade" + idx;
-//         console.log("idStr: "+idStr);
          var catToText = "" + $(idStr).val();
-//         console.log("$(idStr).val(): "+$(idStr).val());
-//         console.log("catToText:"+catToText);
         xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
-                 console.log("idStr: "+idStr);
     });
     
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
-//        console.log(xmlSaveData);
-
-
     var chkID = $('#programID').val();
-       
-     $.ajax({
-		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData,
-		success: function (data) {
-			console.log(data);
-		}
-	});
+    var curAIDID=null;
+    var alreadySaved = $('#saveChecka').val();
+    console.log(xmlSaveData);
+    $.ajaxSetup({
+        async: false
+    });
+     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID })
+              .done(function( data ) {
+                 console.log("classInfo: "+String(data));
+                 AIDID = data.trim();
+                curAIDID = AIDID;
+              });
+//     $.ajax({
+//		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData"",
+//		success: function (data) {
+//			console.log("AIDID from scrape: "+data);
+//            curAIDID = data;
+//		}
+//	});
+    $.ajaxSetup({
+        async: true
+    });
+    
+    return curAIDID;
 }
 
 
 function loadSchedule(){
-    var sel =  $('#termDD').find(":selected").text();
-    console.log(sel);
-    //magic ajax
+   
      $.ajax({
-                url: "./Scripts/DBSearchWAJAX.php?termSearch=" + sel,
+                url: "./Scripts/DBSearchWAJAX.php?AIDID=" + AIDID,
                 success: function (data) {
                     $('#termList').html(String(data));
                 }
@@ -858,28 +851,28 @@ function loadSchedule(){
     return true;
     
 }
-function saveSchedule(){
-    var sel =  $('#termDD').find(":selected").text();
+function saveSchedule(curAIDID){
+//    var sel =  $('#termDD').find(":selected").text();
     
-            var list = $("#termList").children().html();
+//        var list = $("#termList").children().html();
+            var list = $("#termList").html();
+
 //     console.log(list);
-        var newList = list.split('<br>'); //$(newList[1]).text()
-//        console.log($(newList[1]).text());
-        var listOfClass = $('#termList').find('span').toArray();
-        console.log( $(listOfClass[1]).text());
- 
-        $.ajax({
-                     url: "./Scripts/DBSearchWAJAX.php?currentTerm=" + sel +"&classInfo=" ,
-                     success: function (data) {
-     //                    console.log(String(data));
-                         }
-                  });
-
-
-        
-        
-    //magic ajax
-
-
+//        var newList = list.split('<br>'); //$(newList[1]).text()
+////        console.log($(newList[1]).text());
+//        var listOfClass = $('#termList').find('span').toArray();
+        console.log("curAIDID before send: "+curAIDID);
     
+            
+            $.post( "./Scripts/DBSearchWAJAX.php", { AIDID: AIDID, classInfo: list })
+              .done(function( data ) {
+                 console.log("classInfo: "+String(data));
+              });
+//        $.ajax({
+//                     url: "./Scripts/DBSearchWAJAX.php?AIDID=" + curAIDID +"&classInfo="+list ,
+//                     success: function (data) {
+//                         console.log("classInfo: "+String(data));
+//                         }
+//                  });
+////    
 }

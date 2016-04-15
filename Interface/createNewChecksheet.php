@@ -18,6 +18,7 @@
 				$(document).ready(pageLoad(true));
 				$(".blank").delay(500).fadeOut(1000);
 			});	
+            var AIDID = null;
 		</script>
 	</head>
 	<body id = "behindTheScenes">
