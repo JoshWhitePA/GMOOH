@@ -10,6 +10,8 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+    $indexOGen=0;
+    $indexOPro=0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,12 +32,36 @@
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 5; $i++)
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 125: Discrete Math for Computing I</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
-							</tr>"
+							</tr>";
+							$indexOPro++;
+						echo"<tr>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 130: IT Fundamentals</div></th>
+								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+								<td class = 'tableGrade'><b></b></td>
+							</tr>";
+							$indexOPro++;
+						echo"<tr>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 135: Computer Science I</div></th>
+								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+								<td class = 'tableGrade'><b></b></td>
+							</tr>";
+							$indexOPro++;
+						echo"<tr>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 136: Computer Science II</div></th>
+								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+								<td class = 'tableGrade'><b></b></td>
+							</tr>";
+							$indexOPro++;
+						echo"<tr>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 253: IT Systems</div></th>
+								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
+								<td class = 'tableGrade'><b></b></td>
+							</tr>";
+							$indexOPro++;							
 				?>
 				<tr>
 					<th id = "cscmel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
@@ -47,10 +73,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
 							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 							<td class = 'tableGrade'><b></b></td>
-						</tr>"
+						</tr>";
+						$indexOPro++;
+
 				?>
 				<tr>
 					<th id = "cscmel2" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
@@ -62,10 +90,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
 							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 							<td class = 'tableGrade'><b></b></td>
-						</tr>"
+						</tr>";
+						$indexOPro++;
+
 				?>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr><th class = "tableSpace"></th></tr>

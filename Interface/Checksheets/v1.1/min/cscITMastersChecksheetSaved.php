@@ -89,6 +89,7 @@ function xml2array($fname){
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
+							$indexOPro++;							
 				?>
 		<!-- Thesis (optional) -->
 				<tr>
@@ -123,6 +124,7 @@ function xml2array($fname){
 								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
 							</tr>";
+							$indexOPro++;	
 				?>
 			</table>
 		<!-- Program code, version number, possibly additional stuff. Should be able to grab this from the database. -->

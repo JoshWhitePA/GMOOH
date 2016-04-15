@@ -88,6 +88,7 @@ function xml2array($fname){
 								<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>"
+							$indexOPro++;
 				?>
 				<tr>
 					<th>&emsp;2. Elective Course: <b>3 sh (any 200-level or higher CSC course)</b></th>
@@ -100,6 +101,7 @@ function xml2array($fname){
 							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"
+						$indexOPro++;
 				?>
 				<tr>
 					<th>&emsp;3. Elective Course: <b>3 sh (Any 300-level or higher CSC** course)</b></th>
@@ -112,6 +114,7 @@ function xml2array($fname){
 							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"
+						$indexOPro++;
 				?>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr><th class = "tableSpace"></th></tr>
