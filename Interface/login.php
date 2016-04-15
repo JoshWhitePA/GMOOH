@@ -105,7 +105,12 @@
 			$_SESSION["email"] = $email;
 			//should redirect to the home page - gmoohHome.php
 			//header('location: ../Interface/gmoohHome.php'); - not sure what this link will be
-			header('location: gmoohHome.php');
+			if( isset($_SESSION["facID"]) ) {
+				header('location: advisor_home.php');
+			}
+			else{
+				header('location: gmoohHome.php');
+			}
 			exit();
 		}
 	}
