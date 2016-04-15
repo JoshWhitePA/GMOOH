@@ -786,42 +786,50 @@ function searchByDept(){
      
 function scrapeTheSucka(){
     var xmlSaveData = "<GMOOH><Student><GenEd>";
-    var numOGenEd = parseInt($('#genEdCount').val());
-    for(idxGen = 0; idxGen < numOGenEd; idxGen++ ){
+    $.each($('.courseNameBoxGen'), function (index, value) { 
         xmlSaveData += "<Class>";
-        var idStr = "#genClass" + idxGen;
-        xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
-        var idStr = "#genGrade" + idxGen;
-        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim().toUpperCase() + "</ClassGrade>";
-		xmlSaveData += "</Class>";
-	}
-    xmlSaveData += "</GenEd>";
-
-    xmlSaveData += "<Program>";
-    var numOProgram = parseInt($('#programCount').val());
-    for(idxPro = 0; idxPro < numOProgram; idxPro++ ){
-        xmlSaveData += "<Class>";
-        var idStr = "#proClass" + idxPro;
-        xmlSaveData += "<ClassName>" + $(idStr).text().trim() + "</ClassName>";
-        idStr = "#proGrade" + idxPro;
-        xmlSaveData += "<ClassGrade>" + $(idStr).val().trim().toUpperCase() + "</ClassGrade>";
+        
+        xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
+        idStr = "#genGrade" + index;
+        var catToText = "" + $(idStr).val();
+        xmlSaveData += "<ClassGrade>" + catToText + "</ClassGrade>";
         xmlSaveData += "</Class>";
-    }
+        
+});
+    xmlSaveData += "</GenEd>";
+    xmlSaveData += "<Program>";
+    
+    
+     $.each($('.courseNameBoxPro'), function (idx, valuez) { 
+        xmlSaveData += "<Class>";
+        
+        xmlSaveData += "<ClassName>" + $(valuez).text().trim() + "</ClassName>";
+        idStr = "#proGrade" + idx;
+         var catToText = "" + $(idStr).val();
+        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
+        xmlSaveData += "</Class>";
+    });
     
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
-//        console.log(xmlSaveData);
-
-
     var chkID = $('#programID').val();
        
-     $.ajax({
-		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData+"&AIDID="+AIDID,
-		success: function (data) {
-			console.log(data);
-		}
-	});
-    return AIDID;
+     console.log(xmlSaveData);
+    $.ajaxSetup({
+        async: false
+    });
+     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID })
+              .done(function( data ) {
+                 console.log("classInfo: "+String(data));
+                 AIDID = data.trim();
+                curAIDID = AIDID;
+              });
+
+    $.ajaxSetup({
+        async: true
+    });
+    
+    return curAIDID;
 }
 
 function loadSchedule(){

@@ -24,6 +24,7 @@
                 
                        if("ULASCSCIT" == clicked_id[0]){
                            window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
                        }else if ("ULASCSCSD"==clicked_id[0]){
                            window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
                            
