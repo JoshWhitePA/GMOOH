@@ -24,7 +24,23 @@
                 
                        if("ULASCSCIT" == clicked_id[0]){
                            window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                       }else if ("ULASCSCSD"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCOMSD2"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDMinorChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCISIT2"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITMinorChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCSCMS"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDMastersChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCSCIC"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITMastersChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
                        }
+                
                 
             }
             
