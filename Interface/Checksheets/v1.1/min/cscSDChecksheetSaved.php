@@ -560,6 +560,10 @@
 							</tr>"; $indexOPro++;}
 				?>
 			</table>
+            <input type="hidden" id="programID" value="ULASCSCIT" />
+            <?php 
+                echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
+            ?>			
 		</div>
 	</body>
 </html>		

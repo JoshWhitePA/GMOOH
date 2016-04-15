@@ -123,8 +123,12 @@ function xml2array($fname){
 					<th><b>Version Number: 2122</b></th> 
 				</tr>
 			</table>
+            <input type="hidden" id="programID" value="ULASCSCIT" />
+            <?php 
+                echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
+            ?>			
 		</div>
-		<div class = "buffer">&nbsp;</div>
+		<div class = "buffer">&nbsp;</div>		
 	</body>
 </html>
 			

@@ -155,5 +155,9 @@ function xml2array($fname){
 			** If you are considering a MS in Computer Science (Software Development) you should take CSC 310
 		</div>
 		<div class = "noteBuffer">&nbsp;</div>
+            <input type="hidden" id="programID" value="ULASCSCIT" />
+            <?php 
+                echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
+            ?>		
 	</body>
 </html>
