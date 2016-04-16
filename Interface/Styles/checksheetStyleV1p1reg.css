@@ -11,7 +11,7 @@
 
 body {
 	width: 90%;
-	min-width: 1366px;
+	min-width: 966px;
 	height: 100%;
 	margin: auto;
 	display: flex;
@@ -58,7 +58,6 @@ div.horzontalBreak {
 
 div.notes1 {
 	width: 70%;
-	min-width: 600px;
 	text-align: left;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
@@ -68,7 +67,6 @@ div.notes1 {
 
 div.notes2 {
 	width: 70%;
-	min-width: 800px;
 	text-align: left;
 	font-family: Arial, Helvetica, sans-serif;
 	float: left;
@@ -76,14 +74,12 @@ div.notes2 {
 
 div.notes3 {
 	width: 70%;
-	min-width: 800px;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 	float: left;
 }
 
 div.noteBox {
-	width: 500px;
 	padding: 5px;
 	text-align: left;
 	border: solid;
@@ -103,7 +99,6 @@ div.header {
 
 div.headerBox {
 	width: 100%;
-	min-width: 870px;
 	padding: 20px;
 	text-align: center;
 	background-color: black;
@@ -141,8 +136,7 @@ div.headerBox {
 }
 
 table {
-	width: 75%;
-	min-width: 625px;
+	width: 95%;
 	border-collapse: collapse;
 	position: relative;
 	margin-left: auto;
@@ -192,6 +186,7 @@ b.smaller {
 
 hr {
 	border-top: double;
+	page-break-before: always;
 }
 
 img {
@@ -216,4 +211,21 @@ u:hover {
 	background: transparent;
 	text-align: center;
 	
+}
+
+@media print { 
+	body { 
+		zoom: 67%;
+		height: initial;
+		display: initial;
+		flex-flow: initial;
+		align-content: initial;
+		flex: initial;
+		overflow: visible;
+	}
+	hr { border: none; }
+	@page {
+		size: 297mm 210mm; /* landscape */
+		margin: 10mm;
+	}
 }

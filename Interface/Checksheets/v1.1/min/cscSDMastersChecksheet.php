@@ -10,6 +10,8 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+    $indexOGen = 0;
+    $indexOPro = 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,12 +34,14 @@
 				</tr>
 		<!-- 400 level courses -->			
 				<?php
-					for($i = 0; $i < 4; $i++)
+					for($i = 0; $i < 4; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
+							$indexOPro++;
+							}
 				?>	
 		<!-- 500 level courses -->
 				<tr>	
@@ -46,14 +50,20 @@
 					<td class = "tableGrade">SH</td>
 				</tr>			
 				<?php
-					for($i = 0; $i < 10; $i++)
+					for($i = 0; $i < 10; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'MS CSC:SD 500-Level' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+								<th class = 'courseBox'><div id = 'MS CSC:SD 500-Level' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
 								<td class = 'tableGrade'><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></td>
 								<td class = 'tableGrade'></td>
 							</tr>";
+							$indexOPro++;
+							}
 				?>	
 			</table>
+            <input type="hidden" id="programID" value="GLASCSC" />
+            <?php 
+                echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
+            ?>			
 		</div>
 	</body>
 </html>

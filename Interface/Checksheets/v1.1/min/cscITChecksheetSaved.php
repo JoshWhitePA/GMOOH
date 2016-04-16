@@ -540,9 +540,10 @@ session_start();
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
+				// for saved checksheets dont expand for loops
 					for($i = 0; $i < 11; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:IT Required' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'BS CSC:IT Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOPro ."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOPro]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 								<td class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}

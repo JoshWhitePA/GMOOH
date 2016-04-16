@@ -24,7 +24,24 @@
                 
                        if("ULASCSCIT" == clicked_id[0]){
                            window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITChecksheetSaved.php&chkID=ULASCSCIT&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCSCSD"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDChecksheetSaved.php&chkID=ULASCSCSD&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCOMSD2"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDMinorChecksheetSaved.php&chkID=ULASCOMSD2&AIDID='+clicked_id[1];
+                           
+                       }else if ("ULASCISIT2"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITMinorChecksheetSaved.php&chkID=ULASCISIT2&AIDID='+clicked_id[1];
+                           
+                       }else if ("GLASCSC"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscSDMastersChecksheetSaved.php&chkID=GLASCSC&AIDID='+clicked_id[1];
+                           
+                       }else if ("GLASCSCIT"==clicked_id[0]){
+                           window.location='./joshsTestChecksheet.php?pae=Checksheets/v1.1/min/cscITMastersChecksheetSaved.php&chkID=GLASCSCIT&AIDID='+clicked_id[1];
+                           
                        }
+                
                 
             }
             
