@@ -35,7 +35,7 @@ require("../../../../PHPClasses/logic.class.php");
     }
     $logic = new Logic();
     $sData = "";
-    $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['chkID'],$_GET['AIDID']);
+    $results = $logic->displaySaveFromCheck($_SESSION['userID'],"",$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
         

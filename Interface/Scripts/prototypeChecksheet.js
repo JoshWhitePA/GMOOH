@@ -579,20 +579,22 @@ function makeNewTermsDraggable() {
 }
 
 function printChecksheet() {
+    var curanAIDID = scrapeTheSucka();
+    saveSchedule(curanAIDID);
 	if(currentChecksheet == "it")
-		window.open("Checksheets/v1.1/reg/cscITChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "Mit")
-		window.open("Checksheets/v1.1/reg/cscITMastersChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMastersChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "itm")
-		window.open("Checksheets/v1.1/reg/cscITMinorChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMinorChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "sd")
-		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "Msd")
-		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php?AIDID="+curanAIDID, "_blank");
     else if(currentChecksheet == "savIT")
-		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 	else
-		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php?AIDID="+curanAIDID, "_blank");
 }
 
 //Function to clear the checksheet
@@ -876,3 +878,5 @@ function saveSchedule(curAIDID){
 //                  });
 ////    
 }
+
+

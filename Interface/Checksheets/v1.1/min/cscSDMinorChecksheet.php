@@ -98,11 +98,11 @@
 				<tr><th class = "tableSpace"></th></tr>
 				<tr><th class = "tableSpace"></th></tr>
 			</table>
-            <input type="hidden" id="programID" value="ULASCSCIT" />
+            <input type="hidden" id="programID" value="ULASCISIT2" />
             <?php 
                 echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
             ?>			
 		 </div>
-		</div>
+		
 	</body>
 </html>

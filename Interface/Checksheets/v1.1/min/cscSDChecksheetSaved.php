@@ -10,8 +10,13 @@
 *			This file will be used only to view/print a checksheet.
 -->
 <?php
-     function xml2array($fname){
-      $sxi = new SimpleXmlIterator($fname, null, true);
+session_start();
+
+    require("../../../../PHPClasses/logic.class.php");
+
+ function xml2array($fname){
+//      $sxi = new SimpleXmlIterator($fname, 0, true);
+     $sxi = simplexml_load_string($fname, 'SimpleXMLIterator');
       return sxiToArray($sxi);
     }
 
@@ -30,12 +35,23 @@
       }
       return $a;
     }
+    $logic = new Logic();
+    $sData = "";
+    $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['chkID'],$_GET['AIDID']);
+    foreach ($results as $row) {
+        $sData = xml2array($row["SaveData"]);
+        
+    }
 
-    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
+    
     //print_r($sData);
     //echo "<br><br>";
     $indexOGen = 0;
     $indexOPro = 0;
+//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassGrade"][0];
+    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
+
+
     
 ?>
 <!DOCTYPE html>
@@ -63,13 +79,14 @@
 					</th>
 				</tr>
 				<?php
-					echo"<tr>
+					echo "<tr>
 							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;"."<span id='genClass" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genCR" .$indexOGen."' value = '3' /></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
-							</b></th>;
-						</tr>"; $indexOGen++;
+							</b></th>
+						</tr>"; 
+                $indexOGen++;
                         
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
@@ -116,10 +133,13 @@
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genCR" .$indexOGen."' value = '3' /></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
-						</tr>"; $indexOGen++;
+						</tr>"; 
+                $indexOGen++;
 				?>
 			</table>
+            
 <!-- II. UNIVERSITY DISTRIBUTION TABLE -->
+            
 			<table>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr>
@@ -520,7 +540,7 @@
 				<?php
 					for($i = 0; $i < 6; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOPro]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>								<td  class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}
 				?>
@@ -542,7 +562,7 @@
 				<?php
 					for($i = 0; $i < 3; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>&emsp;"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>&emsp;"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOPro]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>								<td class = 'tableGrade'></td>
 							</tr>"; $indexOPro++;}
 				?>
@@ -555,12 +575,12 @@
 				<?php
 					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>&emsp;"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>&emsp;"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOPro]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>								<td  class = 'tableGrade'>3-6</td>
 							</tr>"; $indexOPro++;}
 				?>
 			</table>
-            <input type="hidden" id="programID" value="ULASCSCIT" />
+            <input type="hidden" id="programID" value="ULASCSCSD" />
             <?php 
                 echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
             ?>			

@@ -590,8 +590,6 @@ function printChecksheet() {
 		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php", "_blank");
 	else if(currentChecksheet == "Msd")
 		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php", "_blank");
-    else if(currentChecksheet == "savIT")
-		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php", "_blank");
 	else
 		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php", "_blank");
 }
