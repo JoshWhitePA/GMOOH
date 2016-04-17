@@ -5,6 +5,61 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
         
+        
+        public function searchBasedOnKey($courseKey){
+            //loose coupling be darned
+            $query = "select * from `COURSE` where 1=2;";
+            if($courseKey == "Oral Communication"){
+               $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseNum`;"; 
+            }elseif($courseKey == "Written Communication"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseNum`;";
+            }
+            elseif($courseKey == "Mathematics"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='MAT' and `CourseNum` in(140,301) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Wellness"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='HEA' and `Credits`>=3 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Natural Sciences"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('AST','BIO','CHM','ENV','GEL','MAR','NSE','PHY') OR `CoursePrefix`='GEG' and `CourseNum` in(040,322,323) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Social Sciences"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('ANT','CRJ','ECO','HIS','INT','MCS','PSY','POL','SOC','SSE','SWK') OR `CoursePrefix`='GEG' and `CourseNum` NOT in(040,322,323,204,274,304,324,347,380,394) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Humanities"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('ENG','HUM','PAG','PHI','WGS','WRI','CHI','FRE','GER','RUS') ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Arts"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('ARC','ARH','CDE','CDH','CFT','DAN','FAR','FAS','MUP','MUS','THE') ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Free Elective"){
+                 $query = "SELECT * from `COURSE`;";
+            }elseif($courseKey == "Natural Science with Lab"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('AST','BIO','CHM','ENV','GEL','MAR','PHY') AND `Credits`=4) OR (`CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. A. 2. Elective"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('AST','BIO','CHM','CSC','ENV','GEL','MAR','MAT','NSE','PHY') OR `CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. B. 1. Elective"){
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('HIS','ANT','POL') OR CoursePrefix ='GEG' and `CourseNum` NOT in (040,322,323,204,274,304,324,347,380,394) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. B. 2. Elective"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('PSY','SOC','CRJ','SWK') ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. B. 3. Elective"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('ANT','CRJ','ECO','HIS','INT','POL','PSY','SOC','SSE','SWK') OR CoursePrefix='GEG' and `CourseNum` NOT in(040,322,323,204,274,304,324,347,380,394) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. C. 1. Elective"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CourseID`='WRI207') OR (`CoursePrefix` IN ('ENG','WRI','HUM') OR (`CoursePrefix`='PAG' and `CourseNum` NOT IN (011,012)));";
+            }elseif($courseKey == "IV. C. 2. Elective"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CourseID`='PHI040') OR (`CoursePrefix` IN ('CHI','FRE','GER','RUS'));";
+            }elseif($courseKey == "IV. C. 3. Elective"){
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('ENG','WRI','HUM','PHI')) OR (`CoursePrefix`='PAG' and `CourseNum` NOT in(11,12)) OR (`CoursePrefix` IN ('CHI','FRE','GER','RUS') and `CourseNum` > 103) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. D. Elective"){
+                $query = "SELECT * from `COURSE` ORDER BY `CourseNum`;";
+            }elseif($courseKey == "IV. D. Elective"){
+                $query = "select * from `COURSE` where 1=2;";
+            }elseif($courseKey == "IV. D. Elective"){
+                $query = "";
+            }elseif($courseKey == ""){
+                $query = "";
+            }elseif($courseKey == ""){
+                $query = "select * from `COURSE` where 1=2;";
+            }
+            
+            $results = DB::query($query);
+            return $results;
+            
+        }
     
         public function deleteSavedChecksheet($ID, $checkID){
             $results = DB::delete('CHECKSHEETSAVE', "StudentID=%s and AIDID=%s", $ID,$checkID);
@@ -80,7 +135,7 @@
         }
         
         public function searchByDept($searchParam){
-            $results = DB::query("SELECT CourseID,CourseName,Credits, CourseNum FROM COURSE WHERE CoursePrefix= %s ORDER BY CourseNum;", $searchParam);
+            $results = DB::query("SELECT CourseID,CourseName,Credits, CourseNum FROM COURSE WHERE CoursePrefix= %s ORDER BY CourseNum,CourseName;", $searchParam);
             return $results;
         }
 		

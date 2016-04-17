@@ -335,25 +335,34 @@ function pageLoad(checksheetFlag) {
 
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
-	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-	$("#sectionCourseList") //replace span content with courses
-		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-			+ "<div id = 'draggableCourse' class = 'courseBox'>"
-			+ $(item).attr("id") + " Course</div>");
+//    alert($(item).attr("id")+"");
+//    $("#sectionCourseList").html();
+    $.post( "./Scripts/SearchCourseByBox.php", { courseKey: $(item).attr("id") })
+                  .done(function( data ) {
+                     $("#sectionCourseList").html(String(data));
+                        console.log(String(data));
+                  });
+    
+//	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
+    
+//	$("#sectionCourseList") //replace span content with courses
+//		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
+//			+ "<div id = 'draggableCourse' class = 'courseBox'>"
+//			+ $(item).attr("id") + " Course</div>");
 			
 	thisItem = item;
 	
-	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
-		lastSection = item;
+//	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
+//		lastSection = item;
+//		
+//	else if(item == lastSection)
+//		return;
 		
-	else if(item == lastSection)
-		return;
-		
-	else
-	{	//Replace the last section selected back to normal
-		$(lastSection).css("border-color", "transparent");
-		lastSection = item; //Make lastSection point to the new section
-	}
+//	else
+//	{	//Replace the last section selected back to normal
+//		$(lastSection).css("border-color", "transparent");
+//		lastSection = item; //Make lastSection point to the new section
+//	}
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {		
