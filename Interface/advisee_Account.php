@@ -35,6 +35,20 @@
 							+ "</form></div>"
 				});    //once we get around to building the scheduler page, I'll change the function to point there, for now it points to the progress page for the sake of testing
 			});
+		<!--
+			function goViewChecksheet()
+			{
+				document.adviseeInfo.action = "gmoohHome.php" //change the form's action
+				document.adviseeInfo.submit();               // Submit the page
+				return true;
+			}
+
+			function goViewProgress()
+			{
+				document.adviseeInfo.action = "progress.php"
+				document.adviseeInfo.submit();             // Submit the page
+				return true;
+			}
 		</script>
 	</head>
 	<body id = "master">
