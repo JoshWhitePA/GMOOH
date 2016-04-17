@@ -121,6 +121,7 @@
             return $fancyID;
         }
         
+        //for logging in
         public function getUserInfo($ID){
             $results = DB::query("SELECT FirstName,LastName,Email,StudentId as ID from STUDENT where StudentId = %s;", $ID);
             if($results == null){
@@ -128,6 +129,12 @@
             }
             return $results;
         }
+        
+        //for getting student info for advisors
+        public function getStudentInfo($ID){
+            $results = DB::query("SELECT FirstName,LastName,Email,Major,StudentId as ID from STUDENT where StudentId = %s;", $ID);
+            return $results;
+        } 
         
         public function searchBoxQuery($searchParam){
             $results = DB::query("SELECT CourseID,CourseName,Credits,CourseNum FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);
