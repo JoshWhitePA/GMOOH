@@ -10,6 +10,8 @@
 *			This file will be used only to view/print a checksheet.
 -->
 <?php
+    $indexOGen = 0;
+    $indexOPro = 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,12 +39,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' />
 							</b></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- B. WRITTEN COMMUNICATION SECTION -->
 				<tr>
@@ -53,11 +56,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- C. MATHEMATICS SECTION -->
 				<tr>
@@ -68,11 +72,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- D. WELLNESS SECTION -->
 				<tr>
@@ -83,11 +88,12 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
-						</tr>"
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
+						</tr>";
+						$indexOGen++;
 				?>
 			</table>
 <!-- II. UNIVERSITY DISTRIBUTION TABLE -->
@@ -105,34 +111,36 @@
 					<th id = "ns" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						A. Natural Sciences</a>
 						<div class = "dropdownSectionNotes">Any
-							AST, BIO, CHM, ENV, GEL, PHY, MAR, or <u title = "Click for notes" onclick = "geNotes1()">GEG*</u></div>
+							AST, BIO, CHM, ENV, GEL, PHY, MAR, or <u title = "Click for notes" onclick = "showDialog('#geNotes1', 535, true)">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
 					<th id = "ss" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						B. Social Sciences</a>
 						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, INT,
-							PSY, POL, SOC, SSE, SWK, or <u title = "Click for notes" onclick = "geNotes1()">GEG*</u></div>
+							PSY, POL, SOC, SSE, SWK, or <u title = "Click for notes" onclick = "showDialog('#geNotes1', 535, true)">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Social Sciences' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Social Sciences' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- C. HUMANITIES SECTION -->
 				<tr>
@@ -144,12 +152,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Humanities' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Humanities' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- D. ARTS SECTION -->
 				<tr>
@@ -161,12 +170,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Arts' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Arts' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- E. FREE ELECTIVE SECTION -->
 				<tr>
@@ -177,19 +187,20 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'II. E. Free Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'II. E. Free Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 			</table>
 <!-- III. COMPETENCIES ACROSS THE CURRICULUM TABLE-->
 			<table>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr>
-					<th class = "tableCaption"><u title = "Click for notes" onclick = "geNotes2()">
+					<th class = "tableCaption"><u title = "Click for notes" onclick = "showDialog('#geNotes2', 600, true)">
 						III. COMPETENCIES ACROSS THE CURRICULUM</u></th>
 					<th class = "tableGradeCaption" title = "Minimum required number of credits">RC</th>
 					<th class = "tableGradeCaption" title = "Credits earned">CR</th>
@@ -204,12 +215,13 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo "<tr>
-								<th class = 'courseBox'><div id = 'Writing Intensive' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+								<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Writing Intensive' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
-								<th class = 'tableGrade'><b></b></th>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 								<th class = 'tableGrade'>WI</th>
 							</tr>";
+							$indexOGen++;
 					}
 				?>
 		<!-- B. QUATNTITAVE LEARNING / COMPUTER-INTENSIVE SECTION -->
@@ -220,12 +232,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'QL or CP' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'QL or CP' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- C. VISUAL LITERACY / COMMUNICATION-INTENSIVE SECTION -->
 				<tr>
@@ -235,14 +248,15 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'VL or CM' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'VL or CM' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b>						
 							</b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /><b>
 							</b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- D. CULTURAL DIVERSITY SECTION -->
 				<tr>
@@ -250,12 +264,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Cultural Diversity' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Cultural Diversity' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'>CD</th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- E. CRITICAL THINKING SECTION -->
 				<tr>
@@ -263,12 +278,13 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Critical Thinking' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Critical Thinking' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'>CT</th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 <!-- IV. COLLEGE DISTRIBUTION TABLE -->
 			</table>
@@ -283,7 +299,7 @@
 				</tr>
 		<!-- A. NATURAL SCIENCES SECTION -->
 				<tr>
-					<th><u title = "Click for notes" onclick = "geNotes3()">
+					<th><u title = "Click for notes" onclick = "showDialog('#geNotes3', 550, true)">
 						A. Natural Science, Mathematics, and Computer Science</u></th>
 				</tr>
 				<!-- 1. NATURAL SCIENCES WITH LAB SUBSECTION -->
@@ -291,34 +307,36 @@
 					<th id = "nslab" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 1. Natural Science with Lab</a>
 						<div class = "dropdownSectionNotes">Any course with a lab in AST, BIO, CHM, ENV, GEL,
-							PHY, MAR, or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
+							PHY, MAR, or <u title = "Click for notes" onclick = "showDialog('#geNotes4', 550, true)">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'Natural Science with Lab' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Natural Science with Lab' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 				<!-- 2. NATURAL SCIENCES ELECTIVE SUBSECTION -->
 				<tr>
 					<th id = "nsel" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 2. Elective</a>
 						<div class = "dropdownSectionNotes">Any AST, BIO, CHM, CSC, ENV,
-							GEL, PHY, MAR, MAT or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
+							GEL, PHY, MAR, MAT or <u title = "Click for notes" onclick = "showDialog('#geNotes4', 550, true)">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. A. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. A. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- B. SOCIAL SCIENCE SECTION -->
 				<tr>
@@ -329,17 +347,18 @@
 					<th id = "ssel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 1. Elective</a>
 						<div class = "dropdownSectionNotes">Any ANT, HIS, POL or 
-						<u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
+						<u title = "Click for notes" onclick = "showDialog('#geNotes4', 550, true)">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. B. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. B. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++; 
 				?>
 				<!-- 2. SOCIAL SCIENCE ELECTIVE 2 SUBSECTION -->
 				<tr>
@@ -350,29 +369,31 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. B. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. B. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
 					<th id = "ssel3" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&nbsp; 3. Elective</a>
 						<div class = "dropdownSectionNotes">Any ANT, CRJ, ECO, HIS, POL, 
-							PSY, SOC, SWK or <u title = "Click for notes" onclick = "geNotes4()">GEG*</u></div>
+							PSY, SOC, SWK or <u title = "Click for notes" onclick = "showDialog('#geNotes4', 550, true)">GEG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. B. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. B. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 			</table>
 <!-- IV. COLLEGE DISTRIBUTION TABLE CONTINUED -->
@@ -394,17 +415,18 @@
 					<th id = "humel1" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&emsp;1. Elective</a>
 						<div class = "dropdownSectionNotes">Any ENG, HUM, WRI or 
-							<u title = "Click for notes" onclick = "geNotes5()">PAG*</u></div>
+							<u title = "Click for notes" onclick = "showDialog('#geNotes5', 550, true)">PAG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. C. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. C. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 				<!-- 2. HUMANITIES ELECTIVE 2 SUBSECTION -->
 				<tr>
@@ -415,29 +437,31 @@
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. C. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. C. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 				<!-- 3. SOCIAL SCIENCE ELECTIVE 3 SUBSECTION -->
 				<tr>
 					<th id = "humel3" class = "dropdownSection" onclick = 'displaySectionNotes(this.id)'><a class = "dropButtonNotes">
 						&emsp;3. Elective</a>
 						<div class = "dropdownSectionNotes">Any ENG, HUM, PHI, WRI, 
-							Modern Language (103 or above) or <u title = "Click for notes" onclick = "geNotes5()">PAG*</u></div>
+							Modern Language (103 or above) or <u title = "Click for notes" onclick = "showDialog('#geNotes5', 550, true)">PAG*</u></div>
 					</th>
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'IV. C. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. C. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
-							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"
+						</tr>";
+						$indexOGen++;
 				?>
 		<!-- D. FREE ELECTIVES SECTION -->
 				<tr>
@@ -451,12 +475,13 @@
 					for($i = 0; $i < 3; $i++)
 					{
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'IV. D. Elective' onclick = 'findCourses(this)' class = 'courseNameBox'>&emsp;</div></th>
+								<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. D. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
 								<th class = 'tableGrade'><b></b></th>
-								<th class = 'tableGrade'><b></b></th>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 								<th class = 'tableGrade'></th>
 							</tr>";
+							$indexOGen++;
 					}
 				?>
 			</table>
@@ -464,7 +489,7 @@
 <!-- #BS CSC SOFTWARE DEVELOPMENT MAJOR PROGRAM TABLE# -->
 			<table>
 				<tr>
-					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "bsCSCNotes()">
+					<th class = "tableHeader" colspan = "3"><u title = "Click for notes" onclick = "showDialog('#bsCSCNotes', 550, true)">
 						B. Major Program: 51 sh</u></th>
 				</tr>
 		<!-- CSC SD REQUIRED COURSES SECTION -->
@@ -474,12 +499,72 @@
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 11; $i++)
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
-								<td  class = 'tableGrade'></td>
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 125: Discrete Math for CS I</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 225: Discrete Math for CS II</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 135: Comp Sci I</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 136: Comp Sci II</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 235: Comp Org And Asm. Lng.</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 237: Data Structures</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 310: Prog. Languages</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 328: Network Programming</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+                echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 325: Intro to CS Theory</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 354: Software Engineering I</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;			
+						echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 354: Software Engineering II</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;						
 				?>
 		<!-- CSC SD ELECTIVE COURSES SECTION -->
 				<tr>
@@ -491,12 +576,13 @@
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 6; $i++)
+					for($i = 0; $i < 6; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
-								<td  class = 'tableGrade'></td>
+								<th class = 'courseBox'><div id = 'BS CSC:SD Elective' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
+						$indexOPro++;}	
 				?>
 				<tr><th class = "tableSpace"></th></tr>
 			</table>
@@ -514,12 +600,13 @@
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 3; $i++)
+					for($i = 0; $i < 3; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
-								<td class = 'tableGrade'></td>
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Concomitant' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
+								<td class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
 								<td class = 'tableGrade'></td>
 							</tr>";
+						$indexOPro++;}	
 				?>
 		<!-- CSC SD INTERNSHIP SECTION -->
 				<tr>
@@ -528,14 +615,19 @@
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 2; $i++)
+					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
-								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox'>&emsp;</div></th>
-								<td  class = 'tableGrade'></td>
+								<th class = 'courseBox' class = 'courseNameBox courseBoxPro'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>&emsp;</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
 								<td  class = 'tableGrade'>3-6</td>
 							</tr>";
+						$indexOPro++;}	
 				?>
 			</table>
+            <input type="hidden" id="programID" value="ULASCSCSD" />
+            <?php 
+                echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
+            ?>			
 		</div>
 	</body>
-</html>		
+</html>

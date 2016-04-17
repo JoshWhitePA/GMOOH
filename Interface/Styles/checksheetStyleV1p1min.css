@@ -11,8 +11,8 @@
 div.section {
 	min-height: 300px;
     width: 90%;
-	float: left;
-	position: abolute;
+	left: 10px;
+	position: relative;
 }
 
 div.newSection {
@@ -54,6 +54,7 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 	cursor: default;
+	border: none;
 }
 
 th {
@@ -97,7 +98,7 @@ u:hover {
 
 .courseNameBox {
 	height: inherit;
-	padding: 2px;
+	padding: 3px;
 	text-align: left;
 	background-color: transparent;
 	border: solid;
@@ -128,4 +129,32 @@ th.dropdownSection {
 	opacity: 0.9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	border-radius: 5px;
+}
+
+/* Additional styles for the homepage version of the checksheet */
+th.topSection {
+    /* Future tweaks mirroring th.dropdownSection */
+}
+
+.sectionNoteStyle { /* Don't know if this NEEDS to be duplicated, but I'm not going to futz with it. */
+    text-decoration: none;
+}
+
+.sectionNoteStyle:hover { /* HACK! This is here until I'm sure that I can safely remove the 'th a:hover' tag from one of the above styles. */
+	opacity: 1;
+}
+
+/* textbox for grades */
+.gradeBox{
+	width: 25px;
+	border: none;
+	background: transparent;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+.gradeBox:focus {
+outline: none;
+border: none;
 }

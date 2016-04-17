@@ -6,6 +6,8 @@ html {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	min-width: 966px;
+	min-height: 600px;
 	background-image: url("../Images/softColorBackground.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -17,11 +19,43 @@ body {
 	width: 100%;
 	height: 100%;
 	min-width: 966px;
-	min-height: 766px;
+	min-height: 600px;
 	margin: 0;
 	padding: 0;
 	position: relative;
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+}
+
+.blank {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background-color: white;
+	cursor: wait;
+}
+
+.loadingImg {
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 35%;
+	margin: auto;
+	width: 200px;
+	height: 140px;
+	z-index: 9999;
+	background: url("../Images/loadThisCat.gif") center no-repeat #fff;
+}
+
+.loadingText {
+	position: relative;
+	top: 35%;
+	text-align: center;
+	font-family: Courier;
+	font-size: 20px;
+	z-index: 9999;
 }
 
 div.pageBody {
@@ -79,7 +113,6 @@ ul {
 	height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 li {
@@ -180,8 +213,6 @@ div.leftSection {
     width: 18%;
 	padding: 10px;
 	text-align: center;
-	overflow-x: hidden;
-	overflow-y: hidden;
 	position: absolute;
 	background: rgba(249, 249, 249, 0.8);
 	border: solid;
@@ -199,8 +230,6 @@ div.leftInnerSection {
 	height: 44%;
 	float: left;
 	text-align: left;
-	overflow-x: hidden;
-	overflow-y: auto;
 	position: relative;
 	background-color: #f9f9f9;
 	opacity: 0.8;
@@ -220,8 +249,6 @@ div.rightSection {
     width: 18%;
 	padding: 10px;
 	text-align: center;
-	overflow-x: hidden;
-	overflow-y: hidden;
 	position: absolute;
 	background: rgba(249, 249, 249, 0.8);
 	border: solid;
@@ -239,8 +266,6 @@ div.rightInnerSection {
 	height: 44%;
 	float: left;
 	text-align: left;
-	overflow-x: hidden;
-	overflow-y: auto;
 	position: relative;
 	background-color: #f9f9f9;
 	opacity: 0.8;
@@ -322,9 +347,17 @@ div.titleBox {
 	font-size: 16px;
 	font-weight: bold;
 	background-color: white; 
-	border-style: none none solid none; 
+	border-style: none none solid none;
 	border-width: 2px; 
 	border-color: #dddddd;
+}
+
+div.sectionCourses {
+	width: 100%;
+	height: calc(100% - 27px);
+	position: relative;
+	overflow-x: auto;
+	overflow-y: auto;
 }
 
 .searchTextBox {
@@ -343,6 +376,7 @@ div.titleBox {
 
 .searchImg {
 	width: 12%;
+	min-height: 21px;
 	min-width: 21px;
 	max-width: 30px;
 	height: 25px;
@@ -352,7 +386,7 @@ div.titleBox {
 
 .printImg {
 	width: 5%;
-	min-width: 21px;
+	min-height: 30px;
 	max-width: 30px;
 	position: absolute;
 	height: 5%;
@@ -364,7 +398,7 @@ div.titleBox {
 
 .saveImg {
 	width: 5%;
-	min-width: 21px;
+	min-height: 30px;
 	max-width: 30px;
 	position: absolute;
 	height: 5%;
@@ -376,7 +410,7 @@ div.titleBox {
 
 .trashImg {
 	width: 5%;
-	min-width: 21px;
+	min-height: 30px;
 	max-width: 30px;
 	position: absolute;
 	height: 5%;
@@ -386,8 +420,18 @@ div.titleBox {
 	bottom: 10px;
 }
 
+.addImg {
+	width: 12%;
+	min-height: 21px;
+	min-width: 21px;
+	max-width: 30px;
+	height: 25px;
+	float: right;
+}
+
 select.courseSelect {
-	width: 100%; 
+	width: 100%;
+	height: 25px;
 	border-style: none none solid none; 
 	border-width: 2px; 
 	border-color: #dddddd;
@@ -398,17 +442,30 @@ select.courseSelect {
 select.checksheetSelect {
 	width: 100%; 
 	border: solid;
-	border-width: 2px; 
+	border-width: 2px;  	
 	border-color: #dddddd;
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-button.courseBox {
+div.courseBox {
 	height: 20px;
-	width: 100%;
+	width: calc(100% - 5px);
+	white-space: nowrap;
+	margin-left: 5px;
 	text-align: left;
 	background-color: transparent;
+	z-index: 3;
+	cursor: default;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+label.termLabel {
+	width: calc(100% - 5px);
+	white-space: nowrap;
+	margin-left: 5px;
+	text-align: left;
 	border: none;
 }
 
@@ -419,6 +476,34 @@ label.sectionLabel {
 
 .no-close .ui-dialog-titlebar-close {
   display: none;
+}
+
+div.popupDialog {
+	display: none;
+	z-index: 3;
+}
+
+.semFormat {
+	width: 100%;
+	height: initial;
+	border: none;
+}
+
+.noWrap {
+	white-space: nowrap;
+}
+
+.trashHover {
+	background-color: rgba(175, 175, 175, 0.5);
+	border-radius: 5px;
+}
+
+.termHover {
+	background-color: rgba(175, 175, 175, 0.5);
+}
+
+.noDrop {
+	cursor: no-drop;
 }
 
 /* View Saved Checksheets Classes */
@@ -467,7 +552,7 @@ div.rightViewSaved {
 
 .resetImg {
 	width: 5%;
-	min-width: 21px;
+	min-height: 30px;
 	max-width: 30px;
 	position: absolute;
 	height: 5%;
@@ -492,3 +577,110 @@ div.officialHeaderBox {
 	border-width: 2px; 
 	border-color: #dddddd;
 }
+
+/* Work-in-progress additional classes */
+.changepass{
+	/* border:3px;
+	border-style:solid; 
+	border-color:#800020; */ /* May re-do the border later. */
+	position: relative;
+}
+
+span.box { /* Box for containing data. */
+  margin: 2%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 5px;
+  opacity: 0.8;
+  text-align: right;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  color: #000000;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+div.boxed{ /* Box container for page. */
+	/*
+	border:1px; 
+	border-style:solid; 
+	border-color:#800020; */ /* Disabled for the moment. */
+	padding: 0;
+}
+
+td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
+	text-align: right;
+	padding-right: 2px;
+}
+
+table,tr.interface{ /* general interface table elements */
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 5px;
+}
+
+td.paddedTD{ /* Add padding and some other tweaks*/
+	padding: 3px;
+}
+
+td.dataTD{ /* Add padding and some other tweaks*/
+	padding: 3px;
+	text-align: left;
+}
+
+td.majorData{ /* Needed specific padding on an element */
+	padding-left: 25px;
+}
+
+td.optionSelect td { /* Add a box around the advisor option selection. Might be useful elsewhere too! */
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 6px;
+}
+
+/* Bordered bottom style. Broken currently. */ /*
+tr.bordedBottom{ 
+	border-bottom: 1px solid;
+	border-color: #999999;
+}
+*/
+
+table.tableCenter{ /* Align table to center. Add some general class. */
+	margin: auto;
+}
+
+table.advisorOptions{ /* style for the advisor homepage options panel - only around in case someone used it elsewhere! */
+	margin: auto;
+	text-align: left;
+
+	padding: 3px;
+}
+
+table.adviseeList{ /* style for the advisor homepage student select table */
+	margin: auto;
+	text-align: left;
+	width: 100%;
+	border-collapse: collapse;
+	border-style: hidden;
+}
+
+/* WARNING! WARNING! HACKY STUFF BELOW!
+You can't use border-collapse with a border-radius on tables,
+ but you CAN create a div around the table and have the table's width be 100%
+ within that div.
+It results in the look I wanted, though it feels kinda dirty. */
+.rowSel > td{ border-left: 1px solid #999999; padding: 5px; }
+.rowSel > td:first-child{ border-left: none; padding: 5px; }
+.rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; padding-left: 4px; }
+.rowSel > th:first-child{ border-left: none; border-bottom: 1px solid #999999; }
+
+div.boarderedTable{
+	border: 1px solid;
+	border-color: #999999;
+	border-radius: 5px;
+	width: 80%;
+	margin: auto;
+}
+
+/* End of my awful WIP stuff. - C Steckhouse */

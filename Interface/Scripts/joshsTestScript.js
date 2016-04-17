@@ -254,7 +254,7 @@ function pageLoad(checksheetFlag) {
 				if($("#currentChecksheet option:selected").val() == "it") 
 				{
 					//load chosen checksheet into the inner section of the master page
-					$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
+					$("#innerSection").load(lPage);
 					$("#sectionTitle label").text(""); //Clear the current title and course list
 					$("#sectionCourseList").text("");
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); //Scroll to the top of the checksheet
@@ -314,7 +314,7 @@ function pageLoad(checksheetFlag) {
 			}) .change(); //This makes sure it happens every time
 		}
 		else {
-			$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheet.php");
+			$("#innerSection").load(lPage+"?chkID="+chkID+"&AIDID="+AIDID);
 			currentChecksheet = "it";
 		}
 	});
@@ -331,38 +331,30 @@ function pageLoad(checksheetFlag) {
 		makeChecksheetSpansDraggable();
 		$("#userCourseSequence").sortable({ cancel: "li div" });
 	});
+     loadSchedule();
 }
 
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
-//    alert($(item).attr("id")+"");
-//    $("#sectionCourseList").html();
-    $.post( "./Scripts/SearchCourseByBox.php", { courseKey: $(item).attr("id") })
-                  .done(function( data ) {
-                     $("#sectionCourseList").html(String(data));
-                        console.log(String(data));
-                  });
-    
-//	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-    
-//	$("#sectionCourseList") //replace span content with courses
-//		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-//			+ "<div id = 'draggableCourse' class = 'courseBox'>"
-//			+ $(item).attr("id") + " Course</div>");
+	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
+	$("#sectionCourseList") //replace span content with courses
+		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
+			+ "<div id = 'draggableCourse' class = 'courseBox'>"
+			+ $(item).attr("id") + " Course</div>");
 			
 	thisItem = item;
 	
-//	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
-//		lastSection = item;
-//		
-//	else if(item == lastSection)
-//		return;
+	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
+		lastSection = item;
 		
-//	else
-//	{	//Replace the last section selected back to normal
-//		$(lastSection).css("border-color", "transparent");
-//		lastSection = item; //Make lastSection point to the new section
-//	}
+	else if(item == lastSection)
+		return;
+		
+	else
+	{	//Replace the last section selected back to normal
+		$(lastSection).css("border-color", "transparent");
+		lastSection = item; //Make lastSection point to the new section
+	}
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {		
@@ -588,22 +580,18 @@ function makeNewTermsDraggable() {
 }
 
 function printChecksheet() {
-    var curanAIDID = scrapeTheSucka();
-    saveSchedule(curanAIDID);
 	if(currentChecksheet == "it")
-		window.open("Checksheets/v1.1/reg/cscITChecksheet.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheet.php", "_blank");
 	else if(currentChecksheet == "Mit")
-		window.open("Checksheets/v1.1/reg/cscITMastersChecksheet.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMastersChecksheet.php", "_blank");
 	else if(currentChecksheet == "itm")
-		window.open("Checksheets/v1.1/reg/cscITMinorChecksheet.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMinorChecksheet.php", "_blank");
 	else if(currentChecksheet == "sd")
-		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php", "_blank");
 	else if(currentChecksheet == "Msd")
-		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php?AIDID="+curanAIDID, "_blank");
-    else if(currentChecksheet == "savIT")
-		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php", "_blank");
 	else
-		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php", "_blank");
 }
 
 //Function to clear the checksheet
@@ -651,8 +639,8 @@ function resetChecksheet() {
 
 //Function to save the checksheet		
 function saveChecksheet() {
-    var curanAIDID = scrapeTheSucka();
-    saveSchedule(curanAIDID);
+    var curAIDID = scrapeTheSucka();
+    saveSchedule(curAIDID)
 	showDialog("#saveDialog", 535, true);
 }
 
@@ -795,7 +783,6 @@ function searchByDept(){
 }
      
 function scrapeTheSucka(){
-    
     var xmlSaveData = "<GMOOH><Student><GenEd>";
     $.each($('.courseNameBoxGen'), function (index, value) { 
         xmlSaveData += "<Class>";
@@ -824,9 +811,8 @@ function scrapeTheSucka(){
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
     var chkID = $('#programID').val();
-    var curAIDID=null;
-    var alreadySaved = $('#saveChecka').val();
-    console.log(xmlSaveData);
+       
+     console.log(xmlSaveData);
     $.ajaxSetup({
         async: false
     });
@@ -836,13 +822,7 @@ function scrapeTheSucka(){
                  AIDID = data.trim();
                 curAIDID = AIDID;
               });
-//     $.ajax({
-//		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData"",
-//		success: function (data) {
-//			console.log("AIDID from scrape: "+data);
-//            curAIDID = data;
-//		}
-//	});
+
     $.ajaxSetup({
         async: true
     });
@@ -850,9 +830,9 @@ function scrapeTheSucka(){
     return curAIDID;
 }
 
-
 function loadSchedule(){
-   
+
+    //magic ajax
      $.ajax({
                 url: "./Scripts/DBSearchWAJAX.php?AIDID=" + AIDID,
                 success: function (data) {
@@ -872,8 +852,8 @@ function saveSchedule(curAIDID){
 //        var newList = list.split('<br>'); //$(newList[1]).text()
 ////        console.log($(newList[1]).text());
 //        var listOfClass = $('#termList').find('span').toArray();
-        console.log("curAIDID before send: "+curAIDID);
-    
+//        console.log("curAIDID before send: "+curAIDID);
+//            alert("AIDID:"+AIDID+"classInfo: "+classInfo);
             
             $.post( "./Scripts/DBSearchWAJAX.php", { AIDID: AIDID, classInfo: list })
               .done(function( data ) {
@@ -887,5 +867,3 @@ function saveSchedule(curAIDID){
 //                  });
 ////    
 }
-
-
