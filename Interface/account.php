@@ -17,11 +17,13 @@
     $name = "";
     $ID = "";//could get from session but I want to keep data source the same.
     $email = "";
+    $major = "";
     foreach ($results as $row) {
        $name = $row['FirstName'];
        $name .= " " . $row['LastName'];
        $ID = $row['ID'];
        $email = $row['Email'];
+       $major = $row['Major'];
     }
 ?>
 <!DOCTYPE html>
@@ -40,6 +42,7 @@
 							+ "<tr><td class = 'labelAlign' >Name:</td><td class = 'dataTD'><span class = 'box'><?php echo $name; ?></span></td></tr>"
 							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td class = 'dataTD'><span class = 'box'><?php echo $ID; ?></span></td></tr>"
 							+ "<tr><td class = 'labelAlign' >Email:</td><td class = 'dataTD'><span class = 'box'><?php echo $email; ?></span></td></tr>"
+							+ "<tr><td class = 'labelAlign' >Major:</td><td class = 'dataTD'><span class = 'box'><?php echo $major; ?></span></td></tr>"
 							+ "</table>"
 							+ "<p><a href = 'changePassword.php'>Change your password</a></p></div>");
 				});

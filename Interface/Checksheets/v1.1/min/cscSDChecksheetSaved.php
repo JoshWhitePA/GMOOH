@@ -35,13 +35,68 @@ session_start();
       }
       return $a;
     }
+
+//    function stripInvalidXml($value){
+//        $ret = "";
+//        $current;
+//        if (empty($value)) {
+//            return $ret;
+//        }
+//
+//        $length = strlen($value);
+//            for ($i=0; $i < $length; $i++)
+//            {
+//                $current = ord($value{$i});
+//                if (($current == 0x9) ||
+//                    ($current == 0xA) ||
+//                    ($current == 0xD) ||
+//                    (($current >= 0x20) && ($current <= 0xD7FF)) ||
+//                    (($current >= 0xE000) && ($current <= 0xFFFD)) ||
+//                    (($current >= 0x10000) && ($current <= 0x10FFFF)))
+//                {
+//                    $ret .= chr($current);
+//                }
+//                else
+//                {
+//                    $ret .= " ";
+//                }
+//            }
+//        return $ret;
+//    }
+function stripInvalidXml($value) {
+    $ret = "";
+    $current;
+    if (empty($value)) {
+        return $ret;
+    }
+    $length = strlen($value);
+    for ($i=0; $i < $length; $i++) {
+        $current = ord($value{$i});
+        if (($current == 0x9) || ($current == 0xA) || ($current == 0xD) || (($current >= 0x20) && ($current <= 0xD7FF)) || (($current >= 0xE000) && ($current <= 0xFFFD)) || (($current >= 0x10000) && ($current <= 0x10FFFF))) {
+                $ret .= chr($current);
+        }
+        else {
+            $ret .= "";
+        }
+    }
+    return $ret;
+}
+
+$goodChars = array("", "&#47;", "&#39;","&#92;","&#94;","&#126;","&#34;");
+$badChars   = array("&", "/", "'","\\","^","~",'"');
+
+
     $logic = new Logic();
     $sData = "";
     $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['chkID'],$_GET['AIDID']);
     foreach ($results as $row) {
-        $sData = xml2array($row["SaveData"]);
+//        echo stripInvalidXml($row["SaveData"]);
+//        echo preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;',$row["SaveData"]);
+//        echo str_replace("And","&", stripInvalidXml($row["SaveData"]));
+        $sData = xml2array(preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;',$row["SaveData"]));
         
     }
+
 
     
     //print_r($sData);
@@ -135,7 +190,8 @@ session_start();
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 						</tr>"; 
                 $indexOGen++;
-				?>
+				
+                ?>
 			</table>
             
 <!-- II. UNIVERSITY DISTRIBUTION TABLE -->
@@ -158,13 +214,14 @@ session_start();
 					</th>
 				</tr>
 				<?php
-					echo"<tr>
+					echo "<tr>
 							<th class = 'courseBox'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;"."<span id='genClass" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</div></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genCR" .$indexOGen."' value = '3' /></b></th>
 							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
-						</tr>"; $indexOGen++;
+						</tr>"; 
+                    $indexOGen++;
 				?>
 		<!-- B. SOCIAL SCIENCES SECTION -->
 				<tr>
@@ -576,8 +633,10 @@ session_start();
 					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
 								<th class = 'courseBox'><div id = 'BS CSC:SD Internship' onclick = 'findCourses(this)'class = 'courseNameBox courseNameBoxPro'>&emsp;"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' value='".$sData["Student"][0]["GenEd"][0]["Class"][$indexOPro]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>								<td  class = 'tableGrade'>3-6</td>
-							</tr>"; $indexOPro++;}
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' value='".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "' type = 'text' maxlength = '2' /></b></th>								<td  class = 'tableGrade'>3-6</td>
+							</tr>"; 
+                        $indexOPro++;
+                    }
 				?>
 			</table>
             <input type="hidden" id="programID" value="ULASCSCSD" />

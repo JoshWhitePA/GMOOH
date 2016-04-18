@@ -41,8 +41,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Oral Communication' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' />
 							</b></th>
 						</tr>";
 						$indexOGen++;
@@ -58,8 +58,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Written Communication' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 						</tr>";
 						$indexOGen++;
 				?>
@@ -74,8 +74,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Mathematics' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 						</tr>";
 						$indexOGen++;
 				?>
@@ -90,8 +90,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Wellness' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 						</tr>";
 						$indexOGen++;
 				?>
@@ -118,8 +118,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Natural Sciences' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -136,8 +136,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Social Sciences' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -154,8 +154,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Humanities' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -172,8 +172,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Arts' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -189,8 +189,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'II. E. Free Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -217,8 +217,8 @@
 						echo "<tr>
 								<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Writing Intensive' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
-								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 								<th class = 'tableGrade'><b></b></th>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 								<th class = 'tableGrade'>WI</th>
 							</tr>";
 							$indexOGen++;
@@ -234,8 +234,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'QL or CP' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -250,9 +250,9 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'VL or CM' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' />						
+							<th class = 'tableGrade'><b>						
 							</b></th>
-							<th class = 'tableGrade'><b>
+							<th class = 'tableGrade'><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /><b>
 							</b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
@@ -266,8 +266,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Cultural Diversity' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'>CD</th>
 						</tr>";
 						$indexOGen++;
@@ -280,8 +280,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Critical Thinking' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'>CT</th>
 						</tr>";
 						$indexOGen++;
@@ -314,8 +314,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'Natural Science with Lab' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -332,8 +332,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. A. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -354,8 +354,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. B. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++; 
@@ -371,8 +371,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. B. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -389,8 +389,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. B. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -422,8 +422,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. C. 1. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -439,8 +439,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. C. 2. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -457,8 +457,8 @@
 					echo"<tr>
 							<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. C. 3. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 							<th class = 'tableGrade'><b>3</b></th>
-							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'><b></b></th>
+							<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 							<th class = 'tableGrade'></th>
 						</tr>";
 						$indexOGen++;
@@ -477,8 +477,8 @@
 						echo"<tr>
 								<th class = 'courseBox' class = 'courseBoxGen'><div id = 'IV. D. Elective' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxGen'>&emsp;</div></th>
 								<th class = 'tableGrade'><b>3</b></th>
-								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 								<th class = 'tableGrade'><b></b></th>
+								<th class = 'tableGrade'><b><input class = 'gradeBox' id = 'genGrade" .$indexOGen."' type = 'text' maxlength = '2' /></b></th>
 								<th class = 'tableGrade'></th>
 							</tr>";
 							$indexOGen++;
@@ -543,6 +543,12 @@
 						$indexOPro++;
 						echo"<tr>	
 								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 328: Network Programming</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
+								<td  class = 'tableGrade'></td>
+							</tr>";
+						$indexOPro++;
+                echo"<tr>	
+								<th class = 'courseBox' class = 'courseBoxPro'><div id = 'BS CSC:SD Required' onclick = 'findCourses(this)'class = ' courseNameBoxPro'>CSC 325: Intro to CS Theory</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade" .$indexOPro."' type = 'text' maxlength = '2' /></td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
