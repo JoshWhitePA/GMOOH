@@ -33,31 +33,31 @@
 				</tr>
 				<?php
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 125: Discrete Math for Computing I</div></th>
+								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' class = ' courseNameBoxPro'>&#8195;CSC 125: Discrete Math for Computing I</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 225: Discrete Math for Computing II</div></th>
+								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' class = ' courseNameBoxPro'>&#8195;CSC 225: Discrete Math for Computing II</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 135: Computer Science I</div></th>
+								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' class = ' courseNameBoxPro'>&#8195;CSC 135: Computer Science I</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 136: Computer Science II</div></th>
+								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' class = ' courseNameBoxPro'>&#8195;CSC 136: Computer Science II</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>CSC 237: Data Structures</div></th>
+								<th class = 'courseBox'><div id = 'CSC: SD Minor Required' class = ' courseNameBoxPro'>&#8195;CSC 237: Data Structures</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'gradeBox' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";

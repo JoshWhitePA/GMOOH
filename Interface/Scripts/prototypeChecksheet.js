@@ -96,7 +96,6 @@ function pageLoad(checksheetFlag) {
 					+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
 					+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
 					+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"
-					+ "<option value = 'savIT'>CSC IT(M) - Computer Science: Information Technology Saved</option>"
 					+ "</select>");
 		}
 		else {
@@ -294,17 +293,9 @@ function pageLoad(checksheetFlag) {
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 					currentChecksheet = $("#currentChecksheet option:selected").val();
 				}
-				else if($("#currentChecksheet option:selected").val() == "sdm") 
+				else
 				{
 					$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
-					$("#sectionTitle label").text("");
-					$("#sectionCourseList").text("");
-					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
-					currentChecksheet = $("#currentChecksheet option:selected").val();
-				}
-				else 
-				{
-					$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
 					$("#sectionTitle label").text("");
 					$("#sectionCourseList").text("");
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
