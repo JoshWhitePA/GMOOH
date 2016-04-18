@@ -343,14 +343,7 @@ function findCourses(item) {
                   });
     
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-    
-//	$("#sectionCourseList") //replace span content with courses
-//		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-//			+ "<div id = 'draggableCourse' class = 'courseBox'>"
-//			+ $(item).attr("id") + " Course</div>");
 			
-			
-				
 	thisItem = item;
 	
 	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
@@ -513,6 +506,32 @@ function makeTermItemDraggable() {
 		stop: function() {
 			this.style.display = "";
 			$("#trashButton").droppable("destroy");
+		}
+	});
+}
+
+function makeSectSpansDraggable() {
+	$("#leftInnerSection span").draggable({
+		revert: "invalid",
+		scroll: false,
+		helper: function() { return $(this).clone().appendTo("body").show(); },
+		containment: "body",
+		distance: 5,
+		opacity: 0.5,
+		addClasses: false,
+		start : function() {
+			this.style.display = "none";
+			if(thisItem)
+				makeItemDroppable(thisItem);
+			makeTermDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			if(thisItem)
+				$(thisItem).droppable("destroy");
+			$("#termList ul li").droppable("destroy");
+			makeTermDraggable();
+			makeChecksheetSpansDraggable();
 		}
 	});
 }
