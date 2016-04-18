@@ -343,7 +343,7 @@ function findCourses(item) {
                         console.log(String(data));
                   });
     
-//	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
+	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
     
 //	$("#sectionCourseList") //replace span content with courses
 //		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
@@ -352,17 +352,17 @@ function findCourses(item) {
 			
 	thisItem = item;
 	
-//	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
-//		lastSection = item;
-//		
-//	else if(item == lastSection)
-//		return;
+	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
+		lastSection = item;
 		
-//	else
-//	{	//Replace the last section selected back to normal
-//		$(lastSection).css("border-color", "transparent");
-//		lastSection = item; //Make lastSection point to the new section
-//	}
+	else if(item == lastSection)
+		return;
+		
+	else
+	{	//Replace the last section selected back to normal
+		$(lastSection).css("border-color", "transparent");
+		lastSection = item; //Make lastSection point to the new section
+	}
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {		
@@ -536,6 +536,32 @@ function makeChecksheetSpansDraggable() {
 			$("#termList ul li").droppable("destroy");
 			$("#trashButton").droppable("destroy");
 			makeTermDraggable();
+		}
+	});
+}
+
+function makeSectSpansDraggable() {
+	$("#leftInnerSection span").draggable({
+		revert: "invalid",
+		scroll: false,
+		helper: function() { return $(this).clone().appendTo("body").show(); },
+		containment: "body",
+		distance: 5,
+		opacity: 0.5,
+		addClasses: false,
+		start : function() {
+			this.style.display = "none";
+			if(thisItem)
+				makeItemDroppable(thisItem);
+			makeTermDroppable();
+		},
+		stop: function() {
+			this.style.display = "";
+			if(thisItem)
+				$(thisItem).droppable("destroy");
+			$("#termList ul li").droppable("destroy");
+			makeTermDraggable();
+			makeChecksheetSpansDraggable();
 		}
 	});
 }
