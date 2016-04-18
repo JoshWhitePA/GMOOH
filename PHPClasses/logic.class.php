@@ -10,9 +10,9 @@
             //loose coupling be darned
             $query = "select * from `COURSE` where 1=2;";
             if($courseKey == "Oral Communication"){
-               $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseID`;"; 
+               $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseNum`;"; 
             }elseif($courseKey == "Written Communication"){
-                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseID`;";
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseNum`;";
             }
             elseif($courseKey == "Mathematics"){
                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='MAT' and `CourseNum` in(140,301) ORDER BY `CourseNum`;";
@@ -72,7 +72,52 @@
             $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
             return $results;
         }
+		
+		public function displayOfficialChecksheet($ID){
+			$results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			return $results;
+		}
         
+		public function grabUserMajor($ID){
+			$results = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
+		}
+		
+		//Messy stuff.
+		public function findChecksheetToDisplay($ID){
+			//Hackyness.
+			$major = "";
+			$grabbedMajor = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
+			foreach ($grabbedMajor as $row) {
+			   $major = $row['Major'];
+			}
+			
+			//The below is a HORRIBLE hack.
+			$hasOfficalCheck = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			if($hasOfficalCheck == null){
+				if($major == "CS: IT"){
+					$results = "Checksheets/v1.1/min/cscITChecksheetDisplay.php";
+				}
+				else if($major == "CS: SD"){
+					$results = "Checksheets/v1.1/min/cscSDChecksheetDisplay.php";
+				}
+				else{ //Last ditch 'I don't know what happen' situation.
+					$results = "error.html";
+				}
+			}
+			else{
+				if($major == "CS: IT"){
+					$results = "Checksheets/v1.1/min/cscITChecksheetDisplay.php";
+				}
+				else if($major == "CS: SD"){
+					$results = "Checksheets/v1.1/min/cscSDChecksheetDisplay.php";
+				}
+				else{ //Last ditch 'I don't know what happen' value - error page.
+					$results = "error_bad_checksheet.html";
+				}
+			}
+			return $results;
+		}
+		
         public function termSearch($AIDID,$sID){
              $results = DB::query("SELECT ScheduleRaw  FROM TERMSAVES WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
             return $results;
@@ -121,20 +166,13 @@
             return $fancyID;
         }
         
-        //for logging in
         public function getUserInfo($ID){
-            $results = DB::query("SELECT FirstName,LastName,Email,StudentId as ID from STUDENT where StudentId = %s;", $ID);
+            $results = DB::query("SELECT FirstName,LastName,Email,Major,StudentId as ID from STUDENT where StudentId = %s;", $ID);
             if($results == null){
                  $results = DB::query("SELECT FirstName,LastName,Email,FacultyID as ID from FACULTY where FacultyID = %s;", $ID);
             }
             return $results;
         }
-        
-        //for getting student info for advisors
-        public function getStudentInfo($ID){
-            $results = DB::query("SELECT FirstName,LastName,Email,Major,StudentId as ID from STUDENT where StudentId = %s;", $ID);
-            return $results;
-        } 
         
         public function searchBoxQuery($searchParam){
             $results = DB::query("SELECT CourseID,CourseName,Credits,CourseNum FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);
