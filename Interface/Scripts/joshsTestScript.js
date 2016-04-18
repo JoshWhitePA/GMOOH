@@ -590,17 +590,17 @@ function makeNewTermsDraggable() {
 
 function printChecksheet() {
 	if(currentChecksheet == "it")
-		window.open("Checksheets/v1.1/reg/cscITChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php", "_blank");
 	else if(currentChecksheet == "Mit")
-		window.open("Checksheets/v1.1/reg/cscITMastersChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMastersChecksheetSaved.php", "_blank");
 	else if(currentChecksheet == "itm")
-		window.open("Checksheets/v1.1/reg/cscITMinorChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMinorChecksheetSaved.php", "_blank");
 	else if(currentChecksheet == "sd")
-		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDChecksheetSaved.php", "_blank");
 	else if(currentChecksheet == "Msd")
-		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheetSaved.php", "_blank");
 	else
-		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheetSaved.php", "_blank");
 }
 
 //Function to clear the checksheet
