@@ -344,11 +344,6 @@ function findCourses(item) {
                   });
     
 	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
-    
-//	$("#sectionCourseList") //replace span content with courses
-//		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
-//			+ "<div id = 'draggableCourse' class = 'courseBox'>"
-//			+ $(item).attr("id") + " Course</div>");
 			
 	thisItem = item;
 	
