@@ -15,7 +15,8 @@
 	}
 	$checksheet = $logic->findChecksheetToDisplay($userID);
 	
-	$major = $logic->grabUserMajor($_SESSION["userID"]);
+	$major = $logic->grabUserMajor($userID]);
+	$_POST['AIDID'] = getOfficialChecksheet($userID);
 	
 ?>
 <!DOCTYPE html>
