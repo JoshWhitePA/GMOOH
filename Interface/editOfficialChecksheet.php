@@ -3,6 +3,14 @@
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+	
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
