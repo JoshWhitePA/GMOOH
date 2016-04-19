@@ -73,8 +73,15 @@
             return $results;
         }
 		
+		//DEPRICATE THIS. It's only here because I'm not 100% sure I've removed references to it!
 		public function displayOfficialChecksheet($ID){
 			$results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			return $results;
+		}
+		
+		//Kinda replacement for the above.
+		public function getOfficialChecksheet($ID){
+			$results = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			return $results;
 		}
         
@@ -92,7 +99,7 @@
 			}
 			
 			//The below is a HORRIBLE hack.
-			$hasOfficalCheck = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			if($hasOfficalCheck == null){
 				if($major == "CS: IT"){
 					$results = "Checksheets/v1.1/min/cscITChecksheetDisplay.php";
@@ -100,15 +107,18 @@
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheetDisplay.php";
 				}
-				else{ //Last ditch 'I don't know what happen' situation.
+				else{ //Last ditch 'I don't know what happen' situation. Because failing gracefully is better than doing horrible things.
 					$results = "error.html";
 				}
 			}
 			else{
-				if($major == "CS: IT"){
+				foreach ($hasOfficalCheck as $row) {
+					$checksheetMajor = $row['CheckSheetId'];
+				}
+				if($checksheetMajor == "ULASCSCIT"){
 					$results = "Checksheets/v1.1/min/cscITChecksheetDisplay.php";
 				}
-				else if($major == "CS: SD"){
+				else if($checksheetMajor == "ULASCSCSD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheetDisplay.php";
 				}
 				else{ //Last ditch 'I don't know what happen' value - error page.
