@@ -102,7 +102,7 @@
                                      $check = "";
                                 }
 
-                            echo "<tr><td class = 'paddedTD' ><label for='real_" .$row['CheckSheetID'] ."'>Official? </label><input type='radio' name='official' ".$check." disabled id='real_" .$row['CheckSheetID'] ."' />Checksheet $counter - ".$row['CheckSheetID']." Date: ".$row['Date'] . "</td><td><input type='submit' onClick='load_Click(this.id)' value='Load' id='".$row['CheckSheetID']."_".$row['AIDID']."' /><td><input type='submit' onClick='off_Click(this.id)' value='Make Official' id='".$row['AIDID']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='".$row['AIDID']."' /></td></tr>";
+                            echo "<tr><td class = 'paddedTD' ><label for='real_" .$row['CheckSheetID'] ."'>Official? </label><input type='radio' name='official' checked='".$check."' disabled id='real_" .$row['CheckSheetID'] ."' />Checksheet $counter - ".$row['CheckSheetID']." Date: ".$row['Date'] . "</td><td><input type='submit' onClick='load_Click(this.id)' value='Load' id='".$row['CheckSheetID']."_".$row['AIDID']."' /><td><input type='submit' onClick='off_Click(this.id)' value='Make Official' id='".$row['AIDID']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='".$row['AIDID']."' /></td></tr>";
                                 $counter++;
                             }
                    ?>";
