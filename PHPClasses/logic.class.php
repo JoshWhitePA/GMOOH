@@ -10,9 +10,9 @@
             //loose coupling be darned
             $query = "select * from `COURSE` where 1=2;";
             if($courseKey == "Oral Communication"){
-               $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseID`;"; 
+               $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseNum`;"; 
             }elseif($courseKey == "Written Communication"){
-                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseID`;";
+                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseNum`;";
             }
             elseif($courseKey == "Mathematics"){
                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='MAT' and `CourseNum` in(140,301) ORDER BY `CourseNum`;";
@@ -67,33 +67,95 @@
             return $results;
         }
         
+	
+	public function changeOfficialChecksheet($ID, $checkID){
+		DB::update('CHECKSHEETSAVE', array('CheckSheetOfficial' => 0), "StudentId = %s", $ID);
         
-        public function displaySaveFromCheck($ID, $checkID,$AIDID){
+		DB::update('CHECKSHEETSAVE', array('CheckSheetOfficial' => 1), "StudentId = %s AND AIDID = %i", $ID,$checkID);
+        
+    }
+        public function displaySaveFromCheck($ID, $AIDID){
             $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
             return $results;
         }
+		
+		//DEPRICATE THIS. It's only here because I'm not 100% sure I've removed references to it!
+		public function displayOfficialChecksheet($ID){
+			$results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			return $results;
+		}
+		
+		//Kinda replacement for the above. Different use.
+		public function getOfficialChecksheet($ID){
+			$results = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			return $results;
+		}
         
+		public function grabUserMajor($ID){
+			$results = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
+		}
+		
+		//Messy stuff.
+		public function findChecksheetToDisplay($ID){
+			
+			//The below is no longer a horrible hack.
+			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
+			if($hasOfficalCheck == null){
+				//Since they've got no official checksheet to go on, grab their major.
+				$major = "";
+				$grabbedMajor = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
+				foreach ($grabbedMajor as $row) {
+				   $major = $row['Major'];
+				}
+				if($major == "CS: IT"){
+					$results = "Checksheets/v1.1/min/cscITChecksheet.php";
+				}
+				else if($major == "CS: SD"){
+					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
+				}
+				else{ //Because failing gracefully is better than doing horrible things.
+					$results = "error.html";
+				}
+			}
+			else{
+				foreach ($hasOfficalCheck as $row) {
+					$checksheetMajor = $row['CheckSheetId'];
+				}
+				//Since we DO have an official checksheet, use that checksheet's ID to determine which file to display.
+				if($checksheetMajor == "ULASCSCIT"){
+					$results = "Checksheets/v1.1/min/cscITChecksheetSaved.php";
+				}
+				else if($checksheetMajor == "ULASCSCSD"){
+					$results = "Checksheets/v1.1/min/cscSDChecksheetSaved.php";
+				}
+				else{ //Last ditch 'I don't know what happen' value - error page.
+					$results = "error_bad_checksheet.html";
+				}
+			}
+			return $results;
+		}
+		
         public function termSearch($AIDID,$sID){
-             $results = DB::query("SELECT ScheduleRaw  FROM TERMSAVES WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
+             $results = DB::query("SELECT ScheduleRaw  FROM CHECKSHEETSAVE WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
             return $results;
             
         }
+        
         public function termSave($studentID,$classInfo,$AIDID){
-            DB::query("SELECT AIDID FROM TERMSAVES WHERE AIDID=%s", $AIDID);
+             DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
             
             if ($counter > 0){
-                DB::query("UPDATE TERMSAVES SET ScheduleRaw=%s WHERE AIDID=%s", $classInfo,$AIDID);
-            }else{
-             DB::insert('TERMSAVES', array(
-                          'StudentID' => $studentID,
-                          'AIDID' => $AIDID,
-                        'ScheduleRaw' => $classInfo
-                        ));
+                
+                DB::query("UPDATE CHECKSHEETSAVE SET ScheduleRaw=%s WHERE AIDID=%s", $classInfo,$AIDID);
+                
+            } else{
+                
+                DB::update('CHECKSHEETSAVE', array('ScheduleRaw' => $classInfo), "AIDID=%i", $AIDID);
+
             }
         
             return true;
-            
         }
         
         public function displaySave($ID){
@@ -121,20 +183,13 @@
             return $fancyID;
         }
         
-        //for logging in
         public function getUserInfo($ID){
-            $results = DB::query("SELECT FirstName,LastName,Email,StudentId as ID from STUDENT where StudentId = %s;", $ID);
+            $results = DB::query("SELECT FirstName,LastName,Email,Major,StudentId as ID from STUDENT where StudentId = %s;", $ID);
             if($results == null){
                  $results = DB::query("SELECT FirstName,LastName,Email,FacultyID as ID from FACULTY where FacultyID = %s;", $ID);
             }
             return $results;
         }
-        
-        //for getting student info for advisors
-        public function getStudentInfo($ID){
-            $results = DB::query("SELECT FirstName,LastName,Email,Major,StudentId as ID from STUDENT where StudentId = %s;", $ID);
-            return $results;
-        } 
         
         public function searchBoxQuery($searchParam){
             $results = DB::query("SELECT CourseID,CourseName,Credits,CourseNum FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);

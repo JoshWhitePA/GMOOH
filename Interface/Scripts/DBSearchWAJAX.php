@@ -1,5 +1,26 @@
 <?php
-	$i = 1;
+
+
+    function stripInvalidXml($value) {
+        $ret = "";
+        $current;
+        if (empty($value)) {
+            return $ret;
+        }
+        $length = strlen($value);
+        for ($i=0; $i < $length; $i++) {
+            $current = ord($value{$i});
+            if (($current == 0x9) || ($current == 0xA) || ($current == 0xD) || (($current >= 0x20) && ($current <= 0xD7FF)) || (($current >= 0xE000) && ($current <= 0xFFFD)) || (($current >= 0x10000) && ($current <= 0x10FFFF))) {
+                    $ret .= chr($current);
+            }
+            else {
+                $ret .= "";
+            }
+        }
+        return $ret;
+    }
+
+    $i = 1;
     session_start();
     require("../../PHPClasses/logic.class.php");
     if(isset($_GET['search']) && $_GET['search'] != "" && $_GET['search'] != " "){
@@ -38,7 +59,7 @@
             $AIDID=$_POST['AIDID'];
         }
         $logic = new Logic();
-        $result = $logic->saveChecksheet($_SESSION["userID"],$_POST['Save'],$_POST['id'],$AIDID);
+        $result = $logic->saveChecksheet($_SESSION["userID"],preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;',$_POST['Save']),$_POST['id'],$AIDID);
         echo $result;
     }    
 
@@ -68,6 +89,11 @@
     if(isset($_GET['delID']) && $_GET['delID'] != "" && $_GET['delID'] != " "){
      $logic = new Logic();
      $results = $logic->deleteSavedChecksheet($_SESSION["userID"],$_GET['delID']);
+ 
+ }
+ if(isset($_GET['offID']) && $_GET['offID'] != "" && $_GET['offID'] != " "){
+     $logic = new Logic();
+     $results = $logic->changeOfficialChecksheet($_SESSION["userID"],$_GET['offID']);
  
  }
 

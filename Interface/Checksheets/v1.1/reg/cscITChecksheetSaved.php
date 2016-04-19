@@ -10,6 +10,8 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+
+session_start();
 require("../../../../PHPClasses/logic.class.php");
 
  function xml2array($fname){
@@ -35,47 +37,19 @@ require("../../../../PHPClasses/logic.class.php");
     }
     $logic = new Logic();
     $sData = "";
+    
+
+
     $results = $logic->displaySaveFromCheck($_SESSION['userID'],"",$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
+
         
     }
 
     
-    //print_r($sData);
-    //echo "<br><br>";
     $indexOGen = 0;
     $indexOPro = 0;
-//require("../../../../PHPClasses/logic.class.php");
-//a
-//function xml2array($fname){
-//      $sxi = new SimpleXmlIterator($fname, null, true);
-//      return sxiToArray($sxi);
-//    }
-//
-//    function sxiToArray($sxi){
-//      $a = array();
-//      for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
-//        if(!array_key_exists($sxi->key(), $a)){
-//          $a[$sxi->key()] = array();
-//        }
-//        if($sxi->hasChildren()){
-//          $a[$sxi->key()][] = sxiToArray($sxi->current());
-//        }
-//        else{
-//          $a[$sxi->key()][] = strval($sxi->current());
-//        }
-//      }
-//      return $a;
-//    }
-//
-//    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
-//    //print_r($sData);
-//    //echo "<br><br>";
-//    $indexOGen = 0;
-//    $indexOPro = 0;
-//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
-    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
 
 
 ?>
@@ -661,12 +635,14 @@ require("../../../../PHPClasses/logic.class.php");
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 11; $i++)
+					for($i = 0; $i < 11; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
+                    $indexOPro++;}
+                
 				?>
 		<!-- CSC IT ELECTIVE COURSES SECTION -->
 				<tr>
@@ -675,12 +651,13 @@ require("../../../../PHPClasses/logic.class.php");
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 8; $i++)
+					for($i = 0; $i < 8; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
+               
 				?>
 		<!-- CSC IT ELECTIVE COURSES SECTION CONTINUED -->
 				<tr>
@@ -689,12 +666,13 @@ require("../../../../PHPClasses/logic.class.php");
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 3; $i++)
+					for($i = 0; $i < 3; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
+                
 				?>
 				<tr><th class = "tableSpace"></th></tr>
 			</table>
@@ -714,12 +692,13 @@ require("../../../../PHPClasses/logic.class.php");
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 1; $i++)
+					for($i = 0; $i < 1; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
+                
 				?>
 		<!-- CSC IT INTERNSHIP SECTION -->
 				<tr>
@@ -728,12 +707,12 @@ require("../../../../PHPClasses/logic.class.php");
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 2; $i++)
+					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>
 		<!-- BS INFORMATION TECH NOTES -->
 				<tr>

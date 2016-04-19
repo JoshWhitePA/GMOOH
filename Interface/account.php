@@ -25,6 +25,14 @@
        $email = $row['Email'];
        $major = $row['Major'];
     }
+	
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +43,7 @@
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
 						.append("<div class = 'boxed'>"
 							+ "<table class = 'tableCenter' >"

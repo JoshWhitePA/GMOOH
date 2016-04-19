@@ -8,6 +8,14 @@
 	
 	$logic = new Logic();
     $results = $logic->displaySave($_SESSION["userID"]);
+	
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,9 +64,32 @@
                       
                 
             }
+	    
+	    function off_Click(clicked_id){
+		$.ajax({
+		url: "./Scripts/DBSearchWAJAX.php?offID="+clicked_id,
+		success: function (data) {
+			location.reload();
+			}
+		});
+		
+		}
         </script>
 		<script>
 			$(document).ready(function(){
+				//$(':radio').change(function(){
+				//	$.ajax({
+				//	url: "./Scripts/DBSearchWAJAX.php?offID="+AIDID,
+				//	success: function (data) {
+				//		location.reload();
+				//		}
+				//		});
+				//	DB::update('CHECKSHEETSAVE', array(
+				//	'CheckSheetOfficial' => 0
+				//	) "StudentId = %s, $ID);
+				//	DB::update('CHECKSHEETSAVE', array(
+				//	'CheckSheetOfficial' => 1
+				//	) "AIDID = %i", $AIDID);
                 var str = "<div class='changepass'><table class='tableCenter'> <!-- These fields will need to be filled via PHP -->";
                 
                str +="<?php  
@@ -71,13 +102,13 @@
                                      $check = "";
                                 }
 
-                            echo "<tr><td class = 'paddedTD' ><label for='real_" .$row['CheckSheetID'] ."'>Official? </label><input type='checkbox' ".$check." disabled id='real_" .$row['CheckSheetID'] ."' />Checksheet $counter - ".$row['CheckSheetID']." Date: ".$row['Date'] . "</td><td><input type='submit' onClick='load_Click(this.id)' value='Load' id='".$row['CheckSheetID']."_".$row['AIDID']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='".$row['AIDID']."' /></td></tr>";
+                            echo "<tr><td class = 'paddedTD' ><label for='real_" .$row['CheckSheetID'] ."'>Official? </label><input type='radio' name='official' ".$check." disabled id='real_" .$row['CheckSheetID'] ."' />Checksheet $counter - ".$row['CheckSheetID']." Date: ".$row['Date'] . "</td><td><input type='submit' onClick='load_Click(this.id)' value='Load' id='".$row['CheckSheetID']."_".$row['AIDID']."' /><td><input type='submit' onClick='off_Click(this.id)' value='Make Official' id='".$row['AIDID']."' /><td><input type='submit' onClick='del_Click(this.id)' value='Delete' id='".$row['AIDID']."' /></td></tr>";
                                 $counter++;
                             }
                    ?>";
                     
                     str+="</table>";
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
 						.append(str); 
 				});

@@ -10,10 +10,13 @@
 *			This file will be used only to view/print a checksheet.
 -->
 <?php
+
 session_start();
 require("../../../../PHPClasses/logic.class.php");
-function xml2array($fname){
-      $sxi = new SimpleXmlIterator($fname, null, true);
+
+ function xml2array($fname){
+//      $sxi = new SimpleXmlIterator($fname, 0, true);
+     $sxi = simplexml_load_string($fname, 'SimpleXMLIterator');
       return sxiToArray($sxi);
     }
 
@@ -47,8 +50,6 @@ function xml2array($fname){
     
     $indexOGen = 0;
     $indexOPro = 0;
-//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
-    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
 ?>
 <!DOCTYPE html>
 <html>
@@ -632,12 +633,12 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 11; $i++)
+					for($i = 0; $i < 11; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>
 		<!-- CSC SD ELECTIVE COURSES SECTION -->
 				<tr>
@@ -647,12 +648,12 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 6; $i++)
+					for($i = 0; $i < 6; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td> 
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>
 				<tr><th class = "tableSpace"></th></tr>
 			</table>
@@ -672,12 +673,12 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 3; $i++)
+					for($i = 0; $i < 3; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</td>
 								<td class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>
 		<!-- CSC SD INTERNSHIP SECTION -->
 				<tr>
@@ -686,12 +687,12 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 2; $i++)
+					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>3-6</td>
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>
 		<!-- BS COMPUTER SCIENCE NOTES -->
 				<tr>

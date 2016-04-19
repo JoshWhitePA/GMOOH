@@ -6,7 +6,7 @@ var spanIdIdx = 1;
 var termCourseIdIdx = 1;
 
 //Call this function within the jquery document ready function
-function pageLoad(checksheetFlag, isUserStudent) {
+function pageLoad(checksheetFlag) {
 	$("#behindTheScenes")
 		.append("<div id = 'startUpDialog' title = 'Time to Create A Checksheet!' class = 'popupDialog'>"
 			+ "<p>It looks like it's your first time here so let me tell you about creating a checksheet! "
@@ -79,176 +79,11 @@ function pageLoad(checksheetFlag, isUserStudent) {
 			+ "<span id = 'f16'>Fall 16</span><br/>"
 			+ "<span id = 'w17'>Winter 17</span></p></div>");
 	
-	//Descern if user is a student.
-	var masterPageLocation;
-	if(isUserStudent){
-		masterPageLocation = "MasterPages/masterPage.html";
-	}
-	else{
-		masterPageLocation = "MasterPages/advisorMasterPage.html";
-	}
-	
 	//Load master page into current page's body
-	$("#master").load(masterPageLocation, function() {
-	//Make the side sections visible
-		$("#left").css("visibility", "visible");
-		$("#right").css("visibility", "visible");
-		
-		if(checksheetFlag) {
-			$("#mainSection")
-				//Place content inside the main section of the master page
-				.append("<select id = 'currentChecksheet' class = 'checksheetSelect'"
-					+ "title = 'Select a major or minor to start editing a checksheet'>"
-					+ "<option value = 'it'>CSC IT - Computer Science: Information Technology</option>"
-					+ "<option value = 'Mit'>CSC IT(M) - Computer Science: Information Technology Masters</option>"
-					+ "<option value = 'itm'>CSC IT(m) - Computer Science: Information Technology Minor</option>"
-					+ "<option value = 'sd'>CSC SD - Computer Science: Sofware Development</option>"
-					+ "<option value = 'Msd'>CSC SD(M) - Computer Science: Software Development Masters</option>"
-					+ "<option value = 'sdm'>CSC SD(m) - Computer Science: Software Developement Minor</option>"
-					+ "</select>");
-		}
-		else {
-			$("#mainSection")
-				.append("<input type = 'image' src = 'Images/resetIcon.png' class = 'resetImg'"
-					+ "title = 'Resets checksheet to your last official checkheet save' onclick = 'resetAlert()'/>");
-		}
+	$("#master").load("MasterPages/masterPage.html", function() {
 		
 		$("#mainSection")
-			.append("<div id = 'innerSection' class = 'innerSection'></div>"
-				+ "<input type = 'image' src = 'Images/printImage.png' class = 'printImg'"
-				+ "title = 'Print the checksheet currently being edited' onclick = 'printChecksheet()'/>"
-				+ "<input type = 'image' src = 'Images/saveImage.png' class = 'saveImg'"
-				+ "title = 'Save the checksheet currently being edited' onclick = 'saveChecksheet()'/>"
-				+ "<input id = 'trashButton' type = 'image' src = 'Images/trashIcon.png' class = 'trashImg'"
-				+ "title = 'Clear the checksheet currently being edited' onclick = 'clearAlert()'/>");
-		//Place content inside the left section of the master page
-		$("#left")
-			.append("<br/><div id = 'leftInnerSection' class = 'leftInnerSection'"
-				+ "title = 'The course section you select and its related courses will appear here'>"
-				+ "<div id = 'sectionTitle' class = 'titleBox'>"	
-				+ "<label class = 'sectionLabel'></label></div><div id = 'sectionCourseList' class = 'sectionCourses'></div></div>"
-				+ "<div class = 'newSection'><br/></div>"
-				+ "<div id = 'leftInnerSection2' class = 'leftInnerSection' "
-				+ "title = 'Prepare for the future by creating a course sequence'>"
-				+ "<div id = 'termBar' class = 'titleBox'>"
-				+ "<input type = 'image' src = 'Images/plusImg.png' class = 'addImg' onclick = 'termSemesters()'"
-				+ "title = 'Add a semester to the course sequence'/></div>"
-				+ "<div id = 'termList' class = 'sectionCourses'>"
- 				+ "<ul class = 'semFormat' id = 'userCourseSequence'>"
- 				+ "</ul></div></div>");
-				
-		//Place content inside the right section of the master page
-		$("#right")
-			.append("<br/><div id = 'rightInnerSection' class = 'rightInnerSection' "
-				+ "title = 'Search for a course by using keywords such as course name or number'>"
-				+ "<div class = 'searchBox'>"
-				+ "<input type = 'text' onkeyup = 'searchBox()' id = 'searchInput' placeholder = 'Search Courses...' class = 'searchTextBox'/>"
-				+ "<input type = 'image' src = 'Images/searchIcon.png' class = 'searchImg'/></div>"
-                + "<div id = 'searchResults' class = 'sectionCourses'></div></div>"
-				+ "<div class = 'newSection'></div><br/><div id = 'rightInnerSection2' class = 'rightInnerSection' "
-				+ "title = 'Find courses related to a specific major from the dropdown menu'>"
-				+ "<select name = 'courseDropdown' id = 'deptDD' onchange = 'searchByDept()' class = 'courseSelect'>"
-				+ "<option>Select A Department</option>"
-								
-				//Temporary, should be filled by database at a later time
-				+ "<optgroup label = 'A ------------------------------------'>"
-				+ "<option>ACC - Accounting</option>"
-				+ "<option>ANT - Anthropology</option>"
-				+ "<option>ARA - Arabic</option>"
-				+ "<option>ARC - Art Criticism</option>"
-				+ "<option>ARH - Art History</option>"
-				+ "<option>ART - Art</option>"
-				+ "<option>ARU - Art Education</option>"
-				+ "<option>AST - Astronomy</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'B ------------------------------------'>"
-				+ "<option>BIO - Biology</option>"
-				+ "<option>BUS - Business</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'C ------------------------------------'>"
-				+ "<option>CDE - Communication Design</option>"
-				+ "<option>CDH - Communication Design History</option>"
-				+ "<option>CFT - Crafts</option>"
-				+ "<option>CHI - Chinese</option>"
-				+ "<option>CHM - Chemistry</option>"
-				+ "<option>COM - Communication</option>"
-				+ "<option>CRJ - Criminal Justice</option>"
-				+ "<option>CSC - Computer Science</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'E ------------------------------------'>"
-				+ "<option>ECO - Economics</option>"
-				+ "<option>EDU - Education</option>"
-				+ "<option>EEU - Elementary Education: Pre-K 4</option>"
-				+ "<option>EGR - Engineering</option>"
-				+ "<option>ELU - Elementary Education</option>"
-				+ "<option>ENG - English</option>"
-				+ "<option>ENV - Environmental Science</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'F ------------------------------------'>"
-				+ "<option>FAR - Fine Arts</option>"
-				+ "<option>FAS - Fine Arts Studio</option>"
-				+ "<option>FIN - Finance</option>"
-				+ "<option>FRE - French</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'G ------------------------------------'>"
-				+ "<option>GEG - Geography</option>"
-				+ "<option>GEL - Geology</option>"
-				+ "<option>GER - German</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'H ------------------------------------'>"
-				+ "<option>HEA - Health</option>"
-				+ "<option>HIS - History</option>"
-				+ "<option>HUM - Humanities</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'I ------------------------------------'>"
-				+ "<option>INT - International Studies</option>"
-				+ "<option>ITC - Instructional Technology</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'L ------------------------------------'>"
-				+ "<option>LIB - Library Science</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'M ------------------------------------'>"
-				+ "<option>MAR - Marine Science</option>"
-				+ "<option>MAT - Mathematics</option>"
-				+ "<option>MGM - Management</option>"
-				+ "<option>MIL - Military Science</option>"
-				+ "<option>MKT - Marketing</option>"
-				+ "<option>MLS - Modern Language Studies</option>"
-				+ "<option>MUP - Music Performance</option>"
-				+ "<option>MUS - Music</option>"
-				+ "<option>MUU - Music Education</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'P ------------------------------------'>"
-				+ "<option>PAG - Pennsylvania German Studies</option>"
-				+ "<option>PEC - Physical Education Class</option>"
-				+ "<option>PHI - Philosophy</option>"
-				+ "<option>PHY - Physics</option>"
-				+ "<option>PLG - Paralegal Studies</option>"
-				+ "<option>POL - Political Science</option>"
-				+ "<option>PRO - Professional Studies</option>"
-				+ "<option>PSY - Psychology</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'R ------------------------------------'>"
-				+ "<option>RUS - Russian</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'S ------------------------------------'>"
-				+ "<option>SEU - Secondary Education</option>"
-				+ "<option>SOC - Sociology</option>"
-				+ "<option>SPA - Spanish</option>"
-				+ "<option>SPT - Sport</option>"
-				+ "<option>SPU - Special Education</option>"
-				+ "<option>SWK - Social Work</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'T ------------------------------------'>"
-				+ "<option>THE - Theatre</option>"
-				+ "<option>TVE - Electronic Media</option>"
-				+ "</optgroup>"
-				+ "<optgroup label = 'W ------------------------------------'>"
-				+ "<option>WGS - Women's and Gender Studies</option>"
-				+ "<option>WRI - Writing</option>"
-				+ "</optgroup>"
-				+ "</select>"
-				+ "<div id = 'deptS' class = 'sectionCourses'></div></div>");
+			.append("<div id = 'innerSection' class = 'innerSection'></div>");
 		
 		if(checksheetFlag) {
 			//Whenever the select dropdrown menu is changed
@@ -302,9 +137,17 @@ function pageLoad(checksheetFlag, isUserStudent) {
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 					currentChecksheet = $("#currentChecksheet option:selected").val();
 				}
-				else
+				else if($("#currentChecksheet option:selected").val() == "sdm") 
 				{
 					$("#innerSection").load("Checksheets/v1.1/min/cscSDMinorChecksheet.php");
+					$("#sectionTitle label").text("");
+					$("#sectionCourseList").text("");
+					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
+					currentChecksheet = $("#currentChecksheet option:selected").val();
+				}
+				else 
+				{
+					$("#innerSection").load("Checksheets/v1.1/min/cscITChecksheetSaved.php");
 					$("#sectionTitle label").text("");
 					$("#sectionCourseList").text("");
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
@@ -333,6 +176,9 @@ function pageLoad(checksheetFlag, isUserStudent) {
 	});
 }
 
+
+//Everything below here will go eventually.
+
 //This function shows the tile of the section selected and what classes fit there			
 function findCourses(item) {
 //    alert($(item).attr("id")+"");
@@ -343,21 +189,26 @@ function findCourses(item) {
                         console.log(String(data));
                   });
     
-	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
+//	$("#sectionTitle label").text($(item).attr("id")); //place section id into the label
+    
+//	$("#sectionCourseList") //replace span content with courses
+//		.replaceWith("<div id = 'sectionCourseList' class = 'sectionCourses'>"
+//			+ "<div id = 'draggableCourse' class = 'courseBox'>"
+//			+ $(item).attr("id") + " Course</div>");
 			
 	thisItem = item;
 	
-	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
-		lastSection = item;
+//	if(!lastSection) //If lastSection == NULL (has not been initialized yet)
+//		lastSection = item;
+//		
+//	else if(item == lastSection)
+//		return;
 		
-	else if(item == lastSection)
-		return;
-		
-	else
-	{	//Replace the last section selected back to normal
-		$(lastSection).css("border-color", "transparent");
-		lastSection = item; //Make lastSection point to the new section
-	}
+//	else
+//	{	//Replace the last section selected back to normal
+//		$(lastSection).css("border-color", "transparent");
+//		lastSection = item; //Make lastSection point to the new section
+//	}
 	//Change the current selected section to stand out to the user
 	$(item).css("border-color", "#6699ee");
 	$.getScript("Scripts/jquery-ui.min.js", function() {		
@@ -535,32 +386,6 @@ function makeChecksheetSpansDraggable() {
 	});
 }
 
-function makeSectSpansDraggable() {
-	$("#leftInnerSection span").draggable({
-		revert: "invalid",
-		scroll: false,
-		helper: function() { return $(this).clone().appendTo("body").show(); },
-		containment: "body",
-		distance: 5,
-		opacity: 0.5,
-		addClasses: false,
-		start : function() {
-			this.style.display = "none";
-			if(thisItem)
-				makeItemDroppable(thisItem);
-			makeTermDroppable();
-		},
-		stop: function() {
-			this.style.display = "";
-			if(thisItem)
-				$(thisItem).droppable("destroy");
-			$("#termList ul li").droppable("destroy");
-			makeTermDraggable();
-			makeChecksheetSpansDraggable();
-		}
-	});
-}
-
 function makeDeptSpansDraggable() {
 	$("#right span").draggable({
 		revert: "invalid",
@@ -612,19 +437,19 @@ function printChecksheet() {
     var curanAIDID = scrapeTheSucka();
     saveSchedule(curanAIDID);
 	if(currentChecksheet == "it")
-		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "Mit")
-		window.open("Checksheets/v1.1/reg/cscITMastersChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMastersChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "itm")
-		window.open("Checksheets/v1.1/reg/cscITMinorChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMinorChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "sd")
-		window.open("Checksheets/v1.1/reg/cscSDChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDChecksheet.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "Msd")
-		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheet.php?AIDID="+curanAIDID, "_blank");
     else if(currentChecksheet == "savIT")
-		window.open("Checksheets/v1.1/reg/cscITChecksheetSavedSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 	else
-		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheet.php?AIDID="+curanAIDID, "_blank");
 }
 
 //Function to clear the checksheet
@@ -847,7 +672,6 @@ function scrapeTheSucka(){
     var chkID = $('#programID').val();
     var curAIDID=null;
     var alreadySaved = $('#saveChecka').val();
-    console.log("programID:"+programID);
     console.log(xmlSaveData);
     $.ajaxSetup({
         async: false

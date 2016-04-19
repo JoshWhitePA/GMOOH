@@ -83,13 +83,13 @@ function xml2array($fname){
 		<!-- CSC SDM CORE COURSES SECTION -->
 				
 				<?php
-					for($i = 0; $i < 8; $i++)
+					for($i = 0; $i < 8; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
-							$indexOPro++;							
+							$indexOPro++;	}						
 				?>
 		<!-- Thesis (optional) -->
 				<tr>
@@ -118,13 +118,13 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>				
 				<?php
-					for($i = 0; $i < 2; $i++)
+					for($i = 0; $i < 2; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
 							</tr>";
-							$indexOPro++;	
+							$indexOPro++;}	
 				?>
 			</table>
 		<!-- Program code, version number, possibly additional stuff. Should be able to grab this from the database. -->
