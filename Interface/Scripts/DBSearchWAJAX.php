@@ -91,6 +91,11 @@
      $results = $logic->deleteSavedChecksheet($_SESSION["userID"],$_GET['delID']);
  
  }
+ if(isset($_GET['offID']) && $_GET['offID'] != "" && $_GET['offID'] != " "){
+     $logic = new Logic();
+     $results = $logic->changeOfficialChecksheet($_SESSION["userID"],$_GET['offID']);
+ 
+ }
 
 ?>
 

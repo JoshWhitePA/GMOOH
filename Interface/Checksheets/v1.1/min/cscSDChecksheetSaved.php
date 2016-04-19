@@ -88,7 +88,7 @@ $badChars   = array("&", "/", "'","\\","^","~",'"');
 
     $logic = new Logic();
     $sData = "";
-    $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['chkID'],$_GET['AIDID']);
+    $results = $logic->displaySaveFromCheck($_SESSION['userID'], $_GET['AIDID']);
     foreach ($results as $row) {
 //        echo stripInvalidXml($row["SaveData"]);
 //        echo preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;',$row["SaveData"]);
