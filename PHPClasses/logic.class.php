@@ -68,7 +68,7 @@
         }
         
         
-        public function displaySaveFromCheck($ID, $checkID,$AIDID){
+        public function displaySaveFromCheck($ID, $AIDID){
             $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
             return $results;
         }
@@ -79,7 +79,7 @@
 			return $results;
 		}
 		
-		//Kinda replacement for the above.
+		//Kinda replacement for the above. Different use.
 		public function getOfficialChecksheet($ID){
 			$results = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			return $results;
@@ -91,23 +91,23 @@
 		
 		//Messy stuff.
 		public function findChecksheetToDisplay($ID){
-			//Hackyness.
-			$major = "";
-			$grabbedMajor = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
-			foreach ($grabbedMajor as $row) {
-			   $major = $row['Major'];
-			}
 			
-			//The below is a HORRIBLE hack.
+			//The below is no longer a horrible hack.
 			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			if($hasOfficalCheck == null){
+				//Since they've got no official checksheet to go on, grab their major.
+				$major = "";
+				$grabbedMajor = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
+				foreach ($grabbedMajor as $row) {
+				   $major = $row['Major'];
+				}
 				if($major == "CS: IT"){
-					$results = "Checksheets/v1.1/min/cscITChecksheetDisplay.php";
+					$results = "Checksheets/v1.1/min/cscITChecksheet.php";
 				}
 				else if($major == "CS: SD"){
-					$results = "Checksheets/v1.1/min/cscSDChecksheetDisplay.php";
+					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
 				}
-				else{ //Last ditch 'I don't know what happen' situation. Because failing gracefully is better than doing horrible things.
+				else{ //Because failing gracefully is better than doing horrible things.
 					$results = "error.html";
 				}
 			}
@@ -115,11 +115,12 @@
 				foreach ($hasOfficalCheck as $row) {
 					$checksheetMajor = $row['CheckSheetId'];
 				}
+				//Since we DO have an official checksheet, use that checksheet's ID to determine which file to display.
 				if($checksheetMajor == "ULASCSCIT"){
-					$results = "Checksheets/v1.1/min/cscITChecksheetDisplay.php";
+					$results = "Checksheets/v1.1/min/cscITChecksheetSaved.php";
 				}
 				else if($checksheetMajor == "ULASCSCSD"){
-					$results = "Checksheets/v1.1/min/cscSDChecksheetDisplay.php";
+					$results = "Checksheets/v1.1/min/cscSDChecksheetSaved.php";
 				}
 				else{ //Last ditch 'I don't know what happen' value - error page.
 					$results = "error_bad_checksheet.html";
