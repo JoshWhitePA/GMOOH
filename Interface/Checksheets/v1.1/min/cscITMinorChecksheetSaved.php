@@ -67,31 +67,31 @@ session_start();
 				</tr>
 				<?php
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
 							$indexOPro++;
 						echo"<tr>
-								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<th class = 'courseBox'><div id = 'CSC:IT Minor Required' onclick = 'findCourses(this)' class = ' courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";
@@ -107,7 +107,7 @@ session_start();
 				</tr>
 				<?php
 					echo"<tr>
-							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 1' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>";
@@ -124,7 +124,7 @@ session_start();
 				</tr>
 				<?php
 					echo "<tr>
-							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+							<th class = 'courseBox'><div id = 'CSC:IT Minor Elective 2' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 							<td class = 'tableGrade'><b><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' /></b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>";

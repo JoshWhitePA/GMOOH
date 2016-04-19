@@ -97,7 +97,7 @@
                             foreach ($results as $row) {
                                 $check = "checked";
                                 if ($row['CheckSheetOfficial'] == 1){
-                                    $check = "true";
+                                    $check = "checked";
                                 }else{
                                      $check = "";
                                 }
