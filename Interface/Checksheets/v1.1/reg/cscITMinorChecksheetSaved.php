@@ -10,8 +10,13 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
-function xml2array($fname){
-      $sxi = new SimpleXmlIterator($fname, null, true);
+
+session_start();
+require("../../../../PHPClasses/logic.class.php");
+
+ function xml2array($fname){
+//      $sxi = new SimpleXmlIterator($fname, 0, true);
+     $sxi = simplexml_load_string($fname, 'SimpleXMLIterator');
       return sxiToArray($sxi);
     }
 
@@ -30,7 +35,6 @@ function xml2array($fname){
       }
       return $a;
     }
-
     $logic = new Logic();
     $sData = "";
     
@@ -92,7 +96,7 @@ function xml2array($fname){
 					for($i = 0; $i < 5; $i++){
 						echo"<tr>
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-								<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
+								<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>";$indexOPro++;}
 				?>
@@ -104,7 +108,7 @@ function xml2array($fname){
 				<?php
 					echo"<tr>
 							<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
+							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>";
                                 $indexOPro++;
@@ -117,7 +121,7 @@ function xml2array($fname){
 				<?php
 					echo"<tr>
 							<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
+							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>";
                 $indexOPro++;
