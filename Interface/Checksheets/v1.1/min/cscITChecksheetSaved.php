@@ -37,7 +37,15 @@ session_start();
     }
     $logic = new Logic();
     $sData = "";
-    $results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
+	$results;
+	if (typeof $_GET['AIDID'] != 'undefined'){ //If we're being called normally.
+		$results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
+	}
+	else{ //Assume under these conditions we're being called from the master page.
+		$officialAIDID = $logic->getOfficialChecksheet($_SESSION['userID']);
+		$results = $logic->displaySaveFromCheck($_SESSION['userID'],$officialAIDID);
+	}
+    //$results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
         
