@@ -83,8 +83,8 @@ function xml2array($fname){
 				<?php
 					for($i = 0; $i < 5; $i++)
 						echo"<tr>
-								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-								<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
+								<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td class = 'tableGrade'><b>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 								<td class = 'tableGrade'><b></b></td>
 							</tr>"
 				?>
@@ -95,8 +95,8 @@ function xml2array($fname){
 				</tr>
 				<?php
 					echo"<tr>
-							<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
+							<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+							<td class = 'tableGrade'><b>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"
 				?>
@@ -107,8 +107,8 @@ function xml2array($fname){
 				</tr>
 				<?php
 					echo"<tr>
-							<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
+							<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+							<td class = 'tableGrade'><b>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
 						</tr>"
 				?>
