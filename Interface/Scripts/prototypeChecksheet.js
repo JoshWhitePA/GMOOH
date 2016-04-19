@@ -847,6 +847,7 @@ function scrapeTheSucka(){
     var chkID = $('#programID').val();
     var curAIDID=null;
     var alreadySaved = $('#saveChecka').val();
+    console.log("programID:"+programID);
     console.log(xmlSaveData);
     $.ajaxSetup({
         async: false

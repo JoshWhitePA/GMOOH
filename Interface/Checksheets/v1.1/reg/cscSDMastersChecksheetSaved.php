@@ -12,8 +12,11 @@
 <?php
 session_start();
 require("../../../../PHPClasses/logic.class.php");
-function xml2array($fname){
-      $sxi = new SimpleXmlIterator($fname, null, true);
+
+
+ function xml2array($fname){
+//      $sxi = new SimpleXmlIterator($fname, 0, true);
+     $sxi = simplexml_load_string($fname, 'SimpleXMLIterator');
       return sxiToArray($sxi);
     }
 
@@ -33,14 +36,14 @@ function xml2array($fname){
       return $a;
     }
     $logic = new Logic();
-    $sData = "";
-    
+
 
 
     $results = $logic->displaySaveFromCheck($_SESSION['userID'],"",$_GET['AIDID']);
     foreach ($results as $row) {
+//        echo $row["SaveData"] ;
         $sData = xml2array($row["SaveData"]);
-
+        break;
         
     }
 
@@ -91,12 +94,12 @@ function xml2array($fname){
 				</tr>
 		<!-- 400 level courses -->			
 				<?php
-					for($i = 0; $i < 4; $i++)
+					for($i = 0; $i < 4; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>	
 			</table>
 		</div>
@@ -112,12 +115,12 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>			
 				<?php
-					for($i = 0; $i < 10; $i++)
+					for($i = 0; $i < 10; $i++){
 						echo"<tr>	
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
-							</tr>";
+							</tr>";$indexOPro++;}
 				?>	
 			</table>
 		<!-- Program code, version number, possibly additional stuff. Should be able to grab this from the database. -->
