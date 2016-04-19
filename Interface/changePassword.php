@@ -3,6 +3,14 @@
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+	
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +20,7 @@
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
 						.append("<div id = 'two' class = 'innerSection'>"
 							+ "<form action='changePassword.php' onsubmit='event.preventDefault(); return formSubmit();' method='post' id='UserForm'>"
