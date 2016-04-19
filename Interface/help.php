@@ -8,6 +8,14 @@ Question/Answer Format
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+	
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +25,7 @@ Question/Answer Format
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
 						.append("FAQs<br/>"
 							+ "<br/>Q. <b>Why is this interface so terrible?</b>"
