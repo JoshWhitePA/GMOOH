@@ -67,7 +67,7 @@
 	    
 	    function off_Click(clicked_id){
 		$.ajax({
-		url: "./Scripts/DBSearchWAJAX.php?offID="+AIDID,
+		url: "./Scripts/DBSearchWAJAX.php?offID="+clicked_id,
 		success: function (data) {
 			location.reload();
 			}
