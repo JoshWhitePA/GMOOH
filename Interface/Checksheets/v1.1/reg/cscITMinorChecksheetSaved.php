@@ -31,14 +31,21 @@ function xml2array($fname){
       return $a;
     }
 
-    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
-    //print_r($sData);
-    //echo "<br><br>";
+    $logic = new Logic();
+    $sData = "";
+    
+
+
+    $results = $logic->displaySaveFromCheck($_SESSION['userID'],"",$_GET['AIDID']);
+    foreach ($results as $row) {
+        $sData = xml2array($row["SaveData"]);
+
+        
+    }
+
+    
     $indexOGen = 0;
     $indexOPro = 0;
-//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
-    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
-
 
 ?>
 <!DOCTYPE html>
@@ -82,12 +89,12 @@ function xml2array($fname){
 					<td class = "tableGrade">SH</td>
 				</tr>
 				<?php
-					for($i = 0; $i < 5; $i++)
+					for($i = 0; $i < 5; $i++){
 						echo"<tr>
 								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 								<td class = 'tableGrade'><b></b></td>
-							</tr>"
+							</tr>";$indexOPro++;}
 				?>
 				<tr>
 					<th>&emsp;2. Elective Course: <b>3 sh (any 200-level or higher CSC course)</b></th>
@@ -99,7 +106,8 @@ function xml2array($fname){
 							<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
-						</tr>"
+						</tr>";
+                                $indexOPro++;
 				?>
 				<tr>
 					<th>&emsp;3. Elective Course: <b>3 sh (Any 300-level or higher CSC** course)</b></th>
@@ -111,7 +119,8 @@ function xml2array($fname){
 							<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 							<td class = 'tableGrade'><b>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</b></td>
 							<td class = 'tableGrade'><b></b></td>
-						</tr>"
+						</tr>";
+                $indexOPro++;
 				?>
 				<tr><th class = "tableSpace"></th></tr>
 				<tr><th class = "tableSpace"></th></tr>

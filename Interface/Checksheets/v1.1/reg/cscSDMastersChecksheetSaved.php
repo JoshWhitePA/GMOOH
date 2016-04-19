@@ -10,6 +10,8 @@
 *					This file will be used only to view/print a checksheet.
 -->
 <?php
+session_start();
+require("../../../../PHPClasses/logic.class.php");
 function xml2array($fname){
       $sxi = new SimpleXmlIterator($fname, null, true);
       return sxiToArray($sxi);
@@ -30,10 +32,19 @@ function xml2array($fname){
       }
       return $a;
     }
+    $logic = new Logic();
+    $sData = "";
+    
 
-    $sData = xml2array('../../../../BLPlayground/StudentData.xml');
-    //print_r($sData);
-    //echo "<br><br>";
+
+    $results = $logic->displaySaveFromCheck($_SESSION['userID'],"",$_GET['AIDID']);
+    foreach ($results as $row) {
+        $sData = xml2array($row["SaveData"]);
+
+        
+    }
+
+    
     $indexOGen = 0;
     $indexOPro = 0;
 //    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassName"][0];
