@@ -69,13 +69,11 @@
         
 	
 	public function changeOfficialChecksheet($ID, $checkID){
-		DB::update('CHECKSHEETSAVE', array(
-			'CheckSheetOfficial' => 0
-			) "StudentId = %s", $ID);
-		DB::update('CHECKSHEETSAVE', array(
-			'CheckSheetOfficial' => 1
-			) "StudentId = %s AND AIDID = %i", $ID,$checkID);
+		DB::update('CHECKSHEETSAVE', array('CheckSheetOfficial' => 0), "StudentId = %s", $ID);
         
+		DB::update('CHECKSHEETSAVE', array('CheckSheetOfficial' => 1), "StudentId = %s AND AIDID = %i", $ID,$checkID);
+        
+    }
         public function displaySaveFromCheck($ID, $AIDID){
             $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
             return $results;
@@ -138,26 +136,26 @@
 		}
 		
         public function termSearch($AIDID,$sID){
-             $results = DB::query("SELECT ScheduleRaw  FROM TERMSAVES WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
+             $results = DB::query("SELECT ScheduleRaw  FROM CHECKSHEETSAVE WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
             return $results;
             
         }
+        
         public function termSave($studentID,$classInfo,$AIDID){
-            DB::query("SELECT AIDID FROM TERMSAVES WHERE AIDID=%s", $AIDID);
+             DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
             
             if ($counter > 0){
-                DB::query("UPDATE TERMSAVES SET ScheduleRaw=%s WHERE AIDID=%s", $classInfo,$AIDID);
-            }else{
-             DB::insert('TERMSAVES', array(
-                          'StudentID' => $studentID,
-                          'AIDID' => $AIDID,
-                        'ScheduleRaw' => $classInfo
-                        ));
+                
+                DB::query("UPDATE CHECKSHEETSAVE SET ScheduleRaw=%s WHERE AIDID=%s", $classInfo,$AIDID);
+                
+            } else{
+                
+                DB::update('CHECKSHEETSAVE', array('ScheduleRaw' => $classInfo), "AIDID=%i", $AIDID);
+
             }
         
             return true;
-            
         }
         
         public function displaySave($ID){
