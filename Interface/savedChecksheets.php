@@ -8,6 +8,14 @@
 	
 	$logic = new Logic();
     $results = $logic->displaySave($_SESSION["userID"]);
+	
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +85,7 @@
                    ?>";
                     
                     str+="</table>";
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
 						.append(str); 
 				});

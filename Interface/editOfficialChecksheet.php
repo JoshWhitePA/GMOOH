@@ -3,6 +3,16 @@
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+	
+	$userMaster = "";
+	$userIsStudent = true;
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+		$userIsStudent = false;
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +25,7 @@
 		<script>
 			$(window).load(function() {
 				$(".blank").show();
-				$(document).ready(pageLoad(false));
+				$(document).ready(pageLoad(false, <?php echo json_encode($userIsStudent); ?>));
 				$(".blank").delay(500).fadeOut(1000);
 			});	
 		</script>

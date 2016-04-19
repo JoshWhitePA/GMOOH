@@ -6,7 +6,7 @@ var spanIdIdx = 1;
 var termCourseIdIdx = 1;
 
 //Call this function within the jquery document ready function
-function pageLoad(checksheetFlag) {
+function pageLoad(checksheetFlag, isUserStudent) {
 	$("#behindTheScenes")
 		.append("<div id = 'startUpDialog' title = 'Time to Create A Checksheet!' class = 'popupDialog'>"
 			+ "<p>It looks like it's your first time here so let me tell you about creating a checksheet! "
@@ -79,8 +79,17 @@ function pageLoad(checksheetFlag) {
 			+ "<span id = 'f16'>Fall 16</span><br/>"
 			+ "<span id = 'w17'>Winter 17</span></p></div>");
 	
+	//Descern if user is a student.
+	var masterPageLocation;
+	if(isUserStudent){
+		masterPageLocation = "MasterPages/masterPage.html";
+	}
+	else{
+		masterPageLocation = "MasterPages/advisorMasterPage.html";
+	}
+	
 	//Load master page into current page's body
-	$("#master").load("MasterPages/masterPage.html", function() {
+	$("#master").load(masterPageLocation, function() {
 	//Make the side sections visible
 		$("#left").css("visibility", "visible");
 		$("#right").css("visibility", "visible");
