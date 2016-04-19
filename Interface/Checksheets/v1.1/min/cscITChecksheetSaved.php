@@ -38,7 +38,7 @@ session_start();
     $logic = new Logic();
     $sData = "";
 	$results;
-	if ($_GET['AIDID'] != null){ //If we're being called normally.
+	if (typeof $_GET['AIDID'] !== 'undefined'){ //If we're being called normally.
 		$results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
 	}
 	else{ //Assume under these conditions we're being called from the master page.
