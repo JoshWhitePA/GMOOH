@@ -16,7 +16,7 @@
 	$checksheet = $logic->findChecksheetToDisplay($userID);
 	
 	$major = $logic->grabUserMajor($userID);
-	$_POST['AIDID'] = $logic->getOfficialChecksheet($userID);
+	$_GET['AIDID'] = $logic->getOfficialChecksheet($userID);
 	
 ?>
 <!DOCTYPE html>
