@@ -67,6 +67,14 @@
             return $results;
         }
         
+	
+	public function changeOfficialChecksheet($ID, $checkID){
+		DB::update('CHECKSHEETSAVE', array(
+			'CheckSheetOfficial' => 0
+			) "StudentId = %s", $ID);
+		DB::update('CHECKSHEETSAVE', array(
+			'CheckSheetOfficial' => 1
+			) "StudentId = %s AND AIDID = %i", $ID,$checkID);
         
         public function displaySaveFromCheck($ID, $AIDID){
             $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
