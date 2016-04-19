@@ -15,7 +15,7 @@
 	}
 	$checksheet = $logic->findChecksheetToDisplay($userID);
 	
-	$major = $logic->grabUserMajor($userID]);
+	$major = $logic->grabUserMajor($userID);
 	$_POST['AIDID'] = getOfficialChecksheet($userID);
 	
 ?>
@@ -27,13 +27,6 @@
 	        <link rel = "stylesheet" type = "text/css" href = "//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css">
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
-			
-			$.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID })
-             .done(function( data ) {
-                console.log("classInfo: "+String(data));
-                AIDID = data.trim();
-               curAIDID = AIDID;
-             });
 			
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
