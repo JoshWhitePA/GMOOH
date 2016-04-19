@@ -82,8 +82,8 @@ function xml2array($fname){
 				<?php
 					for($i = 0; $i < 4; $i++){
 						echo"<tr>	
-								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-								<td  class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td  class = 'tableGrade'></td>
 							</tr>";
 							$indexOPro++;
@@ -105,8 +105,8 @@ function xml2array($fname){
 				<?php
 					for($i = 0; $i < 10; $i++){
 						echo"<tr>	
-								<td>&emsp;&emsp;"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
-								<td class = 'tableGrade'>"."<span id='proGrade" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td class = 'tableGrade'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
 								<td class = 'tableGrade'></td>
 							</tr>";
 							$indexOPro++;
