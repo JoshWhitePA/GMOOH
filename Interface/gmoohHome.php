@@ -43,7 +43,7 @@
 			});
 		</script>
 		<!-- load overriding CSS! -->
-		<style>
+		<style type='text/css'>
 			th a:hover, .dropdownSection:hover .dropButtonNotes {
 				opacity: 1;
 			}
