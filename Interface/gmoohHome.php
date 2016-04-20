@@ -32,7 +32,6 @@
 	        <link rel = "stylesheet" type = "text/css" href = "//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css">
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
-			
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");

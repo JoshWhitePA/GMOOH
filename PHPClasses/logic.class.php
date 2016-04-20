@@ -87,12 +87,6 @@
             return $results;
         }
 		
-		//DEPRICATE THIS. It's only here because I'm not 100% sure I've removed references to it!
-		public function displayOfficialChecksheet($ID){
-			$results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
-			return $results;
-		}
-		
 		//Kinda replacement for the above. Different use.
 		public function getOfficialChecksheet($ID){
 			$results = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
