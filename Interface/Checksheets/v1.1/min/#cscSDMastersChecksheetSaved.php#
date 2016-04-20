@@ -27,7 +27,33 @@ session_start();
       return $a;
     }
 
-
+//    function stripInvalidXml($value){
+//        $ret = "";
+//        $current;
+//        if (empty($value)) {
+//            return $ret;
+//        }
+//
+//        $length = strlen($value);
+//            for ($i=0; $i < $length; $i++)
+//            {
+//                $current = ord($value{$i});
+//                if (($current == 0x9) ||
+//                    ($current == 0xA) ||
+//                    ($current == 0xD) ||
+//                    (($current >= 0x20) && ($current <= 0xD7FF)) ||
+//                    (($current >= 0xE000) && ($current <= 0xFFFD)) ||
+//                    (($current >= 0x10000) && ($current <= 0x10FFFF)))
+//                {
+//                    $ret .= chr($current);
+//                }
+//                else
+//                {
+//                    $ret .= " ";
+//                }
+//            }
+//        return $ret;
+//    }
 function stripInvalidXml($value) {
     $ret = "";
     $current;
@@ -95,7 +121,6 @@ $badChars   = array("&", "/", "'","\\","^","~",'"');
 		<!-- 400 level courses -->			
 				<?php
 					for($i = 0; $i < 4; $i++){
-
                         
                       echo  "<tr>	
 								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
@@ -103,13 +128,17 @@ $badChars   = array("&", "/", "'","\\","^","~",'"');
 								<td  class = 'tableGrade'></td>
 							</tr>";
                         
-//                        
-//						echo "<tr>	
-//								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
-//								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' />".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0]."</td>
-//
-//								<td  class = 'tableGrade'></td>
-//							</tr>";
+                        
+						echo "<tr>	
+								<th class = 'courseBox'><div id = 'MS CSC:SD 400-Level' onclick = 'findCourses(this)' class = 'courseNameBox courseNameBoxPro'>"."<span id='proClass" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
+								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' />".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0]."</td>
+=======
+						echo"<tr>	
+								<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td  class = 'tableGrade'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+>>>>>>> c85f94eab832a042d68b545233a50147e1d8a65f
+								<td  class = 'tableGrade'></td>
+							</tr>";
 							$indexOPro++;
 							}
 				?>	
@@ -121,10 +150,16 @@ $badChars   = array("&", "/", "'","\\","^","~",'"');
 				</tr>			
 				<?php
 					for($i = 0; $i < 10; $i++){
-						echo "<tr>	
+						echo"<tr>	
+<<<<<<< HEAD
 								<td>"."<span id='proClass" .$indexOPro."'>&#8195;".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</div></th>
 								<td  class = 'tableGrade'><input class = 'gradeBox' id = 'proGrade".$indexOPro."' type = 'text' maxlength = '2' />".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassGrade"][0]."</td>
 								<td  class = 'tableGrade'></td>
+=======
+								<td>&emsp;&emsp;"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td class = 'tableGrade'>"."&#8195;<span id='proGrade" .$indexOPro."'>".$sData["Student"][0]["Program"][0]["Class"][$indexOPro]["ClassName"][0] . "</span>" ."</td>
+								<td class = 'tableGrade'></td>
+>>>>>>> c85f94eab832a042d68b545233a50147e1d8a65f
 							</tr>";
                         
 							$indexOPro++;
