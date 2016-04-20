@@ -22,8 +22,7 @@
         $AIDID = $row["AIDID"];
     }
 	//CONCAT THE VARIBLES TO THE PAGE ADDRESS!
-	$checksheet = $checkURL . "?AIDID=" . $AIDID //format help remove when sure it works: &chkID=ULASCSCIT&AIDID=119
-	
+	$checksheet = $checkURL . "?AIDID=" . $AIDID ;	
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +37,7 @@
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
 					$("#innerSection").load(<?php echo json_encode($checksheet); ?>); 
+					$(':input').attr('readonly','readonly');
 				});
 			});
 		</script>
