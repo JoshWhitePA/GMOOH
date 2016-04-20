@@ -40,26 +40,16 @@
 						$('#section :input').attr('readonly', true);
 						$('#head').append("<style type='text/css'>"
 							+ "th a:hover, .dropdownSection:hover .dropButtonNotes {"
-							+ "opacity: 1;"
+							+ "opacity: 1 !important;"
 							+ "}"
 							+ "th.dropdownSection {"
-							+ "cursor: wait;"
+							+ "cursor: default !important;"
 							+ "}"
 						);
 					}); 
 				});
 			});
 		</script>
-		<!-- load overriding CSS! -->
-		<style type='text/css'>
-			th a:hover, .dropdownSection:hover .dropButtonNotes {
-				opacity: 1;
-			}
-
-			th.dropdownSection {
-				cursor: wait;
-			}
-		</style>
 	</head>
 	<body id = "master"> 
 	</body>
