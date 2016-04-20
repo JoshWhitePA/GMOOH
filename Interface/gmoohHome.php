@@ -36,8 +36,9 @@
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
-					$("#innerSection").load(<?php echo json_encode($checksheet); ?>); 
-					$('#section :input').attr('readonly', true);
+					$("#innerSection").load(<?php echo json_encode($checksheet); ?>, function() {
+						$('#section :input').attr('readonly', true);
+					}); 
 				});
 			});
 		</script>
