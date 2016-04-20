@@ -22,7 +22,7 @@
         $AIDID = $row["AIDID"];
     }
 	//CONCAT THE VARIBLES TO THE PAGE ADDRESS!
-	$checksheet = $checkURL . "&AIDID=" . $AIDID //format help remove when sure it works: &chkID=ULASCSCIT&AIDID=119
+	$checksheet = $checkURL . "?AIDID=" . $AIDID //format help remove when sure it works: &chkID=ULASCSCIT&AIDID=119
 	
 ?>
 <!DOCTYPE html>
