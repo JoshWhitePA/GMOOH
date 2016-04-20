@@ -41,7 +41,7 @@
                 });  
 			
             });
-		
+		<!--
 			function goViewChecksheet()
 			{
 				document.adviseeInfo.action = "adviseeViewChecksheet.php" //change the form's action
