@@ -91,7 +91,7 @@ div.headerBar {
 	background-position: top;
 	background-attachment: fixed;
 	border-style: solid none solid none;
-	border-weight: 2px;
+	border-width: 3px;
 	border-color: white;
 	position: relative; 
 }
@@ -103,7 +103,7 @@ div.menu {
 	width: 80%;
 	left: 190px;
 	border-style: none none none solid;
-	border-weight: 2px;
+	border-width: 3px;
 	border-color: white;
 	background-color: none;
 }
@@ -240,7 +240,7 @@ div.leftInnerSection {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-div.leftInnerSectionLong {
+div.innerSectionLong {
 	left: 7.5%;
 	right: 0;
 	top: 5%;
@@ -320,11 +320,6 @@ div.mainHeader {
 	position: relative;
 	float: left;
 	opacity: 0.9;
-	text-shadow:
-		-1px 0 #aaaaaa, 
-		0 1px #aaaaaa, 
-		1px 0 #aaaaaa, 
-		0 -1px #aaaaaa;
 }
 
 div.footer {
@@ -334,7 +329,7 @@ div.footer {
 	text-align: center;
 	background-color: none;
 	border-style: solid none none none;
-	border-weight: 2px;
+	border-width: 3px;
 	border-color: white;
 	position: relative;
 }
@@ -352,6 +347,19 @@ a.logout {
 
 a.logout:hover {
 	opacity: 0.6;
+}
+
+div.progressStatus {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(235, 235, 235, 1);
+	padding: 10px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: #aaaaaa;
 }
 
 /* Prototype Checksheet Classes */
