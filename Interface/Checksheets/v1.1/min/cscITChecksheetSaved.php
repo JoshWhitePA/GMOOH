@@ -63,7 +63,7 @@ session_start();
 	<body>
 <!-- #GENERAL EDUCATION# -->
 <!-- I. UNIVERSITY CORE TABLE -->
-		<div class = "section">
+		<div id = "section" class = "section">
 			<table>
 				<tr>
 					<th class = "tableCaption">I. UNIVERSITY CORE</th>

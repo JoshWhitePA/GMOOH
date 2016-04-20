@@ -55,7 +55,7 @@ session_start();
 	</head>	
 	<body>
 <!-- #CSC SOFTWARE DEVELOPMENT MINOR PROGRAM TABLE# -->
-		<div class = "section">
+		<div id = "section" class = "section">
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "3">Minor Program: 21 sh</th>

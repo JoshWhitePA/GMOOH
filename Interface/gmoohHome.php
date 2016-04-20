@@ -37,7 +37,7 @@
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
 					$("#innerSection").load(<?php echo json_encode($checksheet); ?>); 
-					$(':input').attr('readonly','readonly');
+					$('#section :input').attr('readonly', true);
 				});
 			});
 		</script>
