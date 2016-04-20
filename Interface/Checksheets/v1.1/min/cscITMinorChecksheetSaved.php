@@ -49,13 +49,14 @@ session_start();
 <!DOCTYPE html>
 
 <html>
-	<head>
+	<head id = "head">
 	<title>Computer Science: IT Minor Checksheet</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1min.css"/>
 	</head>	
 	<body>
+	<style id = "styleJack" type='text/css'></style>
 <!-- #CSC SOFTWARE DEVELOPMENT MINOR PROGRAM TABLE# -->
-		<div class = "section">
+		<div id = "section" class = "section">
 			<table>
 				<tr>
 					<th class = "tableHeader" colspan = "3">Minor Program: 21 sh</th>
