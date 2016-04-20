@@ -43,6 +43,8 @@
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('ARC','ARH','CDE','CDH','CFT','DAN','FAR','FAS','MUP','MUS','THE') ORDER BY `CourseNum`;";
             }elseif($courseKey == "Free Elective"){
                  $query = "SELECT * from `COURSE`;";
+        	}elseif($courseKey == "II. E. Free Elective"){
+                 $query = "SELECT * from `COURSE`;";
             }elseif($courseKey == "Natural Science with Lab"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('AST','BIO','CHM','ENV','GEL','MAR','PHY') AND `Credits`=4) OR (`CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
             }elseif($courseKey == "IV. A. 2. Elective"){
@@ -71,16 +73,20 @@
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 AND `CourseNum` NOT IN(242,253,311,341,356,354,355,280,380) ORDER BY `CourseNum`;";
             }elseif($courseKey == "BS CSC:IT Concomitant"){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>104 ORDER BY `CourseNum`;";
-            }elseif($courseKey == "BS CSC:IT Internship"){
+            }elseif(($courseKey == "BS CSC:IT Internship") or ($courseKey == "BS CSC:SD Internship")){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(280,380) ORDER BY `CourseNum`;";
             }elseif($courseKey == "MS CSC:IT Thesis"){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`=599;";
             }elseif($courseKey == "MS CSC:IT Elective"){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(402,415,425,447,480,520,526,540,548,555,580) ORDER BY `CourseNum`;";
-            }elseif($courseKey == "CSC:IT Minor Elective 1"){
+            }elseif(($courseKey == "CSC:IT Minor Elective 1") or ($courseKey == "CSC: SD Minor Elective 1")){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 200 AND 500 ORDER BY `CourseNum`;";
-            }elseif($courseKey == "CSC:IT Minor Elective 2"){
+            }elseif(($courseKey == "CSC:IT Minor Elective 2") or ($courseKey == "CSC: SD Minor Elective 2")){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 300 AND 500 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:SD Elective"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:SD Concomitant"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>=181 ORDER BY `CourseNum`;";            
             }elseif($courseKey == ""){
             }elseif($courseKey == ""){
                 $query = "";
