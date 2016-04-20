@@ -7,11 +7,15 @@
         
         
         public function adviseeSearch($ID){
-             $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentID,AIDID,CheckSheetId FROM STUDENT s,CHECKSHEETSAVE cs WHERE s.StudentID = cs.StudentID and CheckSheetOfficial = 1  and AdvisorId = %s;", $ID);
+             $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentId FROM STUDENT s WHERE AdvisorId = %s;", $ID);
             return $results;
             
         }
         
+        function getStudentInfo($StuID){
+            $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentID,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
+            return $results;
+        }
         
         
         public function searchBasedOnKey($courseKey){

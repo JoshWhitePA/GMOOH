@@ -20,7 +20,7 @@ session_start();
 				$("#master").load("MasterPages/advisorMasterPage.php", function() {
 					$("#mainSection")
 						.append("<div style='text-align:right'><form action='advisor_home.php' method='get' id='search'> <input type='text'/><input type='submit' value='Search' /> </form></div><br /><form action='advisee_Account.php' method='post' id='selectAdvisee'><div class='boarderedTable'><table class='adviseeList' id = 'advisorList'><tr class='rowSel'><th>Advisee</th><th>Major</th><th></th></tr>"+
-                               "<?php  foreach ($results as $row) { echo "<tr class='rowSel' ><td><span class='box'>". $row['FirstName'] ." ".$row['LastName']."</span></td><td>".$row['CheckSheetId']."</td><td><input type='submit' name='".$row['AIDID']."' value='Load'/></td></tr>";} ?>"+"</table></div></form>"
+                               "<?php  foreach ($results as $row) { echo "<tr class='rowSel' ><td><span class='box'>". $row['FirstName'] ." ".$row['LastName']."</span></td><td>".$row['StudentId']."</td><td><input type='hidden' value='".$row['StudentId']."' id='".$row['StudentId']."' name='StudentID' /><input type='submit' name='".$row['StudentId']."' value='Load'/></td></tr>";} ?>"+"</table></div></form>"
 							);
 //						$("#advisorList").append("<!-- This is a test -->"
 //							+ "<tr class='rowSel' ><td><span class='box'>Bill Kerman</span></td><td>Science!</td><td><input type='submit' name='SID112' value='View'/></td></tr>"
