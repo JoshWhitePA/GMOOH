@@ -45,6 +45,7 @@
 							+ "th.dropdownSection {"
 							+ "cursor: default !important;"
 							+ "}"
+							+ "</style>"
 						);
 					}); 
 				});
