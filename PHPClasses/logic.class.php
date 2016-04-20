@@ -73,6 +73,8 @@
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>104 ORDER BY `CourseNum`;";
             }elseif($courseKey == "BS CSC:IT Internship"){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "MS CSC:IT Thesis"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`=599;";
             }elseif($courseKey == ""){
             }elseif($courseKey == ""){
                 $query = "";
