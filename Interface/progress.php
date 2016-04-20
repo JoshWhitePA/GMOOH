@@ -1,8 +1,17 @@
 <?php 
+	require_once("../PHPClasses/logic.class.php");
+    $logic = new Logic();
 	session_start();
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+    if(isset($_SESSION["facID"])){
+       $results = $logic->progressPagePop($_POST["StudentID"]); 
+    }else{
+        
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -5,6 +5,10 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
         
+          public function progressPagePop($stuID){
+              $results = DB::query("SELECT NumCredits,CheckSheetId FROM CHECKSHEETSAVE WHERE StudentId = %s and CheckSheetOfficial = 1;", $stuID);
+            return $results;
+          }
         
         public function adviseeSearch($ID){
              $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentId FROM STUDENT s WHERE AdvisorId = %s;", $ID);
