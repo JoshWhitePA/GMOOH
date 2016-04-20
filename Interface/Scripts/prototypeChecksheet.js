@@ -253,6 +253,7 @@ function pageLoad(checksheetFlag, isUserStudent) {
 		if(checksheetFlag) {
 			//Whenever the select dropdrown menu is changed
 			$("#currentChecksheet").change(function() {
+//                 $('#termList').empty();
 				if(initialChecksheetLoaded)
 				{
 					if(!confirm("Switching checksheets will clear your current checksheet. Continue?"))
@@ -310,6 +311,7 @@ function pageLoad(checksheetFlag, isUserStudent) {
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 					currentChecksheet = $("#currentChecksheet option:selected").val();
 				}
+//                $('#termList').empty();
 				initialChecksheetLoaded = true;
 			}) .change(); //This makes sure it happens every time
 		}
