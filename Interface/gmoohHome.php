@@ -41,6 +41,16 @@
 				});
 			});
 		</script>
+		<!-- load overriding CSS! -->
+		<style>
+			th a:hover, .dropdownSection:hover .dropButtonNotes {
+				opacity: 1;
+			}
+
+			th.dropdownSection {
+				cursor: wait;
+			}
+		</style>
 	</head>
 	<body id = "master"> 
 	</body>
