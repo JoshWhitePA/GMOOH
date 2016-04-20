@@ -16,7 +16,11 @@
 	$checkURL = $logic->findChecksheetToDisplay($userID);
 	
 	$major = $logic->grabUserMajor($userID);
-	$AIDID = $logic->getOfficialChecksheet($userID);
+	$rawAIDID = $logic->getOfficialChecksheet($userID);
+	$AIDID = "";
+	foreach ($rawAIDID as $row) {
+        $AIDID = $row["AIDID"];
+    }
 	//CONCAT THE VARIBLES TO THE PAGE ADDRESS!
 	$checksheet = $checkURL . "&AIDID=" . $AIDID //format help remove when sure it works: &chkID=ULASCSCIT&AIDID=119
 	
