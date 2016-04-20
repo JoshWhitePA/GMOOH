@@ -13,10 +13,12 @@
 	else{
 		$userID = NULL;
 	}
-	$checksheet = $logic->findChecksheetToDisplay($userID);
+	$checkURL = $logic->findChecksheetToDisplay($userID);
 	
 	$major = $logic->grabUserMajor($userID);
-	$_GET['AIDID'] = $logic->getOfficialChecksheet($userID);
+	$AIDID = $logic->getOfficialChecksheet($userID);
+	//CONCAT THE VARIBLES TO THE PAGE ADDRESS!
+	$checksheet = $checkURL . "&AIDID=" . $AIDID //format help remove when sure it works: &chkID=ULASCSCIT&AIDID=119
 	
 ?>
 <!DOCTYPE html>
