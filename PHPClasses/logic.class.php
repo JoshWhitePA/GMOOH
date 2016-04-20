@@ -87,6 +87,10 @@
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 ORDER BY `CourseNum`;";
             }elseif($courseKey == "BS CSC:SD Concomitant"){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>=181 ORDER BY `CourseNum`;";            
+            }elseif($courseKey == "MS CSC:SD 400-Level"){
+            	    $query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE (`CourseID`='CSC554') OR `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 400 AND 500 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "MS CSC:SD 500-Level"){
+            	    $query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>500 ORDER BY `CourseNum`;";
             }elseif($courseKey == ""){
             }elseif($courseKey == ""){
                 $query = "";
