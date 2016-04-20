@@ -103,7 +103,7 @@
 		
 		//Messy stuff.
 		public function findChecksheetToDisplay($ID){
-			
+			$results = "";
 			//The below is no longer a horrible hack.
 			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			if($hasOfficalCheck == null){
@@ -118,9 +118,6 @@
 				}
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
-				}
-				else{ //Because failing gracefully is better than doing horrible things.
-					$results = "error.html";
 				}
 			}
 			else{
