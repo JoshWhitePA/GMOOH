@@ -11,6 +11,7 @@
 -->
 <?php
 
+
 session_start();
 
     require("../../../../PHPClasses/logic.class.php");
@@ -41,7 +42,7 @@ session_start();
     $results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
-        
+        break;
     }
 
     
@@ -49,10 +50,7 @@ session_start();
     //echo "<br><br>";
     $indexOGen = 0;
     $indexOPro = 0;
-//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassGrade"][0];
-    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
-
-
+//    echo $sData["Student"][0]["Program
 
 ?>
 <!DOCTYPE html>
@@ -101,7 +99,7 @@ session_start();
 				</tr>
 				<?php
 					echo"<tr>
-							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
+							<th><b>&emsp;&emsp;COURSE:"."<span id='genGrade" .$indexOGen."'>".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassName"][0] . "</span>" ."</b></th>
 							<th class = 'tableGrade'><b>3</b></th>
 							<th class = 'tableGrade'><b></b></th>
 							<th class = 'tableGrade'><b>"."<span id='genGrade" .$indexOGen."'>&#8195;".$sData["Student"][0]["GenEd"][0]["Class"][$indexOGen]["ClassGrade"][0] . "</span>" ."

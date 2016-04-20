@@ -40,7 +40,7 @@ session_start();
     $results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
-        
+        break;
     }
 
     
