@@ -44,15 +44,15 @@
 		<!--
 			function goViewChecksheet()
 			{
-				document.adviseeInfo.action = "gmoohHome.php" //change the form's action
-				document.adviseeInfo.submit();               // Submit the page
+				document.getElementById("adviseeInfo").action = "gmoohHome.php" //change the form's action
+				document.getElementById("adviseeInfo").submit();               // Submit the page
 				return true;
 			}
 
 			function goViewProgress()
 			{
-				document.adviseeInfo.action = "progress.php"
-				document.adviseeInfo.submit();             // Submit the page
+				document.getElementById("adviseeInfo").action = "progress.php"
+				document.getElementById("adviseeInfo").submit();             // Submit the page
 				return true;
 			}
 		</script>

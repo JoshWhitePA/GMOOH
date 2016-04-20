@@ -13,7 +13,7 @@
         }
         
         function getStudentInfo($StuID){
-            $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentID,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
+            $results = DB::query("SELECT s.FirstName,s.LastName,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
             return $results;
         }
         
@@ -103,7 +103,7 @@
 		
 		//Messy stuff.
 		public function findChecksheetToDisplay($ID){
-			$results = "";
+			
 			//The below is no longer a horrible hack.
 			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			if($hasOfficalCheck == null){
@@ -118,6 +118,9 @@
 				}
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
+				}
+				else{ //Because failing gracefully is better than doing horrible things.
+					$results = "error.html";
 				}
 			}
 			else{
@@ -166,18 +169,19 @@
             return $results;
         }
         
-        public function saveChecksheet($ID,$xml,$chkID,$AIDID){
+        public function saveChecksheet($ID,$xml,$chkID,$AIDID,$NumCredits){
             DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
              $fancyID = $AIDID;
             if ($counter > 0){
-                DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s WHERE AIDID=%s", $xml,$AIDID);
+                DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s, NumCredits =%i WHERE AIDID=%s", $xml,$NumCredits,$AIDID);
             }
             else{
             DB::insert('CHECKSHEETSAVE', array(
                           'StudentID' => $ID,
                           'CheckSheetID' => $chkID,
                             'SaveData' => $xml,
+                            'NumCredits' => $NumCredits,
                             'Date' => DB::sqleval("NOW()")
                         ));
                $fancyID = DB::insertId();
