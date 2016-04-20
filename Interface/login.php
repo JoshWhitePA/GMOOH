@@ -17,7 +17,7 @@
 				<table>
 					<tr>
 						<td rowspan = "6" align = "left" style = "vertical-align: middle">
-							<img src = "Images/kutztownLogo.png" width = "100px"/>
+							<img src = "Images/kutztownLogo.png" width = "150px"/>
 						</td>
 						<td rowspan = "10" width = "50px"></td>
 						<th>Email &nbsp;</th>
@@ -38,7 +38,6 @@
 							<button class="button1" type="reset" value="Reset">Clear</button>
 						</th>
 					</tr>		
-					<tr height = "10px"></tr>
 					<tr>
 						<th colspan = "2" align = "center">
 							<input type = "button" class = "button1" 
