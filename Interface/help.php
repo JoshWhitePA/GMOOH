@@ -27,7 +27,7 @@ Question/Answer Format
 			$(document).ready(function(){
 				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
-						.append("FAQs<br/>"
+						.append("<div id = 'innerSection' class = 'innerSection'>FAQs<br/>"
 							+ "<br/>Q. <b>Why is this interface so terrible?</b>"
 							+ "<br/>A. We are terrible computer scientists<br/>"
 							+ "<br/>Q. <b>What does GMOOH stand for?</b>"
@@ -47,7 +47,7 @@ Question/Answer Format
 							+ "<br/>Q. <b>Why isn't Pluto a planet?! It's totally a planet!!!!!!1</b>"
 							+ "<br/>A. *Sigh* Please argure with the Physical Sciences Department, not me<br/>"
 							+ "<br/>Q. <b>All other inquiries</b>"
-							+ "<br/>A. Blame Josh<br/>"
+							+ "<br/>A. Blame Josh<br/></div>"
 					); 
 				});
 			});

@@ -119,8 +119,10 @@
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
 				}
+
 				else{ //Because failing gracefully is better than doing horrible things.
 					$results = "error.html";
+
 				}
 			}
 			else{
