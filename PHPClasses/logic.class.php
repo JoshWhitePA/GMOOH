@@ -6,6 +6,14 @@
    		}
         
         
+        public function adviseeSearch($ID){
+             $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentID,AIDID,CheckSheetId FROM STUDENT s,CHECKSHEETSAVE cs WHERE s.StudentID = cs.StudentID and CheckSheetOfficial = 1  and AdvisorId = %s;", $ID);
+            return $results;
+            
+        }
+        
+        
+        
         public function searchBasedOnKey($courseKey){
             //loose coupling be darned
             $query = "select * from `COURSE` where 1=2;";

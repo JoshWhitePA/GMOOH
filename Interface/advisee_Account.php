@@ -5,13 +5,13 @@
     $results = $logic->getStudentInfo($_SESSION['userID']);
     $name = "";
     $ID = "";
-    $major = ";"
+    $major = ";";
     $email = "";
     foreach ($results as $row) {
        $name = $row['FirstName'];
        $name .= " " . $row['LastName'];
        $ID = $row['ID'];
-       $major = $row['Major']
+       $major = $row['Major'];
        $email = $row['Email'];
        
     }
