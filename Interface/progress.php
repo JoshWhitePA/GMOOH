@@ -5,10 +5,23 @@
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+    $numCreds=0;
+    $checksheetID="";
     if(isset($_SESSION["facID"])){
-       $results = $logic->progressPagePop($_POST["StudentID"]); 
+       $results = $logic->progressPagePop($_POST["StudentID"]);
+         foreach ($results as $row) {
+             $numCreds = $row["NumCredits"];
+             $checksheetID = $row["CheckSheetId"];
+            break;
+         }
     }else{
         
+        $results = $logic->progressPagePop($_SESSION["userID"]);
+        foreach ($results as $row) {
+           $numCreds = $row["NumCredits"];
+           $checksheetID = $row["CheckSheetId"];
+            break;
+        }
     }
 
 
@@ -37,11 +50,11 @@
 						
 					$("#mainSection").append("<div id = 'innerSection' class = 'innerSection'></div>");
 					
-					var officialChecksheet = "it";
-					var totalCredits = 96; //Total user credits
+					var officialChecksheet = '<?php echo $checksheetID;?>';
+					var totalCredits = <?php echo $numCreds; ?>; //Total user credits
 					var gradCredits = 120; //Credits towards graduation
 
-					if(officialChecksheet == "it" || officialChecksheet == "sd") {
+					if(officialChecksheet == "ULASCSCIT" || officialChecksheet == "ULASCSCSD") {
 					
 						if(totalCredits > 120)
 							totalCredits = 120;
