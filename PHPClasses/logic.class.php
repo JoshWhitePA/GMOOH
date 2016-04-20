@@ -119,6 +119,9 @@
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
 				}
+				else if($major == null){ //User doesn't have a major, we just grab the IT checksheet for now.
+					$results = "Checksheets/v1.1/min/cscITChecksheet.php"; //Might replace with a page saying to choose a major?
+				}
 			}
 			else{
 				foreach ($hasOfficalCheck as $row) {
