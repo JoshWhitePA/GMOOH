@@ -116,6 +116,7 @@ $badChars   = array("&", "/", "'","\\","^","~",'"');
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1min.css"/>
 	</head>
 	<body>
+	<style id = "styleJack" type='text/css'></style>
 <!-- #GENERAL EDUCATION# -->
 <!-- I. UNIVERSITY CORE TABLE -->
 		<div id = "section" class = "section">

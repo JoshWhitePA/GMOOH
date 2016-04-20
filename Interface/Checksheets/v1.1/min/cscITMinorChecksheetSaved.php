@@ -54,6 +54,7 @@ session_start();
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1min.css"/>
 	</head>	
 	<body>
+	<style id = "styleJack" type='text/css'></style>
 <!-- #CSC SOFTWARE DEVELOPMENT MINOR PROGRAM TABLE# -->
 		<div id = "section" class = "section">
 			<table>
