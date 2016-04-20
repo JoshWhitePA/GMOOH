@@ -38,7 +38,7 @@
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
 					$("#innerSection").load(<?php echo json_encode($checksheet); ?>, function() {
 						$('#section :input').attr('readonly', true);
-						$('head').append("<style type='text/css'>"
+						$('#head').append("<style type='text/css'>"
 							+ "th a:hover, .dropdownSection:hover .dropButtonNotes {"
 							+ "opacity: 1;"
 							+ "}"

@@ -49,7 +49,7 @@ session_start();
 <!DOCTYPE html>
 
 <html>
-	<head>
+	<head id = "head">
 	<title>Computer Science: IT Minor Checksheet</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1min.css"/>
 	</head>	

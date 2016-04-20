@@ -111,7 +111,7 @@ $badChars   = array("&", "/", "'","\\","^","~",'"');
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
+	<head id = "head">
 	<title>BS Computer Science: SD Checksheet</title>
 	<link rel = "stylesheet" type = "text/css" href = "Styles/checksheetStyleV1p1min.css"/>
 	</head>
