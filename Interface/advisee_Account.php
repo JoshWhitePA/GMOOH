@@ -44,7 +44,7 @@
 		<!--
 			function goViewChecksheet()
 			{
-				document.adviseeInfo.action = "adviseeViewChecksheet.php" //change the form's action
+				document.adviseeInfo.action = "gmoohHome.php" //change the form's action
 				document.adviseeInfo.submit();               // Submit the page
 				return true;
 			}
