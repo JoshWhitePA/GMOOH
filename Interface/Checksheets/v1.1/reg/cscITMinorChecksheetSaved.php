@@ -41,7 +41,7 @@ session_start();
     $results = $logic->displaySaveFromCheck($_SESSION['userID'],$_GET['AIDID']);
     foreach ($results as $row) {
         $sData = xml2array($row["SaveData"]);
-        
+        break;
     }
 
     
@@ -49,8 +49,7 @@ session_start();
     //echo "<br><br>";
     $indexOGen = 0;
     $indexOPro = 0;
-//    echo $sData["Student"][0]["Program"][0]["Class"][23]["ClassGrade"][0];
-    //echo $sData["Student"][0]["GenEd"][0]["Class"][2]["ClassName"][0];
+//    echo $sData["Student"][0]["Program
 
 
 ?>
