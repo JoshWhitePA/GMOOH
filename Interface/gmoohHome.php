@@ -39,10 +39,10 @@
 					$("#innerSection").load(<?php echo json_encode($checksheet); ?>, function() {
 						$('#section :input').attr('readonly', true);
 						$('#styleJack').append("th a:hover, .dropdownSection:hover .dropButtonNotes {"
-							+ "opacity: 1 !important;"
+							+ "opacity: 1;"
 							+ "}"
 							+ "th.dropdownSection {"
-							+ "cursor: default !important;"
+							+ "cursor: default;"
 							+ "}"
 						);
 					}); 
