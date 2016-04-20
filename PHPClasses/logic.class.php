@@ -25,8 +25,7 @@
                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseNum`;"; 
             }elseif($courseKey == "Written Communication"){
                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseNum`;";
-            }
-            elseif($courseKey == "Mathematics"){
+            }elseif($courseKey == "Mathematics"){
                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='MAT' and `CourseNum` in(140,301) ORDER BY `CourseNum`;";
             }elseif($courseKey == "Wellness"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='HEA' and `Credits`>=3 ORDER BY `CourseNum`;";
@@ -62,6 +61,15 @@
                 $query = "select * from `COURSE` where 1=2;";
             }elseif($courseKey == "IV. D. Elective"){
                 $query = "";
+            }elseif($courseKey == "BS CSC:IT Elective 1"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 AND `CourseNum` NOT IN(242,253,311,341,356,354,355,280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:IT Elective 2"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 AND `CourseNum` NOT IN(242,253,311,341,356,354,355,280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:IT Concomitant"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>104 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:IT Internship"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == ""){
             }elseif($courseKey == ""){
                 $query = "";
             }elseif($courseKey == ""){
