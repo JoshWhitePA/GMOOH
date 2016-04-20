@@ -75,6 +75,12 @@
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(280,380) ORDER BY `CourseNum`;";
             }elseif($courseKey == "MS CSC:IT Thesis"){
             	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`=599;";
+            }elseif($courseKey == "MS CSC:IT Elective"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(402,415,425,447,480,520,526,540,548,555,580) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "CSC:IT Minor Elective 1"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 200 AND 500 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "CSC:IT Minor Elective 2"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 300 AND 500 ORDER BY `CourseNum`;";
             }elseif($courseKey == ""){
             }elseif($courseKey == ""){
                 $query = "";
