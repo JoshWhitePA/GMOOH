@@ -6,6 +6,18 @@
    		}
         
         
+        public function adviseeSearch($ID){
+             $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentId FROM STUDENT s WHERE AdvisorId = %s;", $ID);
+            return $results;
+            
+        }
+        
+        function getStudentInfo($StuID){
+            $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentID,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
+            return $results;
+        }
+        
+        
         public function searchBasedOnKey($courseKey){
             //loose coupling be darned
             $query = "select * from `COURSE` where 1=2;";
@@ -79,12 +91,6 @@
             return $results;
         }
 		
-		//DEPRICATE THIS. It's only here because I'm not 100% sure I've removed references to it!
-		public function displayOfficialChecksheet($ID){
-			$results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
-			return $results;
-		}
-		
 		//Kinda replacement for the above. Different use.
 		public function getOfficialChecksheet($ID){
 			$results = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
@@ -97,7 +103,7 @@
 		
 		//Messy stuff.
 		public function findChecksheetToDisplay($ID){
-			
+			$results = "";
 			//The below is no longer a horrible hack.
 			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			if($hasOfficalCheck == null){
@@ -112,9 +118,6 @@
 				}
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
-				}
-				else{ //Because failing gracefully is better than doing horrible things.
-					$results = "error.html";
 				}
 			}
 			else{
