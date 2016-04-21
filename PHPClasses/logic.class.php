@@ -117,7 +117,13 @@
         
     }
         public function displaySaveFromCheck($ID, $AIDID){
-            $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
+//            	echo "<script>alert('ID:".$ID."');</script>";
+            if ($ID == "" || $ID == null || strlen($ID) == 8){
+                 $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE AIDID = %i;",$AIDID);
+            }else{
+                $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentId = %s and AIDID = %i;", $ID,$AIDID);
+            }
+            
             return $results;
         }
 		

@@ -44,7 +44,7 @@
 		<!--
 			function goViewChecksheet()
 			{
-				document.getElementById("adviseeInfo").action = "gmoohHome.php" //change the form's action
+				document.getElementById("adviseeInfo").action = "advisorViewChecksheet.php" //change the form's action
 				document.getElementById("adviseeInfo").submit();               // Submit the page
 				return true;
 			}
@@ -55,6 +55,7 @@
 				document.getElementById("adviseeInfo").submit();             // Submit the page
 				return true;
 			}
+            
 		</script>
 	</head>
 	<body id = "master">

@@ -7,14 +7,18 @@
 	
 	//This should eventually be rolled into its own script.
 	$logic = new Logic();
+
+    $studentID = "";
+
 	if(isset($_POST["StudentID"])){
-		$userID = $_POST["StudentID"];
+		$studentID = $_POST["StudentID"];
 	}
 	else{
-		$userID = NULL;
+		$studentID = NULL;
 	}
+
 	$checkURL = $logic->findChecksheetToDisplay($studentID);
-	
+
 	$major = $logic->grabUserMajor($studentID);
 	$rawAIDID = $logic->getOfficialChecksheet($studentID);
 	$AIDID = "";
