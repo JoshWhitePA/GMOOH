@@ -32,8 +32,8 @@
 	}
 	else{
 		$userMaster = "MasterPages/masterPage.html";
-		var row = document.getElementById(majorRow);
-		row.style.display = 'none';
+		var $row = document.getElementById(majorRow);
+		$row.style.display = 'none';
 	}
 ?>
 <!DOCTYPE html>
