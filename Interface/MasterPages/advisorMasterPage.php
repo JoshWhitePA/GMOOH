@@ -53,7 +53,7 @@ session_start();
 		</div>	
 		<div class = "newSection"></div>
 		<div id = "footer" class = "footer">
-			<div class = "verticalAlign"><p>&copy; copyright 2016 Kutztown University</p></div>
+			<div class = "verticalAlign">&copy; copyright 2016 Kutztown University</div>
 		</div>
 	</body>
 </html>

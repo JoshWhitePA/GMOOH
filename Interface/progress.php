@@ -57,7 +57,7 @@
 					$("#mainSection").append("<div id = 'innerSection' class = 'innerSection'></div>");
 					
 					var officialChecksheet = '<?php echo $checksheetID;?>';
-					var totalCredits = <?php echo $numCreds; ?>; //Total user credits
+					var totalCredits = <?php echo $numCreds*3; ?>; //Total user credits
 					var gradCredits = 120; //Credits towards graduation
 
 					if(officialChecksheet == "ULASCSCIT" || officialChecksheet == "ULASCSCSD") {
