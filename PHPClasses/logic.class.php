@@ -47,6 +47,16 @@
                  $query = "SELECT * from `COURSE`;";
             }elseif($courseKey == "Natural Science with Lab"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('AST','BIO','CHM','ENV','GEL','MAR','PHY') AND `Credits`=4) OR (`CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Writing Intensive"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `SuffixWI`;";
+        	}elseif($courseKey == "QL or CP"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixQL OR SuffixCP;";
+            }elseif($courseKey == "VL or CM"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixVL OR SuffixCM;";
+            }elseif($courseKey == "Cultural Diversity"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixCD;";
+            }elseif($courseKey == "Critical Thinking"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixCT;";
             }elseif($courseKey == "IV. A. 2. Elective"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('AST','BIO','CHM','CSC','ENV','GEL','MAR','MAT','NSE','PHY')) OR (`CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
             }elseif($courseKey == "IV. B. 1. Elective"){
