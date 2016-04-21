@@ -136,7 +136,7 @@
 							$indexOPro++;}
 				?>
 			</table>
-			<input type="hidden" id="programID" value="ULASCSCIT" />
+			<input type="hidden" id="programID" value="GLASCSCIT" />
             <?php 
                 echo "<input type='hidden' id='programCount' value='".$indexOPro."'  />";
             ?>

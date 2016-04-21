@@ -253,6 +253,7 @@ function pageLoad(checksheetFlag, isUserStudent) {
 		if(checksheetFlag) {
 			//Whenever the select dropdrown menu is changed
 			$("#currentChecksheet").change(function() {
+//                 $('#termList').empty();
 				if(initialChecksheetLoaded)
 				{
 					if(!confirm("Switching checksheets will clear your current checksheet. Continue?"))
@@ -310,6 +311,7 @@ function pageLoad(checksheetFlag, isUserStudent) {
 					$("#innerSection").animate({ scrollTop: 0 }, "fast"); 
 					currentChecksheet = $("#currentChecksheet option:selected").val();
 				}
+//                $('#termList').empty();
 				initialChecksheetLoaded = true;
 			}) .change(); //This makes sure it happens every time
 		}
@@ -816,7 +818,7 @@ function searchByDept(){
 }
      
 function scrapeTheSucka(){
-    
+    var credCount = 0;
     var xmlSaveData = "<GMOOH><Student><GenEd>";
     $.each($('.courseNameBoxGen'), function (index, value) { 
         xmlSaveData += "<Class>";
@@ -824,8 +826,11 @@ function scrapeTheSucka(){
         xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
         idStr = "#genGrade" + index;
         var catToText = "" + $(idStr).val();
-        xmlSaveData += "<ClassGrade>" + catToText + "</ClassGrade>";
+        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+       if(catToText.trim() != ""){
+           credCount++;
+       } 
         
 });
     xmlSaveData += "</GenEd>";
@@ -840,6 +845,9 @@ function scrapeTheSucka(){
          var catToText = "" + $(idStr).val();
         xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+         if(catToText.trim() != ""){
+           credCount++;
+       }
     });
     
     xmlSaveData += "</Program>";
@@ -847,12 +855,12 @@ function scrapeTheSucka(){
     var chkID = $('#programID').val();
     var curAIDID=null;
     var alreadySaved = $('#saveChecka').val();
-    console.log("programID:"+programID);
+//    console.log("programID:"+programID);
     console.log(xmlSaveData);
     $.ajaxSetup({
         async: false
     });
-     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID })
+     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID, NumCredits: credCount})
               .done(function( data ) {
                  console.log("classInfo: "+String(data));
                  AIDID = data.trim();

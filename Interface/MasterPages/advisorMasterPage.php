@@ -1,3 +1,10 @@
+<?php 
+session_start();
+    require("../../PHPClasses/logic.class.php");
+    $logic = new Logic();
+
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +25,7 @@
 		</script>
 	</head>
 	<body>	
-		<div id = "header" class = "mainHeader">Welcome <? $_SESSION['FirstName']; ?> (<a class = "logout" href = "logout.php">Log out</a>)</div>
+		<div id = "header" class = "mainHeader">Welcome <?php $_SESSION['facID']; ?> (<a class = "logout" href = "logout.php">Log out</a>)</div>
 		<div class = "newSection"></div>
 		<div id = "headerBar" class = "headerBar">
 			<a href = "gmoohHome.php"><img src = "Images/gmoohLogo.png" class = "logo"/></a>
@@ -30,13 +37,6 @@
 						<div class= "dropdownContent">
 							<a href= "account.php">View Your Account</a>
 							<a href= "changePassword.php">Change Your Password</a>
-						</div>
-					</li>
-					<li class = "dropdown">
-						<a class = "dropButton verticalAlign" href = "savedChecksheets.php">Checksheets</a>
-						<div class= "dropdownContent">
-							<a href= "createNewChecksheet.php">Create New Checksheet</a>
-							<a href= "savedChecksheets.php">View Saved Checksheets</a>
 						</div>
 					</li>
 					<li><a class = "active verticalAlign" href = "help.php">Help</a></li>

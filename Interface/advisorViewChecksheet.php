@@ -7,16 +7,20 @@
 	
 	//This should eventually be rolled into its own script.
 	$logic = new Logic();
-	if(isset($_SESSION["userID"])){
-		$userID = $_SESSION["userID"];
+
+    $studentID = "";
+
+	if(isset($_POST["StudentID"])){
+		$studentID = $_POST["StudentID"];
 	}
 	else{
-		$userID = NULL;
+		$studentID = NULL;
 	}
-	$checkURL = $logic->findChecksheetToDisplay($userID);
-	
-	$major = $logic->grabUserMajor($userID);
-	$rawAIDID = $logic->getOfficialChecksheet($userID);
+
+	$checkURL = $logic->findChecksheetToDisplay($studentID);
+
+	$major = $logic->grabUserMajor($studentID);
+	$rawAIDID = $logic->getOfficialChecksheet($studentID);
 	$AIDID = "";
 	foreach ($rawAIDID as $row) {
         $AIDID = $row["AIDID"];
@@ -33,7 +37,7 @@
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load("MasterPages/advisorMasterPage.php", function() {
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
 					$("#innerSection").load(<?php echo json_encode($checksheet); ?>, function() {
 						$('#section :input').attr('readonly', true);

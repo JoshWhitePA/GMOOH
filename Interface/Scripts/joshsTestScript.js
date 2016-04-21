@@ -608,18 +608,22 @@ function makeNewTermsDraggable() {
 }
 
 function printChecksheet() {
+	 var curanAIDID = scrapeTheSucka();
+    saveSchedule(curanAIDID);
 	if(currentChecksheet == "it")
-		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "Mit")
-		window.open("Checksheets/v1.1/reg/cscITMastersChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMastersChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "itm")
-		window.open("Checksheets/v1.1/reg/cscITMinorChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscITMinorChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "sd")
-		window.open("Checksheets/v1.1/reg/cscSDChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 	else if(currentChecksheet == "Msd")
-		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMastersChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
+    else if(currentChecksheet == "savIT")
+		window.open("Checksheets/v1.1/reg/cscITChecksheetSavedSaved.php?AIDID="+curanAIDID, "_blank");
 	else
-		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheetSaved.php", "_blank");
+		window.open("Checksheets/v1.1/reg/cscSDMinorChecksheetSaved.php?AIDID="+curanAIDID, "_blank");
 }
 
 //Function to clear the checksheet
@@ -811,17 +815,21 @@ function searchByDept(){
 }
      
 function scrapeTheSucka(){
-    var xmlSaveData = "<GMOOH><Student><GenEd>";
+     var credCount = 0;
+   var xmlSaveData = "<GMOOH><Student><GenEd>";
     $.each($('.courseNameBoxGen'), function (index, value) { 
         xmlSaveData += "<Class>";
         
         xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
         idStr = "#genGrade" + index;
         var catToText = "" + $(idStr).val();
-        xmlSaveData += "<ClassGrade>" + catToText + "</ClassGrade>";
+        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+        if(catToText.trim() != ""){
+           credCount++;
+       } 
         
-});
+    });
     xmlSaveData += "</GenEd>";
     xmlSaveData += "<Program>";
     
@@ -834,17 +842,20 @@ function scrapeTheSucka(){
          var catToText = "" + $(idStr).val();
         xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+          if(catToText.trim() != ""){
+           credCount++;
+       } 
     });
     
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
     var chkID = $('#programID').val();
-       
-     console.log(xmlSaveData);
+      
+//     console.log(xmlSaveData);
     $.ajaxSetup({
         async: false
     });
-     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID })
+     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID, NumCredits: credCount-1 })
               .done(function( data ) {
                  console.log("classInfo: "+String(data));
                  AIDID = data.trim();
