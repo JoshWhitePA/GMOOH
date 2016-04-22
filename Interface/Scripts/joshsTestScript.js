@@ -815,17 +815,21 @@ function searchByDept(){
 }
      
 function scrapeTheSucka(){
-    var xmlSaveData = "<GMOOH><Student><GenEd>";
+     var credCount = 0;
+   var xmlSaveData = "<GMOOH><Student><GenEd>";
     $.each($('.courseNameBoxGen'), function (index, value) { 
         xmlSaveData += "<Class>";
         
         xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
         idStr = "#genGrade" + index;
         var catToText = "" + $(idStr).val();
-        xmlSaveData += "<ClassGrade>" + catToText + "</ClassGrade>";
+        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+        if(catToText.trim() != ""){
+           credCount++;
+       } 
         
-});
+    });
     xmlSaveData += "</GenEd>";
     xmlSaveData += "<Program>";
     
@@ -838,17 +842,20 @@ function scrapeTheSucka(){
          var catToText = "" + $(idStr).val();
         xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
         xmlSaveData += "</Class>";
+          if(catToText.trim() != ""){
+           credCount++;
+       } 
     });
     
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
     var chkID = $('#programID').val();
-       
-     console.log(xmlSaveData);
+      
+//     console.log(xmlSaveData);
     $.ajaxSetup({
         async: false
     });
-     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID })
+     $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID, NumCredits: credCount-1 })
               .done(function( data ) {
                  console.log("classInfo: "+String(data));
                  AIDID = data.trim();

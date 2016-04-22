@@ -1,8 +1,36 @@
 <?php 
+	require_once("../PHPClasses/logic.class.php");
+    $logic = new Logic();
 	session_start();
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
+    $numCreds=0;
+    $checksheetID="";
+    if(isset($_SESSION["facID"])){
+       $results = $logic->progressPagePop($_POST["StudentID"]);
+         foreach ($results as $row) {
+             $numCreds = $row["NumCredits"];
+             $checksheetID = $row["CheckSheetId"];
+            break;
+         }
+    }else{
+        
+        $results = $logic->progressPagePop($_SESSION["userID"]);
+        foreach ($results as $row) {
+           $numCreds = $row["NumCredits"];
+           $checksheetID = $row["CheckSheetId"];
+            break;
+        }
+    }
+
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +41,7 @@
 		<script src = "Scripts/fusioncharts.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#master").load("MasterPages/masterPage.html", function() {
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#left").css("visibility", "visible");
 					$("#left").append("<div class = 'innerSectionLong'>"
 						+ "<div class = 'titleBox'>"	
@@ -28,11 +56,11 @@
 						
 					$("#mainSection").append("<div id = 'innerSection' class = 'innerSection'></div>");
 					
-					var officialChecksheet = "it";
-					var totalCredits = 96; //Total user credits
+					var officialChecksheet = '<?php echo $checksheetID;?>';
+					var totalCredits = <?php echo $numCreds*3; ?>; //Total user credits
 					var gradCredits = 120; //Credits towards graduation
 
-					if(officialChecksheet == "it" || officialChecksheet == "sd") {
+					if(officialChecksheet == "ULASCSCIT" || officialChecksheet == "ULASCSCSD") {
 					
 						if(totalCredits > 120)
 							totalCredits = 120;

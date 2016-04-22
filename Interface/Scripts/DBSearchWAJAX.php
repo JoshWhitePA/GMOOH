@@ -52,6 +52,7 @@
 	}
     
 	if(isset($_POST['Save']) && $_POST['Save'] != "" && $_POST['Save'] != " "){
+//        echo $_POST['NumCredits'];
         $AIDID=null;
         if(empty($_POST['AIDID'])){
            $AIDID =-1;
@@ -59,7 +60,7 @@
             $AIDID=$_POST['AIDID'];
         }
         $logic = new Logic();
-        $result = $logic->saveChecksheet($_SESSION["userID"],preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;',$_POST['Save']),$_POST['id'],$AIDID);
+        $result = $logic->saveChecksheet($_SESSION["userID"],preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;',$_POST['Save']),$_POST['id'],$AIDID, $_POST['NumCredits']);
         echo $result;
     }    
 

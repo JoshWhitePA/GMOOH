@@ -5,6 +5,10 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
         
+          public function progressPagePop($stuID){
+              $results = DB::query("SELECT NumCredits,CheckSheetId FROM CHECKSHEETSAVE WHERE StudentId = %s and CheckSheetOfficial = 1;", $stuID);
+            return $results;
+          }
         
         public function adviseeSearch($ID){
              $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentId FROM STUDENT s WHERE AdvisorId = %s;", $ID);
@@ -13,7 +17,7 @@
         }
         
         function getStudentInfo($StuID){
-            $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentID,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
+            $results = DB::query("SELECT s.FirstName,s.LastName,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
             return $results;
         }
         
@@ -25,8 +29,7 @@
                $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='COM' and `CourseNum`>=010 ORDER BY `CourseNum`;"; 
             }elseif($courseKey == "Written Communication"){
                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='ENG' and `CourseNum` in(023,024,025) ORDER BY `CourseNum`;";
-            }
-            elseif($courseKey == "Mathematics"){
+            }elseif($courseKey == "Mathematics"){
                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='MAT' and `CourseNum` in(140,301) ORDER BY `CourseNum`;";
             }elseif($courseKey == "Wellness"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix`='HEA' and `Credits`>=3 ORDER BY `CourseNum`;";
@@ -40,10 +43,22 @@
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('ARC','ARH','CDE','CDH','CFT','DAN','FAR','FAS','MUP','MUS','THE') ORDER BY `CourseNum`;";
             }elseif($courseKey == "Free Elective"){
                  $query = "SELECT * from `COURSE`;";
+        	}elseif($courseKey == "II. E. Free Elective"){
+                 $query = "SELECT * from `COURSE`;";
             }elseif($courseKey == "Natural Science with Lab"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('AST','BIO','CHM','ENV','GEL','MAR','PHY') AND `Credits`=4) OR (`CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "Writing Intensive"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `SuffixWI`;";
+        	}elseif($courseKey == "QL or CP"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixQL OR SuffixCP;";
+            }elseif($courseKey == "VL or CM"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixVL OR SuffixCM;";
+            }elseif($courseKey == "Cultural Diversity"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixCD;";
+            }elseif($courseKey == "Critical Thinking"){
+            		$query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where SuffixCT;";
             }elseif($courseKey == "IV. A. 2. Elective"){
-                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('AST','BIO','CHM','CSC','ENV','GEL','MAR','MAT','NSE','PHY') OR `CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
+                 $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where (`CoursePrefix` IN ('AST','BIO','CHM','CSC','ENV','GEL','MAR','MAT','NSE','PHY')) OR (`CoursePrefix`='GEG' and `CourseNum` in(040,322,323)) ORDER BY `CourseNum`;";
             }elseif($courseKey == "IV. B. 1. Elective"){
                  $query = "SELECT `CourseID`,`CourseName`,`Credits` from `COURSE` where `CoursePrefix` IN ('HIS','ANT','POL') OR CoursePrefix ='GEG' and `CourseNum` NOT in (040,322,323,204,274,304,324,347,380,394) ORDER BY `CourseNum`;";
             }elseif($courseKey == "IV. B. 2. Elective"){
@@ -62,6 +77,31 @@
                 $query = "select * from `COURSE` where 1=2;";
             }elseif($courseKey == "IV. D. Elective"){
                 $query = "";
+            }elseif($courseKey == "BS CSC:IT Elective 1"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 AND `CourseNum` NOT IN(242,253,311,341,356,354,355,280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:IT Elective 2"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 AND `CourseNum` NOT IN(242,253,311,341,356,354,355,280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:IT Concomitant"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>104 ORDER BY `CourseNum`;";
+            }elseif(($courseKey == "BS CSC:IT Internship") or ($courseKey == "BS CSC:SD Internship")){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(280,380) ORDER BY `CourseNum`;";
+            }elseif($courseKey == "MS CSC:IT Thesis"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`=599;";
+            }elseif($courseKey == "MS CSC:IT Elective"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` IN(402,415,425,447,480,520,526,540,548,555,580) ORDER BY `CourseNum`;";
+            }elseif(($courseKey == "CSC:IT Minor Elective 1") or ($courseKey == "CSC: SD Minor Elective 1")){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 200 AND 500 ORDER BY `CourseNum`;";
+            }elseif(($courseKey == "CSC:IT Minor Elective 2") or ($courseKey == "CSC: SD Minor Elective 2")){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 300 AND 500 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:SD Elective"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>200 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "BS CSC:SD Concomitant"){
+            	$query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='MAT' AND `CourseNum`>=181 ORDER BY `CourseNum`;";            
+            }elseif($courseKey == "MS CSC:SD 400-Level"){
+            	    $query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE (`CourseID`='CSC554') OR `CoursePrefix`='CSC' AND `CourseNum` BETWEEN 400 AND 500 ORDER BY `CourseNum`;";
+            }elseif($courseKey == "MS CSC:SD 500-Level"){
+            	    $query = "SELECT `CourseID`,`CourseName`,`Credits` FROM `COURSE` WHERE `CoursePrefix`='CSC' AND `CourseNum`>500 ORDER BY `CourseNum`;";
+            }elseif($courseKey == ""){
             }elseif($courseKey == ""){
                 $query = "";
             }elseif($courseKey == ""){
@@ -87,7 +127,13 @@
         
     }
         public function displaySaveFromCheck($ID, $AIDID){
-            $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentID = %s and AIDID = %i;", $ID,$AIDID);
+//            	echo "<script>alert('ID:".$ID."');</script>";
+            if ($ID == "" || $ID == null || strlen($ID) == 8){
+                 $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE AIDID = %i;",$AIDID);
+            }else{
+                $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentId = %s and AIDID = %i;", $ID,$AIDID);
+            }
+            
             return $results;
         }
 		
@@ -103,7 +149,7 @@
 		
 		//Messy stuff.
 		public function findChecksheetToDisplay($ID){
-			$results = "";
+			
 			//The below is no longer a horrible hack.
 			$hasOfficalCheck = DB::query("SELECT CheckSheetId FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			if($hasOfficalCheck == null){
@@ -119,8 +165,10 @@
 				else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
 				}
-				else if($major == null){ //User doesn't have a major, we just grab the IT checksheet for now.
-					$results = "Checksheets/v1.1/min/cscITChecksheet.php"; //Might replace with a page saying to choose a major?
+
+				else{ //Because failing gracefully is better than doing horrible things.
+					$results = "error.html";
+
 				}
 			}
 			else{
@@ -169,18 +217,19 @@
             return $results;
         }
         
-        public function saveChecksheet($ID,$xml,$chkID,$AIDID){
+        public function saveChecksheet($ID,$xml,$chkID,$AIDID,$NumCredits){
             DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
              $fancyID = $AIDID;
             if ($counter > 0){
-                DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s WHERE AIDID=%s", $xml,$AIDID);
+                DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s, NumCredits =%i WHERE AIDID=%s", $xml,$NumCredits,$AIDID);
             }
             else{
             DB::insert('CHECKSHEETSAVE', array(
                           'StudentID' => $ID,
                           'CheckSheetID' => $chkID,
                             'SaveData' => $xml,
+                            'NumCredits' => $NumCredits,
                             'Date' => DB::sqleval("NOW()")
                         ));
                $fancyID = DB::insertId();

@@ -67,6 +67,17 @@
 				  }
 				  document.getElementById("UserForm").submit();
 			 }
+		function changeDisplay(){
+				if(advisor.checked==true){
+				var accountDisplayShow = document.getElementById("studentIdDisplay"); 
+				accountDisplayShow.innerHTML = "Faculty ID &nbsp;";
+				document.getElementById("major").disabled = true;}
+				
+				else{
+				var accountDisplayShow = document.getElementById("studentIdDisplay");
+				accountDisplayShow.innerHTML = "Student ID &nbsp;";	
+				document.getElementById("major").disabled = false;	
+			}};
 	  </script>
 	</head>
 	<body>
@@ -84,6 +95,10 @@
 					<tr>
 						<th>Email &nbsp;</th>
 						<td><input type="email" name="email" required/></td>
+					</tr>
+					<tr>
+						<th>Adviser? &nbsp;</th>
+						<td><input type = "checkbox" id = "advisor" value = "advisor" onclick="changeDisplay()" />
 					</tr>
 					<tr>
 						<th>Student Id &nbsp;</th>
