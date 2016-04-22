@@ -47,7 +47,6 @@
 	</body>
 </html>
 <?php
-    echo "All passwords are password";
 	if(isset($_POST['email'])){
 		$email = $_POST['email'];
 	}
