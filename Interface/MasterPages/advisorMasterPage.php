@@ -9,7 +9,7 @@ session_start();
 		$userID = NULL;
 	}
 	$results = $logic->getUserInfo($userID);
-    $name = "";
+    $name = '';
     foreach ($results as $row) {
        $name = $row['FirstName'];
        $name .= " " . $row['LastName'];
