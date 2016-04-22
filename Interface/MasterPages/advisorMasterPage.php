@@ -2,12 +2,7 @@
 session_start();
     require("../../PHPClasses/logic.class.php");
     $logic = new Logic();
-	if(isset($_SESSION["userID"])){
-		$userID = $_SESSION["userID"];
-	}
-	else{
-		$userID = NULL;
-	}
+	
 	$results = $logic->getUserInfo($userID);
     $name = "";
     foreach ($results as $row) {
