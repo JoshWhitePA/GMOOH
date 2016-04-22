@@ -27,10 +27,6 @@
 						<th>Password &nbsp;</th>
 						<td><input type="password" name="password" id="password" required/></td>
 					</tr>
-					<tr>
-						<th>Advisor? &nbsp;</th>
-						<td><input type = "checkbox" id = "facID" value = "facID" />
-					</tr>
 					<tr height = "10px"></tr>
 					<tr>
 						<th colspan = "2" align = "center">
