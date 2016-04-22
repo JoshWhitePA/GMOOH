@@ -2,7 +2,7 @@
 session_start();
     require("../../PHPClasses/logic.class.php");
     $logic = new Logic();
-
+	
 
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ session_start();
 		<div id = "header" class = "mainHeader">Welcome <?php $_SESSION['facID']; ?> (<a class = "logout" href = "logout.php">Log out</a>)</div>
 		<div class = "newSection"></div>
 		<div id = "headerBar" class = "headerBar">
-			<a href = "gmoohHome.php"><img src = "Images/gmoohLogo.png" class = "logo"/></a>
+			<a href = "advisor_home.php"><img src = "Images/gmoohLogo.png" class = "logo"/></a>
 			<div class = "menu">
 				<ul>
 					<li><a class = "active verticalAlign" href = "advisor_home.php">Home</a></li>
