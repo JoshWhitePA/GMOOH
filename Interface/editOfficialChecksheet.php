@@ -7,11 +7,11 @@
 	$userMaster = "";
 	$userIsStudent = true;
 	if(isset($_SESSION["facID"])){
-		$userMaster = "MasterPages/advisorMasterPage.php";
+		$userMaster = "MasterPages/advisorMasterPage.html";
 		$userIsStudent = false;
 	}
 	else{
-		$userMaster = "MasterPages/masterPage.php";
+		$userMaster = "MasterPages/masterPage.html";
 	}
 ?>
 <!DOCTYPE html>

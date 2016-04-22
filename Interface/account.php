@@ -29,10 +29,10 @@
 	$majorRow = "";
 	$userMaster = "";
 	if(isset($_SESSION["facID"])){
-		$userMaster = "MasterPages/advisorMasterPage.php";
+		$userMaster = "MasterPages/advisorMasterPage.html";
 	}
 	else{
-		$userMaster = "MasterPages/masterPage.php";
+		$userMaster = "MasterPages/masterPage.html";
 		$majorRow = "<tr id = 'majorRow'><td class = 'labelAlign' >Major:</td><td class = 'dataTD'><span class = 'box'>" . $major . "</span></td></tr>";
 	}
 ?>

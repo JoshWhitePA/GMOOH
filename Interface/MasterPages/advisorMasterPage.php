@@ -3,7 +3,7 @@ session_start();
     require("../../PHPClasses/logic.class.php");
     $logic = new Logic();
 	
-	
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -11,10 +11,10 @@ Question/Answer Format
 	
 	$userMaster = "";
 	if(isset($_SESSION["facID"])){
-		$userMaster = "MasterPages/advisorMasterPage.php";
+		$userMaster = "MasterPages/advisorMasterPage.html";
 	}
 	else{
-		$userMaster = "MasterPages/masterPage.php";
+		$userMaster = "MasterPages/masterPage.html";
 	}
 ?>
 <!DOCTYPE html>
