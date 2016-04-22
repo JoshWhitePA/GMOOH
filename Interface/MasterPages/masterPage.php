@@ -35,7 +35,7 @@ session_start();
 		</script>
 	</head>
 	<body>	
-		<div id = "header" class = "mainHeader">Welcome <?php echo $name; ?> (<a class = "logout" href = "logout.php">Log out</a>)</div>
+		<div id = "header" class = "mainHeader">Welcome <?php echo json_encode($name); ?> (<a class = "logout" href = "logout.php">Log out</a>)</div>
 		<div class = "newSection"></div>
 		<div id = "headerBar" class = "headerBar">
 			<a href = "gmoohHome.php"><img src = "Images/gmoohLogo.png" class = "logo"/></a>
