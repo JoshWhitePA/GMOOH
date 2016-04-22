@@ -11,10 +11,10 @@
 	
 	$userMaster = "";
 	if(isset($_SESSION["facID"])){
-		$userMaster = "MasterPages/advisorMasterPage.html";
+		$userMaster = "MasterPages/advisorMasterPage.php";
 	}
 	else{
-		$userMaster = "MasterPages/masterPage.html";
+		$userMaster = "MasterPages/masterPage.php";
 	}
 ?>
 <!DOCTYPE html>
