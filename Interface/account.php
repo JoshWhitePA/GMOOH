@@ -26,14 +26,14 @@
        $major = $row['Major'];
     }
 	
+	$majorRow = "";
 	$userMaster = "";
 	if(isset($_SESSION["facID"])){
 		$userMaster = "MasterPages/advisorMasterPage.html";
 	}
 	else{
 		$userMaster = "MasterPages/masterPage.html";
-		var row = document.getElementById(majorRow);
-		row.style.display = 'none';
+		$majorRow = "<tr id = 'majorRow'><td class = 'labelAlign' >Major:</td><td class = 'dataTD'><span class = 'box'>" . $major . "</span></td></tr>";
 	}
 ?>
 <!DOCTYPE html>
@@ -52,7 +52,7 @@
 							+ "<tr><td class = 'labelAlign' >Name:</td><td class = 'dataTD'><span class = 'box'><?php echo $name; ?></span></td></tr>"
 							+ "<tr><td class = 'labelAlign' >Student/Faculty ID:</td><td class = 'dataTD'><span class = 'box'><?php echo $ID; ?></span></td></tr>"
 							+ "<tr><td class = 'labelAlign' >Email:</td><td class = 'dataTD'><span class = 'box'><?php echo $email; ?></span></td></tr>"
-							+ "<tr id = 'majorRow'><td class = 'labelAlign' >Major:</td><td class = 'dataTD'><span class = 'box'><?php echo $major; ?></span></td></tr>"
+							+ "<?php echo $majorRow; ?>"
 							+ "</table>"
 							+ "<p><a href = 'changePassword.php'>Change your password</a></p></div>");
 				});
