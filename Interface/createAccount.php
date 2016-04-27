@@ -36,13 +36,20 @@
 	else{
 		$password = NULL;
 	}
-	
+
+    if(isset($_POST['major'])){
+		$major = $_POST['major'];
+	}else{
+     $major = NULL;
+    }
+
+
 	if (!isset($_POST['submit']) && !is_null($password) && !is_null($lastName) && !is_null($studentId) && !is_null($email) && !is_null($firstName)) { // if page is not submitted to itself echo the form
 	
 		//hash password
 		$hashedPassword = $logic -> generateHashWithSalt($password);
 		
-		$logic -> createUser($studentId, $email, $hashedPassword, $firstName, $lastName);
+		$logic -> createUser($studentId, $email, $hashedPassword, $firstName, $lastName/*,$major*/);
 		//header('location: gmoohHome.php');
 		header('location: login.php');
 		//needs to be directed to login or home. probably login to login in with new account

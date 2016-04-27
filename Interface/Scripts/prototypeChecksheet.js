@@ -795,6 +795,7 @@ function resetAlert() {
 }
 
 function searchBox(){
+    //get search values each time there is a keyup event from the search text box
 	$.ajax({
 		url: "./Scripts/DBSearchWAJAX.php?search=" + $("#searchInput").val(),
 		success: function (data) {
@@ -805,6 +806,7 @@ function searchBox(){
 }
 
 function searchByDept(){
+    //on the dropdown list change get the selected department to find classes for
 	var sel = $("#deptDD").find(":selected").text()
     sel = sel.substr(0,sel.indexOf(" "));
     
@@ -819,27 +821,23 @@ function searchByDept(){
      
 function scrapeTheSucka(){
     var credCount = 0;
-    var xmlSaveData = "<GMOOH><Student><GenEd>";
-    $.each($('.courseNameBoxGen'), function (index, value) { 
+    var xmlSaveData = "<GMOOH><Student><GenEd>";//create xml string
+    $.each($('.courseNameBoxGen'), function (index, value) {//iterate through gened courses by class
         xmlSaveData += "<Class>";
-        
-        xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";
-        idStr = "#genGrade" + index;
-        var catToText = "" + $(idStr).val();
-        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";
+        xmlSaveData += "<ClassName>" + $(value).text().trim() + "</ClassName>";//add grade to xml
+        idStr = "#genGrade" + index;//pull grade based on the ID
+        var catToText = "" + $(idStr).val();//get the grade
+        xmlSaveData += "<ClassGrade>" + catToText.toUpperCase() + "</ClassGrade>";//add grade to xml
         xmlSaveData += "</Class>";
-       if(catToText.trim() != ""){
+       if(catToText.trim() != ""){//count the number of credits
            credCount++;
        } 
-        
-});
+    });
     xmlSaveData += "</GenEd>";
     xmlSaveData += "<Program>";
-    
-    
-     $.each($('.courseNameBoxPro'), function (idx, valuez) { 
+
+     $.each($('.courseNameBoxPro'), function (idx, valuez) {//iterate through program courses by class
         xmlSaveData += "<Class>";
-        
         xmlSaveData += "<ClassName>" + $(valuez).text().trim() + "</ClassName>";
         idStr = "#proGrade" + idx;
          var catToText = "" + $(idStr).val();
@@ -849,15 +847,12 @@ function scrapeTheSucka(){
            credCount++;
        }
     });
-    
     xmlSaveData += "</Program>";
     xmlSaveData += "</Student></GMOOH>";
-    var chkID = $('#programID').val();
+    var chkID = $('#programID').val();//ID of the checksheet we are working on
     var curAIDID=null;
-    var alreadySaved = $('#saveChecka').val();
-//    console.log("programID:"+programID);
-    console.log(xmlSaveData);
-    $.ajaxSetup({
+    
+    $.ajaxSetup({//makes sure the rest of the code doesn't execute for the data is returned
         async: false
     });
      $.post( "./Scripts/DBSearchWAJAX.php", { id: chkID, Save: xmlSaveData, AIDID:AIDID, NumCredits: credCount})
@@ -865,24 +860,16 @@ function scrapeTheSucka(){
                  console.log("classInfo: "+String(data));
                  AIDID = data.trim();
                 curAIDID = AIDID;
-              });
-//     $.ajax({
-//		url: "./Scripts/DBSearchWAJAX.php?id="+chkID+"&Save=" + xmlSaveData"",
-//		success: function (data) {
-//			console.log("AIDID from scrape: "+data);
-//            curAIDID = data;
-//		}
-//	});
-    $.ajaxSetup({
+    });
+    $.ajaxSetup({//makes ajax asyncronous again
         async: true
     });
-    
     return curAIDID;
 }
 
 
 function loadSchedule(){
-   
+    //check the AIDID field in db to return saved schedule
      $.ajax({
                 url: "./Scripts/DBSearchWAJAX.php?AIDID=" + AIDID,
                 success: function (data) {
@@ -893,29 +880,10 @@ function loadSchedule(){
     
 }
 function saveSchedule(curAIDID){
-//    var sel =  $('#termDD').find(":selected").text();
-    
-//        var list = $("#termList").children().html();
-            var list = $("#termList").html();
-
-//     console.log(list);
-//        var newList = list.split('<br>'); //$(newList[1]).text()
-////        console.log($(newList[1]).text());
-//        var listOfClass = $('#termList').find('span').toArray();
-        console.log("curAIDID before send: "+curAIDID);
-    
-            
-            $.post( "./Scripts/DBSearchWAJAX.php", { AIDID: AIDID, classInfo: list })
-              .done(function( data ) {
-                 console.log("classInfo: "+String(data));
-              });
-//        $.ajax({
-//                     url: "./Scripts/DBSearchWAJAX.php?AIDID=" + curAIDID +"&classInfo="+list ,
-//                     success: function (data) {
-//                         console.log("classInfo: "+String(data));
-//                         }
-//                  });
-////    
+    var list = $("#termList").html();//get the html from the term list  
+    $.post( "./Scripts/DBSearchWAJAX.php", { AIDID: AIDID, classInfo: list })//post data to script to save information
+      .done(function( data ) {
+      });
 }
 
 

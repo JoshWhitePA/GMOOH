@@ -5,23 +5,26 @@
   			require_once 'meekrodb.2.3.class.php';
    		}
         
+            /*This method returns saved credits from CHECKSHEETSAVE table*/
           public function progressPagePop($stuID){
               $results = DB::query("SELECT NumCredits,CheckSheetId FROM CHECKSHEETSAVE WHERE StudentId = %s and CheckSheetOfficial = 1;", $stuID);
             return $results;
           }
         
+        /*This method searches for the advisors Students based on the advisors ID*/
         public function adviseeSearch($ID){
              $results = DB::query("SELECT s.FirstName,s.LastName,s.StudentId FROM STUDENT s WHERE AdvisorId = %s;", $ID);
             return $results;
             
         }
         
+        /*returns information about the student based on the students ID*/
         function getStudentInfo($StuID){
             $results = DB::query("SELECT s.FirstName,s.LastName,s.Email,s.Major,s.StudentId FROM STUDENT s WHERE StudentId = %s;", $StuID);
             return $results;
         }
         
-        
+        /*returns data based on the info provided by the ID of the div when the user click*/
         public function searchBasedOnKey($courseKey){
             //loose coupling be darned
             $query = "select * from `COURSE` where 1=2;";
@@ -112,37 +115,40 @@
             return $results;
             
         }
-    
+        /*Deletes a checksheet based on the student's ID and the checksheets AIDID*/
         public function deleteSavedChecksheet($ID, $checkID){
             $results = DB::delete('CHECKSHEETSAVE', "StudentID=%s and AIDID=%s", $ID,$checkID);
 
             return $results;
         }
         
-	
+	/*Changes the official checksheet and removes official bit from all of the other records for that student*/
 	public function changeOfficialChecksheet($ID, $checkID){
 		DB::update('CHECKSHEETSAVE', array('CheckSheetOfficial' => 0), "StudentId = %s", $ID);
         
 		DB::update('CHECKSHEETSAVE', array('CheckSheetOfficial' => 1), "StudentId = %s AND AIDID = %i", $ID,$checkID);
         
     }
-        public function displaySaveFromCheck($ID, $AIDID){
-//            	echo "<script>alert('ID:".$ID."');</script>";
-            if ($ID == "" || $ID == null || strlen($ID) == 8){
-                 $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE AIDID = %i;",$AIDID);
-            }else{
-                $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentId = %s and AIDID = %i;", $ID,$AIDID);
-            }
-            
-            return $results;
+        
+    /*Returns the XML from the DB based on the student or advisor ID but nowone else*/
+    public function displaySaveFromCheck($ID, $AIDID){
+        //checks if the user is the advisor
+        if ($ID == "" || $ID == null || strlen($ID) == 8){
+             $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE AIDID = %i;",$AIDID);
+        }else{
+            //person is a student
+            $results = DB::query("SELECT SaveData FROM CHECKSHEETSAVE WHERE StudentId = %s and AIDID = %i;", $ID,$AIDID);
         }
+        return $results;
+    }
 		
-		//Kinda replacement for the above. Different use.
+		/*Gets the official checksheet based on the student ID*/
 		public function getOfficialChecksheet($ID){
 			$results = DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s and CheckSheetOfficial = true;", $ID);
 			return $results;
 		}
         
+        /*Select the students major based on the student ID*/
 		public function grabUserMajor($ID){
 			$results = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
 		}
@@ -161,70 +167,61 @@
 				}
 				if($major == "CS: IT"){
 					$results = "Checksheets/v1.1/min/cscITChecksheet.php";
-				}
-				else if($major == "CS: SD"){
+				} else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
-				}
-
-				else{ //Because failing gracefully is better than doing horrible things.
+				} else{ //Because failing gracefully is better than doing horrible things.
 					$results = "error.html";
-
 				}
-			}
-			else{
+			}else{
 				foreach ($hasOfficalCheck as $row) {
 					$checksheetMajor = $row['CheckSheetId'];
 				}
 				//Since we DO have an official checksheet, use that checksheet's ID to determine which file to display.
 				if($checksheetMajor == "ULASCSCIT"){
 					$results = "Checksheets/v1.1/min/cscITChecksheetSaved.php";
-				}
-				else if($checksheetMajor == "ULASCSCSD"){
+				}else if($checksheetMajor == "ULASCSCSD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheetSaved.php";
-				}
-				else{ //Last ditch 'I don't know what happen' value - error page.
+				}else{ //Last ditch 'I don't know what happen' value - error page.
 					$results = "error_bad_checksheet.html";
 				}
 			}
 			return $results;
 		}
 		
+        /*Searches for term schedule based on the checksheets ID*/
         public function termSearch($AIDID,$sID){
-             $results = DB::query("SELECT ScheduleRaw  FROM CHECKSHEETSAVE WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
+            $results = DB::query("SELECT ScheduleRaw  FROM CHECKSHEETSAVE WHERE AIDID = %s and StudentID = %s;", $AIDID, $sID);
             return $results;
-            
         }
         
+        /*Saves the specific terms HTML*/
         public function termSave($studentID,$classInfo,$AIDID){
              DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
             
             if ($counter > 0){
-                
                 DB::query("UPDATE CHECKSHEETSAVE SET ScheduleRaw=%s WHERE AIDID=%s", $classInfo,$AIDID);
-                
             } else{
-                
                 DB::update('CHECKSHEETSAVE', array('ScheduleRaw' => $classInfo), "AIDID=%i", $AIDID);
-
             }
-        
             return true;
         }
         
+        /*Show all of the saved checksheets for that specific student based on studnet ID */
         public function displaySave($ID){
               $results = DB::query("SELECT CheckSheetOfficial,CheckSheetID,Date,AIDID FROM CHECKSHEETSAVE WHERE StudentID = %s;", $ID);
             return $results;
         }
         
+        /*Save the checksheet xml and number of credits, checks if info is already in the DB, if it is update it*/
+        /*Returns the ID of inserted table*/
         public function saveChecksheet($ID,$xml,$chkID,$AIDID,$NumCredits){
             DB::query("SELECT AIDID FROM CHECKSHEETSAVE WHERE AIDID=%s", $AIDID);
             $counter = DB::count();
              $fancyID = $AIDID;
             if ($counter > 0){
                 DB::query("UPDATE CHECKSHEETSAVE SET SaveData=%s, NumCredits =%i WHERE AIDID=%s", $xml,$NumCredits,$AIDID);
-            }
-            else{
+            } else{
             DB::insert('CHECKSHEETSAVE', array(
                           'StudentID' => $ID,
                           'CheckSheetID' => $chkID,
@@ -234,10 +231,10 @@
                         ));
                $fancyID = DB::insertId();
             }
-           
             return $fancyID;
         }
         
+        /*Get the info about the user used for log in*/
         public function getUserInfo($ID){
             $results = DB::query("SELECT FirstName,LastName,Email,Major,StudentId as ID from STUDENT where StudentId = %s;", $ID);
             if($results == null){
@@ -246,27 +243,19 @@
             return $results;
         }
         
+        /*Seaches based on text for the textbox*/
         public function searchBoxQuery($searchParam){
             $results = DB::query("SELECT CourseID,CourseName,Credits,CourseNum FROM COURSE WHERE CourseID like %ss OR CourseName like %ss;", $searchParam,$searchParam);
             return $results;
         }
         
+        /*Gets the courses based on the item select from the drop down menu*/
         public function searchByDept($searchParam){
             $results = DB::query("SELECT CourseID,CourseName,Credits, CourseNum FROM COURSE WHERE CoursePrefix= %s ORDER BY CourseNum,CourseName;", $searchParam);
             return $results;
         }
 		
-		//This function will set all of the passwords in the db to 
-		//whatever parameter you pass it. Be currful
-//		public function setDBPass($Password){
-//			$newPass = $this -> generateHashWithSalt($Password);
-//			
-//			DB::update('STUDENT', array(
-//		  'Password' => $newPass
-//		  ), "1 = %i", '1');
-//			 return $newPass;
-//		}
-
+        /*verify user based on email and password*/
 		public function validateUser($email, $password){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
 			$row = $mysqli_result->fetch_assoc();
@@ -286,23 +275,25 @@
 			if(is_null($hashPass)){
 				return false;
 			}
-			
 			return $this -> verifyPassword($password, $hashPass);
 		}
 		
-		function createUser($studentId, $email, $password, $firstName, $lastName){
+        /*Makes a user from validated user input*/
+		function createUser($studentId, $email, $password, $firstName, $lastName, $major){
 			DB::insert('STUDENT', array(
   			'StudentId' => $studentId,
   			'Email' => $email,
   			'Password' => $password,
   			'FirstName' => $firstName,
-  			'LastName' => $lastName
+  			'LastName' => $lastName,
+            'Major' => $major
 			));
 		}
 		
+        /*Compares password, one is hashed one is not, we hash the one and compare the hashes*/
 		function verifyPassword($password, $hashedPassword) {
 			// example call $logic -> verifyPassword("L33t",$hashedPassword);
-//            echo crypt($password, $hashedPassword);
+            // echo crypt($password, $hashedPassword);
 			
 			if( crypt($password, $hashedPassword) == $hashedPassword){
                 echo "true";
@@ -313,6 +304,7 @@
 			}
 		}
 		
+        /*Sets the session after they have been authenticated*/
 		function setSession($email){
 			$mysqli_result = DB::queryRaw("SELECT Password,Email,StudentId FROM STUDENT WHERE Email= %s", $email);
 			$row = $mysqli_result->fetch_assoc();
@@ -354,7 +346,6 @@
 					return false;
 				}
 			}
-			
 			$studentValid = $this -> verifyPassword($oldPassword, $hashPass);
 			if($studentValid == true){
 				$newPassword = $this -> generateHashWithSalt($newPassword);
@@ -368,9 +359,9 @@
 			}
 		}
 		
+        /*Creates hash of password with a salt*/
 		public function generateHashWithSalt($Password) {
 			//example: $hashedPassword = $logic -> generateHashWithSalt("L33t");
-			
 			$Salt = uniqid(mt_rand(), true); // Could use the second parameter to give it more entropy.
 			$Algo = '6'; // This is CRYPT_SHA512 as shown on http://php.net/crypt
 			$Rounds = '5000'; // The more, the more secure it is!
