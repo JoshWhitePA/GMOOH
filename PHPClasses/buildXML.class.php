@@ -147,7 +147,7 @@ class XMLBuilder {
             $xmlString .= "</End>";
         }
          $xmlString .= "</Checksheet>";
-//        echo "<br/><br/>";
+
          return $xmlString ;
     }
     

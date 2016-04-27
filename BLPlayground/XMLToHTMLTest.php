@@ -3,6 +3,7 @@
 // Load XML file
 include("../PHPClasses/buildXML.class.php");
 $xmlB = new XMLBuilder();
+
 $genXML = $xmlB -> buildFullSheet(1);
 $genXML = str_replace("\t", '', $genXML); // remove tabs
 $genXML = str_replace("\n", '', $genXML); // remove new lines
