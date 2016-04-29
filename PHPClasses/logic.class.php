@@ -169,8 +169,8 @@
 					$results = "Checksheets/v1.1/min/cscITChecksheet.php";
 				} else if($major == "CS: SD"){
 					$results = "Checksheets/v1.1/min/cscSDChecksheet.php";
-				} else{ //Because failing gracefully is better than doing horrible things.
-					$results = "error.html";
+				} else{ //Default to IT checksheet if no valid results.
+					$results = "Checksheets/v1.1/min/cscITChecksheet.php";
 				}
 			}else{
 				foreach ($hasOfficalCheck as $row) {
