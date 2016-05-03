@@ -5,7 +5,7 @@
 	header('location: login.php');
 	}	
 	
-	//This should eventually be rolled into its own script.
+	//This might be better off as its own script.
 	$logic = new Logic();
 	if(isset($_SESSION["userID"])){
 		$userID = $_SESSION["userID"];
@@ -21,7 +21,7 @@
 	foreach ($rawAIDID as $row) {
         $AIDID = $row["AIDID"];
     }
-	//CONCAT THE VARIBLES TO THE PAGE ADDRESS!
+	//Concatinates the variables to the page address so that it can be displayed.
 	$checksheet = $checkURL . "?AIDID=" . $AIDID ;	
 ?>
 <!DOCTYPE html>
@@ -32,11 +32,14 @@
 	        <link rel = "stylesheet" type = "text/css" href = "//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css">
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
+			//The below operates thanks to JQuery using Monads. 
+			//These allow dynamically calling functions on the returns of other functions.
 			$(document).ready(function(){
 				$("#master").load("MasterPages/masterPage.html", function() {
 					$("#mainSection").append("<div id ='innerSection' class ='innerSection'></div>");
-					$("#innerSection").load(<?php echo json_encode($checksheet); ?>, function() {
-						$('#section :input').attr('readonly', true);
+					$("#innerSection").load(<?php echo json_encode($checksheet); ?>, function() { //Appends the checksheet from the PHP logic.
+						$('#section :input').attr('readonly', true); //Makes all input fields read-only
+						//Append a style into the checksheet to disable certain UI-related highlights.
 						$('#styleJack').append("th a:hover, .dropdownSection:hover .dropButtonNotes {"
 							+ "opacity: 1;"
 							+ "}"

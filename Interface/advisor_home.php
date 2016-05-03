@@ -1,4 +1,8 @@
 <!-- Advisor homepage.
+File Name: advisor_home.php
+Date Created: 4/17/2016
+Created by Christopher Steckhouse
+Contributors: Christian Carreras, Michael Para
 Created for CSC 355WI 020 -->
 <?php 
 session_start();

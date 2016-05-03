@@ -1,3 +1,10 @@
+<!-- Password change page.
+File Name: changePassword.php
+Date Created: 2/22/2016
+Created by Christopher Steckhouse
+Contributors: Christian Carreras, Michael Para
+Created for CSC 355WI 020 -->
+
 <?php 
 	session_start();
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
