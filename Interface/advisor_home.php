@@ -1,9 +1,12 @@
-<!-- Advisor homepage.
+<!--
+Author: Christopher Steckhouse
+Contributors: Christian Carreras, Joshua White (others?)
 File Name: advisor_home.php
-Date Created: 4/17/2016
-Created by Christopher Steckhouse
-Contributors: Christian Carreras, Michael Para
-Created for CSC 355WI 020 -->
+Date: 4/17/2016
+Organization: CSC 355 GMOOH Interface Team, Business Logic team
+Kutztown University
+Purpose: Home page for advisors.
+-->
 <?php 
 session_start();
     require("../PHPClasses/logic.class.php");

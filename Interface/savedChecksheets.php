@@ -1,3 +1,13 @@
+<!--
+Author: Christopher Steckhouse
+Contributors: Christian Carreras, Michael Para, Joshua White (others?)
+File Name: savedChecksheets.php
+Date: 3/12/2016
+Organization: CSC 355 GMOOH Interface Team, Business Logic team
+Kutztown University
+Purpose: Page through which students can select a saved checksheet.
+-->
+
 <?php 
     session_start();
     require("../PHPClasses/logic.class.php");

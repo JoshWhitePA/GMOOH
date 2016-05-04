@@ -614,7 +614,7 @@ div.officialHeaderBox {
 	border-color: #dddddd;
 }
 
-/* Work-in-progress additional classes */
+/* Additional style classes. */
 .changepass{
 	/* border:3px;
 	border-style:solid; 
@@ -638,62 +638,58 @@ span.box { /* Box for containing data. */
 }
 
 div.boxed{ /* Box container for page. */
-	/*
-	border:1px; 
-	border-style:solid; 
-	border-color:#800020; */ /* Disabled for the moment. */
 	padding: 0;
 }
 
-td.labelAlign{ /* alignment (and other things) for TD elements that are labels */
+td.labelAlign{ /* Alignment and padding for TD elements that are labels */
 	text-align: right;
 	padding-right: 2px;
 }
 
-table,tr.interface{ /* general interface table elements */
+table,tr.interface{ /* General interface table elements */
 	border: 1px solid;
 	border-color: #999999;
 	border-radius: 5px;
 }
 
-td.paddedTD{ /* Add padding and some other tweaks*/
+td.paddedTD{ /* Added padding */
 	padding: 3px;
 }
 
-td.dataTD{ /* Add padding and some other tweaks*/
+td.dataTD{ /* Add padding, align text to the left. */
 	padding: 3px;
 	text-align: left;
 }
 
-td.majorData{ /* Needed specific padding on an element */
+td.majorData{ /* Needed specific padding on this element. */
 	padding-left: 25px;
 }
 
-td.optionSelect td { /* Add a box around the advisor option selection. Might be useful elsewhere too! */
+td.optionSelect td { /* Add a box around option selections. */
 	border: 1px solid;
 	border-color: #999999;
 	border-radius: 6px;
 }
 
-/* Bordered bottom style. Broken currently. */ /*
+/* Bordered bottom style. Does NOT work. */ /*
 tr.bordedBottom{ 
 	border-bottom: 1px solid;
 	border-color: #999999;
 }
 */
 
-table.tableCenter{ /* Align table to center. Add some general class. */
+table.tableCenter{ /* Align table to center. */
 	margin: auto;
 }
 
-table.advisorOptions{ /* style for the advisor homepage options panel - only around in case someone used it elsewhere! */
+table.advisorOptions{ /* Style for the advisor homepage options panel - deprecated. */
 	margin: auto;
 	text-align: left;
 
 	padding: 3px;
 }
 
-table.adviseeList{ /* style for the advisor homepage student select table */
+table.adviseeList{ /* Style for the advisor homepage student select table */
 	margin: auto;
 	text-align: left;
 	width: 100%;
@@ -701,11 +697,11 @@ table.adviseeList{ /* style for the advisor homepage student select table */
 	border-style: hidden;
 }
 
-/* WARNING! WARNING! HACKY STUFF BELOW!
+/* WARNING! The below is rather hacky!
 You can't use border-collapse with a border-radius on tables,
  but you CAN create a div around the table and have the table's width be 100%
  within that div.
-It results in the look I wanted, though it feels kinda dirty. */
+It results in the look I wanted, though it may not be the cleanest method. */
 .rowSel > td{ border-left: 1px solid #999999; padding: 5px; }
 .rowSel > td:first-child{ border-left: none; padding: 5px; }
 .rowSel > th{ border-left: 1px solid #999999; border-bottom: 1px solid #999999; padding-left: 4px; }
@@ -718,5 +714,3 @@ div.boarderedTable{
 	width: 80%;
 	margin: auto;
 }
-
-/* End of my awful WIP stuff. - C Steckhouse */

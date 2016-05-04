@@ -1,3 +1,13 @@
+<!--
+Author: Christopher Steckhouse
+Contributors: Christian Carreras, Michael Para, Joshua White (others?)
+File Name: account.php
+Date: 3/12/2016
+Organization: CSC 355 GMOOH Interface Team, Business Logic team
+Kutztown University
+Purpose: Account information page for students and faculty.
+-->
+
 <?php
     require_once("../PHPClasses/logic.class.php");	
     session_start();

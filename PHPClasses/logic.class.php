@@ -153,12 +153,13 @@
 			$results = DB::query("SELECT Major from STUDENT where StudentID = %s;", $ID);
 		}
 		
-		/* Finds which checksheet to display according to the user ID.
-			If they have an official checksheet, loads and displays that.
-			If they don't have an official checksheet, displays their major's checksheet.
-			If they don't have a major or it can't be found in the list of checksheets, displays the CSC IT checksheet.
-			If they have an official checksheet but it cannot be associated with a checksheet file, displays an error
-				stating that their official checksheet cannot be retrieved. */
+		/* 	Name: findChecksheetToDisplay
+			Type: Facilitator
+			Parameters: ID - the user ID to search by.
+			Return: URL for the checksheet to be used for the user.
+			Finds which checksheet to display according to the user ID.
+			 Defaults to the CSC IT checksheet if it can't find their major,
+			 and puts up an error page if it can't find the correct official checksheet.*/
 		public function findChecksheetToDisplay($ID){
 			
 			//The below is no longer a horrible hack.
