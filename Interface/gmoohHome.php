@@ -1,3 +1,13 @@
+<!--
+Author: Christopher Steckhouse
+Contributors: Christian Carreras, Michael Para
+File Name: gmoohHome.html
+Date: 3/12/2016
+Organization: CSC 355 GMOOH Interface Team
+Kutztown University
+Purpose: Home page for students.
+-->
+
 <?php 
 	session_start();
 	require("../PHPClasses/logic.class.php");
