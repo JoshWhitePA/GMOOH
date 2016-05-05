@@ -3,11 +3,15 @@
 *	Created:		02/13/2016
 *	Version:		1.1 (02/28/2016)
 *	Author:			Christian Carreras
+* 	Contributor(s):	Christopher Steckhouse
 *	Organization:	Kutztown University CSC 355 Spring
 *	Purpose:		This css file creates the necessary attributes and classes
 *					to be used by checksheet files. Visually, this creates a
-*					checksheet near identical to an official checksheet.
+*					checksheet near identical to an official checksheet. This
+*					style is to be used by minimized checksheets.
 */
+
+/* This section will hold all the table content. It splits the page in half */
 div.section {
 	min-height: 300px;
     width: 90%;
@@ -15,20 +19,24 @@ div.section {
 	position: relative;
 }
 
+/* This is used to break into a new section. This is mandatory for all sections */
 div.newSection {
 	clear: both;
 }
 
+/* Table header/title for tables */
 .tableHeader {
 	background-color: rgba(190, 190, 190, 0.2);
 	font-size: 18px;
 }
 
+/* Format for grade slots in the chekchseet */
 .tableGrade {
 	width: 30px;
 	text-align: center;
 }
 
+/* Format for grade titles in general education */
 .tableGradeCaption {
 	width: 30px;
 	text-align: center;
@@ -36,16 +44,19 @@ div.newSection {
 	cursor: help;
 }
 
+/* Table header/table for general education */
 .tableCaption {
 	font-size: 18px;
 	border: none;
 }
 
+/* Empty space for extra space between tables */
 .tableSpace {
 	height: 5px;
 	border: none;
 }
 
+/* General formatting for tables */
 table {
 	width: 100%;
 	min-width: 425px;
@@ -57,6 +68,7 @@ table {
 	border: none;
 }
 
+/* General formatting for table headers */
 th {
 	padding: 5px;
 	text-align: left;
@@ -64,38 +76,46 @@ th {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Format of the table header that will hold the course name */
 th.courseBox {
 	padding: 0;
 	font-weight: normal;
 }
 
+/* General formatting for table content */
 td {
 	padding: 5px;
 	text-align: left;
 	border: 1.5px solid black;
 }
 
+/* Bold tag will actually make text NOT bold */
 b {
 	font-weight: normal;
 }
 
+/* Make text smaller for subtitles in the general education sections */
 b.smaller {
 	font-size: 14px;
 }
 
+/* Horizontal bar for horizontal breaking */
 hr {
 	border-top: double;
 }
 
+/* Formatting for general education misc. notes */
 u {
 	text-decoration: none;
 	cursor: help;
 }
 
+/* Hover formatting for general education misc. notes */
 u:hover {
 	opacity: 0.4;
 }
 
+/* This will hold the name of the course the user chooses */
 .courseNameBox {
 	height: inherit;
 	padding: 3px;
@@ -106,18 +126,22 @@ u:hover {
 	border-color: transparent;
 }
 
+/* Signifies a section has notes the user can toggle */
 th a, .dropButtonNotes {
     text-decoration: none;
 }
 
+/* Changes the opacity of the text so the user knows they can click it for notes */
 th a:hover, .dropdownSection:hover .dropButtonNotes {
 	opacity: 0.4;
 }
 
+/* Change the cursor to pointer instead of the default text pointer */
 th.dropdownSection {
     cursor: pointer;
 }
 
+/* Formats the actual notes of a section. Is hidden until toggled in a function */
 .dropdownSectionNotes {
     display: none;
     position: relative;
@@ -131,11 +155,6 @@ th.dropdownSection {
 	border-radius: 5px;
 }
 
-/* Additional styles for the homepage version of the checksheet */
-th.topSection {
-    /* Future tweaks mirroring th.dropdownSection */
-}
-
 .sectionNoteStyle { /* Don't know if this NEEDS to be duplicated, but I'm not going to futz with it. */
     text-decoration: none;
 }
@@ -144,7 +163,7 @@ th.topSection {
 	opacity: 1;
 }
 
-/* textbox for grades */
+/* Textbox for grades */
 .gradeBox{
 	width: 25px;
 	border: none;
@@ -154,7 +173,8 @@ th.topSection {
 	font-size: 16px;
 }
 
+/* Gets rid of the input focus when entering text for the grade */
 .gradeBox:focus {
-outline: none;
-border: none;
+	outline: none;
+	border: none;
 }

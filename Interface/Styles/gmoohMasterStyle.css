@@ -1,4 +1,19 @@
-/* Master page classes */
+/*
+*	File: 			gmoohMasterStyle.css
+*	Created:		04/04/2016
+*	Author:			Christian Carreras
+*	Contributor(s):	Christopher Steckhouse, Michael Para
+*	Organization:	Kutztown University CSC 355 Spring
+*	Purpose:		This css file creates the necessary attributes and classes
+*					to be used by the master pages. Everything that is displayed
+*					on the GMOOH site will be using classes from this file.
+*					Anything that alters the site as a whole (the master page)
+*					or even a page in specific should be placed in here.
+*/
+
+/******* Master page classes *******/
+
+/* Formatting for the html section of the page with background */
 html {
 	background-color: #f9f9f9;
 	position: relative;
@@ -15,6 +30,7 @@ html {
 	background-attachment: initial;
 }
 
+/* Formatting for the body section of the page */
 body {
 	width: 100%;
 	height: 100%;
@@ -26,6 +42,7 @@ body {
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 
+/* Formatting for the loading screen */
 .blank {
 	position: fixed;
 	left: 0px;
@@ -37,6 +54,7 @@ body {
 	cursor: wait;
 }
 
+/* Formatting for the loading image :3 */
 .loadingImg {
 	position: relative;
 	left: 0;
@@ -49,6 +67,7 @@ body {
 	background: url("../Images/loadThisCat.gif") center no-repeat #fff;
 }
 
+/* Format for any text displayed in the loading screen */
 .loadingText {
 	position: relative;
 	top: 35%;
@@ -58,6 +77,7 @@ body {
 	z-index: 9999;
 }
 
+/* Format for the rest of the content in the page */
 div.pageBody {
 	height: 100%;
 	min-height: inherit;
@@ -68,6 +88,7 @@ div.pageBody {
 	position: relative;
 }
 
+/* Format of the background in the main section of the master page */
 div.background {
 	position: relative;
 	width: 100%;
@@ -80,6 +101,8 @@ div.background {
 	background-attachment: initial;
 }
 
+/* Formatting for the horizontal bar that will hold the drop down menu 
+This will stretch the whole width of the page regardless of the menu's width */
 div.headerBar {
 	width: 100%;
 	height: 4.5%;
@@ -96,6 +119,8 @@ div.headerBar {
 	position: relative; 
 }
 
+/* Formatting for the div that will actually hold and place the drop down menu
+in the correct position on the header bar */
 div.menu {
 	position: relative;
 	min-width: 600px;
@@ -108,6 +133,7 @@ div.menu {
 	background-color: none;
 }
 
+/* Formatting for the drop down menu */
 ul {
     list-style-type: none;
 	height: 100%;
@@ -115,6 +141,7 @@ ul {
     padding: 0;
 }
 
+/* Formatting for a drop down item */
 li {
     float: left;
 	border-style: none solid none none;
@@ -125,6 +152,7 @@ li {
 	font-size: 18px;
 }
 
+/* Formatting for a clickable drop down item */
 li a, .dropButton {
     display: inline-block;
     color: white;
@@ -134,15 +162,18 @@ li a, .dropButton {
 	
 }
 
+/* Formatting for when the user hovers over a drop down item */
 li a:hover, .dropdown:hover .dropButton {
     background-color: #eeeee;
 	opacity: 0.4;
 }
 
+/* Specifies how to display drop down items */
 li.dropdown {
     display: inline-block;
 }
 
+/* Formatting for items in the drop down list */
 .dropdownContent {
     display: none;
     position: absolute;
@@ -153,6 +184,7 @@ li.dropdown {
 	z-index: 1;
 }
 
+/* Formatting for clickable items in the drop down list */
 .dropdownContent a {
     color: black;
     padding: 12px 16px;
@@ -161,14 +193,17 @@ li.dropdown {
     text-align: left;
 }
 
+/* Formatting for when the user hovers over the items in the drop down list */
 .dropdownContent a:hover {
 	background-color: #dddddd;
 }
 
+/* Specifies how to display items in the dropdown list when hovering over them */
 .dropdown:hover .dropdownContent {
     display: block;
 }
 
+/* The main section in the middle of the master page */
 div.mainSection {
 	top: 0;
     bottom: 0;
@@ -189,6 +224,7 @@ div.mainSection {
 	border-radius: 5px;
 }
 
+/* The inner section of the main section with margins */
 div.innerSection {
 	top: 0;
     bottom: 0;
@@ -204,6 +240,7 @@ div.innerSection {
 	background: rgba(249, 249, 249, 0);
 }
 
+/* The left section of the master page */
 div.leftSection {
 	top: 0;
 	bottom: 0;
@@ -222,6 +259,7 @@ div.leftSection {
 	visibility: hidden;
 }
 
+/* The inner section of the left section with margins */
 div.leftInnerSection {
 	left: 7.5%;
 	right: 0;
@@ -240,6 +278,7 @@ div.leftInnerSection {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+/* The inner section of the left section with margins and stretches most of the height */
 div.innerSectionLong {
 	left: 7.5%;
 	right: 0;
@@ -259,6 +298,7 @@ div.innerSectionLong {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+/* The right section of the master page */
 div.rightSection {
 	top: 0;
 	bottom: 0;
@@ -277,6 +317,7 @@ div.rightSection {
 	visibility: hidden;
 }
 
+/* The inner section of the right section with margins */
 div.rightInnerSection {
 	left: 7.5%;
 	right: 0;
@@ -295,10 +336,12 @@ div.rightInnerSection {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }	
 
+/* Creates a break between div sections. Necessary for page layout */
 div.newSection {
 	clear: both;
 }
 
+/* Formatting for the GMOOH Logo */
 img.logo {
 	height: 100px;
 	width: 230px;
@@ -309,6 +352,7 @@ img.logo {
 	z-index: 2;
 }
 
+/* Formatting for the master page's header */
 div.mainHeader {
 	width: 100%;
 	height: 11%;
@@ -322,6 +366,7 @@ div.mainHeader {
 	opacity: 0.9;
 }
 
+/* Formatting for the master page's footer */
 div.footer {
 	width: 100%;
 	height: 4%;
@@ -334,35 +379,27 @@ div.footer {
 	position: relative;
 }
 
+/* Vertically aligns a span with a parent */
 .verticalAlign {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
+/* Formatting for the logout text */
 a.logout {
 	text-decoration: none;
 	color: #eed0ff;
 }
 
+/* Formatting for when the user hovers over the logout text */
 a.logout:hover {
 	opacity: 0.6;
 }
 
-div.progressStatus {
-	position: absolute;
-	top: 85%;
-	left: 50%;
-	transform: translateX(-50%);
-	background-color: rgba(235, 235, 235, 1);
-	padding: 10px;
-	border: solid;
-	border-width: 1px;
-	border-radius: 5px;
-	border-color: #aaaaaa;
-}
+/****** Prototype Checksheet Classes ******/
 
-/* Prototype Checksheet Classes */
+/* Formatting for the div that will hold the course search box and search img */
 div.searchBox {
 	width: 100%;
 	height: 25px;
@@ -376,6 +413,7 @@ div.searchBox {
 	border-color: #dddddd;
 }
 
+/* Formatting for the div that will hold the name of the section the user selected */
 div.titleBox {
 	width: 100%;
 	min-height: 25px;
@@ -388,6 +426,7 @@ div.titleBox {
 	border-color: #dddddd;
 }
 
+/* Formatting for the divs that will hold the course names for a specific section */
 div.sectionCourses {
 	width: 100%;
 	height: calc(100% - 27px);
@@ -396,6 +435,7 @@ div.sectionCourses {
 	overflow-y: auto;
 }
 
+/* Formatting for the text box the the user will use to search for courses */
 .searchTextBox {
 	width: 78.5%; 
 	height: 15px; 
@@ -405,11 +445,13 @@ div.sectionCourses {
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 
+/* Removes the focus box from around the text box when the user selects it */
 .searchTextBox:focus {
 	outline: none;
 	border: none;
 }
 
+/* Formatting the search image by the search text box */
 .searchImg {
 	width: 12%;
 	min-height: 21px;
@@ -420,6 +462,7 @@ div.sectionCourses {
 	background-color: #dddddd;
 }
 
+/* Formatting for the print button */
 .printImg {
 	width: 5%;
 	min-height: 30px;
@@ -432,6 +475,7 @@ div.sectionCourses {
 	bottom: 10px;
 }
 
+/* Formatting fot the save button */
 .saveImg {
 	width: 5%;
 	min-height: 30px;
@@ -444,6 +488,7 @@ div.sectionCourses {
 	bottom: 10px;
 }
 
+/* Formatting for the remove/discard button */
 .trashImg {
 	width: 5%;
 	min-height: 30px;
@@ -456,6 +501,7 @@ div.sectionCourses {
 	bottom: 10px;
 }
 
+/* Formatting for the add semester button */
 .addImg {
 	width: 12%;
 	min-height: 21px;
@@ -465,6 +511,7 @@ div.sectionCourses {
 	float: right;
 }
 
+/* Formatting for the select department drop down list */
 select.courseSelect {
 	width: 100%;
 	height: 25px;
@@ -475,6 +522,7 @@ select.courseSelect {
 	position: relative;
 }
 
+/* Formatting for the select checksheet drop down list */
 select.checksheetSelect {
 	width: 100%; 
 	border: solid;
@@ -484,6 +532,7 @@ select.checksheetSelect {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+/* Formatting for all other divs that will hold course names */
 div.courseBox {
 	height: 20px;
 	width: calc(100% - 5px);
@@ -497,6 +546,7 @@ div.courseBox {
 	font-size: 12px;
 }
 
+/* Formatting for semester labels in the scheduler */
 label.termLabel {
 	width: calc(100% - 5px);
 	white-space: nowrap;
@@ -505,44 +555,53 @@ label.termLabel {
 	border: none;
 }
 
+/* Formatting for section name labels in the title box */
 label.sectionLabel {
 	position: relative;
 	top: 2px;
 }
 
+/* Special formatting for jQuery UI dialog boxes */
 .no-close .ui-dialog-titlebar-close {
   display: none;
 }
 
+/* More special formatting for dialog boxes */
 div.popupDialog {
 	display: none;
 	z-index: 3;
 }
 
+/* Formatting for the scheduler */
 .semFormat {
 	width: 100%;
 	height: initial;
 	border: none;
 }
 
+/* Formatting for courses so they do not wrap to the next line */
 .noWrap {
 	white-space: nowrap;
 }
 
+/* Formatting for when the user drags something deletable over the trash can */
 .trashHover {
 	background-color: rgba(175, 175, 175, 0.5);
 	border-radius: 5px;
 }
 
+/* Formatting for when the user drags a course over a semester in the scheduler */
 .termHover {
 	background-color: rgba(175, 175, 175, 0.5);
 }
 
+/* Formatting for when the user cannot drop the dragged item */
 .noDrop {
 	cursor: no-drop;
 }
 
-/* View Saved Checksheets Classes */
+/****** View Saved Checksheets Classes ******
+DEPRECATED*/
 
 div.leftViewSaved {
 	top: 0;
@@ -584,8 +643,10 @@ div.rightViewSaved {
 	visibility: hidden;
 }
 
-/* Edit Official Checksheet Classes */
+/****** Edit Official Checksheet Classes ******
+DEPRECATED*/
 
+/* Formatting for the reset button on the edit official checksheet page */
 .resetImg {
 	width: 5%;
 	min-height: 30px;
@@ -598,6 +659,7 @@ div.rightViewSaved {
 	bottom: 10px;
 }	
 
+/* Formatting for the name of the checksheet on the edit official checksheet page */
 div.officialHeaderBox {
 	width: 100%;
 	height: 20px;
@@ -612,6 +674,22 @@ div.officialHeaderBox {
 	border-style: solid none solid none; 
 	border-width: 2px; 
 	border-color: #dddddd;
+}
+
+/****** Progress Page ******/
+
+/* Formatting for the current status of the student i.e. freshman, sophomore etc. */
+div.progressStatus {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(235, 235, 235, 1);
+	padding: 10px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: #aaaaaa;
 }
 
 /* Work-in-progress additional classes */

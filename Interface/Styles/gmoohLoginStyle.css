@@ -1,12 +1,17 @@
-/* * * * * * * * * * * * * * * * *
-* 	File: 		gmoohStyle.css
-*	Created:	02/11/2016
-* * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*	Author:			Christian Carreras
+* 	File: 			gmoohStyle.css
+*	Date:			02/11/2016
+*	Compandy:		CSC 355 GMOOH
+*	Organization:	Kutztown University of Pennsylvania
+*	Purpose:		This css file creates the look and feel for the login page,
+*					create account page and index page. It follows the pattern
+*					similar to other Kutztown pages purposely. When coming to
+*					the index of login page, we wanted a sense of familiarity
+*					to the students of Kutztown if they would use the system.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-/*	Maroon: #551020;
-	Gold:	#efe0c0;
-*/
-
+/* Format the whole html section with a special background */
 html { 
 	background-image: url("../Images/gmoohBackground.jpg");
 	background-repeat: no-repeat;
@@ -15,6 +20,7 @@ html {
 	background-attachment: fixed;
 }
 
+/* Buttons for index, login and create account page */
 .button1 {
 	background-color: #551020;
 	color: white;
@@ -74,6 +80,7 @@ div.two { /* Create an account div box */
 	border-radius: 6px;
 }
 
+/* Table to format labels, text boxes and buttons within forms */
 table {
 	margin-right: auto;
 	margin-left: auto;
@@ -82,6 +89,7 @@ table {
 	min-width: 450px;
 }
 
+/* Style format for labels to text boxes */
 th {
 	font-family: 'AmericanTypwrterITCW01- 731031'; 
 	color: #551020;
@@ -93,6 +101,7 @@ th {
 		0 -1px white;
 }
 
+/* Alignment format for text boxes */
 td {
 	text-align: left;
 }
