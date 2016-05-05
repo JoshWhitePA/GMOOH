@@ -1,8 +1,16 @@
 <!--
-Question/Answer Format
-+ "<br/>Q. <b></b>"
-+ "<br/>A. <br/>"
--->
+* Author:			Christian Carreras
+* File Name:		help.html
+* Date:				04/04/2016
+* Company:			CSC 355 GMOOH
+* Organization:		Kutztown University of Pennsylvania
+* Purpose:			This page displays all manner of FAQs and user help.
+					As there has been no extensive user testing all FAQs were
+					made up and should not be taken as serious or viewed as
+					actual help in any shape or form. I apologize in advance
+					for my lousy sense of humour.
+					** The HTML version is deprecated. Use the PHP version **
+--> 	
 <?php 
 	session_start();
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){

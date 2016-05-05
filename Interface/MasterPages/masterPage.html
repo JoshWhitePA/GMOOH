@@ -1,3 +1,17 @@
+<!--
+* Author:			Christian Carreras
+* File Name:		masterpage.html
+* Date:				04/04/2016
+* Company:			CSC 355 GMOOH
+* Organization:		Kutztown University of Pennsylvania
+* Purpose:			This file is the basic template for every student page. It
+					will dynamically loaded into a page by the use of the jQuery
+					load function. This insures all pages have the same template
+					and no code needs to be copied or more than once. The fact
+					that this file is a master page means that any changes to this
+					file will be shown in any page that loads the master page.
+-->
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,6 +19,7 @@
 		<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohMasterStyle.css"/>
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
+			//Set the min-width of the page to the size of the browser window
 			$(document).ready(function(){
 				if($(window).width() >= 966) {
 					$("#master").css("min-height", window.innerHeight);
@@ -18,41 +33,56 @@
 		</script>
 	</head>
 	<body>	
+		<!-- Create page header that has a welcome message and an option to log out -->
 		<div id = "header" class = "mainHeader">Welcome <php></php><? echo $_SESSION['FirstName']; ?> (<a class = "logout" href = "logout.php">Log out</a>)</div>
 		<div class = "newSection"></div>
+		<!-- Create dropdown menu list -->
 		<div id = "headerBar" class = "headerBar">
+			<!-- Insert GMOOH Logo that will take the user to their home page -->
 			<a href = "gmoohHome.php"><img src = "Images/gmoohLogo.png" class = "logo"/></a>
 			<div class = "menu">
 				<ul>
+					<!-- Home button link to take user to their home page -->
 					<li><a class = "active verticalAlign" href = "gmoohHome.php">Home</a></li>
+					<!-- Account dropdown button -->
 					<li class = "dropdown">
+						<!-- Take user to their account page -->
 						<a class = "dropButton verticalAlign" href = "account.php">Account</a>
 						<div class= "dropdownContent">
+							<!-- Also take user to their account page -->
 							<a href= "account.php">View Your Account</a>
+							<!-- Take user to change password page -->
 							<a href= "changePassword.php">Change Your Password</a>
 						</div>
 					</li>
+					<!-- Checksheet dropdown button -->
 					<li class = "dropdown">
+						<!-- Take user to view their saved Checksheets -->
 						<a class = "dropButton verticalAlign" href = "savedChecksheets.php">Checksheets</a>
 						<div class= "dropdownContent">
+							<!-- Take user to the page to create a new checksheet -->
 							<a href= "createNewChecksheet.php">Create New Checksheet</a>
+							<!-- Also takes user to view their saved checksheets -->
 							<a href= "savedChecksheets.php">View Saved Checksheets</a>
 						</div>
 					</li>
+					<!-- User progress page link -->
 					<li><a class = "active verticalAlign" href = "progress.php ">Progress</a></li>
+					<!-- Help page link -->
 					<li><a class = "active verticalAlign" href = "help.php">Help</a></li>
 				<ul>
 			</div>
 		</div>
 		<div class = "newSection"></div>
+		<!-- Set background for the main content -->
 		<div id = "background" class = "background">
-			<div id = "leftSave" class = "leftViewSaved"></div>
+			<!-- Set up the content areas: left, right and main -->
 			<div id = "left" class = "leftSection"></div>
 			<div id = "mainSection" class = "mainSection"></div>
 			<div id = "right" class = "rightSection"></div>
-			<div id = "rightSave" class = "rightViewSaved"></div>
 		</div>	
 		<div class = "newSection"></div>
+		<!-- Create site footer with text about the project -->
 		<div id = "footer" class = "footer">
 			<div class = "verticalAlign">&copy; copyright 2016 Kutztown University</div>
 		</div>

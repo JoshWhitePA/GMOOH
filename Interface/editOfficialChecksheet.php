@@ -1,3 +1,17 @@
+<!--
+* Author:			Christian Carreras
+* File Name:		editOfficialChecksheet.php
+* Date:				04/04/2016
+* Company:			CSC 355 GMOOH
+* Organization:		Kutztown University of Pennsylvania
+* Purpose:			This page was meant to let the student view and edit their
+					official checksheet. As of the final edition this page is
+					deprecated and will not be supported until any continuance
+					of the system. To edit their official checksheet the user
+					has to travel the the view saved checksheets page, find
+					their official checksheet and load it.
+-->
+
 <?php 
 	session_start();
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){

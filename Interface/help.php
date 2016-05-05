@@ -1,14 +1,23 @@
 <!--
-Question/Answer Format
-+ "<br/>Q. <b></b>"
-+ "<br/>A. <br/>"
--->
-<?php 
+* Author:			Christian Carreras
+* File Name:		help.php
+* Date:				04/04/2016
+* Company:			CSC 355 GMOOH
+* Organization:		Kutztown University of Pennsylvania
+* Purpose:			This page displays all manner of FAQs and user help.
+					As there has been no extensive user testing all FAQs were
+					made up and should not be taken as serious or viewed as
+					actual help in any shape or form. I apologize in advance
+					for my lousy sense of humour.
+--> 	
+<?php
+	//Check if the user is logged in. If not reroute them to the log in page
 	session_start();
 	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
 	header('location: login.php');
 	}	
 	
+	//Check what type of user is logged and use the appropriate master page
 	$userMaster = "";
 	if(isset($_SESSION["facID"])){
 		$userMaster = "MasterPages/advisorMasterPage.html";
@@ -24,9 +33,12 @@ Question/Answer Format
 		<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohMasterStyle.css"/>	
 		<script src = "Scripts/jquery-1.12.0.min.js"></script>
 		<script>
+			//Wait for the whole document to load then do stuff
 			$(document).ready(function(){
+				//Load the master page into the body
 				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
 					$("#mainSection")
+						//Add FAQs to the mainSection within the master page
 						.append("<div id = 'innerSection' class = 'innerSection'>FAQs<br/>"
 							+ "<br/>Q. <b>Why is this interface so terrible?</b>"
 							+ "<br/>A. We are terrible computer scientists<br/>"
