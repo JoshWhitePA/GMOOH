@@ -1,0 +1,107 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*	Author:			Christian Carreras
+* 	File: 			gmoohLoginStyle.css
+*	Date:			02/11/2016
+*	Compandy:		CSC 355 GMOOH
+*	Organization:	Kutztown University of Pennsylvania
+*	Purpose:		This css file creates the look and feel for the login page,
+*					create account page and index page. It follows the pattern
+*					similar to other Kutztown pages purposely. When coming to
+*					the index of login page, we wanted a sense of familiarity
+*					to the students of Kutztown if they would use the system.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/* Format the whole html section with a special background */
+html { 
+	background-image: url("../Images/gmoohBackground.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 80%;
+	background-position: top;
+	background-attachment: fixed;
+}
+
+/* Buttons for index, login and create account page */
+.button1 {
+	background-color: #551020;
+	color: white;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 24px;
+	border-color: white;
+	border-radius: 4px;
+}
+
+.button1:hover { /* Changes color of the button when the mouse hovers over it */
+	background-color: white;
+	color: #551020;
+	border-color: #551020;
+}
+
+div.one { /* Log in page div box */
+
+	/* Place in the center of the screen */
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+	width: 40%;
+	min-width: 450px;
+	height: 170px;		
+	padding: 0.4in;
+	position: fixed;
+	
+	background-color: #efe0c0;
+	opacity: 0.6; /* Make div translucent */
+	border-style: solid;
+	border-width: 5px;
+	border-color: #551020;
+	border-radius: 6px;
+}
+
+div.two { /* Create an account div box */
+	
+	/* Place in the center of the screen */
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+	width: 30%;
+	min-width: 450px;
+	height: 310px;		
+	padding: 0.4in;
+	position: fixed;
+	
+	background-color: #efe0c0;
+	opacity: 0.6; /* Make div translucent */
+	border-style: solid;
+	border-width: 5px;
+	border-color: #551020;
+	border-radius: 6px;
+}
+
+/* Table to format labels, text boxes and buttons within forms */
+table {
+	margin-right: auto;
+	margin-left: auto;
+	margin: auto;
+	text-align: right;
+	min-width: 450px;
+}
+
+/* Style format for labels to text boxes */
+th {
+	font-family: 'AmericanTypwrterITCW01- 731031'; 
+	color: #551020;
+	font-size: 22px;
+	text-shadow: /* Adds white border to text */
+		-1px 0 #3f3010, 
+		0 1px white, 
+		1px 0 white, 
+		0 -1px white;
+}
+
+/* Alignment format for text boxes */
+td {
+	text-align: left;
+}

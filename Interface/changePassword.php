@@ -1,82 +1,137 @@
-<?php
-	require_once("../PHPClasses/logic.class.php");	
-	$logic = new Logic();
+<!-- Password change page.
+File Name: changePassword.php
+Date Created: 2/22/2016
+Created by Christopher Steckhouse
+Contributors: Christian Carreras, Michael Para
+Created for CSC 355WI 020 -->
 
+<?php 
+	session_start();
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == false || $_SESSION["loggedIn"] == null){
+	header('location: login.php');
+	}	
 	
-	$password = $_POST["oldPassword"];
-	$newPass1= $_POST["newPassword"];
-	$newPass2 = $_POST["confirmNewPassword"];
-	if(!is_null($password) && !is_null($newPass1) && !is_null($newPass2)){
-		$loggedIn = $logic -> changePassword($password, $newPass1, $newPass2);
-        /* variable $loggedIn ??? Is that needed? */
-	} 
+	$userMaster = "";
+	if(isset($_SESSION["facID"])){
+		$userMaster = "MasterPages/advisorMasterPage.html";
+	}
+	else{
+		$userMaster = "MasterPages/masterPage.html";
+	}
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-	<title>Change Password</title>
-	<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohStyle.css"/>
-		  <script type="text/javascript">
-
+		<title>Change Your Password</title>
+		<link rel = "stylesheet" type = "text/css" href = "Styles/gmoohMasterStyle.css"/>	
+		<script src = "Scripts/jquery-1.12.0.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#master").load(<?php echo json_encode($userMaster); ?>, function() {
+					$("#mainSection")
+						.append("<div id = 'two' class = 'innerSection'>"
+							+ "<form action='changePassword.php' onsubmit='event.preventDefault(); return formSubmit();' method='post' id='UserForm'>"
+							+ "<table class = 'tableCenter'>"
+							+ "<tr>"
+							+ "<th>Old Password &nbsp;</th>"
+							+ "<td class = 'paddedTD'><input id='oldPassword' name='oldPassword' type='password' title='Please enter your current password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "</tr>"
+							+ "<tr>"
+							+ "<th>New Password &nbsp;</th>"
+							+ "<td class = 'paddedTD'><input id='newPassword' name='newPassword' type='password' title='Please enter a new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "</tr>"
+							+ "<tr>"
+							+ "<th>Confirm New Password &nbsp;</th>"
+							+ "<td class = 'paddedTD'><input id='confirmPassword' name='confirmPassword' type='password' title='Please confirm your new password' pattern='[A-Za-z0-9]{8,}' required/></td>"
+							+ "</tr>"
+							+ "<tr height = '10px'></tr>"
+							+ "<tr>"
+							+ "<th colspan = '2' align = 'center'>"
+							+ "<button class = 'button1' type='submit' value='Submit'>Submit</button>"
+							+ "<button class = 'button1' type='reset' value='Reset'>Clear</button>"
+							+ "</th>"
+							+ "</tr>"
+							+ "<tr height = '10px'></tr>"
+							+ "<tr>"
+							+ "<th colspan ='2' align = 'center'>"
+							+ "<input type = 'button' class = 'button1' onclick = 'cancel()' value = 'Cancel'/>"
+							+ "</th></tr></table></form></div>");
+						});
+			});
+			
+			function cancel() {
+				window.location.assign("account.php");
+			}
+			
+			// client side verifying done here
 		    function formSubmit(){
-                
-                var oldPass = document.getElementById("oldPassword").value;
-				var newPass1 = document.getElementById("newPassword").value;
- 				var newPass2 = document.getElementById("confirmNewPassword").value;
-				
-				if (newPass1 != newPass2)
-				{
+				var pass = document.getElementById("oldPassword").value;
+				var pass1 = document.getElementById("newPassword").value;
+ 				var pass2 = document.getElementById("confirmPassword").value;
+				if (pass1 != pass2){
 					  alert("Passwords do not match!");
 					  return false;
+				  }
+				  //if choose same password as old one
+				else if (pass==pass1 && pass==pass2) {
+					alert("Must pick a new password!");
+					return false;
 				}
-                  
-                if((newPass1 == newPass2) && (oldPass == newPass1))
-                {
-                    alert("Must use new password");
-                    return false;
-                }
-                  
+					//Everything checked out
 				  document.getElementById("UserForm").submit();
+				    //alert("Password Successfully Changed!");
 			 }
-	  </script>
+						 
+		</script>
+<?php
+	require_once("../PHPClasses/logic.class.php");
+	$logic = new Logic();
+	
+	if(isset($_POST["oldPassword"])){
+		$oldPassword = $_POST["oldPassword"];
+	}
+	else{
+		$oldPassword = NULL;
+	}
+	if(isset($_POST["newPassword"])){
+		$newPassword = $_POST["newPassword"];
+	}
+	else{
+		$newPassword = NULL;
+	}
+	if(isset($_POST["confirmPassword"])){
+		$confirmPassword = $_POST["confirmPassword"];
+	}
+	else{
+		$confirmPassword = NULL;
+	}
+	if(isset($_SESSION["userID"])){
+		$userID = $_SESSION["userID"];
+	}
+	else{
+		$userID = NULL;
+	}
+	
+	$passwordValid = NULL;
+	
+	if(!is_null($oldPassword) && !is_null($newPassword) && !is_null($confirmPassword) && !is_null($userID) && ($newPassword == $confirmPassword)){
+		$passwordValid = $logic -> changePassword($oldPassword, $newPassword, $userID);
+		//If your old password is wrong execute this code
+		if($passwordValid == false) {
+			echo '<script language="javascript">';
+			echo 'window.alert("Incorrect password please try again")';
+			echo '</script>';
+		}
+		//If your password is correct execute this code
+		if($passwordValid) {
+			echo '<script language="javascript">';
+			echo 'window.alert("Success! Your password has been changed")';
+			echo '</script>';
+		}
+	 } 
+?>
 	</head>
-	<body>
-		<div class = "two">
-			<div class = "special">
-				<form action="changePassword.php" onsubmit="event.preventDefault(); return formSubmit();" method="post" id="UserForm">
-					<table align = "center">
-						<tr>
-							<th align = "right">Old Password &nbsp;</th>
-							<td><input id="oldPassword" type = "password" title="Please Enter Your Old Password" pattern="[A-Za-z0-9]{8,}" required/></td>
-						</tr>
-						<tr>
-							<th align = "right">New Password &nbsp;</th>
-							<td><input id="newPassword" type = "password" title="Please Enter A New Valid Password" pattern="[A-Za-z0-9]{8,}" required/></td>
-						</tr>
-						<tr>
-							<th align = "right">Confirm New Password &nbsp;</th>
-							<td><input id="confirmNewPassword" type="password" title="Please Confirm Your New Password" pattern="[A-Za-z0-9]{8,}" required/></td>
-						</tr>
-						<tr height = "10px"></tr>
-						<tr>
-							<td colspan = "2" align = "center">
-							<button class = "button1" type="submit" value="Submit">Submit</button>
-							<button class = "button1" type="reset" value="Reset">Clear</button>
-							</td>
-						</tr>
-						<tr height = "10px"></tr>
-						<tr>
-							<td colspan = "2" align = "center">
-								<input type = "button" class = "button1" 
-									onclick = "location.href='login.html'" 
-									value = "Cancel"/> <!-- location needs to be changed -->
-							</td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</div>
+	<body id = "master">
 	</body>
 </html>
 

@@ -1,0 +1,266 @@
+/*
+*	File: 			checksheetStyleV1p1reg.css
+*	Created:		02/13/2016
+*	Version:		1.1 (02/28/2016)
+*	Author:			Christian Carreras
+*	Organization:	Kutztown University CSC 355 Spring
+*	Purpose:		This css file creates the necessary attributes and classes
+*					to be used by checksheet files. Visually, this creates a
+*					checksheet near identical to an official checksheet. This
+*					style is to be used by regular checksheets.
+*/
+
+/* This sets up the style of the page body */
+body {
+	width: 90%;
+	min-width: 966px;
+	height: 100%;
+	margin: auto;
+	display: flex;
+	flex-flow: row wrap;
+	align-content: flex-start;
+	flex: 1;
+}
+
+/* Creates a margin for the content of the page */
+div.buffer {
+	width: 2%;
+	float: left;
+}
+
+/* Creates the margin for notes */
+div.noteBuffer {
+	width: 15%;
+	float: left;
+}
+
+/* When used three times this section will create part of the header which
+should include the student's name, KU Logo and the student's id */
+div.sectionTop {
+	width: 33.33%;
+	height: 110px;
+	float: left;
+	text-align: center;
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* This section will hold all the table content. It splits the page in half */
+div.section {
+	min-height: 300px;
+    width: 48%;
+	float: left;
+	position: abolute;
+}
+
+/* This is used to break into a new section. This is mandatory for all sections */
+div.newSection {
+	clear: both;
+}
+
+/* This creates a horizontal break between checksheet sections */
+div.horzontalBreak {
+	width: 98%;
+	float: left;
+	position: absolute;
+}
+
+/* Single section note div */
+div.notes1 {
+	width: 70%;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Page width note div */
+div.notes2 {
+	width: 70%;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	float: left;
+}
+
+/* Notes exclusive to minor checksheets */
+div.notes3 {
+	width: 70%;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	float: left;
+}
+
+/* For notes surrounded in a box */
+div.noteBox {
+	padding: 5px;
+	text-align: left;
+	border: solid;
+	border-width: 1px;
+	font-weight: bold;
+}
+
+/* For header titles */
+div.header {
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	margin: auto;
+}
+
+/* Will hold the name of the checksheet */
+div.headerBox {
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	background-color: black;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	margin: auto;
+}
+
+/* Table header/title for tables */
+.tableHeader {
+	background-color: #dadada;
+	font-size: 18px;
+}
+
+/* Format for grade slots in the chekchseet */
+.tableGrade {
+	width: 30px;
+	text-align: center;
+}
+
+/* Format for grade titles in general education */
+.tableGradeCaption {
+	width: 30px;
+	text-align: center;
+	border: none;
+}
+
+/* Table header/table for general education */
+.tableCaption {
+	font-size: 18px;
+	border: none;
+}
+
+/* Empty space for extra space between tables */
+.tableSpace {
+	height: 5px;
+	border: none;
+}
+
+/* General formatting for tables */
+table {
+	width: 95%;
+	border-collapse: collapse;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Formatting for table headers that will hold notes */
+th.noteTable {
+	font-weight: bold;
+	padding: 2px;
+	text-align: right;
+	border: none;
+}
+
+/* More formatting options for table notes */
+td.noteTable {
+	font-weight: normal;
+	padding: 2px;
+	text-align: left;
+	border: none;
+}
+
+/* General formatting for table headers */
+th {
+	padding: 5px;
+	text-align: left;
+	border: 1.5px solid black;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* General formatting for table content */
+td {
+	padding: 5px;
+	text-align: left;
+	border: 1.5px solid black;
+}
+
+/* Specific formatting for CSC BS notes */
+td.bsNotes {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+}
+
+/* Bold tag will actually make text NOT bold */
+b {
+	font-weight: normal;
+}
+
+/* Make text smaller for subtitles in the general education sections */
+b.smaller {
+	font-size: 14px;
+}
+
+/* Horizontal bar for horizontal breaking */
+hr {
+	border-top: double;
+	page-break-before: always;
+}
+
+/* Formatting for the KU Logo */
+img {
+	width: 182px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Formatting for general education misc. notes */
+u {
+	text-decoration: none;
+	color: blue;
+}
+
+/* Hover formatting for general education misc. notes */
+u:hover {
+	text-decoration: underline;
+}
+
+/* Textbox for grades */
+.gradeBox {
+	width: 25px;
+	border: none;
+	background: transparent;
+	text-align: center;
+	
+}
+
+/* Special formatting for printing */
+@media print { 
+	/* This insures correct printing in Firefox */
+	body { 
+		zoom: 67%;
+		height: initial;
+		display: initial;
+		flex-flow: initial;
+		align-content: initial;
+		flex: initial;
+		overflow: visible;
+	}
+	hr { border: none; } /* Get rid of the horizontal bars */
+	@page {
+		size: 297mm 210mm; /* Landscape */
+		margin: 10mm;
+	}
+}
